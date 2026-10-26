@@ -1,0 +1,260 @@
+diff --git a/scripts/build_dev_grid.py b/scripts/build_dev_grid.py
+index fc23c552..e5218d85 100755
+--- a/scripts/build_dev_grid.py
++++ b/scripts/build_dev_grid.py
+@@ -32,11 +32,6 @@ branch never more than its parent's phase); the manifest records both (``model_c
+ ``runner_settings.gateway_budget`` caps the workers of a phase's Gateway models together (by the route's
+ provider in the runner's table; Anthropic routes are outside it): ``--for-launch`` refuses a phase over
+ it, and the manifest records each phase's planned Gateway load (``gateway_load``).
+-``runner_settings.request_timeout_s`` and ``runner_settings.max_turns`` (change-log entry 180; optional) give a model
+-of the grid its own request time-out in seconds (an OpenAI-compatible route only) and its own turn cap, recorded
+-settings of the stack the spec runs on: the model is built with them here and by the runner alike
+-(``run_pilot.grid_models``), so its ``model_settings`` (route settings and caps) record them. Without them every model
+-keeps its table's (a 600 s request time-out; its own turn cap).
+ A model may be added to the spec later (as the DeepSeek panel model was): every other model's attempts keep
+ their relative order in every phase, since a key depends only on the seed and the attempt, and their
+ cells; the runner admits it while it has no record in the run.
+@@ -467,7 +462,6 @@ def validate_spec(spec: dict) -> list[str]:
+         problems.append(f"runner_settings.gateway_budget: {budget!r} is neither FILL nor a positive integer (the Gateway "
+                         f"models' workers of a phase together)")
+     problems += _model_cell_problems(spec)
+-    problems += run_pilot.runner_model_problems(spec, run_pilot.MODELS)  # change-log entry 180
+     for m in spec.get("models") or []:
+         if m.get("name") not in run_pilot.MODELS:
+             problems.append(f"model {m.get('name')!r} is not a runner model ({', '.join(run_pilot.MODELS)})")
+@@ -902,7 +896,6 @@ def build(spec: dict, spec_sha256: str, root: Path, *, for_launch: bool,
+                             "ids_sha256": sha256_bytes(json.dumps(ids, separators=(",", ":")).encode("utf-8"))}
+     attempts = expand(spec, questions)
+     per_cell = counts(spec, attempts)
+-    table = run_pilot.grid_models(run_pilot.MODELS, spec)  # entry 180; validate_spec refused what it refuses
+     roles = role_of(spec)
+     phase_of = {c["id"]: c["phase"] for role in spec["roles"] for c in cells(spec, role)}
+     per_graph_model = {graph: {m: {"role": roles[m], "attempts": sum(n.values()),
+@@ -957,8 +950,7 @@ def build(spec: dict, spec_sha256: str, root: Path, *, for_launch: bool,
+                     "flag rate times its attempts",
+         },
+         # each model's route model, provider, route settings (its transport) and caps, from the runner's table
+-        # (change-log entry 180: a model the spec gives its own request time-out or turn cap, as the runner does)
+-        "model_settings": {m["name"]: run_pilot.model_settings(m["name"], table[m["name"]], list(spec["graphs"]))
++        "model_settings": {m["name"]: run_pilot.model_settings(m["name"], run_pilot.MODELS[m["name"]], list(spec["graphs"]))
+                            for m in spec["models"]},
+         "replay_jobs": replay_jobs(spec, questions),
+         "attempts_file": ATTEMPTS_FILE,
+diff --git a/scripts/run_pilot.py b/scripts/run_pilot.py
+index 60c4fcdc..32906d02 100644
+--- a/scripts/run_pilot.py
++++ b/scripts/run_pilot.py
+@@ -230,10 +230,7 @@ parents); the launch design is that script's docstring, items 1-7:
+   ``runner_settings.gateway_budget`` (Anthropic routes outside it); each start's
+   workers and budget, and the code it runs on, are appended to the manifest's
+   ``starts``. Each model runs its own cells and repetitions per phase (the
+-  manifest's ``model_cells`` and ``model_repetitions``). A model the spec's
+-  ``runner_settings.request_timeout_s`` or ``runner_settings.max_turns`` names
+-  (change-log entry 180) runs on its route rebuilt with that request time-out,
+-  or with that turn cap, as the manifest recorded them.
++  manifest's ``model_cells`` and ``model_repetitions``).
+ * The code (dress rehearsal F1): every run, grid or not, starts only on code it
+   can name (``replay_check.require_identified_code``): a git checkout, or a deploy
+   whose COMMIT and TREE files hold and whose tree digest recomputed from disk is
+@@ -628,138 +625,6 @@ def model_settings(name: str, spec: ModelSpec, graphs: list[str]) -> dict:
+     return out
+ 
+ 
+-# --- a stack's own request time-out and turn cap per model (change-log entry 180) ---------------------------------
+-# Science, the design log: 18:54Z, option (b), a grid spec may give a model its own request time-out,
+-# runner_settings.request_timeout_s {model: seconds}, a recorded runner setting of the stack the spec runs on; 19:05Z,
+-# by the same mechanism its own turn cap, runner_settings.max_turns {model: turns}. The runner (_run_store) and the
+-# grid build (build_dev_grid's model_settings) both take the model's entry through grid_models, so the manifest's route
+-# settings and caps, the OUT's pins and every record carry the same values (settings.request_timeout_s, 600 s by
+-# default, and the caps' max_turns are recorded there today). A plain run (the only path of a store read through a query
+-# gate) takes the same object from --runner-settings FILE (plain_runner_settings, through grid_models too): its
+-# manifest pins each model's route and caps, so a resume under other settings is refused. A model the settings do not
+-# name, and every model of a run without them, keeps its table entry exactly as before.
+-REQUEST_TIMEOUT_KEY = "request_timeout_s"
+-TURN_CAP_KEY = "max_turns"
+-RUNNER_MODEL_KEYS = (REQUEST_TIMEOUT_KEY, TURN_CAP_KEY)
+-
+-
+-def _positive_seconds(value: Any) -> bool:
+-    if isinstance(value, bool) or not isinstance(value, (int, float)):
+-        return False
+-    try:
+-        seconds = float(value)  # a JSON integer beyond a float's range is no number of seconds
+-    except OverflowError:
+-        return False
+-    return math.isfinite(seconds) and seconds > 0
+-
+-
+-def _positive_turns(value: Any) -> bool:
+-    return isinstance(value, int) and not isinstance(value, bool) and value >= 1
+-
+-
+-def runner_model_problems(spec: Mapping[str, Any], models: Mapping[str, ModelSpec], *,
+-                          scope: str = "the grid") -> list[str]:
+-    """What is wrong with ``spec``'s per-model runner settings (nothing when neither key is present): each must map at
+-    least one model of the grid (``spec["models"]``) of the runner's table to its value, a positive, finite number of
+-    seconds (``request_timeout_s``) or a positive whole number of turns (``max_turns``); a model given a request
+-    time-out must have a route rebuilt with another one (an OpenAI-compatible route, by ``with_options``)."""
+-    runner = spec.get("runner_settings")
+-    if not isinstance(runner, Mapping):
+-        return []
+-    grid = {m.get("name") for m in spec.get("models") or [] if isinstance(m, Mapping)}
+-    problems = []
+-    for key, valid, what in ((REQUEST_TIMEOUT_KEY, _positive_seconds, "a positive, finite number of seconds"),
+-                             (TURN_CAP_KEY, _positive_turns, "a positive whole number of turns")):
+-        if key not in runner:
+-            continue
+-        where = f"runner_settings.{key}"
+-        values = runner[key]
+-        if not isinstance(values, Mapping) or not values:
+-            problems.append(f"{where}: {values!r} is not a mapping of at least one model to its value (leave the key "
+-                            f"out for every model's own, from the runner's table)")
+-            continue
+-        for name, value in values.items():
+-            if not valid(value):
+-                problems.append(f"{where}.{name}: {value!r} is not {what}")
+-            if name not in grid:
+-                problems.append(f"{where}.{name}: not a model of {scope}")
+-            elif name not in models:
+-                problems.append(f"{where}.{name}: not a model of the runner's table")
+-            elif key == REQUEST_TIMEOUT_KEY and not takes_front(models[name].factory()):
+-                # takes_front's test is this one: an OpenAI-compatible route that with_options rebuilds
+-                problems.append(f"{where}.{name}: its route cannot be rebuilt with another request time-out (only an "
+-                                f"OpenAI-compatible route, by with_options, can)")
+-    return problems
+-
+-
+-def _timeout_factory(factory: Callable[[], Provider], seconds: float) -> Callable[[], Provider]:
+-    def build() -> Provider:
+-        route = factory()
+-        rebuilt = route.with_options(request_timeout_s=seconds)
+-        own, there = route.route_info(), rebuilt.route_info()
+-        want = {**(own.get("settings") or {}), REQUEST_TIMEOUT_KEY: seconds}
+-        if ({k: own.get(k) for k in ("provider", "base_url", "model")}
+-                != {k: there.get(k) for k in ("provider", "base_url", "model")}
+-                or there.get("settings") != want or getattr(rebuilt, REQUEST_TIMEOUT_KEY, None) != seconds):
+-            raise ValueError(f"the route rebuilt with request_timeout_s {seconds} differs from the table's route in more "
+-                             f"than its request time-out")
+-        return rebuilt
+-    return build
+-
+-
+-def grid_models(models: Mapping[str, ModelSpec], spec: Mapping[str, Any], *,
+-                scope: str = "the grid") -> Mapping[str, ModelSpec]:
+-    """``models`` with each model ``spec``'s per-model runner settings name given them: its route built with its
+-    request time-out (a float, like the 600.0 default) and its turn cap; ``models`` itself, the same object, when the
+-    spec sets neither. ValueError with ``runner_model_problems``'s findings."""
+-    runner = spec.get("runner_settings")
+-    if not isinstance(runner, Mapping) or not any(key in runner for key in RUNNER_MODEL_KEYS):
+-        return models
+-    problems = runner_model_problems(spec, models, scope=scope)
+-    if problems:
+-        raise ValueError("; ".join(problems))
+-    out = dict(models)
+-    for name, seconds in (runner.get(REQUEST_TIMEOUT_KEY) or {}).items():
+-        out[name] = replace(out[name], factory=_timeout_factory(out[name].factory, float(seconds)))
+-    for name, turns in (runner.get(TURN_CAP_KEY) or {}).items():
+-        out[name] = replace(out[name], max_turns=turns)
+-    return out
+-
+-
+-def plain_runner_settings(path: Path, names: list[str], models: Mapping[str, ModelSpec]
+-                          ) -> tuple[Mapping[str, ModelSpec], dict]:
+-    """A plain run's per-model settings (``--runner-settings``): the JSON object in ``path``, holding
+-    ``request_timeout_s`` and/or ``max_turns`` exactly as a grid spec's runner_settings does, for models of the run
+-    (``names``, its --models); -> (the table through ``grid_models``, the object). Refused when it cannot be read, is
+-    not such an object (no other key), or ``runner_model_problems`` finds anything."""
+-    def unique(pairs: list[tuple[str, Any]]) -> dict:
+-        keys = [k for k, _ in pairs]
+-        twice = sorted({k for k in keys if keys.count(k) > 1})
+-        if twice:  # json.loads would keep the last silently, and the run would record only that one
+-            raise ValueError(f"a key given twice in one object: {', '.join(twice)}")
+-        return dict(pairs)
+-
+-    try:
+-        settings = json.loads(Path(path).read_text(encoding="utf-8"), object_pairs_hook=unique)
+-    except (OSError, UnicodeDecodeError, ValueError) as exc:
+-        raise Refused(f"--runner-settings {path}: {exc}") from None
+-    if not isinstance(settings, dict) or not settings or set(settings) - set(RUNNER_MODEL_KEYS):
+-        raise Refused(f"--runner-settings {path}: a JSON object with {' and/or '.join(RUNNER_MODEL_KEYS)} and nothing "
+-                      f"else, got {sorted(settings) if isinstance(settings, dict) else type(settings).__name__}")
+-    spec = {"models": [{"name": n} for n in names], "runner_settings": settings}
+-    try:
+-        return grid_models(models, spec, scope="the run (--models)"), settings
+-    except ValueError as exc:
+-        raise Refused(f"--runner-settings {path}: {exc}") from None
+-
+-
+-def say_runner_settings(runner: Any, say: Callable[[str], None]) -> None:
+-    own = {key: runner[key] for key in RUNNER_MODEL_KEYS if isinstance(runner, Mapping) and key in runner}
+-    if own:
+-        say("per-model runner settings (change-log entry 180): " + "; ".join(
+-            f"{key} " + ", ".join(f"{m} {v}" for m, v in sorted(values.items())) for key, values in own.items()))
+-
+-
+ def _gateway(model: str, *, max_result_chars: int | Mapping[str, int], max_tokens: int, max_turns: int,
+            max_wall_s: float, report_key_rule: str | None = None, reasoning_call_rule: str | None = None,
+            **route_options: Any) -> ModelSpec:
+@@ -960,10 +825,6 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     p.add_argument("--models", nargs="+", default=None,
+                    help=f"one or more of: {', '.join(models)}; required without --grid-manifest (grid: from the "
+                         f"manifest)")
+-    p.add_argument("--runner-settings", type=Path, default=None,
+-                   help='plain runs (change-log entry 180): a JSON file {"request_timeout_s": {model: seconds}, '
+-                        '"max_turns": {model: turns}} (either or both), applied to those models of --models as a grid '
+-                        "spec's runner_settings are; pinned with each model's route and caps (grid: from its spec)")
+     p.add_argument("--reps", type=int, default=None, help="default 3 (grid: from the manifest)")
+     p.add_argument("--concurrency", type=int, default=None,
+                    help="attempts in flight per model (configured workers; default 4) (grid: from the manifest)")
+@@ -1081,8 +942,6 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     if args.preflight_log is not None:
+         if args.store_json is None or args.endpoint is None or args.grid_manifest is not None:
+             p.error("--preflight-log needs --store-json and --endpoint, and no grid")
+-        if args.runner_settings is not None:
+-            p.error("--runner-settings: a preflight runs no model")
+         if args.sparql_timeout is None:
+             args.sparql_timeout = 60.0
+         if args.row_cap is None:
+@@ -1091,7 +950,6 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     if args.out is None:
+         p.error("the following arguments are required: --out")
+     derived = {"--questions": args.questions, "--split": args.split, "--models": args.models, "--reps": args.reps,
+-               "--runner-settings": args.runner_settings,
+                "--order-seed": args.order_seed, "--store-json": args.store_json, "--row-cap": args.row_cap,
+                "--sparql-timeout": args.sparql_timeout, "--limit": args.limit, "--endpoint": args.endpoint,
+                "--concurrency": args.concurrency, "--concurrency-for": args.concurrency_for or None,
+@@ -4269,13 +4127,6 @@ def _run_store(args, models, sparql_factory, say, sleep, *, gs: gated.GatedStore
+         apply_grid_plan(args, plan)
+         if gated.gated_store(json.loads(args.store_json.read_text(encoding="utf-8"))) is not None:
+             raise Refused("a store read through a query gate does not run in a grid (no grid names one yet)")
+-        # change-log entry 180: a model the spec gives its own request time-out or turn cap runs with them, as the
+-        # manifest's model_settings recorded them (the grid build takes the model through the same grid_models)
+-        try:
+-            models = grid_models(models, plan.spec)
+-        except ValueError as exc:
+-            raise Refused(f"the grid spec's per-model runner settings: {exc}") from None
+-        say_runner_settings(plan.spec.get("runner_settings"), say)
+         say(f"grid: graph {plan.graph}, phase {plan.phase}, seed {plan.seed}: {len(plan.order)} attempts over "
+             f"{len(plan.models)} model(s) and {len({o[1] for o in plan.order})} cell(s), split {plan.spec['split']}"
+             + (f", pre-registration frozen at {plan.freeze['commit'][:12]}" if plan.freeze else ""))
+@@ -4292,9 +4143,6 @@ def _run_store(args, models, sparql_factory, say, sleep, *, gs: gated.GatedStore
+         questions = load_questions(args.questions, args.split)
+         if args.limit is not None:
+             questions = questions[: args.limit]
+-        if args.runner_settings is not None:  # change-log entry 180: as a grid spec's, through the same grid_models
+-            models, args.runner_settings_given = plain_runner_settings(args.runner_settings, args.models, models)
+-            say_runner_settings(args.runner_settings_given, say)
+         # before anything asks a store or a model: a run of any split but dev is opened by the frozen pre-registration
+         args.freeze = plain_split_gate(args, questions)
+         if args.freeze is not None:
+@@ -4578,9 +4426,7 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+         added = check_manifest(args.out, run_fingerprint(args, store, config, routes, scorer, store_client),
+                                has_records=bool(done), say=say, allow_code_change=args.allow_code_change,
+                                start_fields={**({"query_gate": gate_start} if gate_start is not None else {}),
+-                                             **start_files,
+-                                             **({"runner_settings": args.runner_settings_given}
+-                                                if getattr(args, "runner_settings_given", None) else {})} or None,
++                                             **start_files} or None,
+                                allow_store_change=args.allow_store_change)
+         if args.allow_store_change is not None:
+             store_changed = json.loads((args.out / "manifest.json").read_text(encoding="utf-8"))["starts"][-1].get(

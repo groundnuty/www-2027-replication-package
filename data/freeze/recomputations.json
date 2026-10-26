@@ -1,0 +1,44 @@
+{
+ "schema": "freeze-registry/2",
+ "note": "The freeze check's records of recomputations on SiteA, which a host without the chunks accepts in their place (harness/analysis/multiplicity.py freeze_records): step2_outputs, each the step-2 addendum's sha256, the procedure it was recomputed under and the chunks' count and content sha256; step3_selection_outputs and step3_outputs, step 3's, appended from step3-verify's output when the step-3 aggregation has run. Kept apart from registry.json (freeze-registry/1, the citation check's), and outside harness/ and scripts/ so that editing it never moves the code digest. step2_outputs[0]: Slurm job 21160 on SiteA, 2026-10-21 07:13Z, scripts/weighted_holm_tables.py step2-verify at d0dd034 (multiplicity digest 8faa431b): the dated step-2 addendum recomputed from its 2,350 chunks under step 2's own procedure, every record equal. step3_selection_outputs[0]: Slurm job 21507 on SiteA, 2026-10-21 08:45Z (change-log entry 131), scripts/weighted_holm_tables.py step3-select at 7e4e72b on the selection chunks only, then the selection recomputed from them and steps 1 and 2's frozen chunks (check_selection, require_recomputed), every alpha' equal. step3_outputs[0]: Slurm job 19945 on SiteA, 2026-10-22 09:56Z, scripts/weighted_holm_tables.py step3-verify at 7e4e72b after the step-3 aggregation: the dated step-3 addendum recomputed from its 3,000 validation chunks, every record equal (its step3_selection_outputs record equal to step3_selection_outputs[0]).",
+ "step2_outputs": [
+  {
+   "addendum_sha256": "87dd9abaa9fe04181b95e968bf088a273309cd6c6fc332db2083c8ba14a9bc22",
+   "outputs": {
+    "chunks": 2350,
+    "sha256": "ca85e66e0c47598aee5804624b0e3e8dffb7388e88b7778616a2d953d7f89749"
+   },
+   "procedure": "0294c59aeac46daf26439664c1a1fbf51936acbd38a61e1a26cd7bfb62348590"
+  }
+ ],
+ "step3_selection_outputs": [
+  {
+   "outputs": {
+    "selection": {
+     "chunks": 1250,
+     "sha256": "fd8addb13e8ebf24ba4de75539749fe15571b358d117a8837306be60466d3f24"
+    },
+    "step1": {
+     "chunks": 940,
+     "sha256": "10cac4f4f4abe25929d100cca85002f9e6eaef5917a86105a8c024acfa8be038"
+    },
+    "step2": {
+     "chunks": 2350,
+     "sha256": "ca85e66e0c47598aee5804624b0e3e8dffb7388e88b7778616a2d953d7f89749"
+    }
+   },
+   "procedure": "699ee5cf8fe614a836a78c7d63c0ffb6a6caf9d9b84623ec2ef02fe535cf02b7",
+   "selection_sha256": "003d47ae65ebde262448392c1444f3570964d89c42951f5c9746fd94e38d4789"
+  }
+ ],
+ "step3_outputs": [
+  {
+   "addendum_sha256": "4a76d3718cc0f87128aea0840fe66d3d122b74d5ca94b744a0bcc489714e5707",
+   "outputs": {
+    "chunks": 3000,
+    "sha256": "bb4897e689546dbb2a59c65fa2a554e67432ce9118a54de9392a69208dd1958b"
+   },
+   "procedure": "699ee5cf8fe614a836a78c7d63c0ffb6a6caf9d9b84623ec2ef02fe535cf02b7"
+  }
+ ]
+}

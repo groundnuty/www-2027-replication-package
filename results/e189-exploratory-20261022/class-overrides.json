@@ -1,0 +1,91 @@
+{
+ "bases": [
+  {
+   "basis": "operational note withheld",
+   "replica": "uniprot-siteb-2",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "table_rows": [
+    {
+     "class": "medium",
+     "note": "operational note withheld"
+    },
+    {
+     "class": "medium",
+     "note": "operational note withheld"
+    }
+   ],
+   "why": "operational note withheld"
+  }
+ ],
+ "informational_rows": [
+  {
+   "replica": "uniprot-siteb-5",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "table_rows": [
+    {
+     "class": "medium",
+     "note": "operational note withheld"
+    },
+    {
+     "class": "medium",
+     "note": "operational note withheld"
+    }
+   ],
+   "why": "operational note withheld"
+  },
+  {
+   "replica": "uniprot-siteb-8",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "table_rows": [
+    {
+     "class": "medium",
+     "note": "operational note withheld"
+    },
+    {
+     "class": "medium",
+     "note": "operational note withheld"
+    }
+   ],
+   "why": "operational note withheld"
+  }
+ ],
+ "measured": [
+  {
+   "basis": "operational note withheld",
+   "class": "medium",
+   "replica": "uniprot-siteb-9",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "why": "operational note withheld"
+  }
+ ],
+ "rule": "operational note withheld",
+ "schema": "e189-class-overrides/2"
+}

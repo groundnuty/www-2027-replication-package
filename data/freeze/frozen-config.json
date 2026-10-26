@@ -1,0 +1,14 @@
+{
+ "schema": "frozen-config/1",
+ "path": "data/analysis/prereg-config.json",
+ "sha256": "ddca19da589e268ed5b88c8275c4d51106ab2cd40bf25920840848e63f5d97dd",
+ "note": "The frozen analysis config, by the sha256 of its file (design ruling, design log, 20 Oct): a confirmatory analysis run (scripts/analyse.py without --test-run) refuses unless the config it loads has this sha256, and refuses while it is [FILL]; a test run may load another config, and records both values (results.json settings.frozen_config). Filled at the freeze, in the freeze commit; scripts/freeze_binding_check.py --bind-ref checks it against the file it names. Kept outside harness/ and scripts/ so that filling it never moves the code digest. fault_rule pins the test runs' infrastructure-fault rule (change-log entries 148 and 149: the frozen dev rates, probe sets, thresholds and store copies), data/runs/infra-fault/fault-rule.json, by its sha256: the monitor and the probes refuse another (harness/agent/infra_fault.py load_rule); it is pinned now, not at the freeze, and the freeze check binds it and the rule's own pins.",
+ "session_weights": {
+  "a15": 0.25,
+  "note": "An a15 session counts 0.25 toward its Gateway model's total, the Gateway's live cap 18 and freeze-day step e's session cap (science, design log, 21 Oct 19:40; change-log entry 156); the latency guard and the infrastructure-fault monitor stay on, and the weight returns to 1 if gateway latency rises, by a recorded operator decision."
+ },
+ "fault_rule": {
+  "path": "data/runs/infra-fault/fault-rule.json",
+  "sha256": "a3cc52485037a03f33743e9a51618f576bcfeb884fb5c4d55c7edd9beaff03b3"
+ }
+}

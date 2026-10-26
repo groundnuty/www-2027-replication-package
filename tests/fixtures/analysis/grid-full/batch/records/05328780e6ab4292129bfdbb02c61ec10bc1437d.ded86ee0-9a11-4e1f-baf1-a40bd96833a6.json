@@ -1,0 +1,1039 @@
+{
+ "schema_version": "agent-run/18",
+ "run_id": "ded86ee0-9a11-4e1f-baf1-a40bd96833a6",
+ "question_id": "s01-pass",
+ "base_question_id": "s01-pass",
+ "template": "t",
+ "split": "dev",
+ "repetition": 0,
+ "condition": "grid-test-beta",
+ "model": "google/gemma-4-31B",
+ "route": {
+  "provider": "fake",
+  "base_url": null,
+  "model": "google/gemma-4-31B",
+  "settings": {}
+ },
+ "store": {
+  "engine": "qlever",
+  "version": "v0.5.x",
+  "image_digest": "sha256:0123",
+  "store": "s01-fixture",
+  "name": "s01",
+  "endpoint": "http://store.invalid:7039/",
+  "sparql_timeout_s": 60.0,
+  "row_cap": 500
+ },
+ "prompt": {
+  "condition": "grid-test-beta",
+  "id": "grid-test-beta-v0",
+  "sha256": "be91ad3b6d44bb6750e170ea0744dfcddaee354afbe63265d8e468940f520431",
+  "template_sha256": "8f01388d962943b31444e80ffca008c8e60fff5c5a46d62529a6ad176eee7844",
+  "nudge": "Call submit_report or abstain.",
+  "nudge_sha256": "839b4fb58e351e01101447e259f5a219d257da1b52d34114ec4a90b9a4d97658",
+  "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+ },
+ "agent_config": {
+  "max_turns": 40,
+  "max_wall_s": 1200.0,
+  "max_tokens": 16000,
+  "max_nudges": 2,
+  "condition": "grid-test-beta",
+  "raw_row_cap": 10000,
+  "infra_retry_s": 600.0,
+  "iri_rule": "registered_schemes_v3",
+  "context_overflow": "capped",
+  "answer_skipped_calls": true,
+  "max_result_chars": 80000,
+  "transport": "non-streamed",
+  "stream_guards": [],
+  "refusal_rule": "refused",
+  "tool_crash_rule": "harness_defect",
+  "graph": "s01"
+ },
+ "harness": {
+  "git_commit": null,
+  "git_dirty": null
+ },
+ "started_at": "2026-10-20T02:24:12.796+00:00",
+ "ended_at": "2026-10-20T02:24:13.257+00:00",
+ "wall_s": 0.04987782891839743,
+ "transcript": [
+  {
+   "role": "user",
+   "kind": "question",
+   "text": "pass?"
+  },
+  {
+   "role": "assistant",
+   "turn": 1,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "q1",
+     "name": "sparql_query",
+     "arguments": {
+      "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }"
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "google/gemma-4-31B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "q1",
+      "name": "sparql_query",
+      "input": {
+       "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "q1",
+     "name": "sparql_query",
+     "content": "{\"columns\":[\"x\",\"y\"],\"rows\":[[{\"type\":\"iri\",\"value\":\"http://example.org/s01#a1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}],[{\"type\":\"iri\",\"value\":\"http://example.org/s01#b1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}]],\"total_rows\":2,\"truncated\":false}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "turn": 2,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "s3",
+     "name": "submit_report",
+     "arguments": {
+      "rows": [
+       [
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#a1"
+        },
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#c1"
+        }
+       ],
+       [
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#b1"
+        },
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#c1"
+        }
+       ]
+      ]
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "google/gemma-4-31B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "s3",
+      "name": "submit_report",
+      "input": {
+       "rows": [
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#a1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ],
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#b1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "s3",
+     "name": "submit_report",
+     "content": "Report submitted: 2 rows.",
+     "is_error": false
+    }
+   ]
+  }
+ ],
+ "tool_calls": [
+  {
+   "index": 0,
+   "turn": 1,
+   "id": "q1",
+   "name": "sparql_query",
+   "arguments": {
+    "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }"
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "{\"columns\":[\"x\",\"y\"],\"rows\":[[{\"type\":\"iri\",\"value\":\"http://example.org/s01#a1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}],[{\"type\":\"iri\",\"value\":\"http://example.org/s01#b1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}]],\"total_rows\":2,\"truncated\":false}",
+   "is_error": false,
+   "result_raw": {
+    "head": {
+     "vars": [
+      "x",
+      "y"
+     ]
+    },
+    "results": {
+     "bindings": [
+      {
+       "x": {
+        "type": "iri",
+        "value": "http://example.org/s01#a1"
+       },
+       "y": {
+        "type": "iri",
+        "value": "http://example.org/s01#c1"
+       }
+      },
+      {
+       "x": {
+        "type": "iri",
+        "value": "http://example.org/s01#b1"
+       },
+       "y": {
+        "type": "iri",
+        "value": "http://example.org/s01#c1"
+       }
+      }
+     ]
+    }
+   },
+   "result_raw_truncated": false,
+   "result_meta": {
+    "form": "SELECT",
+    "columns": [
+     "x",
+     "y"
+    ],
+    "boolean": null,
+    "total_rows": 2,
+    "truncated": false,
+    "elapsed_s": 0.0
+   },
+   "error": null,
+   "elapsed_s": 3.7258490920066833e-05,
+   "client_called": true,
+   "terminal": null,
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  },
+  {
+   "index": 1,
+   "turn": 2,
+   "id": "s3",
+   "name": "submit_report",
+   "arguments": {
+    "rows": [
+     [
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#a1"
+      },
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#c1"
+      }
+     ],
+     [
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#b1"
+      },
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#c1"
+      }
+     ]
+    ]
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "Report submitted: 2 rows.",
+   "is_error": false,
+   "result_raw": null,
+   "result_raw_truncated": false,
+   "result_meta": null,
+   "error": null,
+   "elapsed_s": 0.0,
+   "client_called": false,
+   "terminal": "submitted",
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  }
+ ],
+ "tokens": {
+  "totals": {
+   "input_tokens": 200,
+   "output_tokens": 40,
+   "cache_read_tokens": 0,
+   "cache_write_tokens": 0,
+   "total_input_tokens": 200,
+   "turns": 2,
+   "retries": 0,
+   "truncated_turns": 0,
+   "cache_write_5m_tokens": null,
+   "cache_write_1h_tokens": null
+  },
+  "per_turn": [
+   {
+    "turn": 1,
+    "started_s": 5.668029189109802e-06,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "google/gemma-4-31B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   },
+   {
+    "turn": 2,
+    "started_s": 0.04975170735269785,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "google/gemma-4-31B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   }
+  ]
+ },
+ "outcome": {
+  "status": "submitted",
+  "failure_type": null,
+  "cap": null,
+  "abstain_reason": null,
+  "error_message": null,
+  "provider_error": null,
+  "stage": null,
+  "refusal": null,
+  "harness_defect": null,
+  "model_changed": null,
+  "turns": 2,
+  "nudges": 0,
+  "label": "submitted",
+  "infra_s": 0.0,
+  "infra_retries": 0,
+  "infra_source": null,
+  "model_mismatch_turns": 0,
+  "served_models": [
+   "google/gemma-4-31B"
+  ],
+  "stream_guard_firings": {
+   "rejected_streams": 0,
+   "call_identity": 0,
+   "token_gap": 0
+  },
+  "looping": null,
+  "loop_evidence": {
+   "max_query_repeats": 1,
+   "last_window_distinct": null,
+   "repeated_query": false,
+   "cycling_window": false,
+   "rule": "query repeated >= 3 times, or last 4 calls over <= 2 distinct"
+  },
+  "engine_suspect": {
+   "any_agent_query": false
+  }
+ },
+ "final_rows": [
+  [
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#a1"
+   },
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#c1"
+   }
+  ],
+  [
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#b1"
+   },
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#c1"
+   }
+  ]
+ ],
+ "score": {
+  "outcome": "scored",
+  "exact": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "n_answer_rows": 2,
+  "n_gold_rows": 2,
+  "n_matched": 2,
+  "gold_empty": false,
+  "column_permutation": [
+   0,
+   1
+  ],
+  "notes": [],
+  "rules": {
+   "version": "scorer-rules-v4",
+   "multiset": false,
+   "rel_tol": 1e-06,
+   "abs_tol": 1e-09,
+   "column_order": "any"
+  }
+ },
+ "replay_of": null,
+ "runner": {
+  "infra_tries": 0,
+  "infra_try_run_ids": []
+ },
+ "load": {
+  "arm": "gen:any",
+  "position": 4,
+  "order_size": 16,
+  "order_seed": 202,
+  "order_sha256": "a7390584fbdfbe534642f3ebbd3acf266e0670c3fbf7ded0f57e3d15525b1282",
+  "order_key": "333e30f73c09311b6a6fb8131b0dea204d3dd16328bc41c78cfb06b99959b3f7",
+  "start_index": null,
+  "model_start_index": null,
+  "runner_started_at": "2026-10-20T02:24:12.753+00:00",
+  "workers_configured": 1,
+  "workers_allowed": 1,
+  "in_flight_model_start": 1,
+  "in_flight_total_start": 2,
+  "in_flight_model_end": 1,
+  "in_flight_total_end": 2,
+  "started_at": "2026-10-20T02:24:13.366+00:00",
+  "ended_at": "2026-10-20T02:24:13.366+00:00"
+ },
+ "checker": {
+  "settings": {
+   "version": "checker-loop/2",
+   "mode": "generic",
+   "arm": {
+    "name": "any",
+    "sources": [
+     {
+      "name": "curated",
+      "kind": "curated",
+      "digest": "72c22b256cc14eac33b763217d8f695d6daf42c4562e228fda2d22327e643531"
+     }
+    ],
+    "hierarchy_sha256": "bc6d2ec6753adec1b8de3d1a3356476d0f42e792a05f81b41e9a2ac724aed3c8",
+    "bound": 10000
+   },
+   "switches": {
+    "heuristic": true,
+    "branch_local": true
+   },
+   "retry_budget": {
+    "max_turns": 40,
+    "max_wall_s": 1200.0,
+    "max_nudges": 2,
+    "submissions": 1
+   },
+   "feedback_format": {
+    "id": "checker-feedback-v3",
+    "sha256": "5ca011cb8fe7243d6b2f95d992e7595930f393956a58eff54e0cf0de76583206"
+   },
+   "generic_sha256": "ae3150daf38100f06481ee1b5d50f41067be86c97df92e6d8aec28df6a447f1c"
+  },
+  "branched_from": "acbbcf16-c8f6-4362-822f-7834fffda87e",
+  "initial": {
+   "outcome": {
+    "status": "submitted",
+    "failure_type": null,
+    "cap": null,
+    "abstain_reason": null,
+    "error_message": null,
+    "provider_error": null,
+    "stage": null,
+    "refusal": null,
+    "harness_defect": null,
+    "model_changed": null,
+    "turns": 2,
+    "nudges": 0,
+    "label": "submitted",
+    "infra_s": 0.0,
+    "infra_retries": 0,
+    "infra_source": null,
+    "model_mismatch_turns": 0,
+    "served_models": [
+     "google/gemma-4-31B"
+    ],
+    "stream_guard_firings": {
+     "rejected_streams": 0,
+     "call_identity": 0,
+     "token_gap": 0
+    },
+    "looping": null,
+    "loop_evidence": {
+     "max_query_repeats": 1,
+     "last_window_distinct": null,
+     "repeated_query": false,
+     "cycling_window": false,
+     "rule": "query repeated >= 3 times, or last 4 calls over <= 2 distinct"
+    },
+    "engine_suspect": {
+     "any_agent_query": false
+    }
+   },
+   "final_rows": [
+    [
+     {
+      "type": "iri",
+      "value": "http://example.org/s01#a1"
+     },
+     {
+      "type": "iri",
+      "value": "http://example.org/s01#c1"
+     }
+    ],
+    [
+     {
+      "type": "iri",
+      "value": "http://example.org/s01#b1"
+     },
+     {
+      "type": "iri",
+      "value": "http://example.org/s01#c1"
+     }
+    ]
+   ],
+   "score": {
+    "outcome": "scored",
+    "exact": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_answer_rows": 2,
+    "n_gold_rows": 2,
+    "n_matched": 2,
+    "gold_empty": false,
+    "column_permutation": [
+     0,
+     1
+    ],
+    "notes": [],
+    "rules": {
+     "version": "scorer-rules-v4",
+     "multiset": false,
+     "rel_tol": 1e-06,
+     "abs_tol": 1e-09,
+     "column_order": "any"
+    }
+   },
+   "submission_index": 1,
+   "matching": {
+    "multiset": false,
+    "rel_tol": 1e-06,
+    "abs_tol": 1e-09,
+    "column_order": "any"
+   },
+   "checked_query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }",
+   "checked_query_status": "aligned",
+   "verdict": {
+    "status": "substantive_pass",
+    "any_unknown": false,
+    "retry": false,
+    "fired": [],
+    "fired_checks": [],
+    "per_source": {
+     "curated": "substantive_pass"
+    },
+    "traceability": "not_applicable",
+    "reason": null
+   },
+   "reports": [
+    {
+     "source": "curated",
+     "role": "agent",
+     "status": "substantive_pass",
+     "status_switches": {
+      "heuristic_True_branch_local_True": "substantive_pass",
+      "heuristic_True_branch_local_False": "substantive_pass",
+      "heuristic_False_branch_local_True": "substantive_pass",
+      "heuristic_False_branch_local_False": "substantive_pass"
+     },
+     "status_required_scope_passes_only": "substantive_pass",
+     "any_unknown": false,
+     "substantive": true,
+     "substantive_required_scope_only": true,
+     "negation": false,
+     "unsupported_constructs": [],
+     "tooling_limits": [],
+     "graph_outside_census": 0,
+     "checked_query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }",
+     "checked_query_status": "aligned",
+     "answer_rows_not_in_checked_result": 0,
+     "unsupported_coverage": {},
+     "evidence": {
+      "constant_type_fetch": [],
+      "rerun_query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT * WHERE { ?x :p ?y } LIMIT 10001",
+      "rerun_rows": 2,
+      "rerun_pages": 1,
+      "instantiated_triples": 2,
+      "membership_triples": 3,
+      "evidence_triples": 5,
+      "membership_queries": 1,
+      "membership_query": "SELECT ?s ?t ?p WHERE { VALUES ?s { <http://example.org/s01#a1> <http://example.org/s01#b1> <http://example.org/s01#c1> } { VALUES ?g { <urn:fixture:data> } GRAPH ?g { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t } BIND(<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> AS ?p) } UNION { GRAPH <urn:fixture:data> { ?s <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?t } BIND(<http://www.w3.org/2000/01/rdf-schema#subClassOf> AS ?p) } } LIMIT 9999",
+      "budget_used": 5,
+      "store_queries": [
+       {
+        "seconds": 0.0,
+        "possibly_partial": false
+       },
+       {
+        "seconds": 0.0,
+        "possibly_partial": false
+       }
+      ],
+      "possibly_partial": false
+     },
+     "results": [
+      {
+       "check_id": "vocabulary.static",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "holds",
+       "key": "http://example.org/s01#p",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "vocabulary",
+       "form": "static"
+      },
+      {
+       "check_id": "disjointness.static",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "vacuous",
+       "key": "?x",
+       "detail": "",
+       "evidence": {
+        "implied": [
+         "http://example.org/s01#A"
+        ],
+        "origins": [
+         "domain of http://example.org/s01#p"
+        ],
+        "scope": "required"
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "disjointness",
+       "form": "static"
+      },
+      {
+       "check_id": "no_common_subclass.static",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "vacuous",
+       "key": "?x",
+       "detail": "",
+       "evidence": {
+        "implied": [
+         "http://example.org/s01#A"
+        ],
+        "origins": [
+         "domain of http://example.org/s01#p"
+        ],
+        "scope": "required"
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "no_common_subclass",
+       "form": "static"
+      },
+      {
+       "check_id": "disjointness.static",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "vacuous",
+       "key": "?y",
+       "detail": "",
+       "evidence": {
+        "implied": [
+         "http://example.org/s01#C"
+        ],
+        "origins": [
+         "range of http://example.org/s01#p"
+        ],
+        "scope": "required"
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "disjointness",
+       "form": "static"
+      },
+      {
+       "check_id": "no_common_subclass.static",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "vacuous",
+       "key": "?y",
+       "detail": "",
+       "evidence": {
+        "implied": [
+         "http://example.org/s01#C"
+        ],
+        "origins": [
+         "range of http://example.org/s01#p"
+        ],
+        "scope": "required"
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "no_common_subclass",
+       "form": "static"
+      },
+      {
+       "check_id": "class.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_type_pattern",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "class",
+       "form": "static"
+      },
+      {
+       "check_id": "domain_range.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_constant",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "domain_range",
+       "form": "static"
+      },
+      {
+       "check_id": "census_join.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "not_census",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "census",
+       "form": "static"
+      },
+      {
+       "check_id": "census_pattern.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "not_census",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "census",
+       "form": "static"
+      },
+      {
+       "check_id": "domain_range.footprint",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "holds",
+       "key": "subject-of http://example.org/s01#p",
+       "detail": "",
+       "evidence": {
+        "required": [
+         "http://example.org/s01#A"
+        ],
+        "node_counts": {
+         "pass": 2,
+         "flag": 0,
+         "unknown": 0
+        },
+        "nodes": {
+         "http://example.org/s01#a1": "pass",
+         "http://example.org/s01#b1": "pass"
+        }
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "domain_range",
+       "form": "footprint"
+      },
+      {
+       "check_id": "domain_range.footprint",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "holds",
+       "key": "object-of http://example.org/s01#p",
+       "detail": "",
+       "evidence": {
+        "required": [
+         "http://example.org/s01#C"
+        ],
+        "node_counts": {
+         "pass": 1,
+         "flag": 0,
+         "unknown": 0
+        },
+        "nodes": {
+         "http://example.org/s01#c1": "pass"
+        }
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "domain_range",
+       "form": "footprint"
+      },
+      {
+       "check_id": "disjointness.footprint",
+       "source": "curated",
+       "outcome": "pass",
+       "reason": "holds",
+       "key": "?x",
+       "detail": "",
+       "evidence": {
+        "implied": [
+         "http://example.org/s01#A"
+        ],
+        "nodes": 2
+       },
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "disjointness",
+       "form": "footprint"
+      },
+      {
+       "check_id": "class.footprint",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_type_pattern",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "class",
+       "form": "footprint"
+      },
+      {
+       "check_id": "number_traceability",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_numbers",
+       "key": "answer",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "number_traceability",
+       "form": "n/a"
+      },
+      {
+       "check_id": "provenance",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_provenance_model",
+       "key": "answer",
+       "detail": "the graph models no process-and-method provenance (a15 only)",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "provenance",
+       "form": "footprint"
+      }
+     ]
+    }
+   ],
+   "store_log": {
+    "version": "checker-store-log/1",
+    "entries": [
+     {
+      "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT * WHERE { ?x :p ?y } LIMIT 10001",
+      "result": {
+       "form": "SELECT",
+       "columns": [
+        "x",
+        "y"
+       ],
+       "rows": [
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#a1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ],
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#b1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ]
+       ],
+       "total_rows": 2,
+       "truncated": false
+      }
+     },
+     {
+      "query": "SELECT ?s ?t ?p WHERE { VALUES ?s { <http://example.org/s01#a1> <http://example.org/s01#b1> <http://example.org/s01#c1> } { VALUES ?g { <urn:fixture:data> } GRAPH ?g { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t } BIND(<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> AS ?p) } UNION { GRAPH <urn:fixture:data> { ?s <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?t } BIND(<http://www.w3.org/2000/01/rdf-schema#subClassOf> AS ?p) } } LIMIT 9999",
+      "result": {
+       "form": "SELECT",
+       "columns": [
+        "s",
+        "t",
+        "p"
+       ],
+       "rows": [
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#a1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#A"
+         },
+         {
+          "type": "iri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+         }
+        ],
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#b1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#B"
+         },
+         {
+          "type": "iri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+         }
+        ],
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#C"
+         },
+         {
+          "type": "iri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+         }
+        ]
+       ],
+       "total_rows": 3,
+       "truncated": false
+      }
+     }
+    ]
+   }
+  },
+  "retry": null,
+  "branch": {
+   "order_seed": 202,
+   "arm": "gen:any",
+   "sampling_seed": null,
+   "seedable": false,
+   "order": [
+    "gen:any",
+    "fb:curated"
+   ],
+   "position": 0
+  }
+ }
+}

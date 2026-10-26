@@ -1,0 +1,147 @@
+{
+ "created_at": "2026-10-20T00:23:17.420+00:00",
+ "fingerprint": {
+  "phases": {
+   "natural": {
+    "arms": {
+     "none": {
+      "condition": "none",
+      "nudge_sha256": "839b4fb58e351e01101447e259f5a219d257da1b52d34114ec4a90b9a4d97658",
+      "ontology_block_sha256": null,
+      "prompt_id": "none-v1",
+      "template_sha256": "be9c9657dd5a68fd8daa10b3860ae3cdccd7b8734594589a246752148099637e"
+     }
+    },
+    "cells": [
+     "none"
+    ],
+    "inputs": {},
+    "models": {
+     "gemma-4-31b": {
+      "attempts": 8,
+      "caps": {
+       "max_result_chars": 80000,
+       "max_tokens": 16000,
+       "max_turns": 40,
+       "max_wall_s": 1200.0
+      },
+      "order_sha256": "dc62ecb1a5fb2cd098beb0f69a3822f497684dbb95909cd996c761badbcc395a",
+      "role": "panel",
+      "route_model": "google/gemma-4-31B",
+      "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+     },
+     "qwen3.8-27b": {
+      "attempts": 8,
+      "caps": {
+       "max_result_chars": 80000,
+       "max_tokens": 16000,
+       "max_turns": 60,
+       "max_wall_s": 1800.0
+      },
+      "order_sha256": "d91481c73c618a2b81e7a688629d27401a0d9f8f67ec1dc0c2dfbac6ee9a9ebe",
+      "role": "must",
+      "route_model": "Qwen/Qwen3.8-27B",
+      "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+     }
+    },
+    "seed": 101
+   }
+  },
+  "routes": {
+   "gemma-4-31b": {
+    "agent_config": {
+     "max_result_chars": 80000,
+     "max_tokens": 16000,
+     "max_turns": 40,
+     "max_wall_s": 1200.0,
+     "stream_guards": [],
+     "transport": "non-streamed"
+    },
+    "base_url": null,
+    "model": "google/gemma-4-31B",
+    "provider": "fake",
+    "settings": {},
+    "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+   },
+   "qwen3.8-27b": {
+    "agent_config": {
+     "max_result_chars": 80000,
+     "max_tokens": 16000,
+     "max_turns": 60,
+     "max_wall_s": 1800.0,
+     "stream_guards": [],
+     "transport": "non-streamed"
+    },
+    "base_url": null,
+    "model": "Qwen/Qwen3.8-27B",
+    "provider": "fake",
+    "settings": {},
+    "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+   }
+  },
+  "shared": {
+   "agent_config": {
+    "answer_skipped_calls": true,
+    "context_overflow": "capped",
+    "engine_suspect_classes": [],
+    "graph": "s01-fixture",
+    "iri_rule": "registered_schemes_v3",
+    "max_nudges": 2,
+    "raw_row_cap": 10000,
+    "refusal_rule": "refused",
+    "tool_crash_rule": "harness_defect"
+   },
+   "endpoint": "http://store.invalid:7039/",
+   "grid": {
+    "freeze": null,
+    "graph": "s01",
+    "order_rule": "sorted by sha256 of '<seed>|' followed by the compact JSON of [model, arm, question id, repetition]",
+    "repetitions": 2,
+    "split": "dev"
+   },
+   "questions_sha256": "5645cf6726ef7add5788bf7a7e74ce33530ddbf7cff3170e23a75fe91e5a15dd",
+   "row_cap": 500,
+   "scorer_digest": "4fca135fa146d9308b50a251af7da883234aa781011b098c8a27fa93924ef8ac",
+   "sparql_timeout_s": 60.0,
+   "store": {
+    "endpoint": "http://store.invalid:7039/",
+    "engine": "qlever",
+    "image_digest": "sha256:0123",
+    "store": "s01-fixture",
+    "version": "v0.5.x"
+   }
+  }
+ },
+ "grid_order": {
+  "natural": {
+   "history": [
+    {
+     "at": "2026-10-20T00:23:17.480+00:00",
+     "attempts": 16,
+     "order_sha256": "faa093894001750049527072d157795631cace4b808c5eda39294470396dd753",
+     "plan_sha256": "2103eda20717e5242053f08d67235d76bc051ead719ada386cc9c308f4f2061f"
+    }
+   ],
+   "rule": "sorted by sha256 of '<seed>|' followed by the compact JSON of [model, arm, question id, repetition]",
+   "seed": 101,
+   "seed_source": "grid manifest, phase natural"
+  }
+ },
+ "harness": {
+  "git_commit": null,
+  "git_dirty": null
+ },
+ "schema": "pilot-grid-manifest/1",
+ "starts": [
+  {
+   "at": "2026-10-20T00:23:17.478+00:00",
+   "concurrency": {
+    "gemma-4-31b": 1,
+    "qwen3.8-27b": 1
+   },
+   "gateway_budget": 20,
+   "gateway_workers": {},
+   "phase": "natural"
+  }
+ ]
+}

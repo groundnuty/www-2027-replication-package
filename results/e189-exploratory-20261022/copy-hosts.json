@@ -1,0 +1,51 @@
+{
+ "copies": {
+  "opaque-rhea-siteb-12": {
+   "basis": "operational note withheld",
+   "graph": "opaque-rhea-142",
+   "host": "siteb-x86",
+   "source": {
+    "path": "operational note withheld",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "uniprot-a-c02": {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "host": "sitea",
+   "source": {
+    "path": "operational note withheld",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "uniprot-c-c04": {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "host": "sitea",
+   "source": {
+    "path": "operational note withheld",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "uniprot-siteb-5": {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "host": "siteb-x86",
+   "source": {
+    "path": "operational note withheld",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "uniprot-siteb-8": {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "host": "siteb-x86",
+   "source": {
+    "path": "operational note withheld",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  }
+ },
+ "rule": "operational note withheld",
+ "schema": "e189-copy-hosts/1"
+}

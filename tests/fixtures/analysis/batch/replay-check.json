@@ -1,0 +1,13 @@
+{
+ "schema": "replay-check/1",
+ "checked_at": "2026-10-18T00:00:00.000+00:00",
+ "code": {
+  "git_commit": "fixture",
+  "git_dirty": false,
+  "source": "git"
+ },
+ "n_records": 3,
+ "n_ok": 3,
+ "failures": [],
+ "records_sha256": "a85a9ebfc487571e98fc98a37a9b7c3875fca0908e9348e9f50f898f15d83a59"
+}

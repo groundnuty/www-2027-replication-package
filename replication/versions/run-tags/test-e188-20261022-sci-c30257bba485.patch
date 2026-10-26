@@ -1,0 +1,122 @@
+diff --git a/scripts/run_probes.py b/scripts/run_probes.py
+index e91c9a41..d8f13e02 100644
+--- a/scripts/run_probes.py
++++ b/scripts/run_probes.py
+@@ -97,6 +97,16 @@ try; the tries of each attempt are counted from its ``infrastructure/`` records,
+ resubmission's custom id (run, attempt and try number) is always new and a restart never resets
+ the rerun budget.
+ 
++Request time-out. ``--runner-settings FILE`` gives a model its own request time-out: the JSON object of
++run_pilot's plain path, ``{"request_timeout_s": {MODEL: SECONDS}}``, read and applied by the same code
++(run_pilot.plain_runner_settings, through grid_models: the model's route rebuilt by ``with_options``, checked to
++differ from the table's in nothing else; refused for a route that cannot be rebuilt so, a model not of --models, a
++key given twice, any other key). ``max_turns`` is refused: a probe is one call with no tools, so it has no turns to
++cap. The route's settings carry the time-out, so every kept reply and record (``route.settings.request_timeout_s``)
++and the manifest's routes record it, a resume under another one is refused, and the start's manifest entry records
++the file's object (``runner_settings``). Without the flag every route is the table's (600 s for an
++OpenAI-compatible route), as before.
++
+ Exit status: 0 all attempts recorded; 1 an attempt crashed in the runner; 2 refused before
+ starting; 3 a model stopped (misconfigured route, a batch submission that failed, a reconcile
+ within the grace period that found no batch: run it again later, or a create that never said it
+@@ -161,6 +171,7 @@ from run_pilot import (  # noqa: E402
+     CONFIG_ERROR_CLASSES,
+     MODELS,
+     PROVIDER_RERUN_WAIT_S,
++    TURN_CAP_KEY,
+     ModelSpec,
+     Refused,
+     StartGate,
+@@ -172,9 +183,11 @@ from run_pilot import (  # noqa: E402
+     load_questions,
+     order_key,
+     order_sha256,
++    plain_runner_settings,
+     record_order,
+     release_lock,
+     route_fingerprint,
++    say_runner_settings,
+ )
+ 
+ REPO = Path(__file__).resolve().parent.parent
+@@ -310,9 +323,11 @@ def refuse_heldout(path: Path | None, what: str) -> None:
+ 
+ def selected_graphs(args: argparse.Namespace) -> dict[str, dict]:
+     """The graphs named by --graph, after refusing any path under heldout/ (the graph list, the store
+-    description, the run directory, the pre-registration repository and each question file)."""
++    description, the run directory, the pre-registration repository, the runner-settings file and each question
++    file)."""
+     for path, what in ((args.graphs_config, "--graphs-config"), (args.store_json, "--store-json"),
+-                       (args.out, "--out"), (args.prereg_repo, "--prereg-repo")):
++                       (args.out, "--out"), (args.prereg_repo, "--prereg-repo"),
++                       (args.runner_settings, "--runner-settings")):
+         refuse_heldout(path, what)
+     graphs = load_graphs(args.graphs_config)
+     chosen = {}
+@@ -353,6 +368,10 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
+                         "allowed (F1 review, item 11)")
+     p.add_argument("--concurrency", type=int, default=4, help="synchronous calls in flight per model")
+     p.add_argument("--concurrency-for", action="append", default=[], metavar="MODEL=N")
++    p.add_argument("--runner-settings", type=Path, default=None, metavar="FILE",
++                   help='a model\'s own request time-out, {"request_timeout_s": {MODEL: SECONDS}} (run_pilot\'s '
++                        'plain-path file; max_turns is refused: a probe has no turns); recorded in each route\'s '
++                        'settings and in the start\'s manifest entry')
+     p.add_argument("--endpoint", help="the graph's SPARQL endpoint URL (probe (b))")
+     p.add_argument("--store-json", type=Path, help="JSON file describing the store")
+     p.add_argument("--row-cap", type=int, default=500)
+@@ -410,6 +429,22 @@ def call_mode(route: Any, args: argparse.Namespace) -> str:
+     return "batch" if route.provider == "anthropic" and args.anthropic_mode == "batch" else "sync"
+ 
+ 
++# Science, the design log:51Z (the follow-up of change-log entry 180): the Gateway routes' 600 s request
++# time-out cut probe replies, so a probe run takes a model's own request time-out from run_pilot's plain-path file,
++# read and applied by the same plain_runner_settings (grid_models), so that a probe route is rebuilt exactly as an agent
++# run's is. Nothing else of the run changes: without the flag the table is used as it is.
++def probe_runner_settings(path: Path, names: list[str], models: dict[str, ModelSpec]
++                          ) -> tuple[dict[str, ModelSpec], dict]:
++    """``--runner-settings``: (the table with each named model's route rebuilt with its request time-out, the file's
++    object). Refused as run_pilot refuses the file, and when it sets ``max_turns``: a probe is one call with no tools,
++    so a turn cap would cap nothing (a key that changes nothing is not accepted as if it did)."""
++    table, settings = plain_runner_settings(path, names, models)
++    if TURN_CAP_KEY in settings:
++        raise Refused(f"--runner-settings {path}: {TURN_CAP_KEY}: a probe is one call with no tools, so it has no turns "
++                      f"to cap; leave the key out")
++    return dict(table), settings
++
++
+ # --- dry run -------------------------------------------------------------------------------------
+ 
+ 
+@@ -565,7 +600,12 @@ def run(argv: list[str] | None = None, *, models: dict[str, ModelSpec] = MODELS,
+     try:
+         graphs = selected_graphs(args)
+         freeze = check_split(args, [name for name, g in graphs.items() if g.get("freeze_gated")])
++        args.runner_settings_given = None
++        if args.runner_settings is not None:  # before anything is written or called; a dry run checks it too
++            models, args.runner_settings_given = probe_runner_settings(args.runner_settings, args.models, models)
+         if args.dry_run:
++            if args.runner_settings_given:
++                say_runner_settings(args.runner_settings_given, say)
+             return dry_run(args, models, say, graphs)
+         return _run(args, models, sparql_factory, batches_factory, say, sleep, graphs, freeze)
+     except Refused as exc:
+@@ -641,6 +681,9 @@ def _run_graph(args, models, sparql_factory, batches_factory, say, sleep, out, g
+ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sleep, out, graph_name, path,
+                 questions, freeze) -> int:
+     say(f"redaction: environment variables treated as secrets: {', '.join(secret_names()) or 'none'}")
++    given = getattr(args, "runner_settings_given", None)
++    if given:
++        say_runner_settings(given, say)
+     config = ProbeConfig(max_tokens=args.max_tokens, infra_retry_s=args.infra_retry_s)
+     store = sanitize_store(json.loads(args.store_json.read_text(encoding="utf-8"))) if args.store_json else None
+     specs = [get_probe(p) for p in args.probes]
+@@ -668,7 +711,8 @@ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sl
+     harness_dir = out / "harness"
+     replies_dir, batches_dir = out / "replies", out / "batches"
+     done = existing_keys(records_dir)
+-    added = check_manifest(out, fingerprint, has_records=bool(done), say=say, allow_code_change=args.allow_code_change)
++    added = check_manifest(out, fingerprint, has_records=bool(done), say=say, allow_code_change=args.allow_code_change,
++                           start_fields={"runner_settings": given} if given else None)
+     if added:
+         say(f"manifest: recorded settings for {', '.join(added)}")
+     if freeze is not None:  # origin/main as this start saw it: recorded, not compared (it moves on with each fetch)

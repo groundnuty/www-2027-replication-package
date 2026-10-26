@@ -1,0 +1,12 @@
+{
+ "models": {
+  "fake": {
+   "at": "2026-10-20T02:24:14.406+00:00",
+   "question_id": "t02-q3",
+   "repetition": 0,
+   "route_model": "oracle-model",
+   "served_model": "oracle-model"
+  }
+ },
+ "schema": "served-models/1"
+}

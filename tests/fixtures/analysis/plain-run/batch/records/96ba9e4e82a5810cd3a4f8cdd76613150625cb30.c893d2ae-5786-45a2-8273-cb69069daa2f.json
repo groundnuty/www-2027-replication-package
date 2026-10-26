@@ -1,0 +1,285 @@
+{
+ "schema_version": "agent-run/18",
+ "run_id": "c893d2ae-5786-45a2-8273-cb69069daa2f",
+ "question_id": "t01-q1",
+ "base_question_id": "t01-q1",
+ "template": "t01",
+ "split": "dev",
+ "repetition": 1,
+ "condition": "none",
+ "model": "oracle-model",
+ "route": {
+  "provider": "fake",
+  "base_url": null,
+  "model": "oracle-model",
+  "settings": {}
+ },
+ "store": {
+  "engine": "qlever",
+  "version": "v0.5.x",
+  "image_digest": "sha256:0123",
+  "store": "rhea-test",
+  "name": "rhea-test",
+  "sparql_timeout_s": 60.0,
+  "row_cap": 500
+ },
+ "prompt": {
+  "condition": "none",
+  "id": "none-v1",
+  "sha256": "10279bb3f15665abc3043de5456ede0db977fbc73527d98f9948962d773291b7",
+  "template_sha256": "be9c9657dd5a68fd8daa10b3860ae3cdccd7b8734594589a246752148099637e",
+  "nudge": "Call submit_report or abstain.",
+  "nudge_sha256": "839b4fb58e351e01101447e259f5a219d257da1b52d34114ec4a90b9a4d97658",
+  "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+ },
+ "agent_config": {
+  "max_turns": 4,
+  "max_wall_s": 900.0,
+  "max_tokens": 16000,
+  "max_nudges": 2,
+  "condition": "none",
+  "raw_row_cap": 10000,
+  "infra_retry_s": 600.0,
+  "iri_rule": "registered_schemes_v3",
+  "context_overflow": "capped",
+  "answer_skipped_calls": true,
+  "max_result_chars": 80000,
+  "transport": "non-streamed",
+  "stream_guards": [],
+  "refusal_rule": "refused",
+  "tool_crash_rule": "harness_defect",
+  "graph": "rhea-test"
+ },
+ "harness": {
+  "git_commit": null,
+  "git_dirty": null
+ },
+ "started_at": "2026-10-20T02:24:14.418+00:00",
+ "ended_at": "2026-10-20T02:24:14.419+00:00",
+ "wall_s": 0.00012976489961147308,
+ "transcript": [
+  {
+   "role": "user",
+   "kind": "question",
+   "text": "right?"
+  },
+  {
+   "role": "assistant",
+   "turn": 1,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "s",
+     "name": "submit_report",
+     "arguments": {
+      "rows": [
+       [
+        {
+         "type": "iri",
+         "value": "http://rdf.rhea-db.org/10000"
+        }
+       ]
+      ]
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "oracle-model",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "s",
+      "name": "submit_report",
+      "input": {
+       "rows": [
+        [
+         {
+          "type": "iri",
+          "value": "http://rdf.rhea-db.org/10000"
+         }
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "s",
+     "name": "submit_report",
+     "content": "Report submitted: 1 row.",
+     "is_error": false
+    }
+   ]
+  }
+ ],
+ "tool_calls": [
+  {
+   "index": 0,
+   "turn": 1,
+   "id": "s",
+   "name": "submit_report",
+   "arguments": {
+    "rows": [
+     [
+      {
+       "type": "iri",
+       "value": "http://rdf.rhea-db.org/10000"
+      }
+     ]
+    ]
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "Report submitted: 1 row.",
+   "is_error": false,
+   "result_raw": null,
+   "result_raw_truncated": false,
+   "result_meta": null,
+   "error": null,
+   "elapsed_s": 0.0,
+   "client_called": false,
+   "terminal": "submitted",
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  }
+ ],
+ "tokens": {
+  "totals": {
+   "input_tokens": 100,
+   "output_tokens": 20,
+   "cache_read_tokens": 0,
+   "cache_write_tokens": 0,
+   "total_input_tokens": 100,
+   "turns": 1,
+   "retries": 0,
+   "truncated_turns": 0,
+   "cache_write_5m_tokens": null,
+   "cache_write_1h_tokens": null
+  },
+  "per_turn": [
+   {
+    "turn": 1,
+    "started_s": 7.475726306438446e-06,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "oracle-model",
+    "model_mismatch": false,
+    "usage_raw": {}
+   }
+  ]
+ },
+ "outcome": {
+  "status": "submitted",
+  "failure_type": null,
+  "cap": null,
+  "abstain_reason": null,
+  "error_message": null,
+  "provider_error": null,
+  "stage": null,
+  "refusal": null,
+  "harness_defect": null,
+  "model_changed": null,
+  "turns": 1,
+  "nudges": 0,
+  "label": "submitted",
+  "infra_s": 0.0,
+  "infra_retries": 0,
+  "infra_source": null,
+  "model_mismatch_turns": 0,
+  "served_models": [
+   "oracle-model"
+  ],
+  "stream_guard_firings": {
+   "rejected_streams": 0,
+   "call_identity": 0,
+   "token_gap": 0
+  },
+  "looping": null,
+  "loop_evidence": {
+   "max_query_repeats": 0,
+   "last_window_distinct": null,
+   "repeated_query": false,
+   "cycling_window": false,
+   "rule": "query repeated >= 3 times, or last 4 calls over <= 2 distinct"
+  },
+  "engine_suspect": {
+   "any_agent_query": false
+  }
+ },
+ "final_rows": [
+  [
+   {
+    "type": "iri",
+    "value": "http://rdf.rhea-db.org/10000"
+   }
+  ]
+ ],
+ "score": {
+  "outcome": "scored",
+  "exact": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "n_answer_rows": 1,
+  "n_gold_rows": 1,
+  "n_matched": 1,
+  "gold_empty": false,
+  "column_permutation": [
+   0
+  ],
+  "notes": [],
+  "rules": {
+   "version": "scorer-rules-v4",
+   "multiset": false,
+   "rel_tol": 1e-06,
+   "abs_tol": 1e-09,
+   "column_order": "any"
+  }
+ },
+ "replay_of": null,
+ "runner": {
+  "infra_tries": 0,
+  "infra_try_run_ids": []
+ },
+ "load": {
+  "arm": "none",
+  "position": 2,
+  "order_size": 6,
+  "order_seed": 16272123359160238814,
+  "order_sha256": "ddb5e24538660e4d7e0214c62c496996e386ac42839def5c3b9fc25d4c621581",
+  "order_key": "9b9fac5288f6e82bcc9e10406be5076203800c0466e45d28e46070f13a922fe2",
+  "start_index": 2,
+  "model_start_index": 2,
+  "runner_started_at": "2026-10-20T02:24:14.400+00:00",
+  "workers_configured": 4,
+  "workers_allowed": 4,
+  "in_flight_model_start": 4,
+  "in_flight_total_start": 4,
+  "in_flight_model_end": 4,
+  "in_flight_total_end": 4,
+  "started_at": "2026-10-20T02:24:14.419+00:00",
+  "ended_at": "2026-10-20T02:24:14.420+00:00"
+ },
+ "checker": null
+}

@@ -1,0 +1,19 @@
+{
+ "models": {
+  "gemma-4-31b": {
+   "at": "2026-10-20T00:23:17.502+00:00",
+   "question_id": "s01-flag",
+   "repetition": 0,
+   "route_model": "google/gemma-4-31B",
+   "served_model": "google/gemma-4-31B"
+  },
+  "qwen3.8-27b": {
+   "at": "2026-10-20T00:23:17.496+00:00",
+   "question_id": "s01-noquery",
+   "repetition": 1,
+   "route_model": "Qwen/Qwen3.8-27B",
+   "served_model": "Qwen/Qwen3.8-27B"
+  }
+ },
+ "schema": "served-models/1"
+}

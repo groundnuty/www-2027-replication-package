@@ -1,0 +1,1869 @@
+diff --git a/harness/analysis/prereg.py b/harness/analysis/prereg.py
+index cd778284..90498ee9 100644
+--- a/harness/analysis/prereg.py
++++ b/harness/analysis/prereg.py
+@@ -1440,18 +1440,33 @@ def bank_union_vectors(curated: Sequence[Unit], census: Sequence[Unit], index: Q
+     return out
+ 
+ 
++def _retry_only_arms(cfg: PreregConfig) -> set[ArmKey]:
++    """The two models' census and union checker arms, read only by the descriptive retry contrast (c4_retry).
++    Change-log entry 206: the confirmatory call does not require them; their retry rows come from entry 150's
++    exploratory call."""
++    return {cfg.checker(m, s) for m in cfg.models for s in (cfg.census_source, cfg.union_source)}
++
++
+ def _require_arms(arms: Mapping[ArmKey, Sequence[Unit]], cfg: PreregConfig) -> None:
+-    absent = [k.label for k in cfg.required_arms() if k not in arms]
++    absent = [k.label for k in cfg.required_arms() if k not in arms and k not in _retry_only_arms(cfg)]
+     if absent:
+         raise PreregError(f"the registered analysis needs arms that are not in the inputs: {absent}")
+ 
+ 
++def _registered_arms(arms: Mapping[ArmKey, Sequence[Unit]], cfg: PreregConfig) -> list[ArmKey]:
++    """The registered arms the inputs hold, in the config's order: every required one (_require_arms) and a retry-only
++    arm when present (entry 206)."""
++    _require_arms(arms, cfg)
++    return [k for k in cfg.required_arms() if k in arms]
++
++
+ def vectors_from_units(arms: Mapping[ArmKey, Sequence[Unit]], index: QuestionIndex, cfg: PreregConfig,
+                        bank_index: QuestionIndex | None = None) -> Vectors:
+     """The registered arms' question vectors, C5's retry vectors per panel model and C4's union-only counts."""
+     _require_arms(arms, cfg)
+     bank_index = bank_index or index  # the bank may hold more questions than the agent runs (entry 41)
+-    vecs = {k: question_vectors(arms[k], bank_index if k.cohort == BANK else index) for k in cfg.required_arms()}
++    vecs = {k: question_vectors(arms[k], bank_index if k.cohort == BANK else index)
++            for k in _registered_arms(arms, cfg)}
+     c5v = {m: c5_vectors(arms[cfg.checker(m, cfg.curated_source)], arms[cfg.checker(m, cfg.generic_source)], index)
+            for m in cfg.c5_models}
+     union = bank_union_vectors(arms[cfg.bank(cfg.curated_source)], arms[cfg.bank(cfg.census_source)], bank_index)
+@@ -1461,7 +1476,7 @@ def vectors_from_units(arms: Mapping[ArmKey, Sequence[Unit]], index: QuestionInd
+ def missing_shares(arms: Mapping[ArmKey, Sequence[Unit]], cfg: PreregConfig) -> dict[str, float]:
+     """Per registered agent arm: (missing attempts + missing retries) / N_att (§4.3)."""
+     out = {}
+-    for k in cfg.required_arms():
++    for k in _registered_arms(arms, cfg):
+         if k.cohort == BANK:
+             continue
+         units = arms[k]
+@@ -1481,7 +1496,7 @@ def compared_arms(cfg: PreregConfig) -> dict[str, list[ArmKey]]:
+ def _check_scorer(arms: Mapping[ArmKey, Sequence[Unit]], cfg: PreregConfig) -> None:
+     if cfg.scorer_version in (PLACEHOLDER, "", None):
+         raise PreregError("the frozen scorer version is not filled in (prereg §3 '[FILL] version hash')")
+-    for k in cfg.required_arms():
++    for k in _registered_arms(arms, cfg):
+         if k.cohort == BANK:
+             continue
+         other = {u.attempt.rules_version for u in arms[k] if u.attempt.output} - {cfg.scorer_version}
+@@ -1494,7 +1509,7 @@ def _check_repetitions(arms: Mapping[ArmKey, Sequence[Unit]], index: QuestionInd
+     """§4.4 "Fixed stopping": in every registered agent arm, every question has exactly the repetitions 0..n_reps - 1
+     (absent ones as missing attempts, inputs.complete_design), and every base question of the population is present."""
+     want = list(range(cfg.n_reps))
+-    for k in cfg.required_arms():
++    for k in _registered_arms(arms, cfg):
+         if k.cohort == BANK:
+             continue
+         reps: dict[str, list[int]] = {}
+@@ -1584,7 +1599,9 @@ def confirmatory(arms: Mapping[ArmKey, Sequence[Unit]], index: QuestionIndex, cf
+             "n_questions": len(index), "n_bank_questions": len(bank_index or index),
+             "n_strata": len(set(index.strata)), "n_contrasts": len(contrasts),
+             "contrasts": bounded(contrasts), "zero_spread": spread,
+-            "descriptive": {"C4 retry": bounded(c4_retry(V, K, frozen))}, "missing_shares": shares,
++            # change-log entry 206: the retry table shows Tier 1's arms only, and they hold no union arm
++            "descriptive": {"C4 retry": bounded(c4_retry(V, K, dataclasses.replace(frozen, models=())))},
++            "missing_shares": shares,
+             "conclusions": conclusions}
+ 
+ 
+diff --git a/harness/baselines/cells.py b/harness/baselines/cells.py
+new file mode 100644
+index 00000000..e74a2147
+--- /dev/null
++++ b/harness/baselines/cells.py
+@@ -0,0 +1,134 @@
++"""The baseline retry cells as a grid spec names them and the grid runner builds them (design log).
++
++A baseline cell is a branch cell like the checker arms (``branch_attempt`` over a parent's recorded initial phase) whose
++decision needs no ontology source, so its spec entry has ``sources: []``:
++
++    {"id": "base:empty", "parent": "none", "mode": "empty", "arm": "empty", "sources": []}
++    {"id": "base:judge", "parent": "none", "mode": "judge", "arm": "judge", "sources": [],
++     "detection": {"plan_sha256": "<sha256 of the detection judge directory's plan.json>",
++                   "rows_sha256": "<sha256 of its sealed rows: judge_sealed.rows_sha256>"}}
++
++``empty`` is retry on empty (harness/baselines/empty.py); ``judge`` is the judge's reject-then-retry cell driven by the
++detection run's sealed verdicts (harness/baselines/judge_sealed.py). The spec, the manifest pins, the per-try checker and
++the replay all go through this module, so a new baseline mode is one entry in ``MODES`` (with its spec checks, its pin and
++its constructor) and the runner's other code does not know the modes.
++
++Nothing here is reached by a spec without a baseline cell: ``cell_modes`` of a feedback/generic spec is empty and the
++runner's and the builder's paths for such a spec are the ones they had.
++"""
++
++from __future__ import annotations
++
++import re
++from collections.abc import Mapping
++from dataclasses import dataclass
++from typing import Any
++
++from harness.checkloop.online import RetryBudget
++
++EMPTY = "empty"
++JUDGE = "judge"
++_SHA256 = re.compile(r"[0-9a-f]{64}\Z")
++_NO_BUDGET = RetryBudget(max_turns=0, max_wall_s=0.0, max_nudges=0)  # dropped from a pinned setting (per model)
++
++
++@dataclass(frozen=True)
++class Mode:
++    needs_detection: bool
++    extra_keys: tuple[str, ...]  # keys a spec cell of this mode may carry beyond id/parent/mode/arm/sources
++
++
++MODES: dict[str, Mode] = {EMPTY: Mode(False, ()), JUDGE: Mode(True, ("detection",))}
++
++
++def is_baseline(mode: Any) -> bool:
++    return mode in MODES
++
++
++def cell_modes(branch_cells: list[dict] | None) -> set[str]:
++    """The baseline modes a spec's branch cells use."""
++    return {b.get("mode") for b in branch_cells or [] if is_baseline(b.get("mode"))}
++
++
++def spec_problems(b: Mapping) -> list[str]:
++    """Why a baseline branch cell of a spec is not well formed (the spec's other checks, the parent among them, are
++    the grid builder's own)."""
++    mode = b.get("mode")
++    if not is_baseline(mode):
++        return [f"branch cell {b.get('id')!r}: not a baseline mode"]
++    info, problems = MODES[mode], []
++    if b.get("arm") != mode:
++        problems.append(f"branch cell {b.get('id')!r}: a {mode} cell's arm is {mode!r}, not {b.get('arm')!r}")
++    if b.get("sources") != []:
++        problems.append(f"branch cell {b.get('id')!r}: a {mode} cell reads no source: sources is [] "
++                        f"(found {b.get('sources')!r})")
++    extra = sorted(set(b) - {"id", "parent", "mode", "arm", "sources", *info.extra_keys})
++    if extra:
++        problems.append(f"branch cell {b.get('id')!r}: keys {extra} are not a {mode} cell's")
++    if info.needs_detection:
++        d = b.get("detection")
++        if not (isinstance(d, dict) and set(d) == {"plan_sha256", "rows_sha256"}
++                and all(isinstance(v, str) and _SHA256.match(v) for v in d.values())):
++            problems.append(f"branch cell {b.get('id')!r}: a {mode} cell pins its detection run, its plan and its "
++                            f'sealed rows, as {{"plan_sha256": <64 lowercase hex>, "rows_sha256": <64 lowercase hex>}}')
++    return problems
++
++
++def manifest_cell(b: Mapping) -> dict:
++    """The manifest's entry of a baseline cell (build_dev_grid.cells): the checker cells' keys, no source, and the
++    detection pin where the mode has one."""
++    out = {"id": b["id"], "phase": "branch", "parent": b["parent"], "mode": b["mode"], "arm": b["arm"], "sources": [],
++           "verdict_sources": []}
++    if MODES[b["mode"]].needs_detection:
++        out["detection"] = dict(b["detection"])
++    return out
++
++
++def open_detection(cell: Mapping, directory: Any, model_name: str, route_model: str, route_info: dict) -> Any:
++    """The cell's detection run (judge_sealed.DetectionRun), checked against the cell's pin and the agent's route."""
++    from harness.baselines.judge_sealed import DetectionRun
++
++    return DetectionRun(directory, expect_plan_sha256=cell["detection"]["plan_sha256"],
++                        expect_rows_sha256=cell["detection"]["rows_sha256"], model_name=model_name,
++                        route_model=route_model, route_info=route_info)
++
++
++def pin_settings(cell: Mapping, detection: Any | None) -> dict[str, Any]:
++    """A baseline cell's checker settings as the manifest pins them, without the retry budget (each model's own)."""
++    mode = cell["mode"]
++    if mode == EMPTY:
++        from harness.baselines.empty import EmptyRetryChecker
++
++        settings = EmptyRetryChecker(budget=_NO_BUDGET).settings()
++    elif mode == JUDGE:
++        if detection is None:
++            raise ValueError(f"cell {cell['id']!r}: a judge cell is pinned with its detection run")
++        from harness.baselines.judge import JUDGE_RETRY_ID
++        from harness.baselines.judge_sealed import cell_settings
++        from harness.checkloop.online import set_aside_on
++
++        settings = cell_settings(detection, JUDGE_RETRY_ID, _NO_BUDGET, set_aside_on(None))
++    else:
++        raise ValueError(f"cell {cell['id']!r}: {mode!r} is not a baseline mode")
++    del settings["retry_budget"]
++    return settings
++
++
++def make_checker(cell: Mapping, *, budget: RetryBudget, parent: Any, parent_sha256: str | None,
++                 detection: Any | None) -> Any:
++    """The checker of one try: ``parent`` is the parent's RunRecord, ``parent_sha256`` the sha256 of its file's bytes."""
++    mode = cell["mode"]
++    if mode == EMPTY:
++        from harness.baselines.empty import EmptyRetryChecker
++
++        return EmptyRetryChecker(budget=budget)
++    if mode == JUDGE:
++        from harness.baselines.judge import question_text
++        from harness.baselines.judge_sealed import SealedJudgeRetryChecker
++
++        if detection is None or parent_sha256 is None:
++            raise ValueError(f"cell {cell['id']!r}: a judge cell needs its detection run and its parent's sha256")
++        return SealedJudgeRetryChecker(detection, question_text(parent.to_json()), parent.run_id, parent_sha256,
++                                       budget=budget)
++    raise ValueError(f"cell {cell['id']!r}: {mode!r} is not a baseline mode")
++
+diff --git a/harness/baselines/judge.py b/harness/baselines/judge.py
+index 4af547e5..b0945410 100644
+--- a/harness/baselines/judge.py
++++ b/harness/baselines/judge.py
+@@ -378,6 +378,9 @@ JUDGE_TRIGGER = "the agent's own model, judging the initial output with llm-judg
+ # How accounting reads a verdict (judge_row): a reject is a flag, an accept a pass, and an unparsed
+ # reply an unknown (reported as its own count, never retried).
+ JUDGE_STATUS = {"reject": "flagged", "accept": "substantive_pass", "unparsed": "unknown"}
++# A parent output the detection run could not judge (judge_sealed.py: nothing judgeable, a context overflow) is an
++# unparsed decision with no judge call: its verdict's parse_status is this prefix, a colon and the detection row's status.
++VERDICT_NOT_JUDGED = "not_judged"
+ 
+ 
+ def judge_message_sha256(message_id: str = JUDGE_RETRY_ID) -> str:
+@@ -461,6 +464,38 @@ class JudgeRetryChecker:
+                         retry_turn_text(message, self.set_aside) if retry else None)
+ 
+ 
++NOT_JUDGED_STATUSES = ("unjudgeable", "context_overflow")  # judge_sealed.py: a detection row that holds no call
++_SHA256_HEX = frozenset("0123456789abcdef")
++
++
++def _hex64(value: Any) -> bool:
++    return isinstance(value, str) and len(value) == 64 and set(value) <= _SHA256_HEX
++
++
++def _check_detection(settings: dict, initial: dict, judged: dict | None) -> None:
++    """A record of the sealed judge cell (judge_sealed.py) names the detection run its decision was read from in its
++    settings and in its initial decision: the two must agree, and the row's status must say whether a call is held.
++    A record with neither (the live judge cell's) is left to the checks below; one with only one of them, or with a
++    call and a not-judged status (or the reverse), is a divergence."""
++    pinned, source = settings.get("detection"), initial.get("detection")
++    sealed = settings.get("version") == "judge-retry-sealed/1"
++    if (pinned is None and source is None) != (not sealed):  # the sealed cell names its run; the live cell names none
++        raise ReplayDivergence("a sealed judge cell's record names its detection run, a live one's names none")
++    if pinned is None and source is None:
++        if judged is None:
++            raise ReplayDivergence("a decision with no judge call names no detection run")
++        return
++    if (not isinstance(pinned, dict) or not isinstance(source, dict)
++            or any(source.get(k) != pinned.get(k) for k in ("plan_sha256", "rows_sha256"))
++            or not all(_hex64(source.get(k)) for k in ("plan_sha256", "rows_sha256", "row_sha256"))):
++        raise ReplayDivergence("the record's detection run in its initial decision is not the one its settings pin")
++    if settings["message"]["id"] != JUDGE_RETRY_ID:
++        raise ReplayDivergence("the sealed judge cell retries with the judge's reason, never the sensitivity wording")
++    if (source.get("row_status") == "judged") != (judged is not None) or (
++            judged is None and source.get("row_status") not in NOT_JUDGED_STATUSES):
++        raise ReplayDivergence("the detection row's status does not say what the record holds")
++
++
+ def replay_judge_decision(record: RunRecord | dict) -> Decision:
+     """Recompute a judge cell's decision from its record, with no model and no store: the
+     judge's input is rebuilt from the tool-call log and must hash to the recorded one, the
+@@ -479,9 +514,19 @@ def replay_judge_decision(record: RunRecord | dict) -> Decision:
+         raise ReplayDivergence("the judge cell's message template differs from the recorded one")
+     if settings["judge"]["template"] != {"id": TEMPLATE_ID, "sha256": template_sha256()}:
+         raise ReplayDivergence("the judge template differs from the recorded one")
++    judged = initial["judge"]
++    _check_detection(settings, initial, judged)
++    if judged is None:  # no call was made (judge_sealed.py): an unparsed decision, never a retry
++        v = initial["verdict"]
++        status = initial["detection"]["row_status"]
++        if (v != {"status": "unparsed", "retry": False, "reason": None, "parse_status": f"{VERDICT_NOT_JUDGED}:{status}"}
++                or chk["retry"] is not None or initial["checked_query"] is not None
++                or initial["checked_query_status"] is not None):
++            raise ReplayDivergence("a decision with no judge call is not an unparsed decision without a retry")
++        return Decision(False, None, None, {k: initial[k] for k in ("checked_query", "checked_query_status", "verdict",
++                                                                    "judge")}, None)
+     item, status = output_judge_item(question_text(rec.to_json()), rec.tool_calls, initial["final_rows"],
+                                      _matching(rec), rec.store.get("row_cap"), initial["submission_index"])
+-    judged = initial["judge"]
+     if render(item).input_sha256 != judged["input_sha256"]:
+         raise ReplayDivergence("the judge's input rebuilt from the record differs from the recorded input")
+     if (item.query, status) != (initial["checked_query"], initial["checked_query_status"]):
+diff --git a/harness/baselines/judge_sealed.py b/harness/baselines/judge_sealed.py
+new file mode 100644
+index 00000000..7f7d86bd
+--- /dev/null
++++ b/harness/baselines/judge_sealed.py
+@@ -0,0 +1,548 @@
++"""The judge's reject-then-retry cell, driven by the test-time detection run's sealed verdicts (design log, AC2;
++design ruling of 23 Oct 22:3xZ on the lead's relay: one judge draw per output).
++
++``harness/baselines/judge.py``'s ``JudgeRetryChecker`` asks the agent's own model for a verdict inside the runner, so
++an output would be judged twice: once by the detection run (results/judge-test-20261022/judge_test.py, which judges
++every output of a model's complete natural set once) and once more by the retry cell, and the two draws need not
++agree. This cell makes no judge call. For each parent output it reads the detection run's sealed row (the judge's
++recorded call: its verdict and reason, its usage and cost), checks that the row is that parent's, and retries exactly
++when the detection judge rejected it, with the judge's recorded reason as in ``JudgeRetryChecker``: the same
++message, the same record shape (``checker.initial.judge`` is the detection call verbatim), so the frozen
++``replay_judge_decision`` recomputes the decision from the record alone, with no model and without the sealed rows.
++
++Only the runner process reads a sealed row, and only through ``DetectionRun``; this module prints nothing, forms no
++count of verdicts, and its refusals and audit problems name run ids and the part that differs, never which way a verdict
++went. (The runner's own runs.jsonl and logs, like those of every branch cell, show which attempts made a retry: they are
++barred to operators by entry 191, and the cell's records hold the detection call verbatim.) What identifies the detection run is recorded in the cell's settings (``detection``):
++the sha256 of its plan.json, its model, deployment, route base URL, the fingerprints it was pinned to and served by, and
++whether its deployment is the retry's (``same_deployment``), so a model whose detection judge ran on another deployment
++than its retry is visible in every record.
++
++A detection run made with judge_test.py's ``--move-deployment`` is refused (its rows name another base URL than its plan
++does); a run is one deployment here. Checks, each a refusal (``DetectionError``) before any attempt: the plan's sha256 is the one the spec pins, the plan
++is for the agent's own model, every planned record has a sealed row and its ledger line (the row's bytes hash to the
++ledger's sha256), and nothing waits under SEALED/held (the judge directory is complete as its files show). For a parent: the row names the parent's run id, question and
++model, holds the sha256 of the parent record's bytes (the plan's own entry for it), and the judge input rebuilt from the
++branch's replayed initial phase hashes to the recorded one. A parent whose detection row holds no verdict (nothing
++judgeable, a context overflow) is an unparsed decision with no retry, as an unparsed verdict is in ``judge.py``.
++"""
++
++from __future__ import annotations
++
++import hashlib
++import json
++from collections.abc import Sequence
++from dataclasses import asdict
++from pathlib import Path
++from typing import Any
++
++from harness.agent.replay import ReplayDivergence
++from harness.baselines.judge import (
++    JUDGE_MESSAGES,
++    JUDGE_MODE,
++    JUDGE_RETRY_ID,
++    JUDGE_VERSION,
++    TEMPLATE_ID,
++    VERDICT_NOT_JUDGED,
++    _verdict,
++    judge_message,
++    judge_message_sha256,
++    output_judge_item,
++    parse_verdict,
++    render,
++    template_sha256,
++)
++from harness.checkloop.feedback import retry_turn_text
++from harness.checkloop.online import (
++    BASELINE_MODES,
++    RETRY_KINDS,
++    CheckInput,
++    Decision,
++    RetryBudget,
++    set_aside_on,
++    set_aside_setting,
++)
++
++SEALED_JUDGE_VERSION = "judge-retry-sealed/1"
++PLAN_VERSION = "judge-test/1"  # results/judge-test-20261022/judge_test.py VERSION
++ROW_VERSION = "judge-test-row/1"  # ... and ROW_VERSION
++# The producer's row statuses (judge_test.py): "judged" has a call; the others hold none. A parent that was branched
++# submitted an output, so "no_submitted_output" cannot be its row.
++NOT_JUDGED_STATUSES = ("unjudgeable", "context_overflow")
++ROW_STATUSES = ("judged", "no_submitted_output", *NOT_JUDGED_STATUSES)
++SEALED_TRIGGER = ("the detection run's own-model judge (llm-judge-v3) rejected the initial output: its sealed verdict "
++                  "is read, no judge call is made here")
++
++
++class DetectionError(Exception):
++    """The detection run cannot drive the cell (the run is refused, nothing is attempted)."""
++
++
++def _sha256(data: bytes) -> str:
++    return hashlib.sha256(data).hexdigest()
++
++
++class DetectionRun:
++    """A complete test-time judge directory, read only. ``plan_sha256`` is the sha256 of its plan.json bytes;
++    ``expect_plan_sha256`` (the spec's pin) must equal it, ``model_name`` is the agent's model in the runner's table
++    and ``route_model`` its route id; ``route_info`` is the retry route's, to compare the deployment."""
++
++    def __init__(self, root: Path, *, expect_plan_sha256: str, expect_rows_sha256: str, model_name: str,
++                 route_model: str, route_info: dict | None = None):
++        self.root = Path(root)
++        try:
++            self._open(expect_plan_sha256, expect_rows_sha256, model_name, route_model, route_info)
++        except (ValueError, KeyError, TypeError, AttributeError, IndexError) as exc:
++            # a damaged or foreign file is a refusal, not a traceback (the message names the kind of failure only)
++            raise DetectionError(f"{self.root}: not a readable detection run ({type(exc).__name__})") from None
++
++    def _open(self, expect_plan_sha256: str, expect_rows_sha256: str, model_name: str, route_model: str,
++              route_info: dict | None) -> None:
++        plan_bytes = self._read(self.root / "plan.json")
++        self.plan_sha256 = _sha256(plan_bytes)
++        if self.plan_sha256 != expect_plan_sha256:
++            raise DetectionError(f"{self.root}: plan.json has sha256 {self.plan_sha256}, the spec pins "
++                                 f"{expect_plan_sha256}")
++        self.plan = json.loads(plan_bytes)
++        if self.plan.get("version") != PLAN_VERSION:
++            raise DetectionError(f"{self.root}: plan version {self.plan.get('version')!r}, not {PLAN_VERSION!r}")
++        if self.plan.get("model_name") != model_name or self.plan.get("route_model") != route_model:
++            raise DetectionError(f"{self.root}: the detection judge is for {self.plan.get('model_name')!r} "
++                                 f"({self.plan.get('route_model')!r}), not {model_name!r} ({route_model!r}): the "
++                                 f"judge is the agent's own model")
++        if self.plan.get("template", {}).get("id") != TEMPLATE_ID or self.plan["template"].get("sha256") != template_sha256():
++            raise DetectionError(f"{self.root}: the detection judge ran another template than this code's "
++                                 f"{TEMPLATE_ID} ({template_sha256()})")
++        self.items = {e["run_id"]: e for e in self.plan["items"]}
++        if len(self.items) != len(self.plan["items"]):
++            raise DetectionError(f"{self.root}: a run id twice in the plan")
++        self.rows_dir = self.root / "SEALED" / "rows"
++        self.ledger = self._ledger()
++        names = {p.name[:-len(".json")] for p in self.rows_dir.glob("*.json")}
++        if names != set(self.items):
++            raise DetectionError(f"{self.root}: the sealed rows are not exactly the plan's records: the detection run "
++                                 f"is not complete")  # no number: an interim count of rows would show how far it is
++        held = self.root / "SEALED" / "held"
++        if held.is_dir() and any(held.iterdir()):  # rows with nothing to judge move into rows/ when the run ends
++            raise DetectionError(f"{self.root}: rows still wait under SEALED/held: the detection run did not end")
++        # Every row is read once, here, by this process: its bytes hash to the ledger's line, the sealed results as a
++        # whole hash to the spec's pin (the plan alone would let a second run of the same plan, with other draws,
++        # replace this one), and each row has the shape its status says. Nothing of a row is printed.
++        self.rows: dict[str, dict] = {}
++        digests = []
++        for run_id in sorted(self.items):
++            raw = self._read(self.rows_dir / f"{run_id}.json")
++            digest = _sha256(raw)
++            if digest != self.ledger[run_id]:
++                raise DetectionError(f"{run_id}: the sealed row does not hash to the ledger's sha256")
++            digests.append((run_id, digest))
++            self.rows[run_id] = self._checked(run_id, json.loads(raw))
++        self.rows_sha256 = rows_digest(digests)
++        if self.rows_sha256 != expect_rows_sha256:
++            raise DetectionError(f"{self.root}: the sealed rows have sha256 {self.rows_sha256}, the spec pins "
++                                 f"{expect_rows_sha256}")
++        # Complete means what the files show: a sealed row and a ledger line for every planned record, none held.
++        # progress.json's own flag is not asked for: the runs made before it existed (the first Claude batches) lack it,
++        # and a run that stopped between its last row and its last write has all its rows.
++        progress = json.loads(self._read(self.root / "progress.json"))
++        self.served_identity = progress.get("served_identity")
++        if self.served_identity is None:  # the identity the run was pinned to and served by (no verdict, no count)
++            identity = self.root / "SEALED" / "identity.json"
++            self.served_identity = json.loads(self._read(identity)) if identity.is_file() else None
++        judge = self.plan["judge"]
++        self._check_served(judge)
++        self.route_info = judge["route"]
++        info = route_info or {}
++        self.same_deployment = (judge["route"].get("base_url") == info.get("base_url")
++                                and judge["route"].get("provider") == info.get("provider")
++                                and judge["route"].get("model") == info.get("model"))
++
++    @staticmethod
++    def _read(path: Path) -> bytes:
++        try:
++            return path.read_bytes()
++        except OSError as exc:
++            raise DetectionError(f"{path}: cannot be read ({type(exc).__name__})") from None
++
++    def _ledger(self) -> dict[str, str]:
++        """run id -> the sha256 the ledger recorded for its sealed row (the last 'sealed' line)."""
++        out: dict[str, str] = {}
++        for line in self._read(self.root / "SEALED" / "ledger.jsonl").decode("utf-8").splitlines():
++            if line.strip():
++                e = json.loads(line)
++                if e.get("event") == "sealed":
++                    out[e["run_id"]] = e["sha256"]
++        missing = sorted(set(self.items) - set(out))
++        if missing:
++            raise DetectionError(f"{self.root}: sealed rows have no ledger line")
++        return out
++
++    def _check_served(self, judge: dict) -> None:
++        """The served identity recorded beside the run (progress.json or the sealed identity file, neither of which the
++        pins cover) agrees with the pinned rows: every judged row was served by a recorded model and fingerprint, and by
++        the plan's expected fingerprint where it names one."""
++        expect = judge.get("expect_fingerprint")
++        identity = self.served_identity if isinstance(self.served_identity, dict) else None
++        models = set((identity or {}).get("served_models") or [])
++        prints = set((identity or {}).get("system_fingerprints") or [])
++        seen_prints: set[str] = set()
++        seen_models: set[str] = set()
++        for run_id, row in self.rows.items():
++            if row["status"] != "judged":
++                continue
++            fp = (row.get("call") or {}).get("system_fingerprint")
++            served = row["initial"]["judge"].get("served_model")
++            if (expect is not None and fp != expect) or (fp is not None and prints and fp not in prints) or (
++                    served is not None and models and served not in models):
++                raise DetectionError(f"{run_id}: the row was served by a model or fingerprint the detection run's "
++                                     f"recorded identity (or its expected fingerprint) does not name")
++            if fp is not None:
++                seen_prints.add(fp)
++            if served is not None:
++                seen_models.add(served)
++        # and the other way: what is recorded as the identity is what the rows show (the file is outside the pins)
++        judged_any = any(r["status"] == "judged" for r in self.rows.values())
++        if judged_any and (prints != seen_prints or models != seen_models):
++            raise DetectionError(f"{self.root}: the recorded served identity names a model or fingerprint no row shows")
++
++    def check_parents(self, records_dirs: Path | Sequence[Path]) -> None:
++        """Every record the detection plan judged is in ``records_dirs`` (the OUT's records/; the OUTs of one graph, for the
++        coverage check) with the bytes it judged, found by the runner's file name '<claim digest>.<run id>.json'; refused
++        before any attempt, so a copy of the wrong records is not found one attempt at a time. Names and hashes only: no
++        row and no verdict is touched."""
++        records_dir = records_dirs if isinstance(records_dirs, Path) else records_dirs[0]
++        have: dict[str, list[Path]] = {}
++        for d in [records_dirs] if isinstance(records_dirs, Path) else records_dirs:
++            for p in d.glob("*.json"):
++                parts = p.name.split(".")
++                if len(parts) == 3 and len(parts[0]) == 40:
++                    have.setdefault(parts[1], []).append(p)
++        bad = [run_id for run_id, e in sorted(self.items.items())
++               if len(have.get(run_id, [])) != 1 or _sha256(have[run_id][0].read_bytes()) != e["record_sha256"]]
++        if bad:
++            raise DetectionError(f"{self.root}: records the detection run judged are missing from {records_dir} or "
++                                 f"differ from the bytes it judged: {', '.join(bad[:5])}")
++
++    def _checked(self, run_id: str, row: dict) -> dict:
++        """A sealed row, refused unless it is this plan record's and has the shape its status says: a judged row holds
++        its call, the verdict read again from that call's reply, and its submission; any other status holds none."""
++        entry = self.items[run_id]
++        if (not isinstance(row, dict) or row.get("version") != ROW_VERSION or row.get("run_id") != run_id
++                or row.get("record_sha256") != entry["record_sha256"] or row.get("question_id") != entry["question_id"]):
++            raise DetectionError(f"{run_id}: the sealed row is not this record's")
++        if row.get("model") != self.plan["route_model"]:  # judge_test.py's row names the record's (route) model
++            raise DetectionError(f"{run_id}: the sealed row is another model's ({row.get('model')!r}), not the "
++                                 f"plan's {self.plan['route_model']!r}")
++        status = row.get("status")
++        if status not in ROW_STATUSES:
++            raise DetectionError(f"{run_id}: the sealed row has an unknown status {status!r}")
++        initial = row.get("initial")
++        if status != "judged":
++            if initial is not None or row.get("submission_index") is not None:
++                raise DetectionError(f"{run_id}: a {status} row holds a call or a submission")
++            return row
++        judged = (initial or {}).get("judge")
++        if (not isinstance(judged, dict) or not isinstance(row.get("submission_index"), int)
++                or any(k not in initial for k in ("checked_query", "checked_query_status", "verdict"))
++                or any(k not in judged for k in ("input_sha256", "tool_calls", "stop_reason", "refusal", "verdict",
++                                                  "reason", "parse_status"))):
++            raise DetectionError(f"{run_id}: a judged row without its call, verdict or submission")
++        if parse_verdict(judged["tool_calls"], judged["stop_reason"], judged["refusal"]) != (
++                judged["verdict"], judged["reason"], judged["parse_status"]) or initial["verdict"] != _verdict(judged):
++            raise DetectionError(f"{run_id}: the judge's recorded reply, read again, gives another verdict")
++        # the call is the plan's judge's: the agent's own model on the route the plan names (a row from another
++        # model or deployment would otherwise pass the byte pins)
++        plan_route = self.plan["judge"]["route"]
++        if (judged.get("model") != self.plan["route_model"] or judged.get("same_model") is False
++                or judged.get("route") != plan_route):
++            raise DetectionError(f"{run_id}: the recorded call is not the plan's judge's (model or route)")
++        return row
++
++    def identity(self) -> dict[str, Any]:
++        """What the cell's settings record of the detection run (no verdict, no count)."""
++        judge = self.plan["judge"]
++        return {"plan_sha256": self.plan_sha256, "rows_sha256": self.rows_sha256, "version": self.plan["version"],
++                "model_name": self.plan["model_name"], "route_model": self.plan["route_model"], "mode": judge["mode"],
++                "deployment": judge.get("deployment"),
++                "route": {k: self.route_info.get(k) for k in ("provider", "model", "base_url")},
++                "expect_fingerprint": judge.get("expect_fingerprint"), "served_identity": self.served_identity,
++                "template": {"id": self.plan["template"]["id"], "sha256": self.plan["template"]["sha256"]},
++                "max_tokens": judge["max_tokens"], "same_deployment": self.same_deployment}
++
++    def row(self, run_id: str, parent_sha256: str) -> dict:
++        """The sealed row of a parent output, checked to be that parent's: the planned record's sha256 is the parent
++        record file's. A parent that was branched submitted an output, so its row cannot say it submitted none."""
++        entry = self.items.get(run_id)
++        if entry is None:
++            raise DetectionError(f"{run_id}: not a record of the detection run's plan")
++        if entry["record_sha256"] != parent_sha256:
++            raise DetectionError(f"{run_id}: the parent record is not the one the detection run judged (sha256)")
++        row = self.rows[run_id]
++        if row["status"] == "no_submitted_output":
++            raise DetectionError(f"{run_id}: the detection run found no submitted output in a record that submitted one")
++        return row
++
++
++def _same_attempt_as(rec: dict, parent: dict) -> list[str]:
++    """The ways a branch record's initial phase is not its parent's: the attempt's identity, the transcript up to the retry
++    (the loop's own replay check), the tool calls the parent made (their name, arguments, status, shown result and
++    terminal mark) and the answer submitted. It matters for every row, a no-call one above all: nothing there is rebuilt
++    from the output, so a record replaying another output under this parent's name would pass otherwise."""
++    from harness.agent.record import RunRecord
++    from harness.checkloop.online import _same_initial_phase, initial_transcript
++
++    problems = []
++    if any(rec.get(k) != parent.get(k) for k in ("question_id", "repetition", "model", "split")):
++        problems.append("its question, repetition or model is not its parent's")
++    try:
++        got, want = initial_transcript(RunRecord.from_json(rec)), RunRecord.from_json(parent).transcript
++    except (KeyError, TypeError, ValueError):
++        return problems + ["its transcript cannot be compared with its parent's"]
++    if not _same_initial_phase(got, want):
++        problems.append("its initial transcript is not its parent's")
++    keys = ("name", "arguments", "status", "result_shown", "terminal")
++    theirs = [{k: c.get(k) for k in keys} for c in parent.get("tool_calls") or []]
++    ours = [{k: c.get(k) for k in keys} for c in (rec.get("tool_calls") or [])[:len(theirs)]]
++    if ours != theirs:
++        problems.append("its tool calls do not begin with its parent's")
++    initial = (rec.get("checker") or {}).get("initial") or {}
++    if initial.get("final_rows") != parent.get("final_rows"):
++        problems.append("its initial answer is not its parent's")
++    from harness.checkloop.checked import submissions
++
++    # the initial answer is the parent's, so its score is the parent's (the scorer is not rerun here: no gold); a record that
++    # made no retry ends on that answer, so its own score is the parent's too
++    if initial.get("score") != parent.get("score"):
++        problems.append("its initial score is not its parent's")
++    if (rec.get("checker") or {}).get("retry") is None and rec.get("score") != parent.get("score"):
++        problems.append("its score is not its parent's, though it made no retry")
++    subs = submissions(parent.get("tool_calls") or [])
++    if not subs or initial.get("submission_index") != subs[-1]:  # the one the loop checks (and the producer judged)
++        problems.append("its initial submission is not its parent's")
++    return problems
++
++
++def audit_record(rec: dict, detection: DetectionRun, parent_sha256: str, parent_rec: dict | None = None) -> list[str]:
++    """What a judge-cell record must be, given the detection run's sealed row of its parent: the problems found (none: the
++    record is what the cell decides from that row). The record alone cannot show this (a forged no-call decision with both
++    pins kept replays cleanly), so the runner at the end of a phase, and the coverage check when given the run, hold every
++    record to its sealed row. A problem names the record and the part that differs, never the verdict: what is printed
++    must not show which outputs the detection judge rejected."""
++    chk = rec.get("checker") or {}
++    settings, initial, parent = chk.get("settings") or {}, chk.get("initial") or {}, chk.get("branched_from")
++    try:
++        row = detection.row(parent, parent_sha256)
++    except DetectionError as exc:
++        return [f"{rec.get('run_id')}: {exc}"]
++    problems: list[str] = _same_attempt_as(rec, parent_rec) if parent_rec is not None else []
++    want = {"plan_sha256": detection.plan_sha256, "rows_sha256": detection.rows_sha256, "row_status": row["status"],
++            "row_sha256": detection.ledger[parent]}
++    if initial.get("detection") != want:
++        problems.append("its decision names another detection row than its parent's")
++    named = dict(settings.get("detection") or {})
++    claimed_same = named.pop("same_deployment", None)
++    identity = detection.identity()
++    identity.pop("same_deployment")
++    if named != identity:
++        problems.append("its settings name another detection run")
++    route = rec.get("route") or {}  # the retry's route as the record holds it: the same deployment as the judge's?
++    plan_route = detection.route_info
++    same = all(route.get(k) == plan_route.get(k) for k in ("provider", "base_url", "model"))
++    if claimed_same is not same:
++        problems.append("its settings say the detection ran on another deployment than its retry's route shows")
++    if row["status"] != "judged":
++        verdict = {"status": "unparsed", "retry": False, "reason": None,
++                   "parse_status": f"{VERDICT_NOT_JUDGED}:{row['status']}"}
++        if (initial.get("judge") is not None or initial.get("verdict") != verdict or chk.get("retry") is not None
++                or initial.get("checked_query") is not None or initial.get("checked_query_status") is not None):
++            problems.append("its decision is not what its parent's sealed row decides (call, verdict or retry)")
++        if any(t.get("role") == "user" and t.get("kind") in RETRY_KINDS for t in rec.get("transcript") or []):
++            problems.append("the retry turns in its transcript are not what its parent's sealed row decides")
++        return [f"{rec.get('run_id')}: {x}" for x in problems]
++    recorded = row["initial"]
++    judged = recorded["judge"]
++    if initial.get("judge") != judged or initial.get("verdict") != recorded["verdict"]:
++        problems.append("its judge call or verdict is not its parent's sealed one")
++    if initial.get("submission_index") != row.get("submission_index"):
++        problems.append("its initial submission is not the one its parent's sealed row judged")
++    if (initial.get("checked_query"), initial.get("checked_query_status")) != (
++            recorded["checked_query"], recorded["checked_query_status"]):
++        problems.append("its checked query is not the one the detection judge saw")
++    retry = chk.get("retry")
++    expected = judge_message(JUDGE_RETRY_ID, judged["reason"]) if recorded["verdict"]["retry"] else None
++    if (retry is None) != (expected is None) or (retry is not None and retry.get("message") != expected):
++        problems.append("its retry (made or not, and its message) is not what its parent's sealed row decides")
++    elif retry is not None and retry.get("message_kind") != BASELINE_MODES[JUDGE_MODE]:
++        problems.append("its retry is not a judge cell's kind of turn")
++    # the retry turns in its transcript: one of the judge cell's kind with the message, or none
++    turns = [t for t in rec.get("transcript") or [] if t.get("role") == "user" and t.get("kind") in RETRY_KINDS]
++    if (expected is None and turns) or (expected is not None and (
++            len(turns) != 1 or turns[0].get("kind") != BASELINE_MODES[JUDGE_MODE]
++            or not str(turns[0].get("text", "")).startswith(expected))):
++        problems.append("the retry turns in its transcript are not what its parent's sealed row decides")
++    return [f"{rec.get('run_id')}: {x}" for x in problems]
++
++
++def _in_scope(rec: dict, cell_ids: Sequence[str]) -> bool:
++    """Whether a run record is, or claims or hides being, a judge-cell record: ANY of its identifying fields says so (its
++    checker mode, version, its cell by ``load.arm`` or ``checker.branch.arm``, a detection block). A record that changes
++    some of these and not the others cannot leave the audit by choosing which one it shows."""
++    chk = rec.get("checker") or {}
++    settings, initial = chk.get("settings") or {}, chk.get("initial") or {}
++    cells = set(cell_ids)
++    return bool(settings.get("mode") == JUDGE_MODE or settings.get("version") == SEALED_JUDGE_VERSION
++                or (rec.get("load") or {}).get("arm") in cells or (chk.get("branch") or {}).get("arm") in cells
++                or "detection" in settings or "detection" in initial)
++
++
++def audit_records(records_dir: Path, detections: Sequence[DetectionRun], cell_ids: Sequence[str]) -> list[str]:
++    """``audit_record`` over every judge-cell record in ``records_dir`` (the OUT's records/). Every ``*.json`` file is read,
++    whatever its name: a set-aside sidecar (schema setaside/1, no tool calls) is skipped, anything else without a run
++    record's shape is a problem. A record is in scope if any of its identifying fields says it is a judge-cell one
++    (``_in_scope``), and then all of them must agree (mode judge, the sealed version, its cell one of ``cell_ids``);
++    its detection run is the one of its model (a record of a model with none is a problem), its parent is the one run
++    record of the run id it names, and the parent's bytes are hashed. Two run records of one run id are a problem.
++    Records are read by this process only; the problems name run ids, never a verdict. (A record that disguised itself as
++    another cell on every field is for the coverage check, which counts a cell's records by its mode and finds it twice
++    or missing.)"""
++    by_model = {d.plan["route_model"]: d for d in detections}
++    problems: list[str] = []
++    runs: dict[str, list[tuple[bytes, dict]]] = {}
++    for p in sorted(records_dir.iterdir()):  # nothing else sits among the records but the runner's temp files (.tmp)
++        if p.suffix == ".tmp":  # a temp file is not a record; one that reads as a run record or a checker decision is
++            try:
++                temp = json.loads(p.read_bytes())
++            except (ValueError, OSError):
++                continue
++            if isinstance(temp, dict) and any(k in temp for k in ("run_id", "checker", "tool_calls")):
++                problems.append(f"{p.name}: a temp file that holds a run record")
++        elif p.suffix != ".json":
++            problems.append(f"{p.name}: not a record file")
++    for p in sorted(records_dir.glob("*.json")):
++        raw = p.read_bytes()
++        try:
++            rec = json.loads(raw)
++        except ValueError:
++            problems.append(f"{p.name}: not JSON")
++            continue
++        if not isinstance(rec, dict):
++            problems.append(f"{p.name}: not a JSON object")
++        elif isinstance(rec.get("tool_calls"), list) and isinstance(rec.get("run_id"), str):
++            runs.setdefault(rec["run_id"], []).append((raw, rec))
++        elif not (rec.get("schema") == "setaside/1" and "checker" not in rec and "tool_calls" not in rec):
++            # a sidecar names no checker and holds no tool calls; a record that dropped its tool calls is not exempted by
++            # claiming the schema
++            problems.append(f"{p.name}: neither a run record nor a set-aside sidecar")
++    for run_id in sorted(runs):
++        if len(runs[run_id]) > 1:
++            problems.append(f"{run_id}: more than one run record carries this run id")
++            continue
++        raw, rec = runs[run_id][0]
++        if not _in_scope(rec, cell_ids):
++            continue
++        chk = rec.get("checker") or {}
++        settings = chk.get("settings") or {}
++        branch_arm = (chk.get("branch") or {}).get("arm")
++        arm = (rec.get("load") or {}).get("arm")
++        if (settings.get("version") != SEALED_JUDGE_VERSION or settings.get("mode") != JUDGE_MODE
++                or arm not in cell_ids or branch_arm != arm):  # (a runner's record names its cell in both)
++            # the record says it is one cell on one field and another on the next: it is not left out of the audit
++            problems.append(f"{run_id}: a judge-cell record whose mode, version and cell do not agree")
++            continue
++        detection = by_model.get(rec.get("model"))
++        if detection is None:
++            problems.append(f"{run_id}: no detection run was given for its model")
++            continue
++        parents = runs.get(chk.get("branched_from")) or []
++        if len(parents) != 1:
++            problems.append(f"{run_id}: its parent record is not one file of {records_dir}")
++            continue
++        problems += audit_record(rec, detection, _sha256(parents[0][0]), parents[0][1])
++    return problems
++
++
++def rows_digest(digests: list[tuple[str, str]]) -> str:
++    """The sha256 of a detection run's sealed rows: its lines '<run id> <sha256 of the row file's bytes>', sorted by run
++    id (baseline_run.py detection-pin computes the same from the files without parsing them)."""
++    return _sha256("".join(f"{run_id} {digest}\n" for run_id, digest in sorted(digests)).encode("utf-8"))
++
++
++class SealedJudgeRetryChecker:
++    """The judge cell's checker for one parent output, in the interface the agent loop and ``branch_attempt`` call
++    (``budget``, ``settings()``, ``check()``). ``question`` is the question text as the agent saw it,
++    ``parent_run_id`` and ``parent_sha256`` identify the parent (its record file's bytes)."""
++
++    mode = JUDGE_MODE
++    label = JUDGE_MODE
++
++    def __init__(self, detection: DetectionRun, question: str, parent_run_id: str, parent_sha256: str, *,
++                 budget: RetryBudget, message_id: str = JUDGE_RETRY_ID, set_aside: bool | None = None):
++        if message_id not in JUDGE_MESSAGES:
++            raise ValueError(f"unknown judge retry message {message_id!r}; known: {sorted(JUDGE_MESSAGES)}")
++        self.detection = detection
++        self.question = question
++        self.parent_run_id = parent_run_id
++        self.parent_sha256 = parent_sha256
++        self.budget = budget
++        self.message_id = message_id
++        self.set_aside = set_aside_on(set_aside)
++
++    def settings(self) -> dict[str, Any]:
++        return cell_settings(self.detection, self.message_id, self.budget, self.set_aside)
++
++    def check(self, inp: CheckInput) -> Decision:
++        row = self.detection.row(self.parent_run_id, self.parent_sha256)
++        r = inp.rules
++        matching = {"multiset": r.multiset, "rel_tol": r.rel_tol, "abs_tol": r.abs_tol,
++                    "column_order": r.column_order}
++        source = {"plan_sha256": self.detection.plan_sha256, "rows_sha256": self.detection.rows_sha256,
++                  "row_status": row["status"], "row_sha256": self.detection.ledger[self.parent_run_id]}
++        if row["status"] != "judged":  # nothing was judged (unjudgeable, context overflow): unknown, never a retry
++            verdict = {"status": "unparsed", "retry": False, "reason": None,
++                       "parse_status": f"{VERDICT_NOT_JUDGED}:{row['status']}"}
++            initial = {"matching": matching, "checked_query": None, "checked_query_status": None, "verdict": verdict,
++                       "reports": [], "store_log": None, "judge": None, "detection": source}
++            return Decision(False, None, None, json.loads(json.dumps(initial, ensure_ascii=False)), None)
++        item, status = output_judge_item(self.question, inp.tool_calls, inp.final_rows, inp.rules, inp.row_cap,
++                                         inp.submission_index)
++        recorded = row["initial"]
++        judged = recorded["judge"]
++        if row["submission_index"] != inp.submission_index or recorded["verdict"] != _verdict(judged):
++            raise ReplayDivergence("the detection row is not this output's submission or verdict")
++        if render(item).input_sha256 != judged["input_sha256"]:
++            raise ReplayDivergence("the judge input rebuilt from the replayed parent differs from the detection "
++                                   "run's")
++        if (item.query, status) != (recorded["checked_query"], recorded["checked_query_status"]):
++            raise ReplayDivergence("the checked query rebuilt from the replayed parent differs from the detection "
++                                   "run's")
++        if parse_verdict(judged["tool_calls"], judged["stop_reason"], judged["refusal"]) != (
++                judged["verdict"], judged["reason"], judged["parse_status"]):
++            raise ReplayDivergence("the detection judge's reply, read again, gives another verdict than recorded")
++        verdict = _verdict(judged)
++        retry = verdict["retry"]
++        message = judge_message(self.message_id, judged["reason"]) if retry else None
++        initial = {"matching": matching, "checked_query": item.query, "checked_query_status": status,
++                   "verdict": verdict, "reports": [], "store_log": None, "judge": judged, "detection": source}
++        return Decision(retry, BASELINE_MODES[JUDGE_MODE] if retry else None, message,
++                        json.loads(json.dumps(initial, ensure_ascii=False)),
++                        retry_turn_text(message, self.set_aside) if retry else None)
++
++
++def cell_settings(detection: DetectionRun, message_id: str, budget: RetryBudget, set_aside: bool | str) -> dict:
++    """The cell's checker settings (``judge_replay`` reads ``message`` and ``judge.template``; ``detection`` names the
++    run whose verdicts drive the cell)."""
++    return {
++        "version": SEALED_JUDGE_VERSION,
++        "mode": JUDGE_MODE,
++        "trigger": SEALED_TRIGGER,
++        "judge": {"version": JUDGE_VERSION, "template": {"id": TEMPLATE_ID, "sha256": template_sha256()},
++                  "model": detection.plan["route_model"], "max_tokens": detection.plan["judge"]["max_tokens"]},
++        "message": {"id": message_id, "sha256": judge_message_sha256(message_id)},
++        "detection": detection.identity(),
++        "retry_budget": asdict(budget),
++        **set_aside_setting(set_aside),
++    }
++
++
++__all__ = ["SEALED_JUDGE_VERSION", "DetectionError", "DetectionRun", "SealedJudgeRetryChecker", "audit_record",
++           "audit_records", "cell_settings", "rows_digest"]
+diff --git a/scripts/build_dev_grid.py b/scripts/build_dev_grid.py
+index fc23c552..20630d91 100755
+--- a/scripts/build_dev_grid.py
++++ b/scripts/build_dev_grid.py
+@@ -32,11 +32,6 @@ branch never more than its parent's phase); the manifest records both (``model_c
+ ``runner_settings.gateway_budget`` caps the workers of a phase's Gateway models together (by the route's
+ provider in the runner's table; Anthropic routes are outside it): ``--for-launch`` refuses a phase over
+ it, and the manifest records each phase's planned Gateway load (``gateway_load``).
+-``runner_settings.request_timeout_s`` and ``runner_settings.max_turns`` (change-log entry 180; optional) give a model
+-of the grid its own request time-out in seconds (an OpenAI-compatible route only) and its own turn cap, recorded
+-settings of the stack the spec runs on: the model is built with them here and by the runner alike
+-(``run_pilot.grid_models``), so its ``model_settings`` (route settings and caps) record them. Without them every model
+-keeps its table's (a 600 s request time-out; its own turn cap).
+ A model may be added to the spec later (as the DeepSeek panel model was): every other model's attempts keep
+ their relative order in every phase, since a key depends only on the seed and the attempt, and their
+ cells; the runner admits it while it has no record in the run.
+@@ -185,6 +180,8 @@ def _load_run_pilot():
+ 
+ 
+ run_pilot = _load_run_pilot()
++from harness.baselines import cells as baseline_cells
++
+ ROOT = Path(__file__).resolve().parent.parent
+ DEFAULT_SPEC = ROOT / "data" / "runs" / "dev-grid" / "grid.json"
+ SPEC_SCHEMA = "dev-grid-spec/2"
+@@ -194,6 +191,9 @@ PLACEHOLDER = "FILL"
+ SPLIT = "dev"
+ SPLITS = {"dev": "development", "test": "test"}
+ MODES = ("feedback", "generic")
++# The baseline retry cells (design log; harness/baselines/cells.py): branch cells with no ontology source. A spec without
++# one is built exactly as before: every branch below reads MODES-only cells through the paths it had.
++BASELINE_MODES = tuple(baseline_cells.MODES)
+ ROLES = ("must", "panel", "exploratory")
+ EXPLORATORY = "exploratory"  # natural cohorts only, no branch cell, never in P
+ GENERIC_TRIGGER = "role_feedback_arms"  # a generic cell's arm: the sources of its role's feedback arms
+@@ -467,7 +467,6 @@ def validate_spec(spec: dict) -> list[str]:
+         problems.append(f"runner_settings.gateway_budget: {budget!r} is neither FILL nor a positive integer (the Gateway "
+                         f"models' workers of a phase together)")
+     problems += _model_cell_problems(spec)
+-    problems += run_pilot.runner_model_problems(spec, run_pilot.MODELS)  # change-log entry 180
+     for m in spec.get("models") or []:
+         if m.get("name") not in run_pilot.MODELS:
+             problems.append(f"model {m.get('name')!r} is not a runner model ({', '.join(run_pilot.MODELS)})")
+@@ -520,14 +519,28 @@ def validate_spec(spec: dict) -> list[str]:
+         ids.append(b.get("id"))
+         if b.get("parent") not in cohorts:
+             problems.append(f"branch cell {b.get('id')!r}: parent {b.get('parent')!r} is not a cohort")
+-        if b.get("mode") not in MODES:
+-            problems.append(f"branch cell {b.get('id')!r}: mode {b.get('mode')!r}, one of {MODES}")
+-        if b.get("mode") == "generic":
++        if b.get("mode") not in MODES + BASELINE_MODES:
++            problems.append(f"branch cell {b.get('id')!r}: mode {b.get('mode')!r}, one of {MODES + BASELINE_MODES}")
++        if b.get("mode") in BASELINE_MODES:
++            problems += baseline_cells.spec_problems(b)
++        elif b.get("mode") == "generic":
+             if b.get("trigger") != GENERIC_TRIGGER or "sources" in b or not b.get("arm"):
+                 problems.append(f"branch cell {b.get('id')!r}: a generic cell names its arm and "
+                                 f"trigger {GENERIC_TRIGGER!r}; its sources follow from each role's feedback arms")
+         elif not b.get("arm") or not b.get("sources"):
+             problems.append(f"branch cell {b.get('id')!r}: needs an arm name and its sources")
++    for b in spec.get("branch_cells") or []:  # a judge cell reads the detection run's rows: of the natural, source-less cohort
++        cs = cohorts.get(b.get("parent")) or {}
++        if b.get("mode") == "judge" and (cs.get("phase") != "natural" or cs.get("source") is not None):
++            problems.append(f"branch cell {b.get('id')!r}: a judge cell's parent is a natural cohort with no source "
++                            f"(the detection judge judged those outputs); {b.get('parent')!r} is not")
++    seen_baseline: set[tuple] = set()
++    for b in spec.get("branch_cells") or []:  # a baseline cell is told apart by its mode on its parent: one of each
++        if b.get("mode") in BASELINE_MODES:
++            key = (b.get("parent"), b.get("mode"))
++            if key in seen_baseline:
++                problems.append(f"branch cell {b.get('id')!r}: a second {b.get('mode')} cell on {b.get('parent')!r}")
++            seen_baseline.add(key)
+     if len(set(ids)) != len(ids) or not all(isinstance(i, str) and i for i in ids):
+         problems.append(f"cell ids must be unique non-empty strings: {ids}")
+     for g, gs in graphs.items():
+@@ -761,7 +774,9 @@ def cells(spec: dict, role: str) -> list[dict]:
+     out = [{"id": c, "phase": cs["phase"], "parent": None, "condition": cs["condition"], "source": cs.get("source")}
+            for c, cs in spec["cohorts"].items() if c in rs["cohorts"]]
+     for b in spec.get("branch_cells") or []:
+-        if b["id"] in (rs.get("branch_cells") or []):
++        if b["id"] in (rs.get("branch_cells") or []) and b["mode"] in BASELINE_MODES:
++            out.append(baseline_cells.manifest_cell(b))
++        elif b["id"] in (rs.get("branch_cells") or []):
+             sources = (_role_feedback_sources(spec, role, b["parent"]) if b["mode"] == "generic"
+                        else list(b["sources"]))
+             verdict = [s for s in sources if is_curated(s)] if b["mode"] == "generic" else list(sources)
+@@ -902,7 +917,6 @@ def build(spec: dict, spec_sha256: str, root: Path, *, for_launch: bool,
+                             "ids_sha256": sha256_bytes(json.dumps(ids, separators=(",", ":")).encode("utf-8"))}
+     attempts = expand(spec, questions)
+     per_cell = counts(spec, attempts)
+-    table = run_pilot.grid_models(run_pilot.MODELS, spec)  # entry 180; validate_spec refused what it refuses
+     roles = role_of(spec)
+     phase_of = {c["id"]: c["phase"] for role in spec["roles"] for c in cells(spec, role)}
+     per_graph_model = {graph: {m: {"role": roles[m], "attempts": sum(n.values()),
+@@ -957,8 +971,7 @@ def build(spec: dict, spec_sha256: str, root: Path, *, for_launch: bool,
+                     "flag rate times its attempts",
+         },
+         # each model's route model, provider, route settings (its transport) and caps, from the runner's table
+-        # (change-log entry 180: a model the spec gives its own request time-out or turn cap, as the runner does)
+-        "model_settings": {m["name"]: run_pilot.model_settings(m["name"], table[m["name"]], list(spec["graphs"]))
++        "model_settings": {m["name"]: run_pilot.model_settings(m["name"], run_pilot.MODELS[m["name"]], list(spec["graphs"]))
+                            for m in spec["models"]},
+         "replay_jobs": replay_jobs(spec, questions),
+         "attempts_file": ATTEMPTS_FILE,
+diff --git a/scripts/check_dev_grid_coverage.py b/scripts/check_dev_grid_coverage.py
+index 14dee40f..c17ddcd8 100755
+--- a/scripts/check_dev_grid_coverage.py
++++ b/scripts/check_dev_grid_coverage.py
+@@ -32,6 +32,10 @@ planned attempt:
+   sources alone, a feedback cell's every source), and it retried exactly when one of them flagged;
+   and it was branched from the record of its parent
+   cohort with the same model, question and repetition;
++* a baseline cell's record (design log: ``empty``, retry on empty, and ``judge``, the judge's reject-then-retry cell) has
++  no arm: it names its cell by the checker's mode on its parent cohort; it carries the frozen retry budget and its mode's
++  pinned message (and, for the judge, its template and the spec's pin of the detection run whose verdicts drove it); it
++  retried exactly when its own verdict says so (``empty``: an executed SELECT with no rows; ``judge``: a reject);
+ * it did not fail infrastructure (such a record is unscored and outside N_att: it needs a re-run).
+ 
+ The report gives the counts per cell, per role (must, panel, exploratory: never pooled) and per phase
+@@ -65,6 +69,7 @@ import argparse
+ import gzip
+ import hashlib
+ import json
++import os
+ import sys
+ import tarfile
+ from collections import defaultdict
+@@ -83,6 +88,8 @@ RETRY_CAPS = ("max_turns", "max_wall_s")
+ # Gemma's report-key rule, Qwen3.6's reasoning-call rule
+ RULE_FIELDS = ("report_key_rule", "reasoning_call_rule")
+ ROUTE_SEED = "seed"  # a seeded retry's route settings add its sampling seed
++RERUN_REASON = "does not count (needs a re-run)"  # what a judge-cell attempt that failed infrastructure reads as
++BASELINE_MODES = ("empty", "judge")  # harness/baselines/cells.py MODES: branch cells with no ontology source
+ 
+ 
+ class Refused(Exception):
+@@ -152,7 +159,10 @@ class _Grid:
+                 self.cohorts[(cs["condition"], sha)] = c
+             else:
+                 self.unverifiable.add(cs["condition"])
+-        self.arms = {(b["parent"], b["mode"], b["arm"]): b["id"] for b in spec.get("branch_cells") or []}
++        self.arms = {(b["parent"], b["mode"], b["arm"]): b["id"] for b in spec.get("branch_cells") or []
++                     if b["mode"] not in BASELINE_MODES}
++        # a baseline cell is told apart by its mode on its parent cohort: its checker settings name no arm
++        self.baseline = {(b["parent"], b["mode"]): b for b in spec.get("branch_cells") or [] if b["mode"] in BASELINE_MODES}
+         self.parent_of = {b["id"]: b["parent"] for b in spec.get("branch_cells") or []}
+         roles = manifest["roles"]
+         self.sources = {(m, c["id"]): c["sources"] for m, role in roles.items() for c in manifest["cells"][role]
+@@ -191,7 +201,10 @@ class _Grid:
+             cell = cohort
+         else:
+             settings = ck.get("settings") or {}
+-            cell = self.arms.get((cohort, settings.get("mode"), (settings.get("arm") or {}).get("name")))
++            if settings.get("mode") in BASELINE_MODES:
++                cell = (self.baseline.get((cohort, settings["mode"])) or {}).get("id")
++            else:
++                cell = self.arms.get((cohort, settings.get("mode"), (settings.get("arm") or {}).get("name")))
+             if cell is None:
+                 return None, (f"checker arm {(settings.get('arm') or {}).get('name')!r} in mode "
+                               f"{settings.get('mode')!r} on cohort {cohort!r} is no grid cell"), True
+@@ -231,24 +244,79 @@ class _Grid:
+             if load.get("order_seed") != self.seed_of[cell]:
+                 wrong.append(f"load.order_seed {load.get('order_seed')!r} != its phase's seed {self.seed_of[cell]!r}")
+         if ck is not None and (model, cell) in self.sources:
+-            wrong += self._arm_problems(ck, model, cell)
++            baseline = settings.get("mode") in BASELINE_MODES
++            wrong += self._baseline_problems(ck, self.baseline[(cohort, settings["mode"])]) if baseline \
++                else self._arm_problems(ck, model, cell)
+             budget = settings.get("retry_budget") or {}
+             wanted = {**{k: (caps or {}).get(k) for k in RETRY_CAPS}, **self.spec["retry_budget"]}
+             wrong += [f"retry_budget.{k} {budget.get(k)!r} != {v!r}" for k, v in wanted.items() if budget.get(k) != v]
+-            if settings.get("switches") != self.spec["switches"]:
+-                wrong.append(f"switches {settings.get('switches')!r} != {self.spec['switches']!r}")
+-            code = self.spec.get("code") or {}
+-            for name, got in (("feedback_format_sha256", (settings.get("feedback_format") or {}).get("sha256")),
+-                              ("generic_text_sha256", settings.get("generic_sha256"))):
+-                if code.get(name) not in (None, PLACEHOLDER) and got != code[name]:
+-                    wrong.append(f"{name} {got!r} != {code[name]!r}")
++            if not baseline:  # a baseline cell has no ontology switches, feedback format or generic text
++                if settings.get("switches") != self.spec["switches"]:
++                    wrong.append(f"switches {settings.get('switches')!r} != {self.spec['switches']!r}")
++                code = self.spec.get("code") or {}
++                for name, got in (("feedback_format_sha256", (settings.get("feedback_format") or {}).get("sha256")),
++                                  ("generic_text_sha256", settings.get("generic_sha256"))):
++                    if code.get(name) not in (None, PLACEHOLDER) and got != code[name]:
++                        wrong.append(f"{name} {got!r} != {code[name]!r}")
+         if wrong:
+             return key, "settings are not the frozen ones: " + "; ".join(wrong), True
+         outcome = rec.get("outcome") or {}
+         if outcome.get("failure_type") == "infrastructure":
++            if ((ck or {}).get("settings") or {}).get("mode") == "judge":  # only a retried attempt makes a live request
++                return key, RERUN_REASON, False
+             return key, "failed:infrastructure (unscored, needs a re-run)", False
+         return key, None, False
+ 
++    def _baseline_problems(self, ck: dict, cell: dict) -> list[str]:
++        """A baseline cell's record against its cell (module docstring): no arm and no source; the mode's pinned message
++        (the judge's also its template and the spec's detection pin), the retry exactly when the cell's own verdict says
++        so. What the verdict is, is not read here beyond that: the replay check recomputes it from the record."""
++        from harness.baselines.empty import EMPTY_RETRY_ID, message_sha256
++        from harness.baselines.judge import (
++            JUDGE_RETRY_ID,
++            TEMPLATE_ID,
++            judge_message_sha256,
++            template_sha256,
++        )
++
++        wrong, settings = [], ck.get("settings") or {}
++        mode = cell["mode"]
++        if "arm" in settings and (settings["arm"] or {}).get("sources"):
++            wrong.append(f"a {mode} cell's record names ontology sources")
++        message = settings.get("message")
++        if mode == "empty":
++            if message != {"id": EMPTY_RETRY_ID, "sha256": message_sha256()}:
++                wrong.append(f"message {message!r} is not the retry-on-empty wording {EMPTY_RETRY_ID}")
++            retry_if = {"empty"}
++        else:
++            if message != {"id": JUDGE_RETRY_ID, "sha256": judge_message_sha256(JUDGE_RETRY_ID)}:
++                wrong.append(f"message {message!r} is not the judge cell's wording {JUDGE_RETRY_ID} (the judge's reason)")
++            if settings.get("version") != "judge-retry-sealed/1":
++                wrong.append(f"version {settings.get('version')!r}: this cell is driven by the detection run's verdicts "
++                             f"(judge-retry-sealed/1), not a judge call of its own")
++            template = (settings.get("judge") or {}).get("template")
++            if template != {"id": TEMPLATE_ID, "sha256": template_sha256()}:
++                wrong.append(f"judge template {template!r} is not {TEMPLATE_ID}")
++            pin = cell["detection"]
++            for where, found in (("settings", settings.get("detection") or {}),
++                                 ("initial decision", (ck.get("initial") or {}).get("detection") or {})):
++                if any(found.get(k) != pin[k] for k in ("plan_sha256", "rows_sha256")):
++                    wrong.append(f"the detection run named in the {where} is not the one the spec pins (plan, rows)")
++            row_status = ((ck.get("initial") or {}).get("detection") or {}).get("row_status")
++            judged = (ck.get("initial") or {}).get("judge")
++            if (row_status == "judged") != (judged is not None) or (
++                    row_status != "judged" and row_status not in ("unjudgeable", "context_overflow")):
++                wrong.append(f"the detection row's status {row_status!r} does not say what the record holds")
++            retry_if = {"reject"}
++        verdict = (ck.get("initial") or {}).get("verdict")
++        if not isinstance(verdict, dict):
++            return wrong + ["no verdict"]
++        retried = ck.get("retry") is not None
++        if bool(verdict.get("retry")) != (verdict.get("status") in retry_if) or retried != bool(verdict.get("retry")):
++            # the diagnostic names no status and no direction: what is printed must not show a verdict
++            wrong.append(f"the retry (made or not) is not what the record's own verdict says for a {mode} cell")
++        return wrong
++
+     def _arm_problems(self, ck: dict, model: str, cell: str) -> list[str]:
+         """A branch record's arm against its cell for its model's role: built from the cell's sources, a
+         verdict per source that decides the cell (``verdict_sources``: gen:any's role's curated sources under
+@@ -338,6 +406,7 @@ def check_replay(manifest: dict, graph: str, planned: list[dict], valid: dict[tu
+ 
+ def check_coverage(manifest: dict, attempts: list[dict], runs: dict[str, list[Path]],
+                    replays: dict[str, list[Path]] | None = None) -> dict[str, Any]:
++    judge_ids = {b["id"] for b in manifest["spec"].get("branch_cells") or [] if b.get("mode") == "judge"}
+     missing, inherited, problems, generic_flags = [], [], [], []
+     replay_jobs, replay_missing, replay_problems = [], [], []
+     rows = []
+@@ -357,7 +426,10 @@ def check_coverage(manifest: dict, attempts: list[dict], runs: dict[str, list[Pa
+                     found[key].append((name, rec))
+                     continue
+                 if is_problem:
+-                    problems.append({"graph": graph, "record": name, "problem": why})
++                    # a judge-cell record's diagnostics (its retry against its own verdict, its settings) differ only for the
++                    # rejected outputs, so they are kept for the private report, never the console
++                    problems.append({"graph": graph, "record": name, "problem": why,
++                                     **({"sealed": True} if key is not None and key[1] in judge_ids else {})})
+                 if key is not None:
+                     invalid[key] = why
+         # a counted record of a cell its model does not run, or of a repetition it does not run there, is no
+@@ -458,6 +530,57 @@ def _parse_runs(items: list[str], graphs: list[str], flag: str = "--run") -> dic
+     return runs
+ 
+ 
++def audit_judge_cells(manifest: dict, runs: dict[str, list[Path]], dirs: list[str]) -> list[tuple[str, str]]:
++    """(graph, problem) for every judge-cell record of ``runs`` that is not what its parent's sealed detection row decides
++    (harness.baselines.judge_sealed.audit_records), with each detection run opened against the spec's pins. The audit reads
++    the run directories' records/ (a run kept only as records.tar.gz is refused: unpack it first)."""
++    from harness.baselines.judge_sealed import (
++        DetectionError,
++        DetectionRun,
++        audit_records,
++    )
++
++    spec = manifest["spec"]
++    given = {}
++    for item in dirs:
++        model, sep, path = item.partition("=")
++        if not sep or not model or not path or model in given:
++            raise Refused(f"--baseline-judge-dir {item!r}: MODEL=DIR, once per model")
++        given[model] = Path(path)
++    cells = {b["id"]: b for b in spec.get("branch_cells") or [] if b.get("mode") == "judge"}
++    detections = []
++    for model_name, cell_ids in manifest["model_cells"].items():
++        mine = [c for c in cell_ids if c in cells]
++        if not mine:
++            continue
++        if model_name not in given:
++            raise Refused(f"no --baseline-judge-dir {model_name}=DIR for its judge cell")
++        route_model = next(m["route_model"] for m in spec["models"] if m["name"] == model_name)
++        pin = cells[mine[0]]["detection"]
++        try:
++            detections.append(DetectionRun(given[model_name], expect_plan_sha256=pin["plan_sha256"],
++                                           expect_rows_sha256=pin["rows_sha256"], model_name=model_name,
++                                           route_model=route_model))
++        except DetectionError as exc:
++            raise Refused(f"{model_name}: {exc}") from None
++    unused = sorted(set(given) - {m for m, ids in manifest["model_cells"].items() if any(c in cells for c in ids)})
++    if unused:
++        raise Refused(f"--baseline-judge-dir for {', '.join(unused)}: no judge cell of the manifest runs for them")
++    out: list[tuple[str, str]] = []
++    for graph, dirs_ in runs.items():
++        for d in dirs_:
++            if (Path(d) / "records.tar.gz").is_file():
++                raise Refused(f"{d}: records kept as records.tar.gz; the sealed audit reads records/")
++        for run in detections:  # the parents are the records the detection run judged, byte for byte (the runner's open)
++            try:
++                run.check_parents([Path(d) / "records" for d in dirs_])
++            except DetectionError as exc:
++                out.append((graph, str(exc)))
++        for d in dirs_:
++            out += [(graph, problem) for problem in audit_records(Path(d) / "records", detections, sorted(cells))]
++    return out
++
++
+ def main(argv: list[str] | None = None) -> int:
+     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+     p.add_argument("--manifest", type=Path, required=True, help="manifest.json from scripts/build_dev_grid.py")
+@@ -465,6 +588,9 @@ def main(argv: list[str] | None = None) -> int:
+                    help="a run output directory of one graph (repeatable)")
+     p.add_argument("--replay", action="append", default=[], metavar="GRAPH=PATH",
+                    help="an offline replay matrix of one graph: matrix.jsonl.gz or its directory (repeatable)")
++    p.add_argument("--baseline-judge-dir", action="append", default=[], metavar="MODEL=DIR",
++                   help="the model's detection judge directory (a judge cell, design log): every judge-cell record is held "
++                        "to its parent's sealed row, which a record alone cannot show (repeatable)")
+     p.add_argument("--report", type=Path, default=None, help="write the full report here (JSON)")
+     args = p.parse_args(argv)
+     try:
+@@ -475,22 +601,58 @@ def main(argv: list[str] | None = None) -> int:
+         print(f"refused: {exc}", file=sys.stderr)
+         return 2
+     report = check_coverage(manifest, attempts, runs, replays)
++    if args.baseline_judge_dir:
++        try:
++            audit = audit_judge_cells(manifest, runs, args.baseline_judge_dir)
++        except (Refused, OSError, ValueError, KeyError) as exc:
++            print(f"refused: {exc}", file=sys.stderr)
++            return 2
++        for graph, record_problem in audit:  # printed generically (below): which records differ would name the retried ones
++            report["problems"].append({"graph": graph, "record": None, "problem": record_problem, "sealed": True})
++        report["totals"]["problems"] = len(report["problems"])
++        report["complete"] = report["complete"] and not audit
++    judge_cells = [b["id"] for b in manifest["spec"].get("branch_cells") or [] if b.get("mode") == "judge"]
++    sealed_checked = bool(args.baseline_judge_dir) or not judge_cells
++    if not sealed_checked:  # a record alone cannot show a judge cell's decision is its parent's sealed verdict
++        report["complete"] = False
++    # a judge cell's attempt that needs a re-run, and any difference from the sealed rows, can only be a retried output: the
++    # console shows neither a name nor a count of them (the report file, private from its first byte, holds the detail)
++    # (whatever the reason: a retried attempt that crashed, was aborted or was set aside has no record either)
++    hidden_missing = [m for m in report["missing"] if m["cell"] in judge_cells and not m["reason"].startswith("parent ")]
++    hidden_graph = {g: sum(1 for m in hidden_missing if m["graph"] == g) for g in {m["graph"] for m in hidden_missing}}
++    hidden_sealed = [x for x in report["problems"] if x.get("sealed")]
+     if args.report:
+-        args.report.write_text(json.dumps(report, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
++        text = json.dumps(report, indent=1, ensure_ascii=False) + "\n"
++        if hidden_missing or hidden_sealed:
++            fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
++            os.fchmod(fd, 0o600)  # before the first byte: a file that existed keeps its old mode through os.open
++            with os.fdopen(fd, "w", encoding="utf-8") as fh:
++                fh.write(text)
++        else:
++            args.report.write_text(text, encoding="utf-8")
+     t = report["totals"]
+-    print(f"{t['covered']} of {t['expected']} planned attempts recorded, {t['inherited']} inherited (parent did "
+-          f"not submit), {t['missing']} missing, {t['problems']} problems")
++    shown_problems = t["problems"] - len(hidden_sealed)
++    # the arithmetic of what is printed must not give the count either: an attempt that needs a re-run is counted as recorded
++    print(f"{t['covered'] + len(hidden_missing)} of {t['expected']} planned attempts recorded, {t['inherited']} inherited "
++          f"(parent did not submit), {t['missing'] - len(hidden_missing)} missing, {shown_problems} problems")
+     for ph in report["phases"]:
++        hide = ph["phase"] == "branch"
+         print(f"  phase {ph['phase']} (seed {ph['seed']}; {len(ph['cells'])} cells): "
+-              + "; ".join(f"{g} {n['covered'] + n['inherited']} of {n['expected']}" for g, n in ph["graphs"].items()))
++              + "; ".join(f"{g} {n['covered'] + n['inherited'] + (hidden_graph.get(g, 0) if hide else 0)} of {n['expected']}"
++                          for g, n in ph["graphs"].items()))
+     for row in report["cells"]:
+-        if row["missing"]:
++        if row["missing"] and row["cell"] not in judge_cells:
+             print(f"  {row['graph']} {row['model']} {row['cell']}: {row['missing']} of {row['expected']} missing")
+-    for item in report["missing"][:50]:
++    for item in [m for m in report["missing"] if m not in hidden_missing][:50]:
+         print(f"  missing: {item['graph']} {item['model']} {item['cell']} {item['question_id']} "
+               f"rep {item['repetition']}: {item['reason']}")
+-    for item in report["problems"][:50]:
++    for item in [x for x in report["problems"] if not x.get("sealed")][:50]:
+         print(f"  problem: {item['graph']} {item['record']}: {item['problem']}")
++    if hidden_missing:
++        print("  judge cell: not complete (the --report file only)")
++    if hidden_sealed:
++        print("  sealed audit: FAILED (the judge-cell records differ from the detection run's sealed rows; the --report "
++              "file only)")
+     replay = report["replay"]
+     if not replay["checked"]:
+         print("replay: NOT CHECKED (no --replay given)")
+@@ -503,6 +665,8 @@ def main(argv: list[str] | None = None) -> int:
+                   f"rep {item['repetition']}: {item['missing'] if isinstance(item['missing'], str) else len(item['missing'])}")
+         for item in replay["problems"][:20]:
+             print(f"  replay problem: {item['graph']} {item['row']}: {item['problem']}")
++    if not sealed_checked:
++        print("sealed audit: NOT CHECKED (the manifest has a judge cell; give --baseline-judge-dir MODEL=DIR)")
+     ok = report["complete"] and replay["complete"] is not False
+     print(("complete" if ok else "INCOMPLETE") + ("" if replay["checked"] else " (runs only)"))
+     return 0 if ok else 1
+diff --git a/scripts/run_pilot.py b/scripts/run_pilot.py
+index 60c4fcdc..3151424a 100644
+--- a/scripts/run_pilot.py
++++ b/scripts/run_pilot.py
+@@ -230,10 +230,7 @@ parents); the launch design is that script's docstring, items 1-7:
+   ``runner_settings.gateway_budget`` (Anthropic routes outside it); each start's
+   workers and budget, and the code it runs on, are appended to the manifest's
+   ``starts``. Each model runs its own cells and repetitions per phase (the
+-  manifest's ``model_cells`` and ``model_repetitions``). A model the spec's
+-  ``runner_settings.request_timeout_s`` or ``runner_settings.max_turns`` names
+-  (change-log entry 180) runs on its route rebuilt with that request time-out,
+-  or with that turn cap, as the manifest recorded them.
++  manifest's ``model_cells`` and ``model_repetitions``).
+ * The code (dress rehearsal F1): every run, grid or not, starts only on code it
+   can name (``replay_check.require_identified_code``): a git checkout, or a deploy
+   whose COMMIT and TREE files hold and whose tree digest recomputed from disk is
+@@ -270,7 +267,12 @@ parents); the launch design is that script's docstring, items 1-7:
+   RetryBudget(the parent's turn and wall caps, 2 nudges))``; a generic cell's sources follow
+   the role (the manifest's cells). A parent that did not submit has nothing to
+   check: no record, counted ``inherited``. A branch attempt starts at its retry's
+-  first model request; one that does not flag makes none. No warm-up
++  first model request; one that does not flag makes none. A baseline cell (design log,
++  harness/baselines/cells.py: ``empty``, retry on empty, and ``judge``, the judge's
++  reject-then-retry cell) has no source: its checker is built per try from the cell's mode
++  and the parent's record (the judge cell reads the detection run's sealed verdict of that
++  parent, ``--baseline-judge-dir MODEL=DIR``), and its settings are pinned beside the
++  checker cells'. No warm-up
+   (``--warmup`` is refused): the retry continues the parent's transcript. The
+   phase starts only when phases natural and prompted are complete and replayed:
+   every planned attempt of both, of every model, has a record that did not fail
+@@ -458,6 +460,7 @@ from harness.agent.tools import (  # noqa: E402
+     agent_tools,
+ )
+ from harness import gated_store as gated  # noqa: E402
++from harness.baselines import cells as baseline_cells  # noqa: E402
+ from harness.checkloop.store_log import CHECKER_ROW_CAP, CHECKER_TIMEOUT_S  # noqa: E402
+ from harness.gate_step_down import TimeoutStepDown, parse_setting, recompute, rule_json  # noqa: E402
+ from harness.query_gate import QueryGate  # noqa: E402
+@@ -628,138 +631,6 @@ def model_settings(name: str, spec: ModelSpec, graphs: list[str]) -> dict:
+     return out
+ 
+ 
+-# --- a stack's own request time-out and turn cap per model (change-log entry 180) ---------------------------------
+-# Science, the design log: 18:54Z, option (b), a grid spec may give a model its own request time-out,
+-# runner_settings.request_timeout_s {model: seconds}, a recorded runner setting of the stack the spec runs on; 19:05Z,
+-# by the same mechanism its own turn cap, runner_settings.max_turns {model: turns}. The runner (_run_store) and the
+-# grid build (build_dev_grid's model_settings) both take the model's entry through grid_models, so the manifest's route
+-# settings and caps, the OUT's pins and every record carry the same values (settings.request_timeout_s, 600 s by
+-# default, and the caps' max_turns are recorded there today). A plain run (the only path of a store read through a query
+-# gate) takes the same object from --runner-settings FILE (plain_runner_settings, through grid_models too): its
+-# manifest pins each model's route and caps, so a resume under other settings is refused. A model the settings do not
+-# name, and every model of a run without them, keeps its table entry exactly as before.
+-REQUEST_TIMEOUT_KEY = "request_timeout_s"
+-TURN_CAP_KEY = "max_turns"
+-RUNNER_MODEL_KEYS = (REQUEST_TIMEOUT_KEY, TURN_CAP_KEY)
+-
+-
+-def _positive_seconds(value: Any) -> bool:
+-    if isinstance(value, bool) or not isinstance(value, (int, float)):
+-        return False
+-    try:
+-        seconds = float(value)  # a JSON integer beyond a float's range is no number of seconds
+-    except OverflowError:
+-        return False
+-    return math.isfinite(seconds) and seconds > 0
+-
+-
+-def _positive_turns(value: Any) -> bool:
+-    return isinstance(value, int) and not isinstance(value, bool) and value >= 1
+-
+-
+-def runner_model_problems(spec: Mapping[str, Any], models: Mapping[str, ModelSpec], *,
+-                          scope: str = "the grid") -> list[str]:
+-    """What is wrong with ``spec``'s per-model runner settings (nothing when neither key is present): each must map at
+-    least one model of the grid (``spec["models"]``) of the runner's table to its value, a positive, finite number of
+-    seconds (``request_timeout_s``) or a positive whole number of turns (``max_turns``); a model given a request
+-    time-out must have a route rebuilt with another one (an OpenAI-compatible route, by ``with_options``)."""
+-    runner = spec.get("runner_settings")
+-    if not isinstance(runner, Mapping):
+-        return []
+-    grid = {m.get("name") for m in spec.get("models") or [] if isinstance(m, Mapping)}
+-    problems = []
+-    for key, valid, what in ((REQUEST_TIMEOUT_KEY, _positive_seconds, "a positive, finite number of seconds"),
+-                             (TURN_CAP_KEY, _positive_turns, "a positive whole number of turns")):
+-        if key not in runner:
+-            continue
+-        where = f"runner_settings.{key}"
+-        values = runner[key]
+-        if not isinstance(values, Mapping) or not values:
+-            problems.append(f"{where}: {values!r} is not a mapping of at least one model to its value (leave the key "
+-                            f"out for every model's own, from the runner's table)")
+-            continue
+-        for name, value in values.items():
+-            if not valid(value):
+-                problems.append(f"{where}.{name}: {value!r} is not {what}")
+-            if name not in grid:
+-                problems.append(f"{where}.{name}: not a model of {scope}")
+-            elif name not in models:
+-                problems.append(f"{where}.{name}: not a model of the runner's table")
+-            elif key == REQUEST_TIMEOUT_KEY and not takes_front(models[name].factory()):
+-                # takes_front's test is this one: an OpenAI-compatible route that with_options rebuilds
+-                problems.append(f"{where}.{name}: its route cannot be rebuilt with another request time-out (only an "
+-                                f"OpenAI-compatible route, by with_options, can)")
+-    return problems
+-
+-
+-def _timeout_factory(factory: Callable[[], Provider], seconds: float) -> Callable[[], Provider]:
+-    def build() -> Provider:
+-        route = factory()
+-        rebuilt = route.with_options(request_timeout_s=seconds)
+-        own, there = route.route_info(), rebuilt.route_info()
+-        want = {**(own.get("settings") or {}), REQUEST_TIMEOUT_KEY: seconds}
+-        if ({k: own.get(k) for k in ("provider", "base_url", "model")}
+-                != {k: there.get(k) for k in ("provider", "base_url", "model")}
+-                or there.get("settings") != want or getattr(rebuilt, REQUEST_TIMEOUT_KEY, None) != seconds):
+-            raise ValueError(f"the route rebuilt with request_timeout_s {seconds} differs from the table's route in more "
+-                             f"than its request time-out")
+-        return rebuilt
+-    return build
+-
+-
+-def grid_models(models: Mapping[str, ModelSpec], spec: Mapping[str, Any], *,
+-                scope: str = "the grid") -> Mapping[str, ModelSpec]:
+-    """``models`` with each model ``spec``'s per-model runner settings name given them: its route built with its
+-    request time-out (a float, like the 600.0 default) and its turn cap; ``models`` itself, the same object, when the
+-    spec sets neither. ValueError with ``runner_model_problems``'s findings."""
+-    runner = spec.get("runner_settings")
+-    if not isinstance(runner, Mapping) or not any(key in runner for key in RUNNER_MODEL_KEYS):
+-        return models
+-    problems = runner_model_problems(spec, models, scope=scope)
+-    if problems:
+-        raise ValueError("; ".join(problems))
+-    out = dict(models)
+-    for name, seconds in (runner.get(REQUEST_TIMEOUT_KEY) or {}).items():
+-        out[name] = replace(out[name], factory=_timeout_factory(out[name].factory, float(seconds)))
+-    for name, turns in (runner.get(TURN_CAP_KEY) or {}).items():
+-        out[name] = replace(out[name], max_turns=turns)
+-    return out
+-
+-
+-def plain_runner_settings(path: Path, names: list[str], models: Mapping[str, ModelSpec]
+-                          ) -> tuple[Mapping[str, ModelSpec], dict]:
+-    """A plain run's per-model settings (``--runner-settings``): the JSON object in ``path``, holding
+-    ``request_timeout_s`` and/or ``max_turns`` exactly as a grid spec's runner_settings does, for models of the run
+-    (``names``, its --models); -> (the table through ``grid_models``, the object). Refused when it cannot be read, is
+-    not such an object (no other key), or ``runner_model_problems`` finds anything."""
+-    def unique(pairs: list[tuple[str, Any]]) -> dict:
+-        keys = [k for k, _ in pairs]
+-        twice = sorted({k for k in keys if keys.count(k) > 1})
+-        if twice:  # json.loads would keep the last silently, and the run would record only that one
+-            raise ValueError(f"a key given twice in one object: {', '.join(twice)}")
+-        return dict(pairs)
+-
+-    try:
+-        settings = json.loads(Path(path).read_text(encoding="utf-8"), object_pairs_hook=unique)
+-    except (OSError, UnicodeDecodeError, ValueError) as exc:
+-        raise Refused(f"--runner-settings {path}: {exc}") from None
+-    if not isinstance(settings, dict) or not settings or set(settings) - set(RUNNER_MODEL_KEYS):
+-        raise Refused(f"--runner-settings {path}: a JSON object with {' and/or '.join(RUNNER_MODEL_KEYS)} and nothing "
+-                      f"else, got {sorted(settings) if isinstance(settings, dict) else type(settings).__name__}")
+-    spec = {"models": [{"name": n} for n in names], "runner_settings": settings}
+-    try:
+-        return grid_models(models, spec, scope="the run (--models)"), settings
+-    except ValueError as exc:
+-        raise Refused(f"--runner-settings {path}: {exc}") from None
+-
+-
+-def say_runner_settings(runner: Any, say: Callable[[str], None]) -> None:
+-    own = {key: runner[key] for key in RUNNER_MODEL_KEYS if isinstance(runner, Mapping) and key in runner}
+-    if own:
+-        say("per-model runner settings (change-log entry 180): " + "; ".join(
+-            f"{key} " + ", ".join(f"{m} {v}" for m, v in sorted(values.items())) for key, values in own.items()))
+-
+-
+ def _gateway(model: str, *, max_result_chars: int | Mapping[str, int], max_tokens: int, max_turns: int,
+            max_wall_s: float, report_key_rule: str | None = None, reasoning_call_rule: str | None = None,
+            **route_options: Any) -> ModelSpec:
+@@ -960,10 +831,6 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     p.add_argument("--models", nargs="+", default=None,
+                    help=f"one or more of: {', '.join(models)}; required without --grid-manifest (grid: from the "
+                         f"manifest)")
+-    p.add_argument("--runner-settings", type=Path, default=None,
+-                   help='plain runs (change-log entry 180): a JSON file {"request_timeout_s": {model: seconds}, '
+-                        '"max_turns": {model: turns}} (either or both), applied to those models of --models as a grid '
+-                        "spec's runner_settings are; pinned with each model's route and caps (grid: from its spec)")
+     p.add_argument("--reps", type=int, default=None, help="default 3 (grid: from the manifest)")
+     p.add_argument("--concurrency", type=int, default=None,
+                    help="attempts in flight per model (configured workers; default 4) (grid: from the manifest)")
+@@ -1062,6 +929,10 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     grid.add_argument("--phase", choices=GRID_PHASES, default=None,
+                       help="natural (the none cohort), prompted (the prompted cohorts) and branch (every checker "
+                            "arm, once both are complete)")
++    grid.add_argument("--baseline-judge-dir", action="append", default=[], metavar="MODEL=DIR",
++                      help="the branch phase of a judge cell (design log): the model's complete test-time detection judge "
++                           "directory (harness/baselines/judge_sealed.py), whose sealed verdicts decide which of the "
++                           "model's outputs the cell retries; repeatable, one per model with a judge cell")
+     grid.add_argument("--periodic-check-s", type=float, default=PERIODIC_CHECK_S,
+                       help="in the branch phase, recompute the checker decisions of the records completed so far in a "
+                            "fresh interpreter this often, in seconds (0: never), and stop new launches when their "
+@@ -1081,8 +952,6 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     if args.preflight_log is not None:
+         if args.store_json is None or args.endpoint is None or args.grid_manifest is not None:
+             p.error("--preflight-log needs --store-json and --endpoint, and no grid")
+-        if args.runner_settings is not None:
+-            p.error("--runner-settings: a preflight runs no model")
+         if args.sparql_timeout is None:
+             args.sparql_timeout = 60.0
+         if args.row_cap is None:
+@@ -1091,7 +960,6 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+     if args.out is None:
+         p.error("the following arguments are required: --out")
+     derived = {"--questions": args.questions, "--split": args.split, "--models": args.models, "--reps": args.reps,
+-               "--runner-settings": args.runner_settings,
+                "--order-seed": args.order_seed, "--store-json": args.store_json, "--row-cap": args.row_cap,
+                "--sparql-timeout": args.sparql_timeout, "--limit": args.limit, "--endpoint": args.endpoint,
+                "--concurrency": args.concurrency, "--concurrency-for": args.concurrency_for or None,
+@@ -1107,6 +975,8 @@ def parse_args(argv: list[str] | None, models: dict[str, ModelSpec]) -> argparse
+             p.error("--warmup: a branch cell's retry continues its parent's transcript, so the branch phase has no "
+                     "warm-up")
+     else:
++        if args.baseline_judge_dir:
++            p.error("--baseline-judge-dir needs --grid-manifest")
+         if args.graph is not None or args.phase is not None:
+             p.error("--graph and --phase need --grid-manifest")
+         missing = [flag for flag, value in (("--questions", args.questions), ("--models", args.models),
+@@ -3117,7 +2987,7 @@ def grid_arms(plan: GridPlan) -> dict[tuple[str, str], Any]:
+     from harness.sources.model import OntologySource
+ 
+     wanted = [(cid, role, cell) for role, cs in plan.cells.items() for cid, cell in cs.items()
+-              if cell["phase"] == "branch"]
++              if cell["phase"] == "branch" and not baseline_cells.is_baseline(cell["mode"])]
+     if not wanted:
+         return {}
+     gs = plan.graph_spec
+@@ -3157,13 +3027,19 @@ def phase_inputs(plan: GridPlan, phase: str) -> dict:
+                 "sources": {s: gs["sources"][s]["sha256"] for s in sources}}
+     sources = sorted({s for cs in plan.cells.values() for cell in cs.values() if cell["phase"] == "branch"
+                       for s in cell["sources"]})
+-    return {"shared_hierarchy": gs["shared_hierarchy"]["sha256"],
+-            "sources": {s: gs["sources"][s]["sha256"] for s in sources},
+-            "code": dict(plan.spec.get("code") or {})}
++    out = {"shared_hierarchy": gs["shared_hierarchy"]["sha256"],
++           "sources": {s: gs["sources"][s]["sha256"] for s in sources},
++           "code": dict(plan.spec.get("code") or {})}
++    detections = {cid: dict(cell["detection"]) for cs in plan.cells.values() for cid, cell in cs.items()
++                  if cell["phase"] == "branch" and "detection" in cell}
++    if detections:  # only a spec with a judge cell: any other spec's pins are what they were
++        out["detections"] = dict(sorted(detections.items()))
++    return out
+ 
+ 
+ def phase_arm_fingerprints(plan: GridPlan, phase: str, configs: dict[str, AgentConfig],
+-                           arms: dict[tuple[str, str], Any], switches: Any) -> dict[str, dict]:
++                           arms: dict[tuple[str, str], Any], switches: Any,
++                           detections: dict[tuple[str, str], Any] | None = None) -> dict[str, dict]:
+     """Per arm of ``phase``: an initial cell's prompt (condition, id, template, block and nudge hashes); a branch
+     cell's ``OnlineChecker.settings()`` per role (arm identity with source and hierarchy hashes, mode, switches,
+     feedback format and generic text hashes) without its retry budget, which is each model's own (its turn and wall
+@@ -3188,6 +3064,62 @@ def phase_arm_fingerprints(plan: GridPlan, phase: str, configs: dict[str, AgentC
+         settings = OnlineChecker(arm, None, cell["mode"], budget=no_budget, switches=switches).settings()
+         del settings["retry_budget"]
+         entry["by_role"][role] = settings
++    for role, cs in plan.cells.items():  # a baseline cell has no arm: its own pinned settings (harness/baselines)
++        for cid, cell in cs.items():
++            if cell["phase"] == "branch" and baseline_cells.is_baseline(cell["mode"]):
++                entry = out.setdefault(cid, {"parent": cell["parent"], "by_role": {}})
++                entry["by_role"][role] = baseline_cells.pin_settings(cell, (detections or {}).get((cid, role)))
++    return out
++
++
++def open_baseline_detections(plan: GridPlan, dirs: list[str], models: dict[str, ModelSpec],
++                             route_models: dict[str, str], say: Callable[[str], None],
++                             records_dir: Path | None = None) -> dict[tuple[str, str], Any]:
++    """Each judge cell's detection run, by (cell id, role): the model's complete test-time judge directory, checked
++    against the cell's pin and the agent's own route (``baseline_cells.open_detection``). One model of a role may run
++    a judge cell here, since the cell's pinned settings name its detection run; a directory given for a model with no
++    judge cell, or a judge cell without one, is refused. What is said names the run and its deployment, never a
++    verdict."""
++    from harness.baselines.judge_sealed import DetectionError
++
++    given: dict[str, str] = {}
++    for item in dirs:
++        model, sep, path = item.partition("=")
++        if not sep or not model or not path or model in given:
++            raise Refused(f"--baseline-judge-dir {item!r}: MODEL=DIR, one per model")
++        given[model] = path
++    out: dict[tuple[str, str], Any] = {}
++    used: set[str] = set()
++    for role, cs in plan.cells.items():
++        for cid, cell in cs.items():
++            if cell["phase"] != "branch" or "detection" not in cell:
++                continue
++            mine = [m for m in plan.models if plan.roles[m] == role and cid in plan.model_cells[m]]
++            if len(mine) != 1:
++                raise Refused(f"cell {cid} ({role}): runs for {len(mine)} models here; a judge cell pins one "
++                              f"detection run, so one model")
++            name = mine[0]
++            if name not in given:
++                raise Refused(f"cell {cid}: no --baseline-judge-dir {name}=DIR (its detection run)")
++            used.add(name)
++            try:
++                run = baseline_cells.open_detection(cell, given[name], name, route_models[name],
++                                                    models[name].factory().route_info())
++            except DetectionError as exc:
++                raise Refused(f"cell {cid}: {exc}") from None
++            if records_dir is not None:  # the parents are the records the detection run judged, byte for byte
++                try:
++                    run.check_parents(records_dir)
++                except DetectionError as exc:
++                    raise Refused(f"cell {cid}: {exc}") from None
++            out[(cid, role)] = run
++            ident = run.identity()
++            say(f"detection run of {cid} ({name}): plan sha256 {ident['plan_sha256'][:12]}, {ident['mode']} "
++                f"judge on {ident['route'].get('base_url')}, "
++                + ("the retry's deployment" if ident["same_deployment"] else "ANOTHER deployment than the retry's"))
++    extra = sorted(set(given) - used)
++    if extra:
++        raise Refused(f"--baseline-judge-dir for {', '.join(extra)}: no judge cell of this phase runs for them")
+     return out
+ 
+ 
+@@ -3622,10 +3554,13 @@ def decisions_in_fresh_process(out: Path, plan: GridPlan, say: Callable[[str], N
+     os.close(fd)
+     fd, progress = tempfile.mkstemp(dir=out, prefix=".decisions.", suffix=".progress.jsonl")
+     os.close(fd)
+-    cmd = [sys.executable, str(VERIFY_SCRIPT), str(out), "--decisions-json", target, "--progress-jsonl", progress,
+-           "--hierarchy", str(plan.root / gs["shared_hierarchy"]["path"])]
+-    for name in sources:
+-        cmd += ["--source-file", f"{name}={plan.root / gs['sources'][name]['path']}"]
++    cmd = [sys.executable, str(VERIFY_SCRIPT), str(out), "--decisions-json", target, "--progress-jsonl", progress]
++    if sources:
++        cmd += ["--hierarchy", str(plan.root / gs["shared_hierarchy"]["path"])]
++        for name in sources:
++            cmd += ["--source-file", f"{name}={plan.root / gs['sources'][name]['path']}"]
++    else:  # only baseline cells: their decisions need no ontology source (harness/baselines)
++        cmd += ["--no-sources"]
+     # its output goes to a file, not a pipe: the process is polled (``stop``), and a full pipe would block it
+     with tempfile.TemporaryFile("w+", encoding="utf-8", errors="replace") as output:
+         try:
+@@ -4269,13 +4204,6 @@ def _run_store(args, models, sparql_factory, say, sleep, *, gs: gated.GatedStore
+         apply_grid_plan(args, plan)
+         if gated.gated_store(json.loads(args.store_json.read_text(encoding="utf-8"))) is not None:
+             raise Refused("a store read through a query gate does not run in a grid (no grid names one yet)")
+-        # change-log entry 180: a model the spec gives its own request time-out or turn cap runs with them, as the
+-        # manifest's model_settings recorded them (the grid build takes the model through the same grid_models)
+-        try:
+-            models = grid_models(models, plan.spec)
+-        except ValueError as exc:
+-            raise Refused(f"the grid spec's per-model runner settings: {exc}") from None
+-        say_runner_settings(plan.spec.get("runner_settings"), say)
+         say(f"grid: graph {plan.graph}, phase {plan.phase}, seed {plan.seed}: {len(plan.order)} attempts over "
+             f"{len(plan.models)} model(s) and {len({o[1] for o in plan.order})} cell(s), split {plan.spec['split']}"
+             + (f", pre-registration frozen at {plan.freeze['commit'][:12]}" if plan.freeze else ""))
+@@ -4292,9 +4220,6 @@ def _run_store(args, models, sparql_factory, say, sleep, *, gs: gated.GatedStore
+         questions = load_questions(args.questions, args.split)
+         if args.limit is not None:
+             questions = questions[: args.limit]
+-        if args.runner_settings is not None:  # change-log entry 180: as a grid spec's, through the same grid_models
+-            models, args.runner_settings_given = plain_runner_settings(args.runner_settings, args.models, models)
+-            say_runner_settings(args.runner_settings_given, say)
+         # before anything asks a store or a model: a run of any split but dev is opened by the frozen pre-registration
+         args.freeze = plain_split_gate(args, questions)
+         if args.freeze is not None:
+@@ -4513,6 +4438,8 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+     # fingerprinted again, so a later phase cannot change an earlier one's arms.
+     configs: dict[str, AgentConfig] = {config.condition: config}
+     checker_arms: dict[tuple[str, str], Any] = {}
++    baseline_detections: dict[tuple[str, str], Any] = {}  # (judge cell, role) -> its detection run
++    fresh_recompute = False  # whether the closing gate recomputes the branch decisions in a fresh process (F3)
+     switches = None
+     if plan is not None:
+         from harness.checkloop.online import Switches
+@@ -4550,10 +4477,22 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+                    for ph in pin if ph != "branch" for c in plan.cohorts(ph)}
+         if "branch" in pin:  # the sources and the hierarchy are the branch phase's inputs
+             checker_arms = grid_arms(plan)
++            # a plan whose branch cells are all baseline cells has no arms and still has decisions to recompute offline
++            # in a fresh process (F3); for a plan with ontology arms this is what it was
++            fresh_recompute = bool(checker_arms) or any(
++                baseline_cells.is_baseline(c["mode"]) for cs in plan.cells.values() for c in cs.values()
++                if c["phase"] == "branch")
++            # the judge cells' detection runs (design log), whichever phase starts: every start fingerprints the pinned
++            # branch phase again, and a judge cell's pinned settings name its detection run
++            baseline_detections = open_baseline_detections(plan, args.baseline_judge_dir, models, route_models, say,
++                                                           records_dir)
+             # rule 23: every switch on; the retry budget is each try's, from its parent's caps (run_try)
+             switches = Switches(**plan.spec["switches"])
++        elif args.baseline_judge_dir:  # a start that does not pin the branch phase has no use for a detection run
++            raise Refused("--baseline-judge-dir: this start does not pin the branch phase (no judge cell to drive)")
+         phases = {ph: {"seed": plan.seeds[ph], "cells": plan.phase_cells(ph), "inputs": phase_inputs(plan, ph),
+-                       "arms": phase_arm_fingerprints(plan, ph, configs, checker_arms, switches),
++                       "arms": phase_arm_fingerprints(plan, ph, configs, checker_arms, switches,
++                                                      baseline_detections),
+                        "models": plan.model_orders(ph)} for ph in pin}
+     done = set(briefs) if plan is not None else existing_keys(records_dir)
+     # checked before the identity checks below, which may write the manifest, so a refused one leaves nothing; it is
+@@ -4578,9 +4517,7 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+         added = check_manifest(args.out, run_fingerprint(args, store, config, routes, scorer, store_client),
+                                has_records=bool(done), say=say, allow_code_change=args.allow_code_change,
+                                start_fields={**({"query_gate": gate_start} if gate_start is not None else {}),
+-                                             **start_files,
+-                                             **({"runner_settings": args.runner_settings_given}
+-                                                if getattr(args, "runner_settings_given", None) else {})} or None,
++                                             **start_files} or None,
+                                allow_store_change=args.allow_store_change)
+         if args.allow_store_change is not None:
+             store_changed = json.loads((args.out / "manifest.json").read_text(encoding="utf-8"))["starts"][-1].get(
+@@ -4633,8 +4570,20 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+     # the branch phase's periodic fresh-process recompute (science, design log, 20 Oct 10:39): its halt stops new launches
+     periodic = None
+     if plan is not None and plan.phase == "branch" and args.periodic_check_s > 0:
++        periodic_say = say
++        if baseline_detections:  # with a judge cell any count here is a count of rejected outputs: fixed-form lines only
++            def periodic_say(msg: str) -> None:
++                if msg.startswith(("periodic check: ", "error: periodic check: ")):
++                    if "HALTED" in msg:
++                        say(f"error: periodic check of phase {plan.phase}: HALTED (details in the manifest's periodic_checks)")
++                    else:
++                        say(f"periodic check of phase {plan.phase}: not halted")
++                elif msg.startswith("periodic check of phase") and "stopped at the phase's end" in msg:
++                    say(f"periodic check of phase {plan.phase} stopped at the phase's end; the end-of-phase recompute follows")
++                else:
++                    say(msg)
+         periodic = PeriodicCheck(args.out, plan.phase, lambda stop: decisions_in_fresh_process(
+-            args.out, plan, say, nice=PERIODIC_NICE, stop=stop), say, interval_s=args.periodic_check_s,
++            args.out, plan, say, nice=PERIODIC_NICE, stop=stop), periodic_say, interval_s=args.periodic_check_s,
+             max_load=args.periodic_check_max_load)
+     halt = periodic.halt if periodic is not None else threading.Event()
+     if gate_rule is not None:  # a log of the gate's rule that cannot be written halts new launches
+@@ -4864,8 +4813,8 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+         return models[name].agent_config(configs[arm], route_settings[name])
+ 
+     def run_try(name: str, arm: str, q: dict, rep: int, route: Provider, client: Any, on_start: Callable[[], None],
+-                parent: RunRecord | None,
+-                served_check: Callable[[str | None, str | None], Any] | None = None) -> RunRecord:
++                parent: RunRecord | None, served_check: Callable[[str | None, str | None], Any] | None = None,
++                parent_sha256: str | None = None) -> RunRecord:
+         """One try: an initial cell's full agent run under its AgentConfig with its model's own caps, or a branch
+         cell's check of its parent's output with, on a flag, one live retry (which starts at the retry's first model
+         request, under the parent's config and caps). Every turn is checked against the model's first served id
+@@ -4883,10 +4832,16 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+         parent_config = config_of(parent)
+         budget = RetryBudget(max_turns=parent_config.max_turns, max_wall_s=parent_config.max_wall_s,
+                              max_nudges=FROZEN_RETRY_BUDGET["max_nudges"])
++        siblings, place = plan.sibling_order(name, arm, q["id"], rep)
++        if baseline_cells.is_baseline(cell["mode"]):  # design log: no source, no store of its own (harness/baselines)
++            checker = baseline_cells.make_checker(cell, budget=budget, parent=parent, parent_sha256=parent_sha256,
++                                                  detection=baseline_detections.get((arm, plan.roles[name])))
++            return branch_attempt(parent, checker, route, client, gold_rows=question_gold(q),
++                                  rules=q.get("scoring_rules"), sleep=sleep, order_seed=seed, label=arm, order=siblings,
++                                  position=place, on_start=on_start, served_check=served_check)
+         checker_client = checker_factory(args)  # its own client: no agents' row cap (entry 125)
+         checker = OnlineChecker(checker_arms[(arm, plan.roles[name])], checker_client, cell["mode"],
+                                 budget=budget, switches=switches)  # one per try: it keeps the try's store log
+-        siblings, place = plan.sibling_order(name, arm, q["id"], rep)
+         try:
+             return branch_attempt(parent, checker, route, client, gold_rows=question_gold(q),
+                                   rules=q.get("scoring_rules"), sleep=sleep, order_seed=seed, label=arm, order=siblings,
+@@ -4901,8 +4856,9 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+             active_leases[claim] = (_read_claim(claim) or {}).get("claimed_at")
+         clients: list = []  # every store client made for the attempt's tries, closed on every way out
+         try:
+-            parent = (RunRecord.from_json(json.loads(parent_path.read_text(encoding="utf-8")))
+-                      if parent_path is not None else None)
++            parent_bytes = parent_path.read_bytes() if parent_path is not None else None
++            parent = RunRecord.from_json(json.loads(parent_bytes.decode("utf-8"))) if parent_bytes is not None else None
++            parent_sha256 = hashlib.sha256(parent_bytes).hexdigest() if parent_bytes is not None else None
+             # every file of the attempt is named by its claim digest, and its marker (key, split) is written before
+             # its first try and kept for good, so each file can be placed in its split by name
+             key = key_of(name, arm, q["id"], rep)
+@@ -4948,7 +4904,8 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+                         raise HaltedBeforeStart(f"phase halted before {q['id']} rep {rep} of {name} started")
+                     if not failed_tries and held_now(name):  # so did a hold
+                         raise HeldBeforeStart(f"{name} held before {q['id']} rep {rep} started")
+-                    rec = run_try(name, arm, q, rep, route, client, on_start, parent, served_check)
++                    rec = run_try(name, arm, q, rep, route, client, on_start, parent, served_check,
++                                  parent_sha256=parent_sha256)
+                 except ScoringError as exc:
+                     rec = exc.record
+                     say(f"warning: [{name}] {q['id']} rep {rep}: scoring failed: {exc.__cause__!r}")
+@@ -5207,7 +5164,7 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+     # be recomputed fails). Once the OUT has branch records, in a fresh interpreter over the grid's sources: this
+     # process cannot vouch for its own decisions (in the rehearsal its rdflib grammar broke while the phase ran, F2).
+     decisions = None
+-    if plan is not None and checker_arms:
++    if plan is not None and fresh_recompute:
+         decisions = decisions_in_fresh_process(args.out, plan, say)
+         check = verify_batch(args.out, decisions=decisions or {})  # none: no decision counts as recomputed
+     else:
+@@ -5216,19 +5173,47 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+         check = verify_batch(args.out, recompute=DecisionRecompute.from_arms(checker_arms))
+     write_check(args.out, check)
+     held = held_message(args.out, check)
+-    if held:
+-        say(f"error: {held}; the batch cannot enter analysis, and the branch phase does not start on it")
+     halted = halt_message(args.out, check)
++    # a failing judge-cell record fails replay only where the detection judge rejected (its retry is what the record
++    # then contradicts), so with a judge cell the names and counts stay in the check file, not on the console
++    quiet = bool(baseline_detections)
++    if held:
++        say("error: the batch is held (details in " + CHECK_FILE + ")" if quiet else
++            f"error: {held}; the batch cannot enter analysis, and the branch phase does not start on it")
+     if halted:
+-        say(f"error: {halted}")
++        say("error: the phase is halted (details in " + CHECK_FILE + ")" if quiet else f"error: {halted}")
+     if check["failures"]:
+-        say(f"error: replay check failed for {len(check['failures'])} of {check['n_records']} records ({CHECK_FILE}); "
+-            f"the batch cannot enter analysis: " + "; ".join(f"{f['file']} ({f['stage']}): {f['error'][:200]}"
+-                                                              for f in check["failures"][:5]))
++        if quiet:
++            say(f"error: the replay check failed (details in {CHECK_FILE}); the batch cannot enter analysis")
++        else:
++            say(f"error: replay check failed for {len(check['failures'])} of {check['n_records']} records ({CHECK_FILE}); "
++                f"the batch cannot enter analysis: " + "; ".join(f"{f['file']} ({f['stage']}): {f['error'][:200]}"
++                                                                  for f in check["failures"][:5]))
+     else:
+         tell(f"replay check: {check['n_ok']} of {check['n_records']} records load, write back byte for byte and "
+              f"replay, {check['decisions_recomputed']} online checker decisions recomputed to themselves ({CHECK_FILE})")
+ 
++    # a judge cell's record replays from itself, but nothing in the record proves its decision is its parent's sealed
++    # verdict: every judge-cell record is held to its sealed row now, while the detection runs are open (design log)
++    audit_problems: list[str] = []
++    if baseline_detections:
++        from harness.baselines.judge_sealed import audit_records
++
++        audit_problems = audit_records(records_dir, list(baseline_detections.values()),
++                                       sorted({cid for cid, _role in baseline_detections}))
++        if audit_problems:
++            # which records differ would name the ones that made a retry: the details go to a private file, not the log
++            detail = args.out / "judge-audit-problems.json"
++            fd = os.open(detail, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
++            os.fchmod(fd, 0o600)  # before the first byte: a file that existed keeps its old mode through os.open
++            with os.fdopen(fd, "w", encoding="utf-8") as fh:
++                fh.write(json.dumps(audit_problems, indent=1) + "\n")
++            say(f"error: the judge-cell records differ from the detection run's sealed rows ({detail.name}, mode 600, "
++                f"read it only as the owner); the batch cannot enter analysis")
++        else:
++            (args.out / "judge-audit-problems.json").unlink(missing_ok=True)  # an earlier start's, now answered
++            tell("sealed audit: every judge-cell record is what its parent's detection row decides")
++
+     branch_counts = (f", {counts['inherited']} inherited (parent did not submit)"
+                      if plan is not None and plan.phase == "branch" else "")
+     awaiting_fix = (f"{counts['awaiting_fix']} awaiting a checker fix (set aside as checker divergences: re-run once "
+@@ -5255,7 +5240,11 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+     else:
+         for name, s in summarise(index_path, args.models).items():
+             say(f"{name}: {json.dumps(s, sort_keys=True)}")
+-    for line in setaside_lines(check):  # per arm: the set-aside records and how many of their attempts were re-run
++    # per arm: the set-aside records and how many of their attempts were re-run; a judge cell's arm is left out (a
++    # divergence there can only be at a rejected output; its count is in the check file)
++    judge_arms = {cid for cid, _role in baseline_detections}
++    for line in setaside_lines({**check, "set_aside": {a: c for a, c in (check.get("set_aside") or {}).items()
++                                                        if a not in judge_arms}}):
+         say(line)
+     for name in sorted(held_models):
+         say(f"{name}: held by the infrastructure-fault monitor: its attempts not yet started wait for its release "
+@@ -5274,7 +5263,7 @@ def _run_locked(args, questions, models, sparql_factory, say, sleep, plan: GridP
+              f"seen only as this runner's queue ({GATE_BUSY_FILE})")
+     if counts["aborted"] or counts["models_stopped_infrastructure"] or counts["model_changed"] or counts["models_held"]:
+         return 3
+-    if check["failures"] or halted or halt.is_set():
++    if check["failures"] or halted or halt.is_set() or audit_problems:
+         return 5
+     if counts["errors"] or counts["harness_defects"]:
+         return 1
+diff --git a/scripts/verify_batch.py b/scripts/verify_batch.py
+index 582e9be3..879fa54f 100644
+--- a/scripts/verify_batch.py
++++ b/scripts/verify_batch.py
+@@ -41,9 +41,16 @@ from harness.agent.replay_check import (  # noqa: E402
+ )
+ 
+ 
+-def recompute_of(sources_dir: Path | None, source_files: dict[str, Path], hierarchy_path: Path | None):
++def recompute_of(sources_dir: Path | None, source_files: dict[str, Path], hierarchy_path: Path | None,
++                 no_sources: bool = False):
+     """The online checker decisions' recompute over the compilers of the sources given, each built on first use;
+-    None when no hierarchy was given (then a checker record is not verified)."""
++    None when no hierarchy was given (then a checker record is not verified). ``no_sources``: a batch of baseline cells
++    only (harness/baselines: retry on empty, the judge cell), whose decisions are recomputed from the record alone; a
++    record that needs a source is then one that could not be recomputed."""
++    if no_sources:
++        from harness.checkloop.recompute import DecisionRecompute
++
++        return DecisionRecompute()
+     if hierarchy_path is None:
+         return None
+     from harness.checkloop.recompute import ArmUnavailable, DecisionRecompute
+@@ -77,6 +84,9 @@ def main(argv: list[str] | None = None) -> int:
+     p.add_argument("--source-file", action="append", default=[], metavar="NAME=PATH",
+                    help="read source NAME from PATH instead of the sources directory")
+     p.add_argument("--hierarchy", type=Path, default=None, help="the store's saved shared hierarchy (rule 29)")
++    p.add_argument("--no-sources", action="store_true",
++                   help="recompute the decisions of a batch whose branch cells are all baseline cells (no ontology "
++                        "source is read); a record that needs a source then cannot be recomputed")
+     p.add_argument("--decisions-json", type=Path, default=None,
+                    help="only recompute the online checker decisions and write them to this file, as the runner asks "
+                         "after a phase (no replay check is written)")
+@@ -88,10 +98,12 @@ def main(argv: list[str] | None = None) -> int:
+         p.error(f"{args.out} is not a directory")
+     if (args.sources_dir is not None or bool(args.source_file)) != (args.hierarchy is not None):
+         p.error("--sources-dir (or --source-file) and --hierarchy go together")
++    if args.no_sources and (args.sources_dir is not None or args.source_file or args.hierarchy is not None):
++        p.error("--no-sources is for a batch with no ontology sources")
+     if args.progress_jsonl is not None and args.decisions_json is None:
+         p.error("--progress-jsonl goes with --decisions-json")
+     files = {k: Path(v) for k, _, v in (x.partition("=") for x in args.source_file)}
+-    recompute = recompute_of(args.sources_dir, files, args.hierarchy)
++    recompute = recompute_of(args.sources_dir, files, args.hierarchy, args.no_sources)
+     if args.decisions_json is not None:
+         found = recompute_decisions(args.out, recompute, progress=args.progress_jsonl)
+         args.decisions_json.write_text(json.dumps({"decisions": found}, ensure_ascii=False), encoding="utf-8")

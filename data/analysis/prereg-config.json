@@ -1,0 +1,148 @@
+{
+ "schema": "prereg-config/2",
+ "note": "Arm names and frozen numbers of the registered analysis (paper/preregistration.md draft 4 after change-log entry 40). scorer_digest is the frozen scorer's sha256 of its closed module set as prereg \u00a73 states it (f359683f..., rules scorer-rules-v6, change-log entry 127, feat/scorer-entry127; it replaces 3d6b1e6a..., rules scorer-rules-v5, change-log entry 120, feat/scorer-entry120, which replaced 4fca135f..., rules scorer-rules-v4, feat/scorer-digest; harness/score/digest.py scorer_digest()): a registered run refuses, before reading any record, a batch whose manifest's fingerprint.scorer_digest is absent or another (the rules-version string alone does not identify the scorer). scorer_version is the frozen scorer's rules version prereg \u00a73 states (scorer-rules-v5 since change-log entry 120; harness/score/rules.py RULES_VERSION). bank_manifest_sha256 is the frozen UniProt fault bank's manifest, prereg \u00a75 'Fault bank' (bd17577e..., feat/fault-bank data/banks/uniprot-sp-2026_03/manifest.json, recomputed from the file), and questions_sha256 the frozen UniProt round-2 set, prereg \u00a75 'Question sets' (17eef284..., feat/qgen-uniprot data/questions/uniprot-sp-2026_03/questions.jsonl, recomputed from the file; a run on another question set is refused). calibration and calibration_sha256 (the plain Holm's table, calibrate.py table, which needs step 2) stay [FILL]: a confirmatory run does not read them. panel is the model set P of C5 and of a pooled C1a (design log, change-log entry 82), by exact route id: Sonnet 5.5, Qwen3.8-27B, GLM-5.3-Flash, Gemma-4-31B, Haiku 5.5, Qwen3-Coder-30B-A3B-Instruct (which replaced Llama-3.3-70B at the reliability gate) and DeepSeek-V4-Flash-0731 (deepseek-ai/DeepSeek-V4-Flash-0731), kept by design log's pre-stated pilot rule (the pilot at feat/e0.1-skeleton 086ca94, results/deepseek-pilot-20261019/); panel_families gives each one's family for leave-one-family-out. A confirmatory run refuses while any panel slot is [FILL]. c1a_family is the [FILL] of \u00a71 (design log ruling 2): \"two-family\" or \"pooled C1a\", recorded with the two calibrated powers (c1a_power) by `scripts/calibrate.py choose-c1a` (pooled if its power at the 3-point margin from the dev grid is at least the two-family's); the confirmatory analysis refuses to run until it is recorded. step2_fwer_failure is ruling 3's rule: a chosen family failing step 2's FWER check gives every claim p = 1, with no adjustment after step 2. refusal_rule (design log, design ruling; change-log entry 91) freezes the refusal rule by name: refusal-v1, the runner's REFUSAL_RULE and REFUSAL_PHRASES in harness/agent/loop.py at feat/e0.1-skeleton 3675da5 (a refused attempt, the provider declining or the final message declining the task in the first person, is scored wrong). A confirmatory run refuses any record whose agent_config.refusal_rule is not refusal-v1's runner setting \"refused\" (a record before agent-run/17 ran under \"failed\", no refusal rule) and any refused outcome naming another rule; a test run accepts them. Beside the arms the analysis reports the refusals descriptively: per arm, the base questions the refusal-excluded secondary analysis (prereg §2, §6) excludes per contrast, the count of each refusal signal and every refused attempt's final message. rewrites_adopted is false if the rewrites fail their audit (f = f_gold). cluster_map and cluster_map_sha256 (change-log entry 52) are the question generator's cluster-map/2 file (per base question: its template, its declared anchors and its cluster id, the connected component of shared anchors within a template; the loader recomputes the components and refuses a map whose stated clusters differ): the UniProt map is feat/qgen-extension's data/questions/uniprot-sp-2026_03/extension/clusters.json (c1b1a69d..., recomputed from the file; it covers the frozen set's 301 base questions and the bank-only extension's, and this code's loader accepts it), and a confirmatory run refuses without them, reads the map only from this file and takes none from its caller; the bootstrap and CR2 resample its clusters. calibrated_inference_digest (design log) is harness/analysis/inference.py's inference_digest() of the code the calibration ran (87c7126; every registered object byte-identical there, and every module-level name it reads bound to the same target, the entry-52 dispatcher recorded as the stats.studentise it dispatches to); grouping_digest is its grouping_digest() of the cluster grouping added after the calibration, of the current code (recomputed and refilled whenever registered code changes); every registry digest leaves out the members the dataclass machinery generates (inference.dataclass_generated, decided from each class's own dataclass fields and parameters), which differ between Pythons (3.13 added __replace__), so each digest is the same under every Python (design ruling, design log, 20 Oct); a confirmatory run refuses while either is [FILL] or when the current code's differs. calibrated_kat_sha256 and grouping_kat_sha256 (design log) are harness/analysis/kat.py's known answers: the inference run on fixed synthetic inputs, every output serialised exactly and hashed. The calibrated one is what the calibrated commit 87c7126's own functions compute (every question its own cluster), equal to the current code's on both the calibration's path and the confirmatory one; the grouping one is of the cluster grouping on a map that links questions, of the current code. kat_environment is where they were computed, the pinned confirmatory host (change-log entry 73: the agents VM; since 20 Oct its Python is 3.12, the merged tree's pin, design log: the merged tree's venv, Python 3.12.3, and data/analysis/kat-hosts.json records, per the host-change rule below, that host's and the earlier host's (Python 3.15.0) environments and values, the calibrated answer recomputed on each from 87c7126's own functions and from the current tree's, all equal; kat_hosts names that record and kat_hosts_sha256 binds it, checked whenever the config is loaded, and a confirmatory run refuses while either is [FILL]): Python, numpy, scipy, numpy's BLAS as built and as it runs (its kernel and thread count, read from OpenBLAS), the SIMD extensions numpy found, the CPU model and its vector extensions, and OPENBLAS_NUM_THREADS and OMP_NUM_THREADS, both 1. The preflight refuses unless both variables are 1 (set before the process starts, so that the BLAS runs one thread), recomputes both answers in the run's own process before the analysis reads any data, refuses while either is [FILL] or when one differs, and names what in the environment differs from this record, or that nothing does. If the host must change, the calibrated answer is recomputed on the new host from 87c7126's own functions and the current tree's, and both hosts' values and environments are recorded; a frozen value is never edited to match a host. Entry 73 also has the report count, per claim, the resamples whose se* is floating-point residue of no spread (0 < se* < 1e-9), with a sensitivity analysis treating them as undefined when there are any, and show any interval bound beyond +-1 as UNBOUNDED. A confirmatory run takes this config only as loaded from this file (reloaded and compared before any data is read), and every results file records its path and sha256 (the freeze binds the file's hash); the calibration table, like the cluster map, is read only from its configured file by its frozen sha256. The confirmatory multiplicity is weighted Holm (design log, change-log entries 74 and 76; harness/analysis/multiplicity.py): holm_weights (C1a, C1b, C2, C3, C4, C5) = (1, 1, 4, 8, 1, 1)/16, the pooled C1a weighted as C1a, as integers; with S the claims not yet rejected, the smallest p*/w (family order on a tie) is rejected if p* <= alpha w / sum_S w, every level and threshold computed multiply first. p* is the smallest of a claim's usable reachable levels alpha w / s whose calibrated alpha' holds its test's p, 1 with none. multiplicity_table (step 1's alpha' at every reachable level, keyed by the integer s, weighted-holm-alpha/1) is data/analysis/weighted-holm-alpha.json, written by multiplicity.step_one_table through scripts/weighted_holm_tables.py alpha from step 1's stored p-values (bound to step 1 by step1.json's sha256 0e9232e9..., the fingerprint 770f9025... recomputed with 87c7126's code digest 81708e64..., the null counts and step1.json's own alpha' reproduced, and first its chunks by their content: step1_outputs, multiplicity.outputs_digest of calibrate.py's OUT/step1 (940 chunks, 10cac4f4..., hashed on SiteA on 2026-10-19, since step1.json records only the fingerprint the chunks carry), required before any p-value is read) and equal to results/weighted-holm-20261019/weighted-holm.json's alpha' bit for bit; step2_addendum (entry 91) is step 2's output, the usable levels per claim and the six-claim FWER check (weighted-holm-usable/2, naming the table's sha256), as the dated step-2 addendum scripts/weighted_holm_tables.py step2 writes with what it was computed from: data/analysis/weighted-holm-step2.json, dated 2026-10-20 (sha256 42cd54d8..., procedure 0294c59a..., step2_procedure_digest, registered in prereg as STEP2_PROCEDURE_DIGEST). A confirmatory run refuses while either is [FILL], and refuses an addendum the frozen step-2 procedure did not produce (multiplicity.check_addendum: N2, step 2's seed and seed scheme, the table's fingerprint and configurations, the frozen multiplicity digest, every decision re-derived from its recorded sizes, and the result recomputed from the step-2 outputs when they are on the host, else accepted only with the freeze check's record of that recomputation on SiteA in freeze_registry: data/freeze/recomputations.json, freeze-registry/2 step2_outputs (Slurm job 21160's record; step 3's step3_selection_outputs and step3_outputs are appended beside it; registry.json stays freeze-registry/1, the citation check's), the addendum's sha256, the frozen procedure, and the step-2 chunks' count and content sha256). The claim-level interval is at the claim's first weighted level 0.05 w / 16 with the calibrated alpha' there (ruling 1); CR2 beside it runs nominal weighted Holm, descriptive (ruling 2). multiplicity_digest is inference.multiplicity_digest() of that new code (the producers included) and multiplicity_kat_sha256 its known answer. The plain Holm's calibration and calibration_sha256 stay for the calibration scripts and are not read by a confirmatory run. masked_sources are C3's three masked-input generated draws, named as their source files and OntologySource names on feat/sources (data/sources/uniprot-sp-2026_03/generated-dc-{1,2,3}.json; spec trace B15): the ledger's bank rows must carry these source names. c1_leak_prompts (prereg \u00a75 'Prompt renders', change-log entry 91) are C1's two compared prompts by their frozen sha256 (feat/prompt-conditions data/prompts/uniprot-sp-2026_03/curated.prompt.txt 3b389cf7... and census.prompt.txt 7d1b3299..., prereg \u00a75's, recomputed from the files): a confirmatory run computes from them and the frozen gold, with the leak audit's matching rules, the questions with a gold answer value in one compared prompt only, and reports C1 without them as a descriptive second report (harness/analysis/leak.py, in no registry); it refuses without them. The ledgers name the census source census-t5 and the generic control's rows generic_retry/<arm>: the analysis maps census-t5 to census_source and generic_retry/curated to generic_source (pipeline.LEDGER_SOURCES), and the dev grid's generic cell gen:any (generic_retry/any) to generic_source too, but only for rows whose record shows a checker-loop/2 generic cell that decided on its arm's curated sources alone (spec trace B10, design log entry 91; pipeline.curated_generic_rows: its version, a curated source in its arm, every check report its decision read a curated source's), refusing any other such row; it refuses a ledger holding both names, or two names mapped to one arm; the mapping, ledger_source_names and curated_generic_rows are in the grouping registry, its digest and its known answer.",
+ "graph": "uniprot-sp-2026_03",
+ "models": [
+  "Qwen/Qwen3.8-27B",
+  "claude-sonnet-5-5"
+ ],
+ "panel": [
+  "claude-sonnet-5-5",
+  "Qwen/Qwen3.8-27B",
+  "zai-org/GLM-5.3-Flash",
+  "google/gemma-4-31B",
+  "claude-haiku-5-5",
+  "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+  "deepseek-ai/DeepSeek-V4-Flash-0731"
+ ],
+ "panel_families": [
+  "claude",
+  "qwen",
+  "zhipu",
+  "google",
+  "claude",
+  "qwen",
+  "deepseek"
+ ],
+ "c1a_family": "pooled C1a",
+ "c1a_power": {
+  "pooled C1a": 0.948,
+  "two-family": 0.034
+ },
+ "step2_fwer_failure": "every claim p = 1, no adjustment after step 2",
+ "refusal_rule": "refusal-v1",
+ "natural_cohort": "none",
+ "curated_prompt_cohort": "curated",
+ "census_prompt_cohort": "census",
+ "checker_use": "checker",
+ "curated_source": "curated",
+ "census_source": "census",
+ "union_source": "union",
+ "generic_source": "generic",
+ "bank_model": "bank",
+ "bank_use": "replay",
+ "masked_sources": [
+  "generated-dc-1",
+  "generated-dc-2",
+  "generated-dc-3"
+ ],
+ "scorer_version": "scorer-rules-v6",
+ "scorer_digest": "f359683f65f8e2a2e3846ca7f2de86feeff69851af4bf0b0f599ea057ada8c10",
+ "bank_manifest_sha256": "bd17577eeea591690ffb0c4677777967f2b3f3c0bdef5463c9f58dc602750c5a",
+ "questions_sha256": {
+  "uniprot-sp-2026_03": "17eef284d7c89c64e5da42245b0b09f21215d2ebd01e086670057baae36c9184"
+ },
+ "calibration": "[FILL]",
+ "calibration_sha256": "[FILL]",
+ "cluster_map": "data/questions/uniprot-sp-2026_03/extension/clusters.json",
+ "cluster_map_sha256": "c1b1a69d5b800784ab23d1ea01813cd23ebe7d2d3076ea9243139afc4dc00363",
+ "c1_leak_prompts": {
+  "curated": {
+   "file": "data/prompts/uniprot-sp-2026_03/curated.prompt.txt",
+   "sha256": "3b389cf7e52d1a04e3eeb6140435a6be644cfc2f8206611f5547fca3dd8f99d3"
+  },
+  "census": {
+   "file": "data/prompts/uniprot-sp-2026_03/census.prompt.txt",
+   "sha256": "7d1b3299e21e85fbfa3b061497fc7278a24d460b149e29a2e141b8706b237244"
+  }
+ },
+ "calibrated_inference_digest": "2292e5eb37cbfcae1fb4eb69bbdd46e6b43fa6ff6fb5090f44f9ed7086f71a8c",
+ "grouping_digest": "82b738c9ea7202da070d7f63fd67a741dda46c44556fabe80b1d15251413cec3",
+ "calibrated_kat_sha256": "7ecccd78a997df445b069bbb16d6dc2315494abf647a3b570e16fbee4f87edc2",
+ "grouping_kat_sha256": "98b738cbe49c6d1dee8b7a23e3116be37c40805ce7bc3d6941da31ac09f22c85",
+ "kat_environment": {
+  "python": "3.12.3",
+  "machine": "x86_64",
+  "numpy": "2.5.4",
+  "scipy": "not installed",
+  "blas (build)": "scipy-openblas 0.3.34.106.0 (OpenBLAS 0.3.34.106.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY SkylakeX MAX_THREADS=64)",
+  "blas core (run time)": "SkylakeX",
+  "blas threads (run time)": "1",
+  "simd found": "X86_V3 X86_V4",
+  "cpu model": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+  "cpu flags": "avx avx2 avx512_vnni avx512bw avx512cd avx512dq avx512f avx512vl fma",
+  "OPENBLAS_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "kat_hosts": "data/analysis/kat-hosts.json",
+ "kat_hosts_sha256": "3e7be2e5a97a4122444052758cd77260ce56d57be2ef5282f1f785d4d1dc9e20",
+ "holm_weights": {
+  "C1a": 1,
+  "C1a pooled": 1,
+  "C1b": 1,
+  "C2": 4,
+  "C3": 8,
+  "C4": 1,
+  "C5": 1
+ },
+ "multiplicity_table": "data/analysis/weighted-holm-alpha.json",
+ "multiplicity_table_sha256": "867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9",
+ "step1_outputs": {
+  "chunks": 940,
+  "sha256": "10cac4f4f4abe25929d100cca85002f9e6eaef5917a86105a8c024acfa8be038"
+ },
+ "step2_addendum": "data/analysis/weighted-holm-step2.json",
+ "step2_addendum_sha256": "87dd9abaa9fe04181b95e968bf088a273309cd6c6fc332db2083c8ba14a9bc22",
+ "step2_procedure_digest": "0294c59aeac46daf26439664c1a1fbf51936acbd38a61e1a26cd7bfb62348590",
+ "freeze_registry": "data/freeze/recomputations.json",
+ "step3_seeds": {
+  "selection": 20261103,
+  "validation": 20261104
+ },
+ "step3_configurations": "data/analysis/step3-configurations.json",
+ "step3_configurations_sha256": "257af545a53a32bcbc2165acbf207c7705e53d744be74cd7e8b1deda4e88e7d2",
+ "step3_fingerprint": "1b9929f29beaa2c9ea0c30baf2add2cdb894926545936ceeec26c635578bac5c",
+ "step3_selection": "data/analysis/weighted-holm-step3-alpha.json",
+ "step3_selection_sha256": "003d47ae65ebde262448392c1444f3570964d89c42951f5c9746fd94e38d4789",
+ "step3_addendum": "data/analysis/weighted-holm-step3.json",
+ "step3_addendum_sha256": "4a76d3718cc0f87128aea0840fe66d3d122b74d5ca94b744a0bcc489714e5707",
+ "multiplicity_digest": "699ee5cf8fe614a836a78c7d63c0ffb6a6caf9d9b84623ec2ef02fe535cf02b7",
+ "multiplicity_kat_sha256": "2d864efba662fd6a28758d437520123d21dbaf37972f7a9aefbaf9b1251d13cf",
+ "rewrites_adopted": true,
+ "split": "test",
+ "n_reps": 3,
+ "alpha": 0.05,
+ "c1_margin": 0.03,
+ "c2_min_effect": 0.05,
+ "c3_sesoi": 0.05,
+ "c4_sesoi": 0.01,
+ "c5_sesoi": 0.1,
+ "prevalence": 0.25,
+ "prevalences": [
+  0.1,
+  0.25,
+  0.5
+ ],
+ "n_boot": 10000,
+ "seed": 20261026,
+ "missing_limit": 0.02,
+ "c1a_eligibility": {
+  "rule": "c1a-eligibility/1: the pooled C1a is eligible only if entry 81 keeps all seven models of P (no model's dev capped:context rate differs between the curated and census arms by more than 2 points); if entry 81 takes any model out, the two-family C1a enters the family, with no recalibration (the pooled alpha' is calibrated for all of P); the ineligible pooled C1a's power is recorded as 0 beside its measured value",
+  "entry81_dropped": [],
+  "pooled_eligible": true,
+  "measured_power": {
+   "pooled C1a": 0.948,
+   "two-family": 0.034
+  }
+ }
+}

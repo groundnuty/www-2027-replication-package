@@ -1,0 +1,2399 @@
+{
+ "alpha": 0.05,
+ "date": "2026-10-22",
+ "families": {
+  "pooled C1a": {
+   "alpha_prime": {
+    "C1a pooled": {
+     "1": 0.046775000000000004,
+     "10": 0.0041975,
+     "11": 0.0037977272727272734,
+     "12": 0.003597916666666667,
+     "13": 0.002998076923076923,
+     "14": 0.002798214285714286,
+     "15": 0.0025983333333333336,
+     "16": 0.0023984375000000004,
+     "2": 0.0229875,
+     "3": 0.014991666666666665,
+     "4": 0.011393750000000001,
+     "5": 0.008995,
+     "6": 0.007395833333333334,
+     "7": 0.006196428571428572,
+     "8": 0.005596875000000001,
+     "9": 0.004997222222222222
+    },
+    "C1b": {
+     "1": 0.09187500000000001,
+     "10": 0.01,
+     "11": 0.009090909090909092,
+     "12": 0.008333333333333333,
+     "13": 0.007692307692307693,
+     "14": 0.0071428571428571435,
+     "15": 0.006666666666666667,
+     "16": 0.00625,
+     "2": 0.05,
+     "3": 0.03333333333333333,
+     "4": 0.025,
+     "5": 0.02,
+     "6": 0.016666666666666666,
+     "7": 0.014285714285714287,
+     "8": 0.0125,
+     "9": 0.011111111111111112
+    },
+    "C2": {
+     "12": 0.016191666666666667,
+     "13": 0.014392307692307694,
+     "14": 0.012992857142857145,
+     "15": 0.011593333333333334,
+     "16": 0.01059375,
+     "4": 0.070575,
+     "5": 0.053380000000000004,
+     "6": 0.042383333333333335,
+     "7": 0.03438571428571429,
+     "8": 0.0289875
+    },
+    "C3": {
+     "10": 0.01038,
+     "11": 0.008181818181818182,
+     "12": 0.006383333333333334,
+     "13": 0.004984615384615385,
+     "14": 0.004185714285714286,
+     "15": 0.0033866666666666667,
+     "16": 0.0027875,
+     "8": 0.016975,
+     "9": 0.012977777777777777
+    },
+    "C4": {
+     "1": 0.047775000000000005,
+     "10": 0.0045975,
+     "11": 0.004297727272727273,
+     "12": 0.0037979166666666665,
+     "13": 0.0033980769230769234,
+     "14": 0.003098214285714286,
+     "15": 0.0027983333333333337,
+     "16": 0.0024984375000000002,
+     "2": 0.0241875,
+     "3": 0.016091666666666667,
+     "4": 0.01229375,
+     "5": 0.009595000000000001,
+     "6": 0.0077958333333333334,
+     "7": 0.0068964285714285724,
+     "8": 0.006096875000000001,
+     "9": 0.0053972222222222225
+    },
+    "C5": {
+     "1": 0.047575000000000006,
+     "10": 0.0036975000000000003,
+     "11": 0.003197727272727273,
+     "12": 0.002997916666666667,
+     "13": 0.0022980769230769235,
+     "14": 0.002098214285714286,
+     "15": 0.0019983333333333337,
+     "16": 0.0018984375000000002,
+     "2": 0.021987500000000004,
+     "3": 0.013991666666666666,
+     "4": 0.011193750000000002,
+     "5": 0.008595,
+     "6": 0.006695833333333333,
+     "7": 0.005596428571428572,
+     "8": 0.0046968750000000005,
+     "9": 0.004197222222222223
+    }
+   },
+   "fwer": [
+    {
+     "configuration": "G0 global null",
+     "fwer": 0.01482,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "G0p global null, pooled C1a",
+     "fwer": 0.01495,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C1b",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A1 C1a LF up",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A2 C1a LF down",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A3 C1a LF up, accuracy 0.5, ICC 0.6",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A4 C1a LF up, rare discordance (accuracy 0.9, ICC 0.9)",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A5 C1a LF up, missingness 3%",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "P1 pooled C1a, heterogeneous zero mean",
+     "fwer": 0.01484,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "P2 pooled C1a, zero mean, cross-model dependence 0.8, ICC 0.6",
+     "fwer": 0.01651,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "P3 pooled C1a, zero mean, accuracy 0.8, missingness 3%",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B1 C1b at +3",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B2 C1b at -3",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B3 C1b at +3, accuracy 0.8, ICC 0.6",
+     "fwer": 0.00472,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B4 C1b at -3, missingness 3%",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C21 C2 (i) at 0, f = 0.02",
+     "fwer": 0.02759,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+     "fwer": 0.03857,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C23 C2 (i) at 0, f = 0.10, bank ICC 0.5",
+     "fwer": 0.00999,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C24 C2 (ii) at 0, recall 0.5",
+     "fwer": 0.02409,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C25 C2 (ii) at 0, recall 0.95 (near 1)",
+     "fwer": 0.02199,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5",
+     "fwer": 0.02218,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C31 C3 at 0, f = 0.02",
+     "fwer": 0.01175,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C32 C3 at 0, f = 0.005 (rates near 0)",
+     "fwer": 0.01902,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C33 C3 at 0, unequal draws (0, 0.02, 0.04)",
+     "fwer": 0.01106,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C34 C3 at 0, f = 0.10, bank ICC 0.5",
+     "fwer": 0.00962,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C41 C4 at 0 over curated (f 0.02, 0.05)",
+     "fwer": 0.02926,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C42 C4 at 0 over curated, rates near 0 (f 0.005, 0.01)",
+     "fwer": 0.00859,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C43 C4 at 0 over curated (f 0.05, 0.10), bank ICC 0.5",
+     "fwer": 0.00752,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C44 C4 at 0 over census (f 0.05, 0.02)",
+     "fwer": 0.0237,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C45 C4 at 0 over census, rates near 0 (f 0.01, 0.005)",
+     "fwer": 0.0081,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions",
+     "fwer": 0.02499,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D1 C5 all zero, independent retries",
+     "fwer": 0.02221,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D2 C5 heterogeneous zero mean, corruption 0.2",
+     "fwer": 0.02142,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D3 C5 zero mean, effects falling with flag rate",
+     "fwer": 0.01344,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D4 C5 zero mean, effects rising with flag rate",
+     "fwer": 0.01406,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D5 C5 zero mean, sparse flags (2%)",
+     "fwer": 0.00991,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+     "fwer": 0.01588,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D7 C5 zero mean, cross-model 0.8, effect spread 0.05",
+     "fwer": 0.01328,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D8 C5 zero mean, missingness (3%, retries 5%)",
+     "fwer": 9e-05,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "E1 C1a and C1b alternative (+0.02 for every model), C3 null at f = 0.002",
+     "fwer": 0.04127,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C3"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "E2 C1a and C1b alternative (heterogeneous over P, mean +0.02), C3 null at f = 0.02",
+     "fwer": 0.01094,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C3"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F1 C1a alone null (both variants: first family 0, second +0.025, pooled mean 0)",
+     "fwer": 0.02233,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F2 C1b alone null at +3 (other models +0.02)",
+     "fwer": 1e-05,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F3 C1b alone null at -3 (other models -0.02)",
+     "fwer": 3e-05,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points",
+     "fwer": 0.02548,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points",
+     "fwer": 0.02171,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F6 C4 alone null at Delta = 0 over curated (f 0.002, 0.03)",
+     "fwer": 0.01919,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F7 C5 alone null, heterogeneous zero mean, corruption 0.2",
+     "fwer": 0.01773,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC21 C2 (i) at 0, f = 0.02, mirrored: curated <-> census (census better)",
+     "fwer": 0.02851,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC22 C2 (i) at 0, f = 0.005 (rates near 0), mirrored: curated <-> census (census better)",
+     "fwer": 0.03798,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC23 C2 (i) at 0, f = 0.10, bank ICC 0.5, mirrored: curated <-> census (census better)",
+     "fwer": 0.01027,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC24 C2 (ii) at 0, recall 0.5, mirrored: curated <-> census (census better)",
+     "fwer": 0.0228,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a pooled",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC25 C2 (ii) at 0, recall 0.95 (near 1), mirrored: curated <-> census (census better)",
+     "fwer": 0.02178,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5, mirrored: curated <-> census (census better)",
+     "fwer": 0.02149,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions, mirrored: curated <-> census (census better)",
+     "fwer": 0.02517,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MF4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points, mirrored: curated <-> census (census better)",
+     "fwer": 0.02549,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MF5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points, mirrored: curated <-> census (census better)",
+     "fwer": 0.00977,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV1 C2 (i) at 0 at the dev midpoint f, (ii) census better as on dev",
+     "fwer": 0.02157,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV2 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) census better as on dev",
+     "fwer": 0.02099,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV3 C2 (i) at 0 at the dev midpoint f, (ii) curated better (dev difference reversed)",
+     "fwer": 0.0207,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV4 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) curated better (dev difference reversed)",
+     "fwer": 0.02159,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    }
+   ],
+   "fwer_pass": true,
+   "levels": {
+    "C2": {
+     "12": {
+      "alpha_prime": 0.016191666666666667,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.017476330520099406,
+      "se": 0.0004048319267163706,
+      "size": 0.01606,
+      "usable": true
+     },
+     "13": {
+      "alpha_prime": 0.014392307692307694,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.016163022193272217,
+      "se": 0.00038920340432841593,
+      "size": 0.01485,
+      "usable": true
+     },
+     "14": {
+      "alpha_prime": 0.012992857142857145,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.01503622431637507,
+      "se": 0.0003752550153303914,
+      "size": 0.01381,
+      "usable": true
+     },
+     "15": {
+      "alpha_prime": 0.011593333333333334,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.014058745093799225,
+      "se": 0.0003627058802329452,
+      "size": 0.0128,
+      "usable": true
+     },
+     "16": {
+      "alpha_prime": 0.01059375,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.013202673466127761,
+      "se": 0.0003513367330638799,
+      "size": 0.01196,
+      "usable": true
+     },
+     "4": {
+      "alpha_prime": 0.070575,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.051378404875209026,
+      "se": 0.0006892024376045111,
+      "size": 0.0477,
+      "usable": true
+     },
+     "5": {
+      "alpha_prime": 0.053380000000000004,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.04123935467078638,
+      "se": 0.0006196773353931866,
+      "size": 0.03857,
+      "usable": true
+     },
+     "6": {
+      "alpha_prime": 0.042383333333333335,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.034468625757728424,
+      "se": 0.0005676462121975467,
+      "size": 0.03236,
+      "usable": true
+     },
+     "7": {
+      "alpha_prime": 0.03438571428571429,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.02962509079511919,
+      "se": 0.0005268311118453079,
+      "size": 0.02764,
+      "usable": true
+     },
+     "8": {
+      "alpha_prime": 0.0289875,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.025987420882906575,
+      "se": 0.0004937104414532875,
+      "size": 0.02434,
+      "usable": true
+     }
+    },
+    "C5": {
+     "2": {
+      "alpha_prime": 0.021987500000000004,
+      "configuration": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+      "limit": 0.025987420882906575,
+      "se": 0.0004937104414532875,
+      "size": 0.0241,
+      "usable": true
+     },
+     "3": {
+      "alpha_prime": 0.013991666666666666,
+      "configuration": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+      "limit": 0.017476330520099406,
+      "se": 0.0004048319267163706,
+      "size": 0.01588,
+      "usable": true
+     }
+    }
+   },
+   "tests": {
+    "C1a pooled": "boot_t",
+    "C1b": "boot_t",
+    "C2": "boot_t",
+    "C3": "boot_t",
+    "C4": "boot_t",
+    "C5": "boot_t"
+   },
+   "usable": {
+    "C1a pooled": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C1b": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C2": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C3": [
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C4": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C5": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   }
+  },
+  "two-family": {
+   "alpha_prime": {
+    "C1a": {
+     "1": 0.057375,
+     "10": 0.0045975,
+     "11": 0.004197727272727273,
+     "12": 0.003997916666666667,
+     "13": 0.0035980769230769235,
+     "14": 0.003398214285714286,
+     "15": 0.0031983333333333334,
+     "16": 0.0029984375000000002,
+     "2": 0.0235875,
+     "3": 0.016191666666666667,
+     "4": 0.012993750000000002,
+     "5": 0.009195,
+     "6": 0.006795833333333333,
+     "7": 0.006396428571428573,
+     "8": 0.005796875,
+     "9": 0.005197222222222222
+    },
+    "C1b": {
+     "1": 0.09187500000000001,
+     "10": 0.01,
+     "11": 0.009090909090909092,
+     "12": 0.008333333333333333,
+     "13": 0.007692307692307693,
+     "14": 0.0071428571428571435,
+     "15": 0.006666666666666667,
+     "16": 0.00625,
+     "2": 0.05,
+     "3": 0.03333333333333333,
+     "4": 0.025,
+     "5": 0.02,
+     "6": 0.016666666666666666,
+     "7": 0.014285714285714287,
+     "8": 0.0125,
+     "9": 0.011111111111111112
+    },
+    "C2": {
+     "12": 0.016191666666666667,
+     "13": 0.014392307692307694,
+     "14": 0.012992857142857145,
+     "15": 0.011593333333333334,
+     "16": 0.01059375,
+     "4": 0.070575,
+     "5": 0.053380000000000004,
+     "6": 0.042383333333333335,
+     "7": 0.03438571428571429,
+     "8": 0.0289875
+    },
+    "C3": {
+     "10": 0.01038,
+     "11": 0.008181818181818182,
+     "12": 0.006383333333333334,
+     "13": 0.004984615384615385,
+     "14": 0.004185714285714286,
+     "15": 0.0033866666666666667,
+     "16": 0.0027875,
+     "8": 0.016975,
+     "9": 0.012977777777777777
+    },
+    "C4": {
+     "1": 0.047775000000000005,
+     "10": 0.0045975,
+     "11": 0.004297727272727273,
+     "12": 0.0037979166666666665,
+     "13": 0.0033980769230769234,
+     "14": 0.003098214285714286,
+     "15": 0.0027983333333333337,
+     "16": 0.0024984375000000002,
+     "2": 0.0241875,
+     "3": 0.016091666666666667,
+     "4": 0.01229375,
+     "5": 0.009595000000000001,
+     "6": 0.0077958333333333334,
+     "7": 0.0068964285714285724,
+     "8": 0.006096875000000001,
+     "9": 0.0053972222222222225
+    },
+    "C5": {
+     "1": 0.047575000000000006,
+     "10": 0.0036975000000000003,
+     "11": 0.003197727272727273,
+     "12": 0.002997916666666667,
+     "13": 0.0022980769230769235,
+     "14": 0.002098214285714286,
+     "15": 0.0019983333333333337,
+     "16": 0.0018984375000000002,
+     "2": 0.021987500000000004,
+     "3": 0.013991666666666666,
+     "4": 0.011193750000000002,
+     "5": 0.008595,
+     "6": 0.006695833333333333,
+     "7": 0.005596428571428572,
+     "8": 0.0046968750000000005,
+     "9": 0.004197222222222223
+    }
+   },
+   "fwer": [
+    {
+     "configuration": "G0 global null",
+     "fwer": 0.01477,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "G0p global null, pooled C1a",
+     "fwer": 0.01447,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A1 C1a LF up",
+     "fwer": 0.00842,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A2 C1a LF down",
+     "fwer": 0.0082,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A3 C1a LF up, accuracy 0.5, ICC 0.6",
+     "fwer": 0.00948,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A4 C1a LF up, rare discordance (accuracy 0.9, ICC 0.9)",
+     "fwer": 0.0169,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "A5 C1a LF up, missingness 3%",
+     "fwer": 8e-05,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "P1 pooled C1a, heterogeneous zero mean",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "P2 pooled C1a, zero mean, cross-model dependence 0.8, ICC 0.6",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "P3 pooled C1a, zero mean, accuracy 0.8, missingness 3%",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B1 C1b at +3",
+     "fwer": 0.00115,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B2 C1b at -3",
+     "fwer": 0.00098,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B3 C1b at +3, accuracy 0.8, ICC 0.6",
+     "fwer": 0.00854,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "B4 C1b at -3, missingness 3%",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C21 C2 (i) at 0, f = 0.02",
+     "fwer": 0.0205,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+     "fwer": 0.03857,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C23 C2 (i) at 0, f = 0.10, bank ICC 0.5",
+     "fwer": 0.00999,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C24 C2 (ii) at 0, recall 0.5",
+     "fwer": 0.01791,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C25 C2 (ii) at 0, recall 0.95 (near 1)",
+     "fwer": 0.02199,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5",
+     "fwer": 0.02218,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C31 C3 at 0, f = 0.02",
+     "fwer": 0.00861,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C32 C3 at 0, f = 0.005 (rates near 0)",
+     "fwer": 0.01902,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C33 C3 at 0, unequal draws (0, 0.02, 0.04)",
+     "fwer": 0.01106,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C34 C3 at 0, f = 0.10, bank ICC 0.5",
+     "fwer": 0.00962,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C41 C4 at 0 over curated (f 0.02, 0.05)",
+     "fwer": 0.01518,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C42 C4 at 0 over curated, rates near 0 (f 0.005, 0.01)",
+     "fwer": 0.00858,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C43 C4 at 0 over curated (f 0.05, 0.10), bank ICC 0.5",
+     "fwer": 0.00752,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C44 C4 at 0 over census (f 0.05, 0.02)",
+     "fwer": 0.0237,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C45 C4 at 0 over census, rates near 0 (f 0.01, 0.005)",
+     "fwer": 0.0081,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "C27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions",
+     "fwer": 0.02499,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D1 C5 all zero, independent retries",
+     "fwer": 0.01121,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D2 C5 heterogeneous zero mean, corruption 0.2",
+     "fwer": 0.01113,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D3 C5 zero mean, effects falling with flag rate",
+     "fwer": 0.01344,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D4 C5 zero mean, effects rising with flag rate",
+     "fwer": 0.01406,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D5 C5 zero mean, sparse flags (2%)",
+     "fwer": 0.00991,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+     "fwer": 0.01588,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D7 C5 zero mean, cross-model 0.8, effect spread 0.05",
+     "fwer": 0.01328,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "D8 C5 zero mean, missingness (3%, retries 5%)",
+     "fwer": 9e-05,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C4",
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "E1 C1a and C1b alternative (+0.02 for every model), C3 null at f = 0.002",
+     "fwer": 0.04008,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C3"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "E2 C1a and C1b alternative (heterogeneous over P, mean +0.02), C3 null at f = 0.02",
+     "fwer": 0.01013,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C3"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F1 C1a alone null (both variants: first family 0, second +0.025, pooled mean 0)",
+     "fwer": 0.00155,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F2 C1b alone null at +3 (other models +0.02)",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F3 C1b alone null at -3 (other models -0.02)",
+     "fwer": 0.0,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points",
+     "fwer": 0.02351,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points",
+     "fwer": 0.01989,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F6 C4 alone null at Delta = 0 over curated (f 0.002, 0.03)",
+     "fwer": 0.01568,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "F7 C5 alone null, heterogeneous zero mean, corruption 0.2",
+     "fwer": 0.01425,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C5"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC21 C2 (i) at 0, f = 0.02, mirrored: curated <-> census (census better)",
+     "fwer": 0.02114,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC22 C2 (i) at 0, f = 0.005 (rates near 0), mirrored: curated <-> census (census better)",
+     "fwer": 0.03798,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC23 C2 (i) at 0, f = 0.10, bank ICC 0.5, mirrored: curated <-> census (census better)",
+     "fwer": 0.01027,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C3",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC24 C2 (ii) at 0, recall 0.5, mirrored: curated <-> census (census better)",
+     "fwer": 0.01678,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1a",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC25 C2 (ii) at 0, recall 0.95 (near 1), mirrored: curated <-> census (census better)",
+     "fwer": 0.02178,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5, mirrored: curated <-> census (census better)",
+     "fwer": 0.02149,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MC27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions, mirrored: curated <-> census (census better)",
+     "fwer": 0.02517,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MF4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points, mirrored: curated <-> census (census better)",
+     "fwer": 0.02357,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "MF5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points, mirrored: curated <-> census (census better)",
+     "fwer": 0.00914,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C2"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV1 C2 (i) at 0 at the dev midpoint f, (ii) census better as on dev",
+     "fwer": 0.02157,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV2 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) census better as on dev",
+     "fwer": 0.02099,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV3 C2 (i) at 0 at the dev midpoint f, (ii) curated better (dev difference reversed)",
+     "fwer": 0.0207,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    },
+    {
+     "configuration": "DV4 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) curated better (dev difference reversed)",
+     "fwer": 0.02159,
+     "limit": 0.051378404875209026,
+     "null_claims": [
+      "C1b",
+      "C2",
+      "C4"
+     ],
+     "pass": true
+    }
+   ],
+   "fwer_pass": true,
+   "levels": {
+    "C1a": {
+     "6": {
+      "alpha_prime": 0.006795833333333333,
+      "configuration": "A4 C1a LF up, rare discordance (accuracy 0.9, ICC 0.9)",
+      "limit": 0.008908272943688678,
+      "se": 0.00028746980517767236,
+      "size": 0.00776,
+      "usable": true
+     }
+    },
+    "C2": {
+     "12": {
+      "alpha_prime": 0.016191666666666667,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.017476330520099406,
+      "se": 0.0004048319267163706,
+      "size": 0.01606,
+      "usable": true
+     },
+     "13": {
+      "alpha_prime": 0.014392307692307694,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.016163022193272217,
+      "se": 0.00038920340432841593,
+      "size": 0.01485,
+      "usable": true
+     },
+     "14": {
+      "alpha_prime": 0.012992857142857145,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.01503622431637507,
+      "se": 0.0003752550153303914,
+      "size": 0.01381,
+      "usable": true
+     },
+     "15": {
+      "alpha_prime": 0.011593333333333334,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.014058745093799225,
+      "se": 0.0003627058802329452,
+      "size": 0.0128,
+      "usable": true
+     },
+     "16": {
+      "alpha_prime": 0.01059375,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.013202673466127761,
+      "se": 0.0003513367330638799,
+      "size": 0.01196,
+      "usable": true
+     },
+     "4": {
+      "alpha_prime": 0.070575,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.051378404875209026,
+      "se": 0.0006892024376045111,
+      "size": 0.0477,
+      "usable": true
+     },
+     "5": {
+      "alpha_prime": 0.053380000000000004,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.04123935467078638,
+      "se": 0.0006196773353931866,
+      "size": 0.03857,
+      "usable": true
+     },
+     "6": {
+      "alpha_prime": 0.042383333333333335,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.034468625757728424,
+      "se": 0.0005676462121975467,
+      "size": 0.03236,
+      "usable": true
+     },
+     "7": {
+      "alpha_prime": 0.03438571428571429,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.02962509079511919,
+      "se": 0.0005268311118453079,
+      "size": 0.02764,
+      "usable": true
+     },
+     "8": {
+      "alpha_prime": 0.0289875,
+      "configuration": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+      "limit": 0.025987420882906575,
+      "se": 0.0004937104414532875,
+      "size": 0.02434,
+      "usable": true
+     }
+    },
+    "C5": {
+     "2": {
+      "alpha_prime": 0.021987500000000004,
+      "configuration": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+      "limit": 0.025987420882906575,
+      "se": 0.0004937104414532875,
+      "size": 0.0241,
+      "usable": true
+     },
+     "3": {
+      "alpha_prime": 0.013991666666666666,
+      "configuration": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+      "limit": 0.017476330520099406,
+      "se": 0.0004048319267163706,
+      "size": 0.01588,
+      "usable": true
+     }
+    }
+   },
+   "tests": {
+    "C1a": "boot_t",
+    "C1b": "boot_t",
+    "C2": "boot_t",
+    "C3": "boot_t",
+    "C4": "boot_t",
+    "C5": "boot_t"
+   },
+   "usable": {
+    "C1a": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C1b": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C2": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C3": [
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C4": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ],
+    "C5": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   }
+  }
+ },
+ "inputs": {
+  "configurations": [
+   {
+    "name": "G0 global null",
+    "null": [
+     "C1a",
+     "C1b",
+     "C2",
+     "C3",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "G0p global null, pooled C1a",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C1b",
+     "C2",
+     "C3",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "A1 C1a LF up",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "A2 C1a LF down",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "A3 C1a LF up, accuracy 0.5, ICC 0.6",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "A4 C1a LF up, rare discordance (accuracy 0.9, ICC 0.9)",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "A5 C1a LF up, missingness 3%",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "P1 pooled C1a, heterogeneous zero mean",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "P2 pooled C1a, zero mean, cross-model dependence 0.8, ICC 0.6",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "P3 pooled C1a, zero mean, accuracy 0.8, missingness 3%",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "B1 C1b at +3",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "B2 C1b at -3",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "B3 C1b at +3, accuracy 0.8, ICC 0.6",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "B4 C1b at -3, missingness 3%",
+    "null": [
+     "C1a",
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "C21 C2 (i) at 0, f = 0.02",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C2"
+    ]
+   },
+   {
+    "name": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+    "null": [
+     "C1b",
+     "C2"
+    ]
+   },
+   {
+    "name": "C23 C2 (i) at 0, f = 0.10, bank ICC 0.5",
+    "null": [
+     "C1b",
+     "C2",
+     "C3",
+     "C4"
+    ]
+   },
+   {
+    "name": "C24 C2 (ii) at 0, recall 0.5",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "C25 C2 (ii) at 0, recall 0.95 (near 1)",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "C26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "C31 C3 at 0, f = 0.02",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C3",
+     "C4"
+    ]
+   },
+   {
+    "name": "C32 C3 at 0, f = 0.005 (rates near 0)",
+    "null": [
+     "C1b",
+     "C3",
+     "C4"
+    ]
+   },
+   {
+    "name": "C33 C3 at 0, unequal draws (0, 0.02, 0.04)",
+    "null": [
+     "C1b",
+     "C3",
+     "C4"
+    ]
+   },
+   {
+    "name": "C34 C3 at 0, f = 0.10, bank ICC 0.5",
+    "null": [
+     "C1b",
+     "C3",
+     "C4"
+    ]
+   },
+   {
+    "name": "C41 C4 at 0 over curated (f 0.02, 0.05)",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C4"
+    ]
+   },
+   {
+    "name": "C42 C4 at 0 over curated, rates near 0 (f 0.005, 0.01)",
+    "null": [
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "C43 C4 at 0 over curated (f 0.05, 0.10), bank ICC 0.5",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "C44 C4 at 0 over census (f 0.05, 0.02)",
+    "null": [
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "C45 C4 at 0 over census, rates near 0 (f 0.01, 0.005)",
+    "null": [
+     "C1b",
+     "C4"
+    ]
+   },
+   {
+    "name": "C27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions",
+    "null": [
+     "C1b",
+     "C2"
+    ]
+   },
+   {
+    "name": "D1 C5 all zero, independent retries",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D2 C5 heterogeneous zero mean, corruption 0.2",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D3 C5 zero mean, effects falling with flag rate",
+    "null": [
+     "C1b",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D4 C5 zero mean, effects rising with flag rate",
+    "null": [
+     "C1b",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D5 C5 zero mean, sparse flags (2%)",
+    "null": [
+     "C1b",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+    "null": [
+     "C1b",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D7 C5 zero mean, cross-model 0.8, effect spread 0.05",
+    "null": [
+     "C1b",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "D8 C5 zero mean, missingness (3%, retries 5%)",
+    "null": [
+     "C1b",
+     "C4",
+     "C5"
+    ]
+   },
+   {
+    "name": "E1 C1a and C1b alternative (+0.02 for every model), C3 null at f = 0.002",
+    "null": [
+     "C3"
+    ]
+   },
+   {
+    "name": "E2 C1a and C1b alternative (heterogeneous over P, mean +0.02), C3 null at f = 0.02",
+    "null": [
+     "C3"
+    ]
+   },
+   {
+    "name": "F1 C1a alone null (both variants: first family 0, second +0.025, pooled mean 0)",
+    "null": [
+     "C1a",
+     "C1a pooled"
+    ]
+   },
+   {
+    "name": "F2 C1b alone null at +3 (other models +0.02)",
+    "null": [
+     "C1b"
+    ]
+   },
+   {
+    "name": "F3 C1b alone null at -3 (other models -0.02)",
+    "null": [
+     "C1b"
+    ]
+   },
+   {
+    "name": "F4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points",
+    "null": [
+     "C2"
+    ]
+   },
+   {
+    "name": "F5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points",
+    "null": [
+     "C2"
+    ]
+   },
+   {
+    "name": "F6 C4 alone null at Delta = 0 over curated (f 0.002, 0.03)",
+    "null": [
+     "C4"
+    ]
+   },
+   {
+    "name": "F7 C5 alone null, heterogeneous zero mean, corruption 0.2",
+    "null": [
+     "C5"
+    ]
+   },
+   {
+    "name": "MC21 C2 (i) at 0, f = 0.02, mirrored: curated <-> census (census better)",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C2"
+    ]
+   },
+   {
+    "name": "MC22 C2 (i) at 0, f = 0.005 (rates near 0), mirrored: curated <-> census (census better)",
+    "null": [
+     "C1b",
+     "C2"
+    ]
+   },
+   {
+    "name": "MC23 C2 (i) at 0, f = 0.10, bank ICC 0.5, mirrored: curated <-> census (census better)",
+    "null": [
+     "C1b",
+     "C2",
+     "C3",
+     "C4"
+    ]
+   },
+   {
+    "name": "MC24 C2 (ii) at 0, recall 0.5, mirrored: curated <-> census (census better)",
+    "null": [
+     "C1a",
+     "C1a pooled",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "MC25 C2 (ii) at 0, recall 0.95 (near 1), mirrored: curated <-> census (census better)",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "MC26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5, mirrored: curated <-> census (census better)",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "MC27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions, mirrored: curated <-> census (census better)",
+    "null": [
+     "C1b",
+     "C2"
+    ]
+   },
+   {
+    "name": "MF4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points, mirrored: curated <-> census (census better)",
+    "null": [
+     "C2"
+    ]
+   },
+   {
+    "name": "MF5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points, mirrored: curated <-> census (census better)",
+    "null": [
+     "C2"
+    ]
+   },
+   {
+    "name": "DV1 C2 (i) at 0 at the dev midpoint f, (ii) census better as on dev",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "DV2 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) census better as on dev",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "DV3 C2 (i) at 0 at the dev midpoint f, (ii) curated better (dev difference reversed)",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   },
+   {
+    "name": "DV4 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) curated better (dev difference reversed)",
+    "null": [
+     "C1b",
+     "C2",
+     "C4"
+    ]
+   }
+  ],
+  "fingerprint": "1b9929f29beaa2c9ea0c30baf2add2cdb894926545936ceeec26c635578bac5c",
+  "inference": "2292e5eb37cbfcae1fb4eb69bbdd46e6b43fa6ff6fb5090f44f9ed7086f71a8c",
+  "n": 100000,
+  "outputs": {
+   "chunks": 3000,
+   "directory": "/shared/projects/proj/www-2027/calibration-step3/out",
+   "sha256": "bb4897e689546dbb2a59c65fa2a554e67432ce9118a54de9392a69208dd1958b"
+  },
+  "procedure": "699ee5cf8fe614a836a78c7d63c0ffb6a6caf9d9b84623ec2ef02fe535cf02b7",
+  "producer": "harness.analysis.multiplicity.step_three (scripts/weighted_holm_tables.py step3)",
+  "seed": 20261104,
+  "seed_scheme": "numpy default_rng([step seed, configuration index, dataset index])",
+  "selection_sha256": "003d47ae65ebde262448392c1444f3570964d89c42951f5c9746fd94e38d4789",
+  "step2_addendum_sha256": "87dd9abaa9fe04181b95e968bf088a273309cd6c6fc332db2083c8ba14a9bc22",
+  "table_sha256": "867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9"
+ },
+ "rules": {
+  "scope": "step3-scope/1 (entry 106): every level of C2 (two-sided, a new statistic: nothing carries over from the one-sided calibration) and the levels that failed step 2 (each claim's reachable levels outside its step-2 usable set: C1a two-family s = 6, C5 s = 2 and 3); every other level keeps its alpha' and its step-2 verdict",
+  "selection": "selection/2: alpha'(a) the largest grid value j x 0.0005 a (j <= 4000) whose one-sided 95% Clopper-Pearson upper bound on the size is <= a in every null configuration of the claim, then step 1's monotone snap from the largest level down; a repaired level at most the next larger level's alpha' and unusable below the next smaller kept level's; C2's test by entry 46's rule on the selection run, a repaired level keeps its claim's step-1 test; C2 on the selection run's draws, a repaired claim in each null configuration on every draw that applies, pooled (steps 1 and 2's and the selection run's)",
+  "validation": "validation/1: on fresh draws (the validation seed, N3 per configuration) step 2's rule per selected level (size <= a + 2 SE, else unusable), then the six-claim FWER <= alpha + 2 SE in every configuration with the final usable levels; a failed FWER check gives every claim p = 1"
+ },
+ "schema": "weighted-holm-step3/1",
+ "weights": {
+  "C1a": 1,
+  "C1a pooled": 1,
+  "C1b": 1,
+  "C2": 4,
+  "C3": 8,
+  "C4": 1,
+  "C5": 1
+ }
+}

@@ -1,0 +1,30 @@
+[project]
+name = "www2027-harness"
+version = "0.1.0"
+description = "Experiment harness for the WWW 2027 paper: question generation, agent runs, scoring and run records"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.27",
+    "anthropic>=0.40",
+    "openai>=1.50",
+    "rdflib>=7",
+    "tiktoken>=0.14,<0.15",
+    "numpy>=2",
+    "tokenizers>=0.23.3,<0.24",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["harness"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# rdflib's SPARQL engine calls its own deprecated Dataset API internally.
+filterwarnings = ["ignore::DeprecationWarning:rdflib.*"]
+markers = ["integration: needs the Rhea 142 store at QGEN_ENDPOINT (default http://localhost:7019/) or, for slow UniProt checks, the UniProt store at QGEN_UNIPROT_ENDPOINT (default http://localhost:7020/); skipped when unreachable"]

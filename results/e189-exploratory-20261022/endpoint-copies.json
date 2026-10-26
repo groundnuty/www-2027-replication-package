@@ -1,0 +1,114 @@
+{
+ "copies": [
+  {
+   "basis": "operational note withheld",
+   "endpoint_sha256": "0eb6764ce2a660fc1e889c526dc13750dfaf2127cc0dc250e8d76b8df631d90f",
+   "graph": "opaque-rhea-142",
+   "replica": "opaque-rhea-c05",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "endpoint_sha256": "0d4386b1394edd1aa67f23d0b51d90aa6a66345526be51a164116ce9f7fcd037",
+   "graph": "rhea-142",
+   "replica": "rhea-c06",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "endpoint_sha256": "588836988a85adcc45c488e8cadd0e91d1f5e72e62072b8254eea01f8dd6e7f0",
+   "graph": "text2sparql-ck26",
+   "replica": "corporate-c07",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "endpoint_sha256": "76bf86d5bfea5f1f650decb891db72a5c9319583ab6fac4da587722715222d81",
+   "graph": "text2sparql-ck26",
+   "replica": "corporate-siteb-1",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  }
+ ],
+ "rule": "operational note withheld",
+ "schema": "e189-endpoint-copies/1"
+}

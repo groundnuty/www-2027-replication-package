@@ -1,0 +1,10086 @@
+{
+ "source": "resampled from the bank's 210 test questions within template x tier strata to 180 per template (seed [20261101, 180]); not a real extension",
+ "n": 1260,
+ "questions": [
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 3
+  },
+  {
+   "template": "absence_negation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "absence_negation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 7,
+   "C": 2,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 8,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "aggregation",
+   "tier": "lookup",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 10,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "cross_graph_join",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "multi_hop_path",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 11,
+   "C": 1,
+   "T": 6,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 5,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 8,
+   "C": 4,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "compositional",
+   "W": 7,
+   "C": 5,
+   "T": 4,
+   "k": 2
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 10,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "numeric_filter",
+   "tier": "lookup",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 7,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 8,
+   "C": 3,
+   "T": 5,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 4,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "compositional",
+   "W": 9,
+   "C": 2,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 7,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "one_hop_attribute",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 0
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 8,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 9,
+   "C": 1,
+   "T": 6,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "compositional",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 5,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  },
+  {
+   "template": "type_members",
+   "tier": "lookup",
+   "W": 6,
+   "C": 1,
+   "T": 4,
+   "k": 1
+  }
+ ]
+}

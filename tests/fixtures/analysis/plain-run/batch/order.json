@@ -1,0 +1,42 @@
+{
+ "order": [
+  [
+   "fake",
+   "none",
+   "t02-q3",
+   0
+  ],
+  [
+   "fake",
+   "none",
+   "t01-q1",
+   0
+  ],
+  [
+   "fake",
+   "none",
+   "t01-q1",
+   1
+  ],
+  [
+   "fake",
+   "none",
+   "t02-q3",
+   1
+  ],
+  [
+   "fake",
+   "none",
+   "t01-q2",
+   1
+  ],
+  [
+   "fake",
+   "none",
+   "t01-q2",
+   0
+  ]
+ ],
+ "rule": "sorted by sha256 of '<seed>|' followed by the compact JSON of [model, arm, question id, repetition]",
+ "seed": 16272123359160238814
+}

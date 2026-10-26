@@ -1,0 +1,477 @@
+{
+ "configurations": [
+  {
+   "name": "G0 global null",
+   "null": [
+    "C1a",
+    "C1b",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "G0p global null, pooled C1a",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C1b",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "A1 C1a LF up",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "A2 C1a LF down",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "A3 C1a LF up, accuracy 0.5, ICC 0.6",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "A4 C1a LF up, rare discordance (accuracy 0.9, ICC 0.9)",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "A5 C1a LF up, missingness 3%",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "P1 pooled C1a, heterogeneous zero mean",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "P2 pooled C1a, zero mean, cross-model dependence 0.8, ICC 0.6",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "P3 pooled C1a, zero mean, accuracy 0.8, missingness 3%",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "B1 C1b at +3",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "B2 C1b at -3",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "B3 C1b at +3, accuracy 0.8, ICC 0.6",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "B4 C1b at -3, missingness 3%",
+   "null": [
+    "C1a",
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "C21 C2 (i) at 0, f = 0.02",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C2"
+   ]
+  },
+  {
+   "name": "C22 C2 (i) at 0, f = 0.005 (rates near 0)",
+   "null": [
+    "C1b",
+    "C2"
+   ]
+  },
+  {
+   "name": "C23 C2 (i) at 0, f = 0.10, bank ICC 0.5",
+   "null": [
+    "C1b",
+    "C2",
+    "C3",
+    "C4"
+   ]
+  },
+  {
+   "name": "C24 C2 (ii) at 0, recall 0.5",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "C25 C2 (ii) at 0, recall 0.95 (near 1)",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "C26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "C31 C3 at 0, f = 0.02",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C3",
+    "C4"
+   ]
+  },
+  {
+   "name": "C32 C3 at 0, f = 0.005 (rates near 0)",
+   "null": [
+    "C1b",
+    "C3",
+    "C4"
+   ]
+  },
+  {
+   "name": "C33 C3 at 0, unequal draws (0, 0.02, 0.04)",
+   "null": [
+    "C1b",
+    "C3",
+    "C4"
+   ]
+  },
+  {
+   "name": "C34 C3 at 0, f = 0.10, bank ICC 0.5",
+   "null": [
+    "C1b",
+    "C3",
+    "C4"
+   ]
+  },
+  {
+   "name": "C41 C4 at 0 over curated (f 0.02, 0.05)",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C4"
+   ]
+  },
+  {
+   "name": "C42 C4 at 0 over curated, rates near 0 (f 0.005, 0.01)",
+   "null": [
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "C43 C4 at 0 over curated (f 0.05, 0.10), bank ICC 0.5",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "C44 C4 at 0 over census (f 0.05, 0.02)",
+   "null": [
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "C45 C4 at 0 over census, rates near 0 (f 0.01, 0.005)",
+   "null": [
+    "C1b",
+    "C4"
+   ]
+  },
+  {
+   "name": "C27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions",
+   "null": [
+    "C1b",
+    "C2"
+   ]
+  },
+  {
+   "name": "D1 C5 all zero, independent retries",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D2 C5 heterogeneous zero mean, corruption 0.2",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D3 C5 zero mean, effects falling with flag rate",
+   "null": [
+    "C1b",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D4 C5 zero mean, effects rising with flag rate",
+   "null": [
+    "C1b",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D5 C5 zero mean, sparse flags (2%)",
+   "null": [
+    "C1b",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D6 C5 zero mean, retry coupling 0.9 (rare discordance)",
+   "null": [
+    "C1b",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D7 C5 zero mean, cross-model 0.8, effect spread 0.05",
+   "null": [
+    "C1b",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "D8 C5 zero mean, missingness (3%, retries 5%)",
+   "null": [
+    "C1b",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "name": "E1 C1a and C1b alternative (+0.02 for every model), C3 null at f = 0.002",
+   "null": [
+    "C3"
+   ]
+  },
+  {
+   "name": "E2 C1a and C1b alternative (heterogeneous over P, mean +0.02), C3 null at f = 0.02",
+   "null": [
+    "C3"
+   ]
+  },
+  {
+   "name": "F1 C1a alone null (both variants: first family 0, second +0.025, pooled mean 0)",
+   "null": [
+    "C1a",
+    "C1a pooled"
+   ]
+  },
+  {
+   "name": "F2 C1b alone null at +3 (other models +0.02)",
+   "null": [
+    "C1b"
+   ]
+  },
+  {
+   "name": "F3 C1b alone null at -3 (other models -0.02)",
+   "null": [
+    "C1b"
+   ]
+  },
+  {
+   "name": "F4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points",
+   "null": [
+    "C2"
+   ]
+  },
+  {
+   "name": "F5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points",
+   "null": [
+    "C2"
+   ]
+  },
+  {
+   "name": "F6 C4 alone null at Delta = 0 over curated (f 0.002, 0.03)",
+   "null": [
+    "C4"
+   ]
+  },
+  {
+   "name": "F7 C5 alone null, heterogeneous zero mean, corruption 0.2",
+   "null": [
+    "C5"
+   ]
+  },
+  {
+   "name": "MC21 C2 (i) at 0, f = 0.02, mirrored: curated <-> census (census better)",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C2"
+   ]
+  },
+  {
+   "name": "MC22 C2 (i) at 0, f = 0.005 (rates near 0), mirrored: curated <-> census (census better)",
+   "null": [
+    "C1b",
+    "C2"
+   ]
+  },
+  {
+   "name": "MC23 C2 (i) at 0, f = 0.10, bank ICC 0.5, mirrored: curated <-> census (census better)",
+   "null": [
+    "C1b",
+    "C2",
+    "C3",
+    "C4"
+   ]
+  },
+  {
+   "name": "MC24 C2 (ii) at 0, recall 0.5, mirrored: curated <-> census (census better)",
+   "null": [
+    "C1a",
+    "C1a pooled",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "MC25 C2 (ii) at 0, recall 0.95 (near 1), mirrored: curated <-> census (census better)",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "MC26 C2 (ii) at 0, recall 0.05 (near 0), bank ICC 0.5, mirrored: curated <-> census (census better)",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "MC27 C2 (i) at 0, f = 0.02, rewrites concentrated on a tenth of the questions, mirrored: curated <-> census (census better)",
+   "null": [
+    "C1b",
+    "C2"
+   ]
+  },
+  {
+   "name": "MF4 C2 alone null, (i) at 0 (f = 0.02 both), (ii) +30 points, mirrored: curated <-> census (census better)",
+   "null": [
+    "C2"
+   ]
+  },
+  {
+   "name": "MF5 C2 alone null, (ii) at 0 (recall 0.5 both), (i) +4.8 points, mirrored: curated <-> census (census better)",
+   "null": [
+    "C2"
+   ]
+  },
+  {
+   "name": "DV1 C2 (i) at 0 at the dev midpoint f, (ii) census better as on dev",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "DV2 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) census better as on dev",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "DV3 C2 (i) at 0 at the dev midpoint f, (ii) curated better (dev difference reversed)",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  },
+  {
+   "name": "DV4 C2 (ii) at 0 at the dev midpoint type-wrong recall, (i) curated better (dev difference reversed)",
+   "null": [
+    "C1b",
+    "C2",
+    "C4"
+   ]
+  }
+ ],
+ "n": 210,
+ "producer": "harness.analysis.calibration.step3_configuration_list",
+ "schema": "step3-configurations/1",
+ "structure_sha256": "01fd8a3cd63805aa24e6de71d7bd9477566649b4522b8fd4c9081ee2096620c4"
+}

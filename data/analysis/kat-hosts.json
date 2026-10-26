@@ -1,0 +1,77 @@
+{
+ "schema": "kat-hosts/1",
+ "note": "The hosts the known answers (harness/analysis/kat.py) were computed on, per the config's host-change rule (data/analysis/prereg-config.json, kat_environment): on each, the current tree's three answers (kat.known_answers) and the calibrated answer from 87c7126's own modules (tests/test_analysis_kat.py's procedure: this tree's KAT driver loaded from outside, run on git archive 87c7126 harness), with the environment (kat.environment), single-threaded (OPENBLAS_NUM_THREADS=1, OMP_NUM_THREADS=1). confirmatory is the host kat_environment records, the merged tree's (integration/freeze) venv on the agents VM, Python 3.12 as the merged tree pins it (design ruling, design log, 20 Oct); earlier is the host the answers were first recorded on; corroborating is a further 3.12 environment built from this branch's uv.lock. Recomputed 2026-10-21 on feat/freeze-recomputations after binding step 2's dated addendum and pointing freeze_registry at the recomputations file (a test run's tables stay unfrozen until step 3 is bound too, and before the C1a choice take the two-family final calibration), which moved the grouping answer, the calibrated answer unchanged; first computed at 5d181b3. No value differs between them.",
+ "confirmatory": {
+  "interpreter": "the merged tree's venv (integration/freeze .venv, /usr/bin/python3.12)",
+  "environment": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "blas (build)": "scipy-openblas 0.3.34.106.0 (OpenBLAS 0.3.34.106.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY SkylakeX MAX_THREADS=64)",
+   "blas core (run time)": "SkylakeX",
+   "blas threads (run time)": "1",
+   "cpu flags": "avx avx2 avx512_vnni avx512bw avx512cd avx512dq avx512f avx512vl fma",
+   "cpu model": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+   "machine": "x86_64",
+   "numpy": "2.5.4",
+   "python": "3.12.3",
+   "scipy": "not installed",
+   "simd found": "X86_V3 X86_V4"
+  },
+  "known_answers": {
+   "calibrated": "7ecccd78a997df445b069bbb16d6dc2315494abf647a3b570e16fbee4f87edc2",
+   "grouping": "98b738cbe49c6d1dee8b7a23e3116be37c40805ce7bc3d6941da31ac09f22c85",
+   "multiplicity": "2d864efba662fd6a28758d437520123d21dbaf37972f7a9aefbaf9b1251d13cf"
+  },
+  "calibrated_from_87c7126": "be1ebf5702e0e625c9e2fe9b22b3e0c8b40b80fe4dacf1b162f7c253a23d1cbc"
+ },
+ "earlier": [
+  {
+   "interpreter": "feat/analysis .venv (Homebrew python3.15)",
+   "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "blas (build)": "scipy-openblas 0.3.34.106.0 (OpenBLAS 0.3.34.106.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64)",
+    "blas core (run time)": "SkylakeX",
+    "blas threads (run time)": "1",
+    "cpu flags": "avx avx2 avx512_vnni avx512bw avx512cd avx512dq avx512f avx512vl fma",
+    "cpu model": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+    "machine": "x86_64",
+    "numpy": "2.5.4",
+    "python": "3.15.0",
+    "scipy": "not installed",
+    "simd found": "X86_V3 X86_V4"
+   },
+   "known_answers": {
+    "calibrated": "7ecccd78a997df445b069bbb16d6dc2315494abf647a3b570e16fbee4f87edc2",
+    "grouping": "98b738cbe49c6d1dee8b7a23e3116be37c40805ce7bc3d6941da31ac09f22c85",
+    "multiplicity": "2d864efba662fd6a28758d437520123d21dbaf37972f7a9aefbaf9b1251d13cf"
+   },
+   "calibrated_from_87c7126": "be1ebf5702e0e625c9e2fe9b22b3e0c8b40b80fe4dacf1b162f7c253a23d1cbc"
+  }
+ ],
+ "corroborating": [
+  {
+   "interpreter": "a separate venv from feat/analysis's uv.lock (uv-managed python3.12)",
+   "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "blas (build)": "scipy-openblas 0.3.34.106.0 (OpenBLAS 0.3.34.106.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY SkylakeX MAX_THREADS=64)",
+    "blas core (run time)": "SkylakeX",
+    "blas threads (run time)": "1",
+    "cpu flags": "avx avx2 avx512_vnni avx512bw avx512cd avx512dq avx512f avx512vl fma",
+    "cpu model": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+    "machine": "x86_64",
+    "numpy": "2.5.4",
+    "python": "3.12.14",
+    "scipy": "not installed",
+    "simd found": "X86_V3 X86_V4"
+   },
+   "known_answers": {
+    "calibrated": "7ecccd78a997df445b069bbb16d6dc2315494abf647a3b570e16fbee4f87edc2",
+    "grouping": "98b738cbe49c6d1dee8b7a23e3116be37c40805ce7bc3d6941da31ac09f22c85",
+    "multiplicity": "2d864efba662fd6a28758d437520123d21dbaf37972f7a9aefbaf9b1251d13cf"
+   },
+   "calibrated_from_87c7126": "be1ebf5702e0e625c9e2fe9b22b3e0c8b40b80fe4dacf1b162f7c253a23d1cbc"
+  }
+ ]
+}

@@ -1,0 +1,661 @@
+diff --git a/scripts/probe_plan.py b/scripts/probe_plan.py
+new file mode 100644
+index 00000000..2b0fd96a
+--- /dev/null
++++ b/scripts/probe_plan.py
+@@ -0,0 +1,271 @@
++#!/usr/bin/env python3
++"""Call-only plan for a closed-book probe run (design log): which attempts a start of scripts/run_probes.py should call.
++
++    python3 scripts/probe_plan.py --graph rhea-142 --out OUT --models qwen3.8-27b --order-seed 20261022 \\
++        --probe-targets answer=1,query=1 --m 105 --write plan.json
++    python3 scripts/probe_plan.py --graph rhea-142 --out OUT --models qwen3.8-27b --order-seed 20261022 \\
++        --probe-targets answer=1,query=1 --table --m-list 0,52,105,158,210
++
++The plan file is run_probes.py's ``--call-only`` input (schema probe-call-only/1). Run it with the runner stopped: a
++reply that lands after the plan is made is not in it, and the next start then calls one attempt more than the plan
++needed (never one twice: a kept reply is not called again).
++
++Rule ("top up to a per-cell target"). A cell is (model, probe, question). Its target is the probe's ``--probe-targets``
++value (1: the registered plan is answer 1, query 1); for the query probe, the questions of the seeded subset S_M get
++one more: S_M is the first M of the question file's distinct BASE question ids (``base_question_id``, else the id)
++sorted by sha256 of ``SELECTION_SEED|base id`` (``--selection-seed``), so a natural graph and its opaque twin, which
++share base ids and not question ids, get the same subset. A cell with d attempts that have a kept reply is topped up with its first ``max(0, target - d)``
++not-yet-done attempts in the run's seeded order; attempts already done always stay (the runner builds a record for
++every kept reply whatever the plan says). The attempts are written in the run's order.
++
++Names only. The plan is made from the question file (test split: question id, base id, split), the run's order.json
++(rebuilt from --models, --probes, --reps, --limit, --order-seed and the questions, and refused unless it equals the
++file's order exactly) and the NAMES in OUT/<graph>/replies/, a kept reply being named by its attempt's digest
++(run_probes.attempt_digest). A reply, a record or a log is never opened. Records mean phase 2 already ran, which this
++plan is not for: records/ or harness/ holding any entry is refused. Names in replies/ that are no attempt of the order
++are counted and ignored. ``--write`` creates the file mode 0600 and never overwrites one. The output is counts and the
++file's sha256, never an id (a private graph's ids stay in its directory); ``--table`` prints integers only.
++
++Exit status: 0 done; 2 refused.
++"""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++import os
++import sys
++from pathlib import Path
++
++REPO = Path(__file__).resolve().parent.parent
++sys.path.insert(0, str(REPO))
++sys.path.insert(0, str(Path(__file__).resolve().parent))
++
++from harness.probe.prompts import get_probe  # noqa: E402
++from run_pilot import Refused, interleaved_order, order_sha256  # noqa: E402
++from run_probes import (  # noqa: E402
++    CALL_ONLY_SCHEMA,
++    DEFAULT_GRAPHS,
++    attempt_digest,
++    expand_models,
++    load_graphs,
++    questions_path,
++    refuse_heldout,
++)
++
++SELECTION_SEED = 20261026  # the registered seed of the second-repetition subset (science, the design log)
++SPLIT = "test"  # a plan is made for the test split only
++
++
++def parse_targets(text: str, probes: list[str]) -> dict[str, int]:
++    """``answer=1,query=1`` as {probe: target}: every probe of the run once, each with the one planned target, 1 (a
++    target of 0 or 2 would under- or over-deliver the registered plan, and no other target is planned)."""
++    targets: dict[str, int] = {}
++    for item in text.split(","):
++        name, _, raw = item.partition("=")
++        if name not in ("answer", "query") or raw != "1" or name in targets:
++            raise Refused(f"--probe-targets {text!r}: expected answer=1,query=1, each probe once, naming the run's "
++                          f"probes; 1 is the only planned target (a second query repetition comes from --m)")
++        targets[name] = 1
++    if set(targets) != set(probes):
++        raise Refused(f"--probe-targets {text!r} must name exactly the run's probes ({', '.join(probes)})")
++    return targets
++
++
++def read_questions(path: Path, limit: int | None) -> list[tuple[str, str]]:
++    """The test split's (question id, base question id) in file order, cut to ``limit`` as the runner cuts it. Only
++    the split, the id and the base id of a row are kept."""
++    rows: list[tuple[str, str]] = []
++    seen: set[str] = set()
++    with path.open(encoding="utf-8") as fh:
++        for n, line in enumerate(fh, start=1):
++            if not line.strip():
++                continue
++            try:
++                row = json.loads(line)
++                if row.get("split") != SPLIT:
++                    continue
++                qid = row["id"]
++                base = row.get("base_question_id") or qid
++                if not (isinstance(qid, str) and isinstance(base, str)):
++                    raise KeyError(qid)
++            except (ValueError, AttributeError, KeyError):
++                raise Refused(f"{path}:{n}: not a question row (an object with an id and a split)") from None
++            if qid in seen:
++                raise Refused(f"{path}:{n}: a question id is listed twice")
++            seen.add(qid)
++            rows.append((qid, base))
++    return rows[:limit]
++
++
++def base_subset(bases: set[str], m: int, selection_seed: int) -> frozenset[str]:
++    """The first ``m`` base ids by sha256 of ``seed|base id`` (ties by the id); all of them when ``m`` is larger."""
++    ranked = sorted(bases, key=lambda b: (hashlib.sha256(f"{selection_seed}|{b}".encode()).hexdigest(), b))
++    return frozenset(ranked[:m])
++
++
++class Run:
++    """What a plan needs of one run: its full order, the attempts with a kept reply, and each question's base id."""
++
++    def __init__(self, args: argparse.Namespace):
++        for path, what in ((args.graphs_config, "--graphs-config"), (args.out, "--out"), (args.write, "--write")):
++            refuse_heldout(path, what)
++        graphs = load_graphs(args.graphs_config)
++        if args.graph not in graphs:
++            raise Refused(f"unknown graph {args.graph!r}")
++        qpath = questions_path(graphs[args.graph])
++        if qpath is None or not qpath.is_file():
++            raise Refused(f"graph {args.graph}: no question file")
++        refuse_heldout(qpath, f"graph {args.graph}'s question file")
++        self.models = list(dict.fromkeys(expand_models(args.models)))
++        self.probes = list(args.probes)
++        self.reps = args.reps
++        self.seed = args.order_seed
++        self.targets = parse_targets(args.probe_targets, self.probes)
++        questions = read_questions(qpath, args.limit)
++        if not questions:
++            raise Refused(f"no {SPLIT}-split questions in the graph's question file")
++        self.base = dict(questions)
++        self.order = [tuple(a) for a in interleaved_order(
++            self.models, [get_probe(p).id for p in self.probes], [q for q, _ in questions], self.reps, self.seed)]
++        run_dir = args.out / args.graph
++        recorded = self._recorded_order(run_dir / "order.json", self.seed)
++        if len(recorded) != len(self.order) or order_sha256(recorded) != order_sha256(self.order):
++            raise Refused(f"{run_dir / 'order.json'}: its order is not the order these arguments rebuild "
++                          f"({len(recorded)} attempts there, {len(self.order)} here); check --models, --probes, "
++                          f"--reps, --limit, --order-seed and the question file")
++        for sub in ("records", "harness"):
++            d = run_dir / sub
++            if d.is_dir() and any(d.iterdir()):
++                raise Refused(f"{d} is not empty: records mean phase 2 already ran, which a call-only plan is not "
++                              f"for")
++        replies = run_dir / "replies"
++        names = {p.stem for p in replies.glob("*.json")} if replies.is_dir() else set()
++        self.done = {a for a in self.order if attempt_digest(a) in names}
++        self.foreign_names = len(names) - len(self.done)
++        self.name_of = {get_probe(p).id: p for p in self.probes}
++
++    @staticmethod
++    def _recorded_order(path: Path, seed: int) -> list[tuple]:
++        """The run's order.json (an order file, not a reply or a record), refused unless it is the run's seed."""
++        try:
++            data = json.loads(path.read_text(encoding="utf-8"))
++            recorded = [tuple(a) for a in data["order"]]
++            recorded_seed = data["seed"]
++        except (OSError, ValueError, KeyError, TypeError):
++            raise Refused(f"{path}: cannot be read as the run's order.json") from None
++        if recorded_seed != seed:
++            raise Refused(f"{path}: the run's order seed is {recorded_seed}, not {seed}")
++        return recorded
++
++    def plan(self, m: int, selection_seed: int) -> list[tuple]:
++        """The attempts to call for ``m`` second query repetitions, in the run's order."""
++        selected = base_subset(set(self.base.values()), m, selection_seed) if "query" in self.probes else frozenset()
++        cells: dict[tuple, list[tuple]] = {}
++        for attempt in self.order:  # a cell's attempts, in the run's order
++            cells.setdefault(attempt[:3], []).append(attempt)
++        chosen: set[tuple] = set()
++        for (_, probe_id, qid), attempts in cells.items():
++            name = self.name_of[probe_id]
++            target = self.targets[name] + (1 if name == "query" and self.base[qid] in selected else 0)
++            if target > self.reps:
++                raise Refused(f"a cell's target {target} is above the run's {self.reps} repetition(s)")
++            need = max(0, target - sum(a in self.done for a in attempts))
++            chosen.update([a for a in attempts if a not in self.done][:need])
++        return [a for a in self.order if a in chosen]
++
++
++def plan_bytes(seed: int, attempts: list[tuple]) -> bytes:
++    """The plan file: fixed separators, sorted keys, no time or host (the same inputs give the same bytes)."""
++    body = {"schema": CALL_ONLY_SCHEMA, "order_seed": seed, "attempts": [list(a) for a in attempts]}
++    return (json.dumps(body, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
++
++
++def write_new(path: Path, data: bytes) -> None:
++    """Create ``path`` mode 0600 and write ``data``; an existing file is never touched, and a failed write removes
++    the file this call made."""
++    try:
++        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
++    except FileExistsError:
++        raise Refused(f"{path} exists; a plan file is never overwritten") from None
++    except OSError as exc:
++        raise Refused(f"{path}: cannot be created ({exc.strerror or type(exc).__name__})") from None
++    try:
++        os.fchmod(fd, 0o600)
++        with os.fdopen(fd, "wb") as fh:
++            fh.write(data)
++            fh.flush()
++            os.fsync(fh.fileno())
++    except BaseException:
++        try:
++            os.unlink(path)
++        except OSError:
++            pass
++        raise
++
++
++def parse_args(argv: list[str] | None) -> argparse.Namespace:
++    p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
++    p.add_argument("--graphs-config", type=Path, default=DEFAULT_GRAPHS)
++    p.add_argument("--graph", required=True, help="the graph's name in --graphs-config")
++    p.add_argument("--out", type=Path, required=True, help="the run's OUT directory (OUT/<graph>/order.json, replies/)")
++    p.add_argument("--models", nargs="+", required=True, help="as the run's --models")
++    p.add_argument("--probes", nargs="+", choices=("answer", "query"), default=["answer", "query"],
++                   help="as the run's --probes")
++    p.add_argument("--reps", type=int, default=3, help="as the run's --reps")
++    p.add_argument("--limit", type=int, default=None, help="as the run's --limit")
++    p.add_argument("--order-seed", type=int, required=True, help="the run's order seed")
++    p.add_argument("--selection-seed", type=int, default=SELECTION_SEED, help="the seed of the subset S_M")
++    p.add_argument("--probe-targets", required=True, metavar="answer=N,query=N",
++                   help="the attempts each cell of a probe is topped up to")
++    mode = p.add_mutually_exclusive_group(required=True)
++    mode.add_argument("--write", type=Path, metavar="FILE", help="write the plan for --m (mode 0600, never overwrites)")
++    mode.add_argument("--table", action="store_true", help="print integers only, for each M of --m-list")
++    p.add_argument("--m", type=int, default=None, help="the size of the subset S_M (with --write)")
++    p.add_argument("--m-list", default=None, metavar="M,M,...", help="the subset sizes to size (with --table)")
++    args = p.parse_args(argv)
++    if args.reps < 1 or (args.limit is not None and args.limit < 1):
++        p.error("--reps and --limit must be positive")
++    if args.write is not None:
++        if args.m is None or args.m < 0:
++            p.error("--write needs --m (not negative)")
++        args.m_values = [args.m]
++    else:
++        if args.m is not None or not args.m_list:
++            p.error("--table needs --m-list and takes no --m")
++        try:
++            args.m_values = [int(x) for x in args.m_list.split(",")]
++        except ValueError:
++            p.error("--m-list must be whole numbers separated by commas")
++        if any(m < 0 for m in args.m_values):
++            p.error("--m-list must not hold a negative number")
++    return args
++
++
++def main(argv: list[str] | None = None, *, out=None) -> int:
++    out = out or sys.stdout
++    args = parse_args(argv)
++    try:
++        run = Run(args)
++        if args.table:
++            print("M order_total done to_call", file=out)
++            for m in args.m_values:
++                print(f"{m} {len(run.order)} {len(run.done)} {len(run.plan(m, args.selection_seed))}", file=out)
++            return 0
++        attempts = run.plan(args.m, args.selection_seed)
++        data = plan_bytes(run.seed, attempts)
++        write_new(args.write, data)
++        print(f"order_total={len(run.order)} done={len(run.done)} replies_outside_order={run.foreign_names} "
++              f"m={args.m} to_call={len(attempts)} file_sha256={hashlib.sha256(data).hexdigest()}", file=out)
++        return 0
++    except Refused as exc:
++        print(f"error: {exc}", file=sys.stderr)
++        return 2
++    except (OSError, ValueError) as exc:  # a question file or order.json that cannot be read: refused, not a traceback
++        print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
++        return 2
++
++
++if __name__ == "__main__":
++    sys.exit(main())
+diff --git a/scripts/run_probes.py b/scripts/run_probes.py
+index e91c9a41..1f4a80e5 100644
+--- a/scripts/run_probes.py
++++ b/scripts/run_probes.py
+@@ -97,6 +97,33 @@ try; the tries of each attempt are counted from its ``infrastructure/`` records,
+ resubmission's custom id (run, attempt and try number) is always new and a restart never resets
+ the rerun budget.
+ 
++Request time-out. ``--runner-settings FILE`` gives a model its own request time-out: the JSON object of
++run_pilot's plain path, ``{"request_timeout_s": {MODEL: SECONDS}}``, read and applied by the same code
++(run_pilot.plain_runner_settings, through grid_models: the model's route rebuilt by ``with_options``, checked to
++differ from the table's in nothing else; refused for a route that cannot be rebuilt so, a model not of --models, a
++key given twice, any other key). ``max_turns`` is refused: a probe is one call with no tools, so it has no turns to
++cap. The route's settings carry the time-out, so every kept reply and record (``route.settings.request_timeout_s``)
++and the manifest's routes record it, a resume under another one is refused, and the start's manifest entry records
++the file's object (``runner_settings``). Without the flag every route is the table's (600 s for an
++OpenAI-compatible route), as before.
++
++Call-only plans. ``--call-only FILE`` (``{"schema": "probe-call-only/1", "order_seed": N, "attempts": [[model, probe
++id, question id, repetition], ...]}``) makes a start call only the listed attempts that have no kept reply and no
++record: it filters phase 1's list of calls and nothing else. The order, each attempt's position, ``order.json``, the
++order's sha256, every record's runner block and the fingerprint are those of the full plan, and phase 2 builds a
++record for every kept reply in that order, listed or not, so an attempt already done is never stranded and never
++called again. The file is refused, before anything is written or called, unless its schema and types are exact, its
++``order_seed`` is the run's, no attempt is listed twice, and every attempt is of one of --models and in the run's full
++order (--models, --probes, --reps, --limit and the questions as without the flag). Each start's manifest entry records
++``call_only``: the file's sha256, the attempts listed, the kept replies and the records the start found, the attempts
++of Message Batches an earlier start submitted and left uncollected (``outstanding_batch_attempts``: phase 1 collects
++them whatever the file lists), and ``plan_total``: the kept replies, the records, the outstanding batch attempts and
++the attempts this start calls, i.e. what the run holds when its calls are done (a ceiling if a collected request ends
++as an infrastructure failure). A start exits 0 when its calls ended without a fault whatever the attempts outside the
++file have: they have no record and no reply, and are not counted anywhere. A run killed in phase 1 holds kept replies
++and no records (records are built in phase 2, after every call returned), so a run is complete only when its last
++start finished phase 1. With --dry-run the flag is refused.
++
+ Exit status: 0 all attempts recorded; 1 an attempt crashed in the runner; 2 refused before
+ starting; 3 a model stopped (misconfigured route, a batch submission that failed, a reconcile
+ within the grace period that found no batch: run it again later, or a create that never said it
+@@ -161,6 +188,7 @@ from run_pilot import (  # noqa: E402
+     CONFIG_ERROR_CLASSES,
+     MODELS,
+     PROVIDER_RERUN_WAIT_S,
++    TURN_CAP_KEY,
+     ModelSpec,
+     Refused,
+     StartGate,
+@@ -172,9 +200,11 @@ from run_pilot import (  # noqa: E402
+     load_questions,
+     order_key,
+     order_sha256,
++    plain_runner_settings,
+     record_order,
+     release_lock,
+     route_fingerprint,
++    say_runner_settings,
+ )
+ 
+ REPO = Path(__file__).resolve().parent.parent
+@@ -184,6 +214,7 @@ MUST_MODELS = ("claude-sonnet-5-5", "qwen3.8-27b", "deepseek-v4-flash-0731", "de
+ PANEL_MODELS = ("glm-5.3-flash", "gemma-4-31b", "llama-3.3-70b", "claude-haiku-5-5")
+ MODEL_GROUPS = {"must": MUST_MODELS, "panel": PANEL_MODELS, "all": MUST_MODELS + PANEL_MODELS}
+ MAX_SPARQL_TIMEOUT_S = 290.0
++CALL_ONLY_SCHEMA = "probe-call-only/1"  # scripts/probe_plan.py writes it
+ # Cost estimate of --dry-run: the round-1 calibration's Sonnet 5.5 records (UniProt and Rhea, 378 attempts)
+ # give the first turn's output, one call with adaptive thinking that writes a query: median 128 and 131
+ # tokens, mean 133 and 131; and 3.38 characters of question text per input token (a fit of the first
+@@ -310,9 +341,11 @@ def refuse_heldout(path: Path | None, what: str) -> None:
+ 
+ def selected_graphs(args: argparse.Namespace) -> dict[str, dict]:
+     """The graphs named by --graph, after refusing any path under heldout/ (the graph list, the store
+-    description, the run directory, the pre-registration repository and each question file)."""
++    description, the run directory, the pre-registration repository, the runner-settings and call-only files and each
++    question file)."""
+     for path, what in ((args.graphs_config, "--graphs-config"), (args.store_json, "--store-json"),
+-                       (args.out, "--out"), (args.prereg_repo, "--prereg-repo")):
++                       (args.out, "--out"), (args.prereg_repo, "--prereg-repo"),
++                       (args.runner_settings, "--runner-settings"), (args.call_only, "--call-only")):
+         refuse_heldout(path, what)
+     graphs = load_graphs(args.graphs_config)
+     chosen = {}
+@@ -353,6 +386,16 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
+                         "allowed (F1 review, item 11)")
+     p.add_argument("--concurrency", type=int, default=4, help="synchronous calls in flight per model")
+     p.add_argument("--concurrency-for", action="append", default=[], metavar="MODEL=N")
++    p.add_argument("--runner-settings", type=Path, default=None, metavar="FILE",
++                   help='a model\'s own request time-out, {"request_timeout_s": {MODEL: SECONDS}} (run_pilot\'s '
++                        'plain-path file; max_turns is refused: a probe has no turns); recorded in each route\'s '
++                        'settings and in the start\'s manifest entry')
++    p.add_argument("--call-only", type=Path, default=None, metavar="FILE",
++                   help='call only the attempts listed in FILE ({"schema": "probe-call-only/1", "order_seed": N, '
++                        '"attempts": [[model, probe id, question id, repetition], ...]}) that have no kept reply and '
++                        'no record; the order, positions, order.json and the records of every kept reply are those of '
++                        'the full plan (phase 2 builds them all); refused unless the file matches this run; recorded '
++                        'in the start\'s manifest entry (call_only)')
+     p.add_argument("--endpoint", help="the graph's SPARQL endpoint URL (probe (b))")
+     p.add_argument("--store-json", type=Path, help="JSON file describing the store")
+     p.add_argument("--row-cap", type=int, default=500)
+@@ -372,6 +415,8 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
+         p.error("--reps, --concurrency and --row-cap must be positive, --infra-reruns not negative")
+     if args.confirm_no_batch and not args.reconcile_batches:
+         p.error("--confirm-no-batch needs --reconcile-batches")
++    if args.call_only is not None and args.dry_run:
++        p.error("--call-only is for a run; a dry run counts the full plan")
+     if args.row_cap > RAW_ROW_CAP:  # the scored rows are cut from the stored raw result (tools.RAW_ROW_CAP)
+         p.error(f"--row-cap must be at most {RAW_ROW_CAP}, the rows of a raw result a record keeps")
+     if not 0 < args.sparql_timeout <= MAX_SPARQL_TIMEOUT_S:
+@@ -410,6 +455,132 @@ def call_mode(route: Any, args: argparse.Namespace) -> str:
+     return "batch" if route.provider == "anthropic" and args.anthropic_mode == "batch" else "sync"
+ 
+ 
++# Science, the design log:51Z (the follow-up of change-log entry 180): the Gateway routes' 600 s request
++# time-out cut probe replies, so a probe run takes a model's own request time-out from run_pilot's plain-path file,
++# read and applied by the same plain_runner_settings (grid_models), so that a probe route is rebuilt exactly as an agent
++# run's is. Nothing else of the run changes: without the flag the table is used as it is.
++def probe_runner_settings(path: Path, names: list[str], models: dict[str, ModelSpec]
++                          ) -> tuple[dict[str, ModelSpec], dict]:
++    """``--runner-settings``: (the table with each named model's route rebuilt with its request time-out, the file's
++    object). Refused as run_pilot refuses the file, and when it sets ``max_turns``: a probe is one call with no tools,
++    so a turn cap would cap nothing (a key that changes nothing is not accepted as if it did)."""
++    table, settings = plain_runner_settings(path, names, models)
++    if TURN_CAP_KEY in settings:
++        raise Refused(f"--runner-settings {path}: {TURN_CAP_KEY}: a probe is one call with no tools, so it has no turns "
++                      f"to cap; leave the key out")
++    return dict(table), settings
++
++
++# --- call-only plans ------------------------------------------------------------------------------
++# Science, the design log (23 Oct): the runs cannot call every attempt of the full plan by the cut, so a start may
++# be told to call a subset. The file is read once (the bytes hashed are the bytes parsed) and checked in two steps:
++# its own form and the models in run() (no question is loaded), its place in this run's order in _run (before anything
++# is written). A message names an attempt by its index in the file, never by its ids: a private graph's ids stay
++# in its directory.
++
++
++def _object_without_repeated_keys(pairs: list[tuple[str, Any]]) -> dict:
++    """json.loads keeps the last of a repeated key and drops the others, which could hide a list behind another."""
++    keys = [k for k, _ in pairs]
++    if len(set(keys)) != len(keys):
++        raise ValueError("a key is given twice")
++    return dict(pairs)
++
++
++def read_call_only(path: Path, models: list[str]) -> dict:
++    """``--call-only``: the file's sha256, order seed and attempts (as tuples), refused unless the schema and every
++    type are exact, no attempt is listed twice and every attempt names one of ``models``. ``True`` and ``1.0`` are not
++    repetitions (they compare equal to 1 inside a tuple, so a loose file would pass the order check)."""
++    try:
++        raw = path.read_bytes()
++    except OSError as exc:
++        raise Refused(f"--call-only {path}: cannot be read ({exc.strerror or type(exc).__name__})") from None
++    try:
++        data = json.loads(raw.decode("utf-8"), object_pairs_hook=_object_without_repeated_keys)
++    except ValueError:
++        raise Refused(f"--call-only {path}: not a JSON file, or a key is given twice in it") from None
++    if not isinstance(data, dict) or data.get("schema") != CALL_ONLY_SCHEMA:
++        raise Refused(f"--call-only {path}: not a {CALL_ONLY_SCHEMA} file")
++    extra = sorted(set(data) - {"schema", "order_seed", "attempts"})
++    if extra:
++        raise Refused(f"--call-only {path}: unknown key(s) {', '.join(map(str, extra))}")
++    seed, attempts = data.get("order_seed"), data.get("attempts")
++    if type(seed) is not int:
++        raise Refused(f"--call-only {path}: order_seed must be an integer")
++    if not isinstance(attempts, list):
++        raise Refused(f"--call-only {path}: attempts must be a list")
++    listed: list[tuple] = []
++    seen: set[tuple] = set()
++    for i, item in enumerate(attempts):
++        if not (isinstance(item, list) and len(item) == 4 and all(type(x) is str for x in item[:3])
++                and type(item[3]) is int and item[3] >= 0):
++            raise Refused(f"--call-only {path}: attempt #{i} is not [model, probe id, question id, repetition]")
++        attempt = tuple(item)
++        if attempt[0] not in models:
++            raise Refused(f"--call-only {path}: attempt #{i} is of a model that is not one of --models")
++        if attempt in seen:
++            raise Refused(f"--call-only {path}: attempt #{i} is listed twice")
++        seen.add(attempt)
++        listed.append(attempt)
++    return {"path": path, "file_sha256": hashlib.sha256(raw).hexdigest(), "order_seed": seed, "attempts": listed,
++            "set": frozenset(seen)}
++
++
++def check_call_only(given: dict, seed: int, order: list[tuple]) -> None:
++    """Refuse a call-only file whose order seed is not the run's, or that lists an attempt this run's full order
++    does not hold (another reps, probes, question set or limit)."""
++    path = given["path"]
++    if given["order_seed"] != seed:
++        raise Refused(f"--call-only {path}: order_seed {given['order_seed']} is not this run's order seed {seed}")
++    planned = set(order)
++    missing = [i for i, attempt in enumerate(given["attempts"]) if attempt not in planned]
++    if missing:
++        raise Refused(f"--call-only {path}: {len(missing)} of its {len(given['attempts'])} attempts are not in this "
++                      f"run's order (the first is attempt #{missing[0]}); nothing is written or called")
++
++
++def planned_order(args: argparse.Namespace, path: Path, questions: list[dict]) -> tuple[int, list[tuple]]:
++    """The run's order seed and full order of attempts, as ``_run_locked`` records them (and ``--call-only`` is
++    checked against)."""
++    seed = args.order_seed if args.order_seed is not None else default_order_seed(path)
++    model_names = list(dict.fromkeys(args.models))
++    order = interleaved_order(model_names, [get_probe(p).id for p in args.probes], [q["id"] for q in questions],
++                              args.reps, seed)
++    return seed, order
++
++
++def outstanding_batch_attempts(batches_dir: Path) -> set[tuple]:
++    """The attempts of Message Batches an earlier start submitted and did not collect: phase 1 collects them and keeps
++    their replies, whatever a call-only file lists, so a start's plan total counts them. A submission marker
++    (``submitting-*.json``, a create whose batch id was never written) is not counted: reconciling it may adopt its
++    batch or drop it, which cannot be known beforehand, so a call-only start refuses while one is left."""
++    found: set[tuple] = set()
++    if not batches_dir.is_dir():
++        return found
++    for path in sorted(batches_dir.glob("msgbatch*.json")):
++        state = json.loads(path.read_text(encoding="utf-8"))
++        if state.get("status") != "collected":
++            found.update(tuple(entry["attempt"]) for entry in (state.get("requests") or {}).values())
++    return found
++
++
++def plan_calls(order: list[tuple], *, recorded: Callable[[tuple], bool], kept: Callable[[tuple], bool],
++               listed: frozenset | None) -> tuple[list[tuple], int, int]:
++    """Phase 1's calls, in order: (the attempts to call, attempts with a record, attempts with a kept reply and no
++    record). An attempt with a record is skipped, one with a kept reply is not called again, and with ``listed`` only
++    a listed attempt is called; the full order is not filtered (phase 2 builds the records of every kept reply)."""
++    to_call: list[tuple] = []
++    n_recorded = n_kept = 0
++    for attempt in order:
++        if recorded(attempt):
++            n_recorded += 1
++        elif kept(attempt):
++            n_kept += 1
++        elif listed is None or attempt in listed:
++            to_call.append(attempt)
++    return to_call, n_recorded, n_kept
++
++
+ # --- dry run -------------------------------------------------------------------------------------
+ 
+ 
+@@ -565,7 +736,15 @@ def run(argv: list[str] | None = None, *, models: dict[str, ModelSpec] = MODELS,
+     try:
+         graphs = selected_graphs(args)
+         freeze = check_split(args, [name for name, g in graphs.items() if g.get("freeze_gated")])
++        args.runner_settings_given = None
++        if args.runner_settings is not None:  # before anything is written or called; a dry run checks it too
++            models, args.runner_settings_given = probe_runner_settings(args.runner_settings, args.models, models)
++        args.call_only_given = None
++        if args.call_only is not None:  # its own form, before anything is loaded, written or called
++            args.call_only_given = read_call_only(args.call_only, args.models)
+         if args.dry_run:
++            if args.runner_settings_given:
++                say_runner_settings(args.runner_settings_given, say)
+             return dry_run(args, models, say, graphs)
+         return _run(args, models, sparql_factory, batches_factory, say, sleep, graphs, freeze)
+     except Refused as exc:
+@@ -600,6 +779,9 @@ def _run(args, models, sparql_factory, batches_factory, say, sleep, graphs, free
+         problems.append(f"no questions with split {args.split!r} in {path}")
+     if problems:
+         raise Refused("; ".join(problems))
++    call_only = getattr(args, "call_only_given", None)
++    if call_only is not None:  # before the run directory is made: a refusal writes nothing
++        check_call_only(call_only, *planned_order(args, path, questions))
+     out = args.out / graph_name
+     private = bool(graph.get("private"))
+     # A private graph's files (records, replies, batches, manifest, order, check, log) are created mode 600
+@@ -641,6 +823,9 @@ def _run_graph(args, models, sparql_factory, batches_factory, say, sleep, out, g
+ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sleep, out, graph_name, path,
+                 questions, freeze) -> int:
+     say(f"redaction: environment variables treated as secrets: {', '.join(secret_names()) or 'none'}")
++    given = getattr(args, "runner_settings_given", None)
++    if given:
++        say_runner_settings(given, say)
+     config = ProbeConfig(max_tokens=args.max_tokens, infra_retry_s=args.infra_retry_s)
+     store = sanitize_store(json.loads(args.store_json.read_text(encoding="utf-8"))) if args.store_json else None
+     specs = [get_probe(p) for p in args.probes]
+@@ -668,22 +853,62 @@ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sl
+     harness_dir = out / "harness"
+     replies_dir, batches_dir = out / "replies", out / "batches"
+     done = existing_keys(records_dir)
+-    added = check_manifest(out, fingerprint, has_records=bool(done), say=say, allow_code_change=args.allow_code_change)
++    seed, order = planned_order(args, path, questions)
++    route_models = {name: routes[name].model for name in model_names}
++
++    def key_of(attempt: tuple) -> tuple:
++        name, probe_id, qid, rep = attempt
++        return (qid, route_models[name], probe_id, rep)
++
++    def reply_path(attempt: tuple) -> Path:
++        return replies_dir / f"{attempt_digest(attempt)}.json"
++
++    # Phase 1's calls, worked out before the manifest is touched so that this start's entry can say what it found
++    # and will call (--call-only); a kept reply is not called again, a record is not rebuilt.
++    call_only = getattr(args, "call_only_given", None)
++    def recorded_at_start(attempt: tuple) -> bool:
++        return key_of(attempt) in done
++
++    to_call, n_recorded, n_kept = plan_calls(order, recorded=recorded_at_start,
++                                             kept=lambda a: reply_path(a).exists(),
++                                             listed=None if call_only is None else call_only["set"])
++    start_fields: dict = {}
++    if given:
++        start_fields["runner_settings"] = given
++    held = 0  # replies this start will keep from batches an earlier start submitted, listed or not
++    if call_only is not None:
++        markers = sorted(batches_dir.glob("submitting-*.json")) if batches_dir.is_dir() else []
++        if markers:
++            raise Refused(f"--call-only: {markers[0]} is left from a batch submission whose batch id was never written; "
++                          f"reconciling it may adopt a batch or drop it, so what the run holds afterwards is not known "
++                          f"beforehand: settle it with a start that has no --call-only (--reconcile-batches), or "
++                          f"leave this run to be finished without a plan")
++        planned, calling = set(order), set(to_call)
++        held = sum(1 for a in outstanding_batch_attempts(batches_dir)
++                   if a in planned and not recorded_at_start(a) and not reply_path(a).exists() and a not in calling)
++        start_fields["call_only"] = {"file_sha256": call_only["file_sha256"], "listed": len(call_only["attempts"]),
++                                     "kept_replies_at_start": n_kept, "records_at_start": n_recorded,
++                                     "outstanding_batch_attempts": held,
++                                     "plan_total": n_kept + n_recorded + len(to_call) + held}
++    added = check_manifest(out, fingerprint, has_records=bool(done), say=say, allow_code_change=args.allow_code_change,
++                           start_fields=start_fields or None)
+     if added:
+         say(f"manifest: recorded settings for {', '.join(added)}")
+     if freeze is not None:  # origin/main as this start saw it: recorded, not compared (it moves on with each fetch)
+         manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+         manifest.setdefault("freeze_checks", []).append({"at": utc_now(), **{k: freeze[k] for k in FREEZE_OBSERVED}})
+         _write_json_atomic(out / "manifest.json", manifest)
+-    seed = args.order_seed if args.order_seed is not None else default_order_seed(path)
+-    order = interleaved_order(model_names, [s.id for s in specs], [q["id"] for q in questions], args.reps, seed)
+     record_order(out, seed=seed, seed_source="flag" if args.order_seed is not None else "questions_sha256",
+                  order=order, resumed=bool(done), say=say)
+     order_sha = order_sha256(order)
+     say(f"order: {len(order)} attempts over {len(model_names)} model(s) and {len(specs)} probe(s), seed {seed}; "
+         f"order sha256 {order_sha}")
++    if call_only is not None:
++        say(f"call-only: {len(call_only['attempts'])} attempts listed in the file with sha256 "
++            f"{call_only['file_sha256']}; {len(to_call)} to call, {n_kept} kept replies and {n_recorded} records "
++            f"already, {held} more from batches submitted before; {n_kept + n_recorded + len(to_call) + held} in "
++            f"the plan")
+     by_id = {q["id"]: q for q in questions}
+-    route_models = {name: routes[name].model for name in model_names}
+     position = {attempt: i for i, attempt in enumerate(order)}
+     for d in (records_dir, replies_dir, batches_dir):
+         d.mkdir(parents=True, exist_ok=True)
+@@ -696,17 +921,10 @@ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sl
+         with lock:
+             counts[key] += n
+ 
+-    def key_of(attempt: tuple) -> tuple:
+-        name, probe_id, qid, rep = attempt
+-        return (qid, route_models[name], probe_id, rep)
+-
+     def runner_info(attempt: tuple) -> dict:
+         return {"attempt": list(attempt), "position": position[attempt], "order_key": order_key(seed, attempt),
+                 "order_seed": seed, "order_sha256": order_sha}
+ 
+-    def reply_path(attempt: tuple) -> Path:
+-        return replies_dir / f"{attempt_digest(attempt)}.json"
+-
+     def keep_reply(attempt: tuple, reply: Reply, route_info: dict, runner: dict) -> None:
+         write_text_atomic(replies_dir, reply_path(attempt).name, json.dumps(
+             {"attempt": list(attempt), "route": route_info, "reply": reply.to_json(), "runner": runner},
+@@ -774,11 +992,9 @@ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sl
+ 
+     # Phase 1: the calls. Pending attempts per model, in order; a kept reply is not called again.
+     pending: dict[str, list[tuple]] = {name: [] for name in model_names}
+-    for attempt in order:
+-        if key_of(attempt) in done:
+-            bump("skipped")
+-        elif not reply_path(attempt).exists():
+-            pending[attempt[0]].append(attempt)
++    bump("skipped", n_recorded)
++    for attempt in to_call:  # worked out above (plan_calls): with --call-only only the listed attempts
++        pending[attempt[0]].append(attempt)
+     gate = StartGate(model_names)
+ 
+     def sync_model(name: str) -> None:
+@@ -799,6 +1015,8 @@ def _run_locked(args, models, sparql_factory, batches_factory, say, terminal, sl
+                     request = build_request(route, get_probe(probe_id), by_id[qid]["question"], config.max_tokens)
+                     if not started:  # the model's attempts start strictly in order (run_pilot's StartGate)
+                         gate.wait(name, ticket)
++                        if reply_path(attempt).exists():  # kept since the list was made (the batch path asks again too)
++                            return
+                         start_index = list(gate.start(name, ticket))
+                         started = True
+                     reply = call_sync(route, request)

@@ -1,0 +1,1587 @@
+{
+ "schema": "freeze-registry/1",
+ "note": "Which document phrase names which artefact, for scripts/freeze_binding_check.py. Reviewed by eye. It holds no hash values: the check recomputes each one from the artefact. Kept outside harness/ and scripts/ so that editing it never moves the code digest. Before the freeze, switch every branch ref below to the freeze ref (main or a tag) and add an entry for each [FILL] once it names its artefact.",
+ "entries": [
+  {
+   "id": "generic-retry-text",
+   "note": "Prereg section 5, online retry settings: the generic retry text. Recomputed by generic_sha256() from GENERIC_RETRY_TEXT in the checker loop's code, never from the text quoted in the document.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "Please re-check your answer\\."
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "feat/checker-loop",
+    "call": "harness.checkloop.feedback:generic_sha256"
+   }
+  },
+  {
+   "id": "retry-set-aside-text",
+   "note": "Prereg section 5, online retry settings: the retry turn's set-aside sentence (change-log entries 126 and 135; entry 135's final wording). Recomputed by set_aside_sha256() from SET_ASIDE_TEXT in the checker loop's code at the commit that made it entry 135's sentence, never from the text quoted in the document.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "set-aside sentence \"Your previous submission has been set aside\\. Call submit_report again with your final answer\\.\""
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "1fd986f8de5d210a5a265e71c9a66420caf3c39a",
+    "call": "harness.checkloop.feedback:set_aside_sha256"
+   }
+  },
+  {
+   "id": "feedback-format-v3",
+   "note": "Prereg section 5: the checker-feedback-v3 format hash (canonical JSON of FORMAT_SPEC), by the checker loop's own format_sha256().",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "checker-feedback-v3"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "feat/checker-loop",
+    "call": "harness.checkloop.feedback:format_sha256"
+   }
+  },
+  {
+   "id": "uniprot-round2-questions",
+   "note": "Prereg section 5, question sets: the UniProt round-2 questions file on the UniProt generator branch. The FROZEN marker on feat/e0.1-skeleton names the round-1 file and is not used.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "UniProt round-2 set"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-15-regenerated",
+   "note": "Change-log entry 15, the regenerated file after the guard fixes. Located by provenance: commit 31a5cde ('freeze the UniProt question set'), the commit after the guard fix ad85b72.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^\\| 15 \\|",
+    "before": "regenerated file\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "31a5cde3990104d2efd5f2c664aeed2517bada14",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-15-calibrated",
+   "note": "Change-log entry 15, the file calibration round 1 ran on. Located by provenance: commit e92a147 ('update the UniProt question set to the audited version').",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^\\| 15 \\|",
+    "before": "calibrated one\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "e92a147d988feb540b3931530bd5b0dba532e2a6",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-31-audited",
+   "note": "Change-log entry 31, the round-2 file the independent audit read. Located by provenance: commit 99e6fd4 ('UniProt calibration round 2'), the review snapshot snap-qgen-r2, before the audit fixes in 2d53607.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^\\| 31 \\|",
+    "before": "independent audit of\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "99e6fd4998c8127e6ff25593f1a627cc47c42e59",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "scorer-digest",
+   "note": "Prereg section 3, accuracy: the sha256 of the scorer's closed module set (harness/score/digest.py; since 05492e6 it includes harness/score/gold.py), by the scorer's own scorer_digest() at feat/scorer-entry127 81f4376 (scorer-rules-v6, change-log entry 127; merged into integration/freeze by the round-1 merge); before it, integration/freeze 7df3699, the merge of feat/scorer-entry120 (scorer-rules-v5, change-log entries 120 and 121) and wip/step3, and until then feat/scorer-digest 05492e6 (scorer-rules-v4). Switch the ref to the freeze tag once it exists. The digest must be cited in full (64 hex): a short form would be read as a commit. The freeze-tag [FILL] beside it is not this artefact, so the entry matches full digests only.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "frozen scorer",
+    "kind": "^sha256$"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "81f43766a678edd9f5136392c2b520b3f3607ce8",
+    "call": "harness.score.digest:scorer_digest"
+   }
+  },
+  {
+   "id": "changelog-54-audited",
+   "note": "Change-log entry 54: the audited round-2 file, the same artefact as entry 31 (commit 99e6fd4, by provenance).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "gold-query changes after the audited\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "99e6fd4998c8127e6ff25593f1a627cc47c42e59",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-54-activity-quantifier",
+   "note": "Change-log entry 54: the commit that changed the activity question's gold quantifier; it must be in the UniProt generator's history.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "after": "^\\W*: the activity question's gold quantifies"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot"
+   }
+  },
+  {
+   "id": "changelog-54-activity-annotated",
+   "note": "Change-log entry 54: the commit that requires an annotated catalytic activity; in the UniProt generator's history.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "after": "^\\W*: the activity gold requires an annotated catalytic activity"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot"
+   }
+  },
+  {
+   "id": "changelog-54-anchor-redraws",
+   "note": "Change-log entry 54: the anchor-redraw commit (entry 42); in the UniProt generator's history.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "after": "^\\W*: the anchor redraws"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot"
+   }
+  },
+  {
+   "id": "changelog-54-round2-set",
+   "note": "Change-log entry 54, 'Filled': the round-2 set, the same artefact as the prereg's uniprot-round2-questions.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "Filled:\\W*the round-2 set\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-54-feedback-format",
+   "note": "Change-log entry 54, 'Filled': the feedback format hash, the same artefact as feedback-format-v3.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "the feedback format hash\\W*$"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "feat/checker-loop",
+    "call": "harness.checkloop.feedback:format_sha256"
+   }
+  },
+  {
+   "id": "calibration-round1-questions",
+   "note": "Prereg 4.2: the questions file calibration step 1's fingerprint names, the default --questions on the calibrated tree 87c7126 (round 1).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "names the round-1 UniProt file\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "calibration-round2-questions",
+   "note": "Prereg 4.2: the round-2 set the calibration's structure is compared with.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "in round 1 and round 2\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-65-rhea-final",
+   "note": "Change-log entry 65: the final Rhea round-2 set (generator 0.4.3) on the Rhea generator branch.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "Rhea round-2 final set is"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen",
+    "path": "data/questions/rhea-142/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-68-uniprot-frozen",
+   "note": "Change-log entry 68: the UniProt set frozen after calibration round 2.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "UniProt calibration round 2 is final",
+    "before": "the set is frozen as\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "calibration-step1-json",
+   "note": "Calibration step 1's output (alpha' per claim and level), committed on feat/analysis (6237ca1).",
+   "anchor": {
+    "before": "step ?1\\.json\\b[^;|]{0,40}$",
+    "doc": "paper/preregistration.md"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/analysis",
+    "path": "results/calibration-step1-20261019/step1.json"
+   }
+  },
+  {
+   "id": "calibration-fingerprint",
+   "note": "The calibration fingerprint, by scripts/calibrate.py's own setup() and fingerprint() at the calibrated tree 87c7126, with step 1's inputs: the bank items on SiteA (not in git; read with ssh + tar, read-only, and listed with their sha256 in the report), the default --questions of that tree (round 1), --k 3 and --per-template 180 (scripts/calibrate.sbatch). Needs an interpreter with numpy (--python).",
+   "anchor": {
+    "before": "fingerprint[^.;|]{0,25}$",
+    "doc": "paper/preregistration.md"
+   },
+   "resolve": {
+    "type": "calibration_fingerprint",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "script": "scripts/calibrate.py",
+    "bank": {
+     "$remote": {
+      "host": "sitea",
+      "path": "/shared/projects/proj/www-2027/calibration/bank"
+     }
+    },
+    "questions": {
+     "$file": {
+      "repo": "experiments",
+      "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+      "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+     }
+    },
+    "k": 3,
+    "per_template": 180
+   }
+  },
+  {
+   "id": "calibration-code-digest",
+   "note": "The plan-D code digest of the calibrated tree 87c7126 (harness/ and scripts/), by harness.analysis.digest.code_digest() there. Only on a line about the calibration: the final main's code digest is another artefact.",
+   "anchor": {
+    "before": "code (?:digest|hash)[^.;|]{0,25}$",
+    "doc": "paper/preregistration.md",
+    "line": "[Cc]alibrat"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "call": "harness.analysis.digest:code_digest"
+   }
+  },
+  {
+   "id": "calibration-n1",
+   "note": "Prereg 4.2 and 5: N1, from harness/analysis/calibration.py at the calibrated tree. Read in the pre-registration only: the change log records earlier values (entry 35's N1 = 10,000) as history.",
+   "fact": {
+    "pattern": "\\bN1 = (?P<value>\\d+(?:,\\d{3})*)",
+    "as": "int"
+   },
+   "resolve": {
+    "type": "python_value",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "attr": "harness.analysis.calibration:N1"
+   },
+   "anchor": {
+    "doc": "paper/preregistration.md"
+   }
+  },
+  {
+   "id": "calibration-n2",
+   "note": "Prereg 4.2 and 5: N2, likewise. Read in the pre-registration only: the change log records earlier values (entry 35's N1 = 10,000) as history.",
+   "fact": {
+    "pattern": "\\bN2 = (?P<value>\\d+(?:,\\d{3})*)",
+    "as": "int"
+   },
+   "resolve": {
+    "type": "python_value",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "attr": "harness.analysis.calibration:N2"
+   },
+   "anchor": {
+    "doc": "paper/preregistration.md"
+   }
+  },
+  {
+   "id": "calibration-seeds",
+   "note": "The two step seeds (steps 1 and 2, in that order), from calibration.SEEDS. A single seed (the analysis's 20261026) is not read. Read in the pre-registration only: the change log records earlier values (entry 35's N1 = 10,000) as history.",
+   "fact": {
+    "pattern": "[Ss]eeds? (?P<value>\\d{8}(?:[^\\d.;|]{1,6}\\d{8})+)",
+    "as": "ints"
+   },
+   "resolve": {
+    "type": "python_value",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "attr": "harness.analysis.calibration:SEEDS",
+    "select": "values"
+   },
+   "anchor": {
+    "doc": "paper/preregistration.md"
+   }
+  },
+  {
+   "id": "calibration-seed-scheme",
+   "note": "The seed scheme string, from calibration.SEED_SCHEME. Read in the pre-registration only: the change log records earlier values (entry 35's N1 = 10,000) as history.",
+   "fact": {
+    "pattern": "seed scheme[^`]{0,20}`(?P<value>[^`]+)`",
+    "as": "str"
+   },
+   "resolve": {
+    "type": "python_value",
+    "repo": "experiments",
+    "ref": "87c7126519371631b2deadd705aa6ab5ddb4eaa7",
+    "attr": "harness.analysis.calibration:SEED_SCHEME"
+   },
+   "anchor": {
+    "doc": "paper/preregistration.md"
+   }
+  },
+  {
+   "id": "calibration-configuration-count",
+   "note": "The number of calibration configurations, from step 1's own output (its configuration list, which the fingerprint binds).",
+   "fact": {
+    "pattern": "(?P<value>\\d+) (?:calibration )?configurations",
+    "as": "int"
+   },
+   "anchor": {
+    "doc": "paper/preregistration.md"
+   },
+   "resolve": {
+    "type": "json_value",
+    "repo": "experiments",
+    "ref": "feat/analysis",
+    "path": "results/calibration-step1-20261019/step1.json",
+    "pointer": "/configurations",
+    "select": "len"
+   }
+  },
+  {
+   "id": "analysis-code-commit",
+   "note": "Prereg preamble: the binding analysis code (EA.1) commit, the freeze head, which must be reachable from origin's integration/freeze (the line the freeze tag is on; round-4 merge).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "analysis code .*at commit\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "origin/integration/freeze"
+   }
+  },
+  {
+   "id": "contract-commit",
+   "note": "Prereg section 5: the science-repo commit of s01-check-contract.md, reachable from the science repo's main.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "s01-check-contract\\.md\\W*at\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "science",
+    "ref": "origin/main"
+   }
+  },
+  {
+   "id": "compiler-commit",
+   "note": "Prereg section 5: the check compiler's commit, reachable from origin's integration/freeze (the line the freeze tag is on; round-4 merge).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "^\\W*compiler at\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "origin/integration/freeze"
+   }
+  },
+  {
+   "id": "changelog-coreowl-clash-commit",
+   "note": "Change log (the clash check of the abstract's last clause): the experiments commit holding results/coreowl-clash-20261021/, reachable from origin's results/coreowl-clash-20261021 (round-4 merge).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "rerun script in `results/coreowl-clash-[0-9]+/`, experiments\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "origin/results/coreowl-clash-20261021"
+   }
+  },
+  {
+   "id": "freeze-code-digest",
+   "note": "Prereg preamble: the final code digest, frozen with the document, by harness.analysis.digest.code_digest() at origin's integration/freeze (the freeze head; round-4 merge). Only on the binding-analysis-code line: the calibration's code digest is calibration-code-digest.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "code digest\\W*$",
+    "line": "Binding analysis code"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "origin/integration/freeze",
+    "call": "harness.analysis.digest:code_digest"
+   }
+  },
+  {
+   "id": "power-replay-freeze-head",
+   "note": "Prereg section 4.4: the freeze head the weighted-Holm replay on the final bank structure ran at, reachable from origin's integration/freeze.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "replay on the final bank structure at the freeze head\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "origin/integration/freeze"
+   }
+  },
+  {
+   "id": "power-replay-results-commit",
+   "note": "Prereg section 4.4: the experiments commit holding the replay's results (results/power-freeze-*), reachable from origin's results/power-freeze-20261021.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "\\(experiments commit\\W*$",
+    "line": "power-freeze"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "origin/results/power-freeze-20261021"
+   }
+  },
+  {
+   "id": "power-replay-power-json",
+   "note": "Prereg section 4.4: the sha256 of the replay's power.json, the file at origin's results/power-freeze-20261021.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "power\\.json\\W+sha256\\W*$",
+    "line": "power-freeze"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "origin/results/power-freeze-20261021",
+    "path": "results/power-freeze-20261021/power.json"
+   }
+  },
+  {
+   "id": "contract-pin",
+   "note": "Prereg section 5: the check contract's pin, the sha256 of paper/s01-check-contract.md at the science repo's main (the value the dev grid pins and the check-contract binding checks).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "contract pin\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "science",
+    "ref": "origin/main",
+    "path": "paper/s01-check-contract.md"
+   }
+  },
+  {
+   "id": "tag-fill-mention",
+   "note": "Change log (the freeze tag's naming rule): 'The freeze tag's [FILL] becomes its naming rule' describes the pre-registration's former placeholder; it is not a placeholder (round-4 merge).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "freeze tag's\\W*$"
+   },
+   "resolve": {
+    "type": "mention"
+   }
+  },
+  {
+   "id": "fill-marker-mention",
+   "note": "Prereg preamble: 'to fill in the items marked [FILL]' describes the marker; it is not a placeholder.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "to fill in the items marked\\W*$"
+   },
+   "resolve": {
+    "type": "mention"
+   }
+  },
+  {
+   "id": "calibration-commit",
+   "note": "Prereg 5: the calibrated commit beside the calibration's code digest; must be reachable from the analysis branch (main at the freeze).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "\\(commit\\W*$",
+    "line": "[Cc]alibrat"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/analysis"
+   }
+  },
+  {
+   "id": "changelog-rhea-frozen",
+   "note": "Change-log entry for Rhea calibration round 2: the Rhea set frozen after round 2 (generator 0.4.3) on the Rhea generator branch.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "The set is frozen as\\W*$",
+    "line": "0\\.4\\.3"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen",
+    "path": "data/questions/rhea-142/questions.jsonl"
+   }
+  },
+  {
+   "id": "fault-bank-uniprot-manifest",
+   "note": "Prereg 5: the frozen UniProt fault bank's manifest (design log, change-log entry 83), frozen before any checker ran on it.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "UniProt manifest\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/fault-bank",
+    "path": "data/banks/uniprot-sp-2026_03/manifest.json"
+   }
+  },
+  {
+   "id": "fault-bank-rhea-manifest",
+   "note": "Prereg 5: the frozen Rhea fault bank's manifest (design log, change-log entry 83); exposure marked by query.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "Rhea manifest\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/fault-bank",
+    "path": "data/banks/rhea-142/manifest.json"
+   }
+  },
+  {
+   "id": "changelog-83-uniprot-bank",
+   "note": "Change-log entry 83: the frozen UniProt fault bank's manifest.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "fault banks are frozen",
+    "before": "UniProt\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/fault-bank",
+    "path": "data/banks/uniprot-sp-2026_03/manifest.json"
+   }
+  },
+  {
+   "id": "changelog-83-rhea-bank",
+   "note": "Change-log entry 83: the frozen Rhea fault bank's manifest.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "fault banks are frozen",
+    "before": "Rhea\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/fault-bank",
+    "path": "data/banks/rhea-142/manifest.json"
+   }
+  },
+  {
+   "id": "scope-uniprot-frozen-set",
+   "note": "Prereg section 1, the question population: the frozen UniProt round-2 set (the 210 agent-facing base questions), the file on the UniProt generator branch, the same artefact as the round-2 set in section 5. The round-1 file (the FROZEN marker's) that other branches still hold is not this set.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "210 agent-facing base questions",
+    "before": "the frozen set\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "scope-extension-questions",
+   "note": "Prereg section 1, the question population: the bank-only extension questions (entry 41), a separate file under the UniProt questions directory on the extension branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "210 agent-facing base questions",
+    "after": "^`,\\s*1,050 test questions"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-extension",
+    "path": "data/questions/uniprot-sp-2026_03/extension/questions-ext.jsonl"
+   }
+  },
+  {
+   "id": "controls-calibrated-code-commit",
+   "note": "Prereg section 2, C4's controls: the calibrated code's commit, which must be in the analysis branch's history (prereg.c4 is defined at it). The same commit the calibration entries cite.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "controls exactly as the calibrated code defines them"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/analysis"
+   }
+  },
+  {
+   "id": "question-sets-extension",
+   "note": "Prereg section 5, question sets: the bank-only extension questions, the same file as in section 1.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Question sets \\|",
+    "before": "bank-only extension\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-extension",
+    "path": "data/questions/uniprot-sp-2026_03/extension/questions-ext.jsonl"
+   }
+  },
+  {
+   "id": "question-sets-rhea",
+   "note": "Prereg section 5, question sets: the Rhea 0.4.3 questions file on the Rhea generator branch (change-log entry 75).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Question sets \\|",
+    "before": "Rhea 0\\.4\\.3\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen",
+    "path": "data/questions/rhea-142/questions.jsonl"
+   }
+  },
+  {
+   "id": "question-sets-corporate",
+   "note": "Prereg section 5, question sets: the corporate question set (the text2sparql-ck26 questions file) on the corporate generator branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Question sets \\|",
+    "before": "corporate\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-corporate",
+    "path": "data/questions/text2sparql-ck26/questions.jsonl"
+   }
+  },
+  {
+   "id": "prompt-uniprot-curated-prereg",
+   "note": "Prereg section 5, prompt renders (UniProt): cited as renders; these are the prompt files. The hash is of curated.prompt.txt (framing and rendered source, the bytes a run's prompt carries), not of the render's own text_sha256 in curated.render.json. The path is on the prompt-conditions branch. Since change-log entry 126 its anchor also takes the sentence naming the UniProt prompt files, so the Rhea and opaque-Rhea prompt lists on the same line do not reach it.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "after": "^\\W*curated\\b",
+    "sentence": "data/prompts/uniprot-sp-2026_03/"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/curated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-uniprot-census-prereg",
+   "note": "Prereg section 5, prompt renders (UniProt): cited as renders; these are the prompt files. The hash is of census.prompt.txt (framing and rendered source, the bytes a run's prompt carries), not of the render's own text_sha256 in census.render.json. The path is on the prompt-conditions branch. Since change-log entry 126 its anchor also takes the sentence naming the UniProt prompt files, so the Rhea and opaque-Rhea prompt lists on the same line do not reach it.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "after": "^\\W*census\\b",
+    "sentence": "data/prompts/uniprot-sp-2026_03/"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/census.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-uniprot-generated-1-prereg",
+   "note": "Prereg section 5, prompt renders (UniProt): cited as renders; these are the prompt files. The hash is of generated.prompt.txt (framing and rendered source, the bytes a run's prompt carries), not of the render's own text_sha256 in generated.render.json. The path is on the prompt-conditions branch. Since change-log entry 126 its anchor also takes the sentence naming the UniProt prompt files, so the Rhea and opaque-Rhea prompt lists on the same line do not reach it.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "after": "^\\W*generated-1\\b",
+    "sentence": "data/prompts/uniprot-sp-2026_03/"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/generated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-uniprot-none-prereg",
+   "note": "Prereg section 5, prompt renders (UniProt): cited as renders; these are the prompt files. The hash is of none.prompt.txt, the base prompt with no ontology block. The path is on the prompt-conditions branch. Since change-log entry 126 its anchor also takes the sentence naming the UniProt prompt files, so the Rhea and opaque-Rhea prompt lists on the same line do not reach it.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "after": "^\\W*none\\b",
+    "sentence": "data/prompts/uniprot-sp-2026_03/"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/none.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-uniprot-curated-changelog-88",
+   "note": "Change-log entry 88, the UniProt prompts: cited as short hashes of the prompt files (the same artefacts the prereg calls renders), curated.prompt.txt on the prompt-conditions branch. On integration/freeze the prompts were re-cited at the feat/sources merge with every prompt byte unchanged (the curated digest moved from feat/prompt-conditions' cc2c4a2a... to feat/sources' cf6a56a6..., because feat/prompt-conditions' harness/sources/model.py dropped curated UniProt's declared classes). This check reads document citations only, and the documents cite the prompts, not the digest: the digest half (each prompts manifest's source digest and file hash recomputed from the committed sources and code) is tests/test_prompts_cite_their_sources.py in the suite, on the same tree. The integration branch's own entries for these three citations (changelog-88-uniprot-*-prompt, ref integration/freeze) were folded into these at the feat/freeze-check merge: both anchors match the same line, so keeping both would make each citation ambiguous.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^\\| 88 \\|",
+    "after": "^\\W*curated\\b"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/curated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-uniprot-census-changelog-88",
+   "note": "Change-log entry 88, the UniProt prompts: cited as short hashes of the prompt files (the same artefacts the prereg calls renders), census.prompt.txt on the prompt-conditions branch.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^\\| 88 \\|",
+    "after": "^\\W*census\\b"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/census.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-uniprot-generated-1-changelog-88",
+   "note": "Change-log entry 88, the UniProt prompts: cited as short hashes of the prompt files (the same artefacts the prereg calls renders), generated.prompt.txt on the prompt-conditions branch.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^\\| 88 \\|",
+    "after": "^\\W*generated-1\\b"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/generated.prompt.txt"
+   }
+  },
+  {
+   "id": "calibration-table-uniprot-frozen-set",
+   "note": "Prereg section 5, calibration: the UniProt set frozen by change-log entry 68, the round-2 file on the UniProt generator branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Calibration \\|",
+    "before": "set frozen as\\W*$",
+    "after": "^`\\s*\\(entry 68\\)"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-uniprot",
+    "path": "data/questions/uniprot-sp-2026_03/questions.jsonl"
+   }
+  },
+  {
+   "id": "calibration-table-rhea-frozen-set",
+   "note": "Prereg section 5, calibration: the Rhea set frozen by change-log entry 75, the questions file on the Rhea generator branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Calibration \\|",
+    "before": "set frozen as\\W*$",
+    "after": "^`\\s*\\(entry 75\\)"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen",
+    "path": "data/questions/rhea-142/questions.jsonl"
+   }
+  },
+  {
+   "id": "store-identity-uniprot",
+   "note": "Prereg section 5, stores: the UniProt subset. Identity = sha256 of the store's committed build/index.sha256 list (uniprot-sp-2026_03); the leading backtick keeps the opaque names from also naming the plain ones.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "`uniprot-sp-2026_03@$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/opaque-uniprot",
+    "path": "stores/uniprot-sp-2026_03/build/index.sha256"
+   }
+  },
+  {
+   "id": "store-identity-rhea",
+   "note": "Prereg section 5, stores: Rhea. Identity = sha256 of the store's committed build/index.sha256 list (rhea-142); the leading backtick keeps the opaque names from also naming the plain ones.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "`rhea-142@$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/opaque-uniprot",
+    "path": "stores/rhea-142/build/index.sha256"
+   }
+  },
+  {
+   "id": "store-identity-opaque-rhea",
+   "note": "Prereg section 5, stores: opaque Rhea. Identity = sha256 of the store's committed build/index.sha256 list (opaque-rhea-142); the leading backtick keeps the opaque names from also naming the plain ones.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "`opaque-rhea-142@$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/opaque-uniprot",
+    "path": "stores/opaque-rhea-142/build/index.sha256"
+   }
+  },
+  {
+   "id": "store-identity-opaque-uniprot",
+   "note": "Prereg section 5, stores: opaque UniProt. Identity = sha256 of the store's committed build/index.sha256 list (opaque-uniprot-sp-2026_03); the leading backtick keeps the opaque names from also naming the plain ones.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "`opaque-uniprot-sp-2026_03@$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/opaque-uniprot",
+    "path": "stores/opaque-uniprot-sp-2026_03/build/index.sha256"
+   }
+  },
+  {
+   "id": "store-identity-corporate",
+   "note": "Prereg section 5, stores: the corporate graph. Identity = sha256 of the store's committed build/index.sha256 list (text2sparql-ck26); the leading backtick keeps the opaque names from also naming the plain ones.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "`text2sparql-ck26@$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-corporate",
+    "path": "stores/text2sparql-ck26/build/index.sha256"
+   }
+  },
+  {
+   "id": "store-qlever-image",
+   "note": "Prereg section 5, stores: the QLever image digest, the sha256 in the 'image' field of the Rhea store's committed build manifest. The build record is the only place it exists in git; the check binds the document to that record, not to the registry. The uniprot, opaque and corporate manifests carry the same value (see the report).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "qlever@sha256:$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/e0.1-skeleton",
+    "path": "stores/rhea-142/build/manifest.json",
+    "pointer": "/image",
+    "regex": "@sha256:(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "store-qlever-git",
+   "note": "Prereg section 5, stores: the QLever git commit, the hash after 'qlever-index' in the 'qlever_version' field of the Rhea store's committed build manifest. The opaque UniProt manifest records the same commit in a different shape (an object with index_git_hash); the other manifests use the Rhea string.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Stores \\|",
+    "before": "\\(git `$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/e0.1-skeleton",
+    "path": "stores/rhea-142/build/manifest.json",
+    "pointer": "/qlever_version",
+    "regex": "qlever-index (?P<value>[0-9a-f]{7,40})$"
+   }
+  },
+  {
+   "id": "prompt-rhea-curated-prereg",
+   "note": "Prereg section 5, prompt renders: the Rhea curated render at B = 27,000 (data/prompts/rhea-142/curated.prompt.txt), on integration/freeze (change-log entries 88 and 109).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Rhea prompts:",
+    "before": "\\bcurated\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/rhea-142/curated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-rhea-census-prereg",
+   "note": "Prereg section 5, prompt renders: the Rhea census render at B = 27,000 (data/prompts/rhea-142/census.prompt.txt), on integration/freeze (change-log entries 88 and 109).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Rhea prompts:",
+    "before": "\\bcensus\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/rhea-142/census.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-rhea-generated-prereg",
+   "note": "Prereg section 5, prompt renders: the Rhea generated render at B = 27,000 (data/prompts/rhea-142/generated.prompt.txt), on integration/freeze (change-log entries 88 and 109).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Rhea prompts:",
+    "before": "\\bgenerated\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/rhea-142/generated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-rhea-none-prereg",
+   "note": "Prereg section 5, prompt renders: the Rhea none render at B = 27,000 (data/prompts/rhea-142/none.prompt.txt), on integration/freeze (change-log entries 88 and 109).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Rhea prompts:",
+    "before": "\\bnone\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/rhea-142/none.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-rhea-manifest-prereg",
+   "note": "Prereg section 5, prompt renders: the Rhea manifest render at B = 27,000 (data/prompts/rhea-142/manifest.json), on integration/freeze (change-log entries 88 and 109).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Rhea prompts:",
+    "before": "\\bmanifest\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/rhea-142/manifest.json"
+   }
+  },
+  {
+   "id": "prompt-opaque-rhea-curated-prereg",
+   "note": "Prereg section 5, prompt renders: the opaque-Rhea curated render at the same B (data/prompts/opaque-rhea-142/curated.prompt.txt), on integration/freeze.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Opaque Rhea prompts",
+    "before": "\\bcurated\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/opaque-rhea-142/curated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-opaque-rhea-census-prereg",
+   "note": "Prereg section 5, prompt renders: the opaque-Rhea census render at the same B (data/prompts/opaque-rhea-142/census.prompt.txt), on integration/freeze.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Opaque Rhea prompts",
+    "before": "\\bcensus\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/opaque-rhea-142/census.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-opaque-rhea-generated-prereg",
+   "note": "Prereg section 5, prompt renders: the opaque-Rhea generated render at the same B (data/prompts/opaque-rhea-142/generated.prompt.txt), on integration/freeze.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Opaque Rhea prompts",
+    "before": "\\bgenerated\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/opaque-rhea-142/generated.prompt.txt"
+   }
+  },
+  {
+   "id": "prompt-opaque-rhea-none-prereg",
+   "note": "Prereg section 5, prompt renders: the opaque-Rhea none render at the same B (data/prompts/opaque-rhea-142/none.prompt.txt), on integration/freeze.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Prompt renders \\|",
+    "sentence": "^Opaque Rhea prompts",
+    "before": "\\bnone\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/prompts/opaque-rhea-142/none.prompt.txt"
+   }
+  },
+  {
+   "id": "question-sets-opaque-rhea",
+   "note": "Prereg section 5, question sets: the opaque-Rhea questions file, the re-map of the Rhea set, on the remap branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Question sets \\|",
+    "before": "opaque Rhea\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/opaque-rhea-remap",
+    "path": "data/questions/opaque-rhea-142/questions.jsonl"
+   }
+  },
+  {
+   "id": "question-sets-rhea-remap",
+   "note": "Prereg section 5, question sets: the Rhea set named again as the source of the opaque-Rhea re-map (the same file as question-sets-rhea).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Question sets \\|",
+    "before": "the re-map of\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen",
+    "path": "data/questions/rhea-142/questions.jsonl"
+   }
+  },
+  {
+   "id": "question-sets-a15",
+   "note": "Prereg section 5, question sets: the a15 set, which is private; bound to the questions sha256 the committed a15 build record names (a build input, bound to that file and field).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Question sets \\|",
+    "before": "\\ba15\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "results/a15-sources-20261020/sources-record.json",
+    "pointer": "/refusal_screen/questions_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "sources-request-uniprot-natural",
+   "note": "Prereg section 5, sources: the generator's request hash, the request_sha256 of data/sources/uniprot-sp-2026_03/generated/input/bundle.json; the generator refuses a bundle whose prompt files do not hash to it (harness/sources/generated.py load_bundle), so the record is the request's own hash.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Sources \\|",
+    "before": "UniProt natural\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/generated/input/bundle.json",
+    "pointer": "/request_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "sources-request-uniprot-masked",
+   "note": "Prereg section 5, sources: the generator's request hash, the request_sha256 of data/sources/uniprot-sp-2026_03/generated-dc/input/bundle.json; the generator refuses a bundle whose prompt files do not hash to it (harness/sources/generated.py load_bundle), so the record is the request's own hash.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Sources \\|",
+    "before": "masked\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/generated-dc/input/bundle.json",
+    "pointer": "/request_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "sources-request-rhea",
+   "note": "Prereg section 5, sources: the generator's request hash, the request_sha256 of data/sources/rhea-142/generated/input/bundle.json; the generator refuses a bundle whose prompt files do not hash to it (harness/sources/generated.py load_bundle), so the record is the request's own hash.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Sources \\|",
+    "before": "(?<!opaque )Rhea\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/rhea-142/generated/input/bundle.json",
+    "pointer": "/request_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "sources-request-opaque-rhea",
+   "note": "Prereg section 5, sources: the generator's request hash, the request_sha256 of data/sources/opaque-rhea-142/generated/input/bundle.json; the generator refuses a bundle whose prompt files do not hash to it (harness/sources/generated.py load_bundle), so the record is the request's own hash.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Sources \\|",
+    "before": "opaque Rhea\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/opaque-rhea-142/generated/input/bundle.json",
+    "pointer": "/request_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "sources-request-corporate",
+   "note": "Prereg section 5, sources: the generator's request hash, the request_sha256 of data/sources/text2sparql-ck26/generated/input/bundle.json; the generator refuses a bundle whose prompt files do not hash to it (harness/sources/generated.py load_bundle), so the record is the request's own hash.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Sources \\|",
+    "before": "corporate\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/sources/text2sparql-ck26/generated/input/bundle.json",
+    "pointer": "/request_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "calibration-corporate-set",
+   "note": "Prereg section 5, calibration: the corporate set (the text2sparql-ck26 questions file), frozen without a calibration round (change-log entry 109).",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Calibration \\|",
+    "before": "Corporate:\\W*set\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-corporate",
+    "path": "data/questions/text2sparql-ck26/questions.jsonl"
+   }
+  },
+  {
+   "id": "calibration-corporate-commit",
+   "note": "Prereg section 5, calibration: the commit the corporate set was frozen at, reachable from the corporate generator branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "line": "^\\| Calibration \\|",
+    "sentence": "Corporate:",
+    "before": "frozen at\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/qgen-corporate"
+   }
+  },
+  {
+   "id": "c3-census-input",
+   "note": "Prereg section 7, C3's reading: the census input of the bank and the prompts, census-t5 (data/sources/uniprot-sp-2026_03/census-t5.json) on the sources branch.",
+   "anchor": {
+    "doc": "paper/preregistration.md",
+    "before": "prompts' input, sha256\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/census-t5.json"
+   }
+  },
+  {
+   "id": "changelog-sources-commit",
+   "note": "Change-log entry 92 (the files line): the sources branch's commit.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "before": "`feat/sources` at\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/sources"
+   }
+  },
+  {
+   "id": "changelog-census-t5",
+   "note": "Change-log entry 92: census-t5, the frozen bank's census input.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "before": "census-t5\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/census-t5.json"
+   }
+  },
+  {
+   "id": "changelog-census-source-digest",
+   "note": "Change-log entry 92: the census source's digest (the canonical OntologySource JSON), as the UniProt prompt manifest records it for the census condition.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "before": "prompt source digest\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "feat/prompt-conditions",
+    "path": "data/prompts/uniprot-sp-2026_03/manifest.json",
+    "pointer": "/conditions/census/source/digest",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "changelog-generated-dc-1",
+   "note": "Change-log entry 92: the masked generated draft 1 (data/sources/uniprot-sp-2026_03/generated-dc-1.json).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "sentence": "generated-dc-1/2/3 `(?:<HEX>\u2026`, `){0}$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/generated-dc-1.json"
+   }
+  },
+  {
+   "id": "changelog-generated-dc-2",
+   "note": "Change-log entry 92: the masked generated draft 2 (data/sources/uniprot-sp-2026_03/generated-dc-2.json).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "sentence": "generated-dc-1/2/3 `(?:<HEX>\u2026`, `){1}$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/generated-dc-2.json"
+   }
+  },
+  {
+   "id": "changelog-generated-dc-3",
+   "note": "Change-log entry 92: the masked generated draft 3 (data/sources/uniprot-sp-2026_03/generated-dc-3.json).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "sentence": "generated-dc-1/2/3 `(?:<HEX>\u2026`, `){2}$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/generated-dc-3.json"
+   }
+  },
+  {
+   "id": "changelog-curated",
+   "note": "Change-log entry 92: the curated UniProt source (data/sources/uniprot-sp-2026_03/curated.json.gz, the file as committed).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "^- \\*\\*The files:\\*\\*",
+    "before": "\\bcurated\\W*$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/sources",
+    "path": "data/sources/uniprot-sp-2026_03/curated.json.gz"
+   }
+  },
+  {
+   "id": "changelog-a15-ontology-commit",
+   "note": "Change-log entries 95, 96 and 98: the ontology commit the a15 sources are built from (a build input, bound to that field of the committed a15 build record).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "kind": "^hex$",
+    "before": "(?:`[\\w-]+`|re-measured against|regenerated against|is built from|`, not|built on the)\\W*$",
+    "line": "^(?:\\| 9[5-8] \\||\\| PROJ's questions on |- \\*\\*(?:Withdrawn until re-measured against|The vocabulary table's candidate columns|The a15 curated source|The unaligned curated source))"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "results/a15-sources-20261020/sources-record.json",
+    "pointer": "/ontology/commit",
+    "regex": "^(?P<value>[0-9a-f]{40})$"
+   }
+  },
+  {
+   "id": "changelog-a15-tbox-digest",
+   "note": "Change-log entries 95 and 96: the ontology digest (a build input, bound to that field of the committed a15 build record).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "(?:tbox:sha256:|ontologyVersion` `)$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "results/a15-sources-20261020/sources-record.json",
+    "pointer": "/ontology/tbox_digest",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "changelog-a15-reviewed-mapping",
+   "note": "Change-log entry 98: the curator's reviewed mapping (a build input, bound to that field of the committed a15 build record).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "the reviewed table\\W*$"
+   },
+   "resolve": {
+    "type": "json_hash",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "results/a15-sources-20261020/sources-record.json",
+    "pointer": "/sources/aligned-curated/alignment/mapping_sha256",
+    "regex": "^(?P<value>[0-9a-f]{64})$"
+   }
+  },
+  {
+   "id": "changelog-step2-addendum",
+   "note": "Change-log entry 106: step 2's dated addendum (data/analysis/weighted-holm-step2.json) on integration/freeze. The config's own binding of it is the recomputations work's (feat/freeze-recomputations).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "step 2's addendum \\(`$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "9e34f6839f33220080828befd4b2f1a27f40ecb8",
+    "path": "data/analysis/weighted-holm-step2.json"
+   }
+  },
+  {
+   "id": "changelog-corporate-set",
+   "note": "Change-log entry 109: the corporate question set.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "The corporate question set `$"
+   },
+   "resolve": {
+    "type": "blob_sha256",
+    "repo": "experiments",
+    "ref": "feat/qgen-corporate",
+    "path": "data/questions/text2sparql-ck26/questions.jsonl"
+   }
+  },
+  {
+   "id": "changelog-corporate-commit",
+   "note": "Change-log entry 109: the commit the corporate set was frozen at, reachable from the corporate generator branch.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "sentence": "The corporate question set",
+    "before": "frozen at\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/qgen-corporate"
+   }
+  },
+  {
+   "id": "changelog-scorer-v5",
+   "note": "Change-log entry 121: scorer-rules-v5's digest, by the scorer's own scorer_digest() at the merge that brought it (the same artefact as scorer-digest).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "Scorer v5 accepted\\*\\* \\(`$"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "7df3699d3c8544e60c715ea6ad3d403dacc91c4d",
+    "call": "harness.score.digest:scorer_digest"
+   }
+  },
+  {
+   "id": "changelog-scorer-v5-code",
+   "note": "Change-log entry 121: the scorer-rules-v5 code commit, reachable from the merge that brought it.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "sentence": "Scorer v5 accepted",
+    "before": "code\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "7df3699d3c8544e60c715ea6ad3d403dacc91c4d"
+   }
+  },
+  {
+   "id": "changelog-a15-stale-pin",
+   "note": "Historical (change-log entry 95): the stale ontology pin that was replaced; nothing is built from it.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "kind": "^hex$",
+    "line": "^\\| (?:95 \\||PROJ's questions on )",
+    "before": "(?:a stale gitops pin of|our term lists reproduce against)\\W*$"
+   },
+   "resolve": {
+    "type": "historical"
+   }
+  },
+  {
+   "id": "changelog-stray-copies",
+   "note": "Historical (change-log entry 115): a directory name of copies that were removed.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "sib-uniprot-$"
+   },
+   "resolve": {
+    "type": "historical"
+   }
+  },
+  {
+   "id": "changelog-scorer-v4",
+   "note": "Historical (change-log entries 118 and 120): scorer-rules-v4's digest, which v5 replaced in section 3 (entry 121).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "replaces\\W*$",
+    "after": "in \u00a73"
+   },
+   "resolve": {
+    "type": "historical"
+   }
+  },
+  {
+   "id": "changelog-scorer-v6-digest",
+   "note": "Change-log entry 'Scorer v6 registered' (change-log entry 127, science cd92e99): scorer-rules-v6's digest, cited as a short hash; the same artefact and resolver as scorer-digest (scorer_digest() at feat/scorer-entry127 81f4376).",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "before": "Scorer v6 registered\\W*$",
+    "kind": "^short_hash$"
+   },
+   "resolve": {
+    "type": "python",
+    "repo": "experiments",
+    "ref": "81f43766a678edd9f5136392c2b520b3f3607ce8",
+    "call": "harness.score.digest:scorer_digest"
+   }
+  },
+  {
+   "id": "changelog-scorer-v6-commit",
+   "note": "Change-log entry 'Scorer v6 registered' (change-log entry 127, science cd92e99): the code that carries scorer-rules-v6, feat/scorer-entry127's head 81f4376, merged into integration/freeze; it must be on that branch.",
+   "anchor": {
+    "doc": "paper/design-changelog.md",
+    "line": "Scorer v6 registered",
+    "before": "code\\W*$"
+   },
+   "resolve": {
+    "type": "commit",
+    "repo": "experiments",
+    "ref": "feat/scorer-entry127"
+   }
+  }
+ ]
+}

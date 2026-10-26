@@ -1,0 +1,343 @@
+{
+ "schema_version": "agent-run/18",
+ "run_id": "de118042-9625-42fa-b9d8-bb451499fbaf",
+ "question_id": "s01-noquery",
+ "base_question_id": "s01-noquery",
+ "template": "t",
+ "split": "dev",
+ "repetition": 0,
+ "condition": "grid-test-alpha",
+ "model": "Qwen/Qwen3.8-27B",
+ "route": {
+  "provider": "fake",
+  "base_url": null,
+  "model": "Qwen/Qwen3.8-27B",
+  "settings": {}
+ },
+ "store": {
+  "engine": "qlever",
+  "version": "v0.5.x",
+  "image_digest": "sha256:0123",
+  "store": "s01-fixture",
+  "name": "s01",
+  "endpoint": "http://store.invalid:7039/",
+  "sparql_timeout_s": 60.0,
+  "row_cap": 500
+ },
+ "prompt": {
+  "condition": "grid-test-alpha",
+  "id": "grid-test-alpha-v0",
+  "sha256": "8d49088d4835f3fac67388e46076db84d8df9edd20ae641becdecbd632df1773",
+  "template_sha256": "43aa1c9c84b87c9868f7aa6ad88d6804d6453933fd143b379223d9f13bec907e",
+  "nudge": "Call submit_report or abstain.",
+  "nudge_sha256": "839b4fb58e351e01101447e259f5a219d257da1b52d34114ec4a90b9a4d97658",
+  "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+ },
+ "agent_config": {
+  "max_turns": 60,
+  "max_wall_s": 1800.0,
+  "max_tokens": 16000,
+  "max_nudges": 2,
+  "condition": "grid-test-alpha",
+  "raw_row_cap": 10000,
+  "infra_retry_s": 600.0,
+  "iri_rule": "registered_schemes_v3",
+  "context_overflow": "capped",
+  "answer_skipped_calls": true,
+  "max_result_chars": 80000,
+  "transport": "non-streamed",
+  "stream_guards": [],
+  "refusal_rule": "refused",
+  "tool_crash_rule": "harness_defect",
+  "graph": "s01"
+ },
+ "harness": {
+  "git_commit": null,
+  "git_dirty": null
+ },
+ "started_at": "2026-10-20T02:24:11.961+00:00",
+ "ended_at": "2026-10-20T02:24:11.961+00:00",
+ "wall_s": 0.00019336212426424026,
+ "transcript": [
+  {
+   "role": "user",
+   "kind": "question",
+   "text": "noquery?"
+  },
+  {
+   "role": "assistant",
+   "turn": 1,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "s1",
+     "name": "submit_report",
+     "arguments": {
+      "rows": [
+       [
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#a1"
+        },
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#c1"
+        }
+       ],
+       [
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#b1"
+        },
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#c1"
+        }
+       ]
+      ]
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "Qwen/Qwen3.8-27B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "s1",
+      "name": "submit_report",
+      "input": {
+       "rows": [
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#a1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ],
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#b1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "s1",
+     "name": "submit_report",
+     "content": "Report submitted: 2 rows.",
+     "is_error": false
+    }
+   ]
+  }
+ ],
+ "tool_calls": [
+  {
+   "index": 0,
+   "turn": 1,
+   "id": "s1",
+   "name": "submit_report",
+   "arguments": {
+    "rows": [
+     [
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#a1"
+      },
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#c1"
+      }
+     ],
+     [
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#b1"
+      },
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#c1"
+      }
+     ]
+    ]
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "Report submitted: 2 rows.",
+   "is_error": false,
+   "result_raw": null,
+   "result_raw_truncated": false,
+   "result_meta": null,
+   "error": null,
+   "elapsed_s": 0.0,
+   "client_called": false,
+   "terminal": "submitted",
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  }
+ ],
+ "tokens": {
+  "totals": {
+   "input_tokens": 100,
+   "output_tokens": 20,
+   "cache_read_tokens": 0,
+   "cache_write_tokens": 0,
+   "total_input_tokens": 100,
+   "turns": 1,
+   "retries": 0,
+   "truncated_turns": 0,
+   "cache_write_5m_tokens": null,
+   "cache_write_1h_tokens": null
+  },
+  "per_turn": [
+   {
+    "turn": 1,
+    "started_s": 6.693415343761444e-06,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "Qwen/Qwen3.8-27B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   }
+  ]
+ },
+ "outcome": {
+  "status": "submitted",
+  "failure_type": null,
+  "cap": null,
+  "abstain_reason": null,
+  "error_message": null,
+  "provider_error": null,
+  "stage": null,
+  "refusal": null,
+  "harness_defect": null,
+  "model_changed": null,
+  "turns": 1,
+  "nudges": 0,
+  "label": "submitted",
+  "infra_s": 0.0,
+  "infra_retries": 0,
+  "infra_source": null,
+  "model_mismatch_turns": 0,
+  "served_models": [
+   "Qwen/Qwen3.8-27B"
+  ],
+  "stream_guard_firings": {
+   "rejected_streams": 0,
+   "call_identity": 0,
+   "token_gap": 0
+  },
+  "looping": null,
+  "loop_evidence": {
+   "max_query_repeats": 0,
+   "last_window_distinct": null,
+   "repeated_query": false,
+   "cycling_window": false,
+   "rule": "query repeated >= 3 times, or last 4 calls over <= 2 distinct"
+  },
+  "engine_suspect": {
+   "any_agent_query": false
+  }
+ },
+ "final_rows": [
+  [
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#a1"
+   },
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#c1"
+   }
+  ],
+  [
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#b1"
+   },
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#c1"
+   }
+  ]
+ ],
+ "score": {
+  "outcome": "scored",
+  "exact": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "n_answer_rows": 2,
+  "n_gold_rows": 2,
+  "n_matched": 2,
+  "gold_empty": false,
+  "column_permutation": [
+   0,
+   1
+  ],
+  "notes": [],
+  "rules": {
+   "version": "scorer-rules-v4",
+   "multiset": false,
+   "rel_tol": 1e-06,
+   "abs_tol": 1e-09,
+   "column_order": "any"
+  }
+ },
+ "replay_of": null,
+ "runner": {
+  "infra_tries": 0,
+  "infra_try_run_ids": []
+ },
+ "load": {
+  "arm": "alpha",
+  "position": 1,
+  "order_size": 16,
+  "order_seed": 303,
+  "order_sha256": "408bcda5ba4d13db52b5340788c74db2898deb0b03e1f88d3f0e35d9f4fbd611",
+  "order_key": "3917ee127208f326fcaec72820924fdbe7d52f37a4afb2341186fd250a9ed8d6",
+  "start_index": 1,
+  "model_start_index": 0,
+  "runner_started_at": "2026-10-20T02:24:11.934+00:00",
+  "workers_configured": 1,
+  "workers_allowed": 1,
+  "in_flight_model_start": 1,
+  "in_flight_total_start": 2,
+  "in_flight_model_end": 1,
+  "in_flight_total_end": 2,
+  "started_at": "2026-10-20T02:24:11.961+00:00",
+  "ended_at": "2026-10-20T02:24:11.962+00:00"
+ },
+ "checker": null
+}

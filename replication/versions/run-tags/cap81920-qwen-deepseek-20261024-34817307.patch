@@ -1,0 +1,28 @@
+diff --git a/scripts/run_pilot.py b/scripts/run_pilot.py
+index 60c4fcdc..0e41e2bc 100644
+--- a/scripts/run_pilot.py
++++ b/scripts/run_pilot.py
+@@ -818,13 +818,21 @@ def _gateway(model: str, *, max_result_chars: int | Mapping[str, int], max_tokens:
+ # agent_config holds them all. This is the one model table: every route the runner builds comes from it
+ # (tests/test_agent_streaming.py).
+ CLAUDE_EFFORT = "high"
++# Qwen3.8's and DeepSeek V4 Flash 0731's output cap per call is 81,920 tokens from the qwen-deepseek-81920 tag (science
++# ruling, 24 Oct, the owner's rule that a budget must never end more than 1% of anything), for NEW OUTs only: an OUT that
++# pinned 32,768 (Qwen3.8) or 16,000 (DeepSeek) meets a table value that differs from its pins, so its grid manifest no
++# longer matches a rebuild and the start is refused, and, were the manifest rebuilt, the model is held as a
++# served-version change after the freeze; there is no PIN_MOVES entry (tests/test_cap81920_grid.py). The request
++# time-out for a whole turn at this cap is NOT in the table: it is the per-stack runner setting of entry 180
++# (runner_settings.request_timeout_s {model: seconds}; a plain run's --runner-settings), 3,600 s for these OUTs, as the
++# tag message states with its basis (the route's time-out bounds the whole request, a streamed one included).
+ MODELS: dict[str, ModelSpec] = {
+     "qwen3.8-27b": _gateway("Qwen/Qwen3.8-27B",
+-                          max_turns=240, max_wall_s=7_200, max_tokens=32_768,
++                          max_turns=240, max_wall_s=7_200, max_tokens=81_920,
+                           max_result_chars={"uniprot-sp-2026_03": 224_000, "rhea-142": 80_000, "opaque-rhea-142": 80_000, "text2sparql-ck26": 400_000, "a15": 80_000},
+                           streaming=True, guard_call_identity=True, guard_token_gap=True),
+     "deepseek-v4-flash-0731": _gateway("deepseek-ai/DeepSeek-V4-Flash-0731",
+-                                     max_turns=120, max_wall_s=7_200, max_tokens=16_000, max_result_chars=400_000),
++                                     max_turns=120, max_wall_s=7_200, max_tokens=81_920, max_result_chars=400_000),
+     "deepseek-v4.1-flash": _gateway("deepseek-ai/DeepSeek-V4.1-Flash",
+                                   max_turns=120, max_wall_s=7_200, max_tokens=16_000, max_result_chars=400_000),
+     "claude-sonnet-5-5": ModelSpec(lambda: AnthropicRoute(model="claude-sonnet-5-5", effort=CLAUDE_EFFORT),

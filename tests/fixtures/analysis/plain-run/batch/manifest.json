@@ -1,0 +1,70 @@
+{
+ "created_at": "2026-10-20T02:24:14.395+00:00",
+ "fingerprint": {
+  "agent_config": {
+   "answer_skipped_calls": true,
+   "condition": "none",
+   "context_overflow": "capped",
+   "engine_suspect_classes": [],
+   "graph": "rhea-test",
+   "iri_rule": "registered_schemes_v3",
+   "max_nudges": 2,
+   "raw_row_cap": 10000,
+   "refusal_rule": "refused",
+   "tool_crash_rule": "harness_defect"
+  },
+  "endpoint": "http://sparql.invalid/",
+  "prompt": {
+   "condition": "none",
+   "id": "none-v1",
+   "nudge_sha256": "839b4fb58e351e01101447e259f5a219d257da1b52d34114ec4a90b9a4d97658",
+   "template_sha256": "be9c9657dd5a68fd8daa10b3860ae3cdccd7b8734594589a246752148099637e"
+  },
+  "questions_sha256": "e1d231fb541502deda54bf2ab1d7189dd61e5853bb39ced32b7fb921ead85a5f",
+  "routes": {
+   "fake": {
+    "agent_config": {
+     "max_result_chars": 80000,
+     "max_tokens": 16000,
+     "max_turns": 4,
+     "max_wall_s": 900.0,
+     "stream_guards": [],
+     "transport": "non-streamed"
+    },
+    "base_url": null,
+    "model": "oracle-model",
+    "provider": "fake",
+    "settings": {},
+    "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+   }
+  },
+  "row_cap": 500,
+  "scorer_digest": "4fca135fa146d9308b50a251af7da883234aa781011b098c8a27fa93924ef8ac",
+  "sparql_timeout_s": 60.0,
+  "store": {
+   "engine": "qlever",
+   "image_digest": "sha256:0123",
+   "name": "rhea-test",
+   "store": "rhea-test",
+   "version": "v0.5.x"
+  }
+ },
+ "harness": {
+  "git_commit": null,
+  "git_dirty": null
+ },
+ "order": {
+  "history": [
+   {
+    "at": "2026-10-20T02:24:14.397+00:00",
+    "attempts": 6,
+    "order_sha256": "ddb5e24538660e4d7e0214c62c496996e386ac42839def5c3b9fc25d4c621581",
+    "plan_sha256": "017ddf01aea53d1813b2936596ef173d1d8c7a017568fa20dd72215aef6692eb"
+   }
+  ],
+  "rule": "sorted by sha256 of '<seed>|' followed by the compact JSON of [model, arm, question id, repetition]",
+  "seed": 16272123359160238814,
+  "seed_source": "questions_sha256"
+ },
+ "schema": "pilot-manifest/1"
+}

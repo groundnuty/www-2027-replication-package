@@ -1,0 +1,2 @@
+{"id": "g-t-001", "base_question_id": "g-t-001", "template": "type_members", "split": "test", "tier": "lookup", "engine_sensitive": [], "gold_row_count": 3}
+{"id": "g-t-002", "base_question_id": "g-t-002", "template": "aggregation", "split": "test", "gold_row_count": 0}

@@ -1,0 +1,1017 @@
+{
+ "schema_version": "agent-run/18",
+ "run_id": "39afd182-22cf-4d1e-b41f-415b0b4c1bed",
+ "question_id": "s01-flag",
+ "base_question_id": "s01-flag",
+ "template": "t",
+ "split": "dev",
+ "repetition": 0,
+ "condition": "grid-test-beta",
+ "model": "Qwen/Qwen3.8-27B",
+ "route": {
+  "provider": "fake",
+  "base_url": null,
+  "model": "Qwen/Qwen3.8-27B",
+  "settings": {}
+ },
+ "store": {
+  "engine": "qlever",
+  "version": "v0.5.x",
+  "image_digest": "sha256:0123",
+  "store": "s01-fixture",
+  "name": "s01",
+  "endpoint": "http://store.invalid:7039/",
+  "sparql_timeout_s": 60.0,
+  "row_cap": 500
+ },
+ "prompt": {
+  "condition": "grid-test-beta",
+  "id": "grid-test-beta-v0",
+  "sha256": "be91ad3b6d44bb6750e170ea0744dfcddaee354afbe63265d8e468940f520431",
+  "template_sha256": "8f01388d962943b31444e80ffca008c8e60fff5c5a46d62529a6ad176eee7844",
+  "nudge": "Call submit_report or abstain.",
+  "nudge_sha256": "839b4fb58e351e01101447e259f5a219d257da1b52d34114ec4a90b9a4d97658",
+  "tools_sha256": "b2fd60a72c36d77038d66d48c1efc61156140ab1f3dccacd5b554ac66bff0fb1"
+ },
+ "agent_config": {
+  "max_turns": 60,
+  "max_wall_s": 1800.0,
+  "max_tokens": 16000,
+  "max_nudges": 2,
+  "condition": "grid-test-beta",
+  "raw_row_cap": 10000,
+  "infra_retry_s": 600.0,
+  "iri_rule": "registered_schemes_v3",
+  "context_overflow": "capped",
+  "answer_skipped_calls": true,
+  "max_result_chars": 80000,
+  "transport": "non-streamed",
+  "stream_guards": [],
+  "refusal_rule": "refused",
+  "tool_crash_rule": "harness_defect",
+  "graph": "s01"
+ },
+ "harness": {
+  "git_commit": null,
+  "git_dirty": null
+ },
+ "started_at": "2026-10-20T02:24:12.814+00:00",
+ "ended_at": "2026-10-20T02:24:12.844+00:00",
+ "wall_s": 0.07540429290384054,
+ "transcript": [
+  {
+   "role": "user",
+   "kind": "question",
+   "text": "flag?"
+  },
+  {
+   "role": "assistant",
+   "turn": 1,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "q1",
+     "name": "sparql_query",
+     "arguments": {
+      "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :zz ?y }"
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "Qwen/Qwen3.8-27B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "q1",
+      "name": "sparql_query",
+      "input": {
+       "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :zz ?y }"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "q1",
+     "name": "sparql_query",
+     "content": "{\"columns\":[\"x\",\"y\"],\"rows\":[],\"total_rows\":0,\"truncated\":false}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "turn": 2,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "s3",
+     "name": "submit_report",
+     "arguments": {
+      "rows": []
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "Qwen/Qwen3.8-27B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "s3",
+      "name": "submit_report",
+      "input": {
+       "rows": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "s3",
+     "name": "submit_report",
+     "content": "Report submitted: 0 rows.",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "kind": "generic_retry",
+   "text": "Please re-check your answer."
+  },
+  {
+   "role": "assistant",
+   "turn": 3,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "q6",
+     "name": "sparql_query",
+     "arguments": {
+      "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }"
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "Qwen/Qwen3.8-27B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "q6",
+      "name": "sparql_query",
+      "input": {
+       "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "q6",
+     "name": "sparql_query",
+     "content": "{\"columns\":[\"x\",\"y\"],\"rows\":[[{\"type\":\"iri\",\"value\":\"http://example.org/s01#a1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}],[{\"type\":\"iri\",\"value\":\"http://example.org/s01#b1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}]],\"total_rows\":2,\"truncated\":false}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "turn": 4,
+   "text": "",
+   "tool_calls": [
+    {
+     "id": "s8",
+     "name": "submit_report",
+     "arguments": {
+      "rows": [
+       [
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#a1"
+        },
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#c1"
+        }
+       ],
+       [
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#b1"
+        },
+        {
+         "type": "iri",
+         "value": "http://example.org/s01#c1"
+        }
+       ]
+      ]
+     }
+    }
+   ],
+   "stop_reason": "tool_use",
+   "response_id": "msg_fake",
+   "model": "Qwen/Qwen3.8-27B",
+   "leaked_tool_call": null,
+   "refusal": null,
+   "native_format": "anthropic",
+   "native": {
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "s8",
+      "name": "submit_report",
+      "input": {
+       "rows": [
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#a1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ],
+        [
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#b1"
+         },
+         {
+          "type": "iri",
+          "value": "http://example.org/s01#c1"
+         }
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "role": "tool",
+   "results": [
+    {
+     "tool_call_id": "s8",
+     "name": "submit_report",
+     "content": "Report submitted: 2 rows.",
+     "is_error": false
+    }
+   ]
+  }
+ ],
+ "tool_calls": [
+  {
+   "index": 0,
+   "turn": 1,
+   "id": "q1",
+   "name": "sparql_query",
+   "arguments": {
+    "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :zz ?y }"
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "{\"columns\":[\"x\",\"y\"],\"rows\":[],\"total_rows\":0,\"truncated\":false}",
+   "is_error": false,
+   "result_raw": {
+    "head": {
+     "vars": [
+      "x",
+      "y"
+     ]
+    },
+    "results": {
+     "bindings": []
+    }
+   },
+   "result_raw_truncated": false,
+   "result_meta": {
+    "form": "SELECT",
+    "columns": [
+     "x",
+     "y"
+    ],
+    "boolean": null,
+    "total_rows": 0,
+    "truncated": false,
+    "elapsed_s": 0.0
+   },
+   "error": null,
+   "elapsed_s": 2.1459534764289856e-05,
+   "client_called": true,
+   "terminal": null,
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  },
+  {
+   "index": 1,
+   "turn": 2,
+   "id": "s3",
+   "name": "submit_report",
+   "arguments": {
+    "rows": []
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "Report submitted: 0 rows.",
+   "is_error": false,
+   "result_raw": null,
+   "result_raw_truncated": false,
+   "result_meta": null,
+   "error": null,
+   "elapsed_s": 0.0,
+   "client_called": false,
+   "terminal": "submitted",
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  },
+  {
+   "index": 2,
+   "turn": 3,
+   "id": "q6",
+   "name": "sparql_query",
+   "arguments": {
+    "query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :p ?y }"
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "{\"columns\":[\"x\",\"y\"],\"rows\":[[{\"type\":\"iri\",\"value\":\"http://example.org/s01#a1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}],[{\"type\":\"iri\",\"value\":\"http://example.org/s01#b1\"},{\"type\":\"iri\",\"value\":\"http://example.org/s01#c1\"}]],\"total_rows\":2,\"truncated\":false}",
+   "is_error": false,
+   "result_raw": {
+    "head": {
+     "vars": [
+      "x",
+      "y"
+     ]
+    },
+    "results": {
+     "bindings": [
+      {
+       "x": {
+        "type": "iri",
+        "value": "http://example.org/s01#a1"
+       },
+       "y": {
+        "type": "iri",
+        "value": "http://example.org/s01#c1"
+       }
+      },
+      {
+       "x": {
+        "type": "iri",
+        "value": "http://example.org/s01#b1"
+       },
+       "y": {
+        "type": "iri",
+        "value": "http://example.org/s01#c1"
+       }
+      }
+     ]
+    }
+   },
+   "result_raw_truncated": false,
+   "result_meta": {
+    "form": "SELECT",
+    "columns": [
+     "x",
+     "y"
+    ],
+    "boolean": null,
+    "total_rows": 2,
+    "truncated": false,
+    "elapsed_s": 0.0
+   },
+   "error": null,
+   "elapsed_s": 0.008085548877716064,
+   "client_called": true,
+   "terminal": null,
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  },
+  {
+   "index": 3,
+   "turn": 4,
+   "id": "s8",
+   "name": "submit_report",
+   "arguments": {
+    "rows": [
+     [
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#a1"
+      },
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#c1"
+      }
+     ],
+     [
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#b1"
+      },
+      {
+       "type": "iri",
+       "value": "http://example.org/s01#c1"
+      }
+     ]
+    ]
+   },
+   "engine_flags": [],
+   "status": "executed",
+   "result_shown": "Report submitted: 2 rows.",
+   "is_error": false,
+   "result_raw": null,
+   "result_raw_truncated": false,
+   "result_meta": null,
+   "error": null,
+   "elapsed_s": 0.0,
+   "client_called": false,
+   "terminal": "submitted",
+   "infra_retries": [],
+   "infra_s": 0.0,
+   "query_timings": null
+  }
+ ],
+ "tokens": {
+  "totals": {
+   "input_tokens": 400,
+   "output_tokens": 80,
+   "cache_read_tokens": 0,
+   "cache_write_tokens": 0,
+   "total_input_tokens": 400,
+   "turns": 4,
+   "retries": 0,
+   "truncated_turns": 0,
+   "cache_write_5m_tokens": null,
+   "cache_write_1h_tokens": null
+  },
+  "per_turn": [
+   {
+    "turn": 1,
+    "started_s": 9.055249392986298e-06,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "Qwen/Qwen3.8-27B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   },
+   {
+    "turn": 2,
+    "started_s": 0.058917997404932976,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "Qwen/Qwen3.8-27B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   },
+   {
+    "turn": 3,
+    "started_s": 0.05902389995753765,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "Qwen/Qwen3.8-27B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   },
+   {
+    "turn": 4,
+    "started_s": 0.06779862567782402,
+    "input_tokens": 100,
+    "output_tokens": 20,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "max_tokens": null,
+    "latency_s": 0.5,
+    "first_byte_s": null,
+    "wall_s": 0.0,
+    "retries": 0,
+    "retry_errors": [],
+    "stop_reason": "tool_use",
+    "truncated": false,
+    "served_model": "Qwen/Qwen3.8-27B",
+    "model_mismatch": false,
+    "usage_raw": {}
+   }
+  ]
+ },
+ "outcome": {
+  "status": "submitted",
+  "failure_type": null,
+  "cap": null,
+  "abstain_reason": null,
+  "error_message": null,
+  "provider_error": null,
+  "stage": null,
+  "refusal": null,
+  "harness_defect": null,
+  "model_changed": null,
+  "turns": 4,
+  "nudges": 0,
+  "label": "submitted",
+  "infra_s": 0.0,
+  "infra_retries": 0,
+  "infra_source": null,
+  "model_mismatch_turns": 0,
+  "served_models": [
+   "Qwen/Qwen3.8-27B"
+  ],
+  "stream_guard_firings": {
+   "rejected_streams": 0,
+   "call_identity": 0,
+   "token_gap": 0
+  },
+  "looping": null,
+  "loop_evidence": {
+   "max_query_repeats": 1,
+   "last_window_distinct": 4,
+   "repeated_query": false,
+   "cycling_window": false,
+   "rule": "query repeated >= 3 times, or last 4 calls over <= 2 distinct"
+  },
+  "engine_suspect": {
+   "any_agent_query": false
+  }
+ },
+ "final_rows": [
+  [
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#a1"
+   },
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#c1"
+   }
+  ],
+  [
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#b1"
+   },
+   {
+    "type": "iri",
+    "value": "http://example.org/s01#c1"
+   }
+  ]
+ ],
+ "score": {
+  "outcome": "scored",
+  "exact": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "n_answer_rows": 2,
+  "n_gold_rows": 2,
+  "n_matched": 2,
+  "gold_empty": false,
+  "column_permutation": [
+   0,
+   1
+  ],
+  "notes": [],
+  "rules": {
+   "version": "scorer-rules-v4",
+   "multiset": false,
+   "rel_tol": 1e-06,
+   "abs_tol": 1e-09,
+   "column_order": "any"
+  }
+ },
+ "replay_of": null,
+ "runner": {
+  "infra_tries": 0,
+  "infra_try_run_ids": []
+ },
+ "load": {
+  "arm": "gen:any",
+  "position": 2,
+  "order_size": 16,
+  "order_seed": 202,
+  "order_sha256": "a7390584fbdfbe534642f3ebbd3acf266e0670c3fbf7ded0f57e3d15525b1282",
+  "order_key": "20ba19077361e428c79659c9c77d2098f7a2fddebfe351b25c244d62da3add01",
+  "start_index": 1,
+  "model_start_index": 1,
+  "runner_started_at": "2026-10-20T02:24:12.753+00:00",
+  "workers_configured": 1,
+  "workers_allowed": 1,
+  "in_flight_model_start": 1,
+  "in_flight_total_start": 2,
+  "in_flight_model_end": 1,
+  "in_flight_total_end": 2,
+  "started_at": "2026-10-20T02:24:12.827+00:00",
+  "ended_at": "2026-10-20T02:24:12.853+00:00"
+ },
+ "checker": {
+  "settings": {
+   "version": "checker-loop/2",
+   "mode": "generic",
+   "arm": {
+    "name": "any",
+    "sources": [
+     {
+      "name": "curated",
+      "kind": "curated",
+      "digest": "72c22b256cc14eac33b763217d8f695d6daf42c4562e228fda2d22327e643531"
+     }
+    ],
+    "hierarchy_sha256": "bc6d2ec6753adec1b8de3d1a3356476d0f42e792a05f81b41e9a2ac724aed3c8",
+    "bound": 10000
+   },
+   "switches": {
+    "heuristic": true,
+    "branch_local": true
+   },
+   "retry_budget": {
+    "max_turns": 60,
+    "max_wall_s": 1800.0,
+    "max_nudges": 2,
+    "submissions": 1
+   },
+   "feedback_format": {
+    "id": "checker-feedback-v3",
+    "sha256": "5ca011cb8fe7243d6b2f95d992e7595930f393956a58eff54e0cf0de76583206"
+   },
+   "generic_sha256": "ae3150daf38100f06481ee1b5d50f41067be86c97df92e6d8aec28df6a447f1c"
+  },
+  "branched_from": "6f03924f-b39d-46a4-b14e-e450e6837a65",
+  "initial": {
+   "outcome": {
+    "status": "submitted",
+    "failure_type": null,
+    "cap": null,
+    "abstain_reason": null,
+    "error_message": null,
+    "provider_error": null,
+    "stage": null,
+    "refusal": null,
+    "harness_defect": null,
+    "model_changed": null,
+    "turns": 2,
+    "nudges": 0,
+    "label": "submitted",
+    "infra_s": 0.0,
+    "infra_retries": 0,
+    "infra_source": null,
+    "model_mismatch_turns": 0,
+    "served_models": [
+     "Qwen/Qwen3.8-27B"
+    ],
+    "stream_guard_firings": {
+     "rejected_streams": 0,
+     "call_identity": 0,
+     "token_gap": 0
+    },
+    "looping": null,
+    "loop_evidence": {
+     "max_query_repeats": 1,
+     "last_window_distinct": null,
+     "repeated_query": false,
+     "cycling_window": false,
+     "rule": "query repeated >= 3 times, or last 4 calls over <= 2 distinct"
+    },
+    "engine_suspect": {
+     "any_agent_query": false
+    }
+   },
+   "final_rows": [],
+   "score": {
+    "outcome": "scored",
+    "exact": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_answer_rows": 0,
+    "n_gold_rows": 2,
+    "n_matched": 0,
+    "gold_empty": false,
+    "column_permutation": null,
+    "notes": [
+     "empty answer"
+    ],
+    "rules": {
+     "version": "scorer-rules-v4",
+     "multiset": false,
+     "rel_tol": 1e-06,
+     "abs_tol": 1e-09,
+     "column_order": "any"
+    }
+   },
+   "submission_index": 1,
+   "matching": {
+    "multiset": false,
+    "rel_tol": 1e-06,
+    "abs_tol": 1e-09,
+    "column_order": "any"
+   },
+   "checked_query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :zz ?y }",
+   "checked_query_status": "fallback",
+   "verdict": {
+    "status": "flagged",
+    "any_unknown": false,
+    "retry": true,
+    "fired": [
+     "Vocabulary (query pattern): every class and property the query uses must be defined in the schema description. Offending pattern: <http://example.org/s01#zz>."
+    ],
+    "fired_checks": [
+     {
+      "check_id": "vocabulary.static",
+      "reason": "not_in_source",
+      "key": "http://example.org/s01#zz",
+      "source": "curated",
+      "branch_local": false,
+      "data_fault": false
+     }
+    ],
+    "per_source": {
+     "curated": "flagged"
+    },
+    "traceability": "not_applicable",
+    "reason": null
+   },
+   "reports": [
+    {
+     "source": "curated",
+     "role": "agent",
+     "status": "flagged",
+     "status_switches": {
+      "heuristic_True_branch_local_True": "flagged",
+      "heuristic_True_branch_local_False": "flagged",
+      "heuristic_False_branch_local_True": "flagged",
+      "heuristic_False_branch_local_False": "flagged"
+     },
+     "status_required_scope_passes_only": "flagged",
+     "any_unknown": false,
+     "substantive": false,
+     "substantive_required_scope_only": false,
+     "negation": false,
+     "unsupported_constructs": [],
+     "tooling_limits": [],
+     "graph_outside_census": 0,
+     "checked_query": "PREFIX : <http://example.org/s01#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX obo: <http://purl.obolibrary.org/obo/>\nSELECT ?x ?y WHERE { ?x :zz ?y }",
+     "checked_query_status": "fallback",
+     "answer_rows_not_in_checked_result": 0,
+     "unsupported_coverage": {},
+     "evidence": {
+      "constant_type_fetch": [],
+      "budget_used": 0
+     },
+     "results": [
+      {
+       "check_id": "vocabulary.static",
+       "source": "curated",
+       "outcome": "flag",
+       "reason": "not_in_source",
+       "key": "http://example.org/s01#zz",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "vocabulary",
+       "form": "static"
+      },
+      {
+       "check_id": "disjointness.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_axiom",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "disjointness",
+       "form": "static"
+      },
+      {
+       "check_id": "no_common_subclass.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_axiom",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "no_common_subclass",
+       "form": "static"
+      },
+      {
+       "check_id": "class.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_type_pattern",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "class",
+       "form": "static"
+      },
+      {
+       "check_id": "domain_range.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_axiom",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "domain_range",
+       "form": "static"
+      },
+      {
+       "check_id": "census_join.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "not_census",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "census",
+       "form": "static"
+      },
+      {
+       "check_id": "census_pattern.static",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "not_census",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "census",
+       "form": "static"
+      },
+      {
+       "check_id": "class.footprint",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_type_pattern",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "class",
+       "form": "footprint"
+      },
+      {
+       "check_id": "domain_range.footprint",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_axiom",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "domain_range",
+       "form": "footprint"
+      },
+      {
+       "check_id": "disjointness.footprint",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_disjointness",
+       "key": "-",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "disjointness",
+       "form": "footprint"
+      },
+      {
+       "check_id": "number_traceability",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_numbers",
+       "key": "answer",
+       "detail": "",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "number_traceability",
+       "form": "n/a"
+      },
+      {
+       "check_id": "provenance",
+       "source": "curated",
+       "outcome": "not_applicable",
+       "reason": "no_provenance_model",
+       "key": "answer",
+       "detail": "the graph models no process-and-method provenance (a15 only)",
+       "evidence": {},
+       "annotations": [],
+       "branch_local": false,
+       "scope": "required",
+       "check_type": "provenance",
+       "form": "footprint"
+      }
+     ]
+    }
+   ],
+   "store_log": {
+    "version": "checker-store-log/1",
+    "entries": []
+   }
+  },
+  "retry": {
+   "message_kind": "generic_retry",
+   "message": "Please re-check your answer.",
+   "started_s": 0.05901513621211052,
+   "turns": 2,
+   "nudges": 0,
+   "submission_index": 3
+  },
+  "branch": {
+   "order_seed": 202,
+   "arm": "gen:any",
+   "sampling_seed": null,
+   "seedable": false,
+   "order": [
+    "fb:curated",
+    "gen:any"
+   ],
+   "position": 1
+  }
+ }
+}

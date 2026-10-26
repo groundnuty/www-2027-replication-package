@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper it accompanies."
+title: "WWW 2027 replication package (code)"
+type: software
+authors:
+  - name: "Anonymous Authors"
+license: MIT
+version: "0.1.0"
+date-released: "2026-10-26"

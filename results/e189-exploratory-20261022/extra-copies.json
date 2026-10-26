@@ -1,0 +1,83 @@
+{
+ "copies": [
+  {
+   "basis": "operational note withheld",
+   "graph": "rhea-142",
+   "replica": "rhea-c08",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "replica": "uniprot-siteb-2",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "graph": "opaque-rhea-142",
+   "replica": "opaque-rhea-siteb-8",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "graph": "rhea-142",
+   "replica": "rhea-sitec-c13",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "replica": "uniprot-siteb-5",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "replica": "uniprot-siteb-8",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  },
+  {
+   "basis": "operational note withheld",
+   "graph": "uniprot-sp-2026_03",
+   "replica": "uniprot-siteb-9",
+   "sources": [
+    {
+     "path": "operational note withheld",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ]
+  }
+ ],
+ "rule": "operational note withheld",
+ "schema": "e189-extra-copies/1"
+}

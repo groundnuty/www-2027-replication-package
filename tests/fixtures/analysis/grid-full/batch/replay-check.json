@@ -1,0 +1,17 @@
+{
+ "schema": "replay-check/2",
+ "checked_at": "2026-10-20T02:24:14.345+00:00",
+ "code": {
+  "git_commit": null,
+  "git_dirty": null,
+  "source": "git",
+  "tree_sha256": "88f41f9d84efa2d42da8d1179cf59719a41be0cc77b224a99fae0c8ac1c6a0a7"
+ },
+ "n_records": 36,
+ "n_ok": 36,
+ "failures": [],
+ "hashed_only": [
+  "concurrency-events.jsonl"
+ ],
+ "records_sha256": "392eae5216b70b7d6ee581d2b7286d20e6e431ca4bc6c841f00265bb71e0d77b"
+}
