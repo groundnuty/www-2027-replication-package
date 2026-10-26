@@ -33,7 +33,8 @@ could not be validated against them.
   all 8 tries was set aside with the frozen `scripts/relabel_harness_failure.py --diverged` as `failed:harness`
   (checker divergence), awaiting a checker fix. That happened to exactly one record (one retry of one model).
   Its parent attempt was then excluded from every arm of that cell's analysis, so the arms stay on one population.
-  The exclusion is disclosed in the analysis output (`excluded_setaside_parents`).
+  The exclusion is disclosed in the analysis output (`excluded_setaside_parents`). The field excluded_setaside_parents
+  is written by the shipped analysis patch replication/versions/analysis/e150-route-and-setaside.patch.
 - *In-job retries for the partitioned SIB UniProt run.* Each offline pass of the partitioned run's replay was re-run at the
   same seed, up to 8 times, only when the replay itself reported that it did not reproduce the checks. A failed try
   writes nothing, so a retry can only select reproduction success, never an outcome. Acceptance was unchanged: the

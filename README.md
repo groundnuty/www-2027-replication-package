@@ -29,6 +29,7 @@ The files keep the relative paths of the development repository, because the cod
 | `replication/reproduce.sh` | How the analysis is run once the data of step 2 is in place. |
 | `replication/PINS.md` | Integrity pins that anonymization changed: original and package values. |
 | `replication/KNOWN-ISSUES.md` | Known issues: the checker's non-deterministic offline replay and how the analyses handled it. |
+| `replication/DEVIATIONS.md` | Deviations from the pre-registration: what was not run, what changed after the freeze, and what is provisional. |
 
 ## Versions
 
