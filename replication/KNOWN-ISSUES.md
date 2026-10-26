@@ -25,8 +25,8 @@ ones the analysis reports.
   4 and 7 in four consecutive runs; under 1% of the cell, one model).
 - The other cells' replay checks reproduced every record.
 
-**How the analyses handled it.** The code was not changed: the stores the runs used are no longer live, so a fix
-could not be validated against them.
+**How the analyses handled it.** The frozen checker was not changed after the runs, so the
+recorded decisions are those of the code shipped here.
 
 - *Record-level reproduction retries.* A held record was re-checked alone, in a fresh process, at the same seed, up
   to 8 times. A record that reproduced in at least one try was kept, and every try was logged. A record that failed

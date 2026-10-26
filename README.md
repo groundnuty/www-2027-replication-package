@@ -37,22 +37,22 @@ Commit identifiers refer to the authors' development repository, which is privat
 
 | Part | Version |
 |---|---|
-| Framework (`harness/`, `scripts/`, `results/e167-*`, `pyproject.toml`, `uv.lock`) | Tag `test-e180-20261022-sci-c30257bba485` (commit `e203098d`), the test runs' code (change-log entry 180 on top of entry 167). |
+| Framework (`harness/`, `scripts/`, `results/e167-*`, `pyproject.toml`, `uv.lock`) | Tag `test-e180-20261022-sci-c30257bba485` (commit `e203098d`), the test runs' code (per-model request time-outs and turn caps on top of run admission). |
 | Frozen analysis code | Commit `847cc275` (the config-fill head). Its framework paths equal tag `test-e167-20261022-sci-c30257bba485`; apply `replication/versions/run-tags/test-e167-20261022-sci-c30257bba485.patch` to obtain them. `harness/` is identical in both; only `scripts/run_pilot.py` and `scripts/build_dev_grid.py` differ. |
 | Frozen analysis configuration (`data/`) | Commit `847cc275`. |
-| Exploratory analysis (`results/e189-exploratory-20261022/`) | Commit `b048d3e5` (the private-graph look line, which includes the weighted partition records and gated store sides). |
-| Parallel analysis line | Commit `5837f28e` (entry-150 route admission and set-aside exclusion), as a patch from the common base `a538ba9d` of both lines (it does not apply on top of the shipped analysis, which has moved on from that base). The looks over entry-150 retry runs used this line; the looks over the private graph used the line shipped above. |
+| Exploratory analysis (`results/e189-exploratory-20261022/`) | Commit `b048d3e5` (the analysis line used for the private graph, which includes the weighted partition records and gated store sides). |
+| Parallel analysis line | Commit `5837f28e` (route admission for the further UniProt retry cells, and the set-aside exclusion), as a patch from the common base `a538ba9d` of both lines (it does not apply on top of the shipped analysis, which has moved on from that base). The analyses of the further UniProt retry cells used this line; the analyses of the private graph used the line shipped above. |
 
 Each `replication/versions/run-tags/<tag>.patch` turns the shipped framework into the framework of that tag
 (`git apply` from the repository root). The tags are listed below.
 
 | Tag | Commit | Used for |
 |---|---|---|
-| `test-freeze-20261022-sci-c30257bba485` | `126a111b` | The test-split freeze (change-log entries 55, 128). |
-| `test-e167-20261022-sci-c30257bba485` | `87aa4bc3` | Entry 167 (run admission) on top of the frozen code. |
-| `test-e180-20261022-sci-c30257bba485` | `e203098d` | Shipped as is. Entry 180: per-model request time-out and turn cap. |
-| `test-e188-20261022-sci-c30257bba485` | `45c67682` | The probe runner's per-model request time-out (entry 188). |
-| `test-e189-20261024-sci-c30257bba485` | `547e129e` | The closed-book test probes (entries 183, 188). |
+| `test-freeze-20261022-sci-c30257bba485` | `126a111b` | The test-split freeze. |
+| `test-e167-20261022-sci-c30257bba485` | `87aa4bc3` | Run admission on top of the frozen code. |
+| `test-e180-20261022-sci-c30257bba485` | `e203098d` | Shipped as is. Per-model request time-out and turn cap. |
+| `test-e188-20261022-sci-c30257bba485` | `45c67682` | The probe runner's per-model request time-out. |
+| `test-e189-20261024-sci-c30257bba485` | `547e129e` | The closed-book test probes. |
 | `baselines-20261024-ab7da3ad` | `ab7da3ad` | The retry-on-empty and LLM-judge baseline cells. |
 | `baselines-sparqlllm-20261024-71f8f2e2` | `71f8f2e2` | The SPARQL-LLM baseline cells. |
 | `claude32k-20261024-1735e82a` | `1735e82a` | Raised per-call output cap, new runs only (cap tag A). |
@@ -92,7 +92,7 @@ is released it prints them and exits.
 - The analysis pins the digests of the code and configuration it runs on. Anonymization changes file contents, so the
   affected pins were recomputed on the anonymized files; `replication/PINS.md` lists the original and the package
   value of each. The digests recorded inside the data of step 2 refer to the code before anonymization.
-- The store-copy tables of the exploratory analysis describe the authors' infrastructure in anonymized form. Their
+- The store-copy tables of the exploratory analysis list the store copies the runs used, in anonymized form. Their
   free-text fields (bases, notes, citations) read `operational note withheld`, and the digests of the private
   evidence files they cite are zeros; the fields the code reads (copy names, classes, graphs, hosts, endpoint
   hashes, the digests of the store checks) are kept. A replicator who reruns the experiments supplies tables for their

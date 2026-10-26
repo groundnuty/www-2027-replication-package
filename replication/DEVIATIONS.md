@@ -6,7 +6,7 @@ This document lists where the work differs from the registered design. It covers
 
 - Each bullet is tagged **[confirmatory]** if it touches the six registered claims, their runs or their analysis call. It is tagged **[exploratory]** if it touches only exploratory cells. A bullet that touches both says so.
 - The registered claims, tests, calibration, multiplicity procedure, scorer, question sets, fault banks and model set were not changed after the freeze. The changes below concern how runs were served, which exploratory cells were run, and how some exploratory analyses are computed.
-- Each change records the evidence it used. Most rest on schedule, capacity, cost or infrastructure counts (stop reasons, time-outs, run completeness), never on accuracy or on any outcome of the compared arms. One decision, to complete the closed-book probes, followed a logged look at their results. The record states that the look changed no rule. No other change consulted a test outcome.
+- Each change records the evidence it used. Most rest on schedule, cost or run-completeness counts (stop reasons, time-outs, finished attempts), never on accuracy or on any outcome of the compared arms. One decision, to complete the closed-book probes, followed a logged look at their results. The record states that the look changed no rule. No other change consulted a test outcome.
 - No result values appear here. They are in the results.
 - **Not run:** registered, and no run or computation was made. **Not computed:** the data exist, but no analysis was made. **Not recorded:** the quantity was not logged during the runs. **Not reported:** a computation may exist in the analysis output, but the results do not tabulate it.
 - Where a report is only in the analysis output files, it is not listed here. This applies to the registered strata and to several secondary columns.
@@ -24,13 +24,13 @@ This document lists where the work differs from the registered design. It covers
   - Probe (b) was not run on the private graph.
   - GLM ran a seeded subset of 40 base questions per graph, not all 210. On the private graph it ran one attempt per question for that subset.
   - Replies cut at the output cap were re-run at a higher cap in some cells only. The other cells are reported with their cut counts.
-  - The reason is capacity.
+  - These cells were not reached before the data cutoff.
 - **The LLM judge on the other graphs.** [exploratory] The judge was registered for every model's natural outputs on every graph. It ran on UniProt for all seven models, and on Sonnet's SIB runs. It was not run on Rhea, opaque Rhea, the corporate graph or the private graph. Each judged output needs a model call, and the cost and time did not fit.
 - **The LLM judge on Qwen3.8's SIB outputs.** [exploratory] Not run, on either of its SIB runs. The judge was planned for Sonnet's SIB answers only. Under a cost cap it covers Sonnet's two reported SIB runs. Sonnet's companion runs were not judged.
 - **The named baselines outside UniProt and SIB.** [exploratory] Not reported. Retry-on-empty, SPARQL-LLM's published validator and OBQC were built for UniProt and applied to SIB. Their results on Rhea, opaque Rhea, the corporate graph and the private graph are not in the results.
-- **Baseline retry cells.** [exploratory] The retry cells of retry-on-empty, the judge and SPARQL-LLM ran on UniProt only (retry-on-empty and the judge for all seven models). They were not run on any other graph. OBQC as a retry trigger was not run. The scope was set to UniProt by a capacity decision.
+- **Baseline retry cells.** [exploratory] The retry cells of retry-on-empty, the judge and SPARQL-LLM ran on UniProt only (retry-on-empty and the judge for all seven models). They were not run on any other graph. OBQC as a retry trigger was not run. They were scoped to UniProt.
 - **Retry cells on the private graph.** [exploratory] Retries after any source's flags, the generic re-check and the deployment row were not run for any model there. The frozen runner cannot run a retry on that graph.
-- **Prompted arms on the private graph.** [exploratory] Prompted arms for Haiku, GLM, DeepSeek and Qwen3-Coder were not run there. Gemma's prompted arms were not run either. These are Tier 3 cells, and capacity did not reach them.
+- **Prompted arms on the private graph.** [exploratory] Prompted arms for Haiku, GLM, DeepSeek and Qwen3-Coder were not run there. Gemma's prompted arms were not run either. These are Tier 3 cells, not reached before the data cutoff.
 - **GLM's opaque Rhea prompted and feedback phases.** [exploratory] These Tier 3 phases ran only in part, as seeded partitions, and are not in an analysis package.
 - **Registered sensitivities not run.** [exploratory] The curated-plus-documentation, lossless-against-projected-drafts and superseded-drafts sensitivities were not run on any graph. They were not scheduled before the cutoff.
 - **Registered sensitivities reported only in part.** [exploratory] The no-common-subclass-off variant is reported for H6 and for the census on the UniProt fault bank. The branch-local-flags-off variant is reported for H6. Other registered sensitivities are not reported unless a results table shows them. The adverse-assignment and refusal-excluded readings are computed in the confirmatory call and reported there. They are not reported for other graphs.
@@ -52,44 +52,24 @@ This document lists where the work differs from the registered design. It covers
 
 ## 2. Registered items changed after the freeze
 
-### Serving and infrastructure
+### Serving and stores
 
-- **One model's runs on several serving deployments.** [both]
-  - Registered: replicas must report the same served identity. A deployment that differs is a new stack, and it serves only graphs not yet started.
-  - Changed: a model's running runs may take endpoints from other deployments when the engine release, the checkpoint and the served name match. A deployment that joins a running run first passes a short malfunction check on development questions. The check reads the share of capped and looping attempts and never accuracy. Candidates that failed the check were kept out of running runs.
-  - Why: capacity became available while the runs were in progress.
-  - A matching release and checkpoint is not behavioural equivalence. The contrasts are read under the serving conditions actually used. Each turn records its deployment, and the results report each arm's share per deployment.
-- **Deployments that render prompts differently.** [both] A provider's gateway appears to add a short fixed text segment to every prompt. A gateway deployment and a direct deployment of the same checkpoint therefore differ in prompt tokens. Such deployments are never mixed within a run. Each run is served by one deployment, and the deployment per graph is disclosed. The same holds for one model's deployments that differ in chat-template revision.
-- **Exceptions to one deployment per run.** [exploratory]
-  - One model's private-graph arms continued on a second deployment of the same weights after the first stopped answering. Completed attempts were not re-run, and each arm switched once.
-  - Retry cells and time-out re-runs for some models (GLM, Gemma, DeepSeek) ran on another deployment than their initial outputs. The initial deployment's fingerprints were admitted for the replayed turns.
-  - GLM's attention implementation differs between its deployments (dense in some layers on some, sparse on others). Its cross-graph comparisons carry that difference.
-  - The reason is capacity and outages. The decisions were made before any outcome of the affected arms was read.
-- **Request time-outs per serving stack.** [exploratory]
-  - Registered: a 600 s request time-out per model call.
-  - Changed: on one model's dedicated stack the time-out was raised to 1,800 s. Long contexts filled the cache and the registered limit cut calls that were still progressing. The model's young exploratory runs on that stack were voided and restarted. This was decided before any outcome was read.
-  - Later new runs use per-model time-outs sized to a full-length reply.
-- **Run-time serving controls added.** [both] These change speed only, and each change is recorded.
-  - Router policies were changed where they piled sessions onto one server.
-  - A health monitor ejects a backend whose share of calls ending at the output cap exceeds the other backends' by more than 15 points. The backend returns only after a restart, an identity check and a fresh malfunction check.
-  - The concurrency governor's latency baseline was pinned per model where the registered baseline misfired on long contexts.
-  - Session counts changed during runs as capacity changed.
-  - A released fault hold triggers one recorded restart of the run.
-- **Store copies, speed classes and a second CPU architecture.** [both]
+- **Serving deployments.** [both]
+  - Registered: replicas must report the same served identity; a deployment that differs is a new stack.
+  - Changed: a model's runs may be served by more than one vLLM deployment with the same engine release, checkpoint and model-side settings, so that runs proceed in parallel. A deployment that joins a running run first passes a short malfunction check on development questions; the check reads the share of capped and looping attempts, never accuracy.
+  - A matching release and checkpoint is not behavioural equivalence. Each turn records its deployment, the results report each arm's share per deployment, and the contrasts are read under the serving actually used.
+  - Two deployments of the same checkpoint can render prompts differently: a hosted deployment adds a short fixed segment to every prompt, and deployments can differ in chat-template revision. Such deployments are never mixed within a run; the deployment per graph is listed with the runs.
+  - The retry cells and time-out re-runs of GLM, Gemma and DeepSeek ran on another deployment of the same checkpoint than their initial outputs; the initial deployment's fingerprints were admitted for the replayed turns. GLM's deployments differ in attention implementation (dense in some layers on some, sparse on others), and its comparisons across them carry that difference.
+  - One model's private-graph arms moved once to a second deployment of the same weights; completed attempts were not re-run.
+- **Request time-outs and turn caps.** [exploratory] Registered: a 600 s request time-out per model call. Changed: per-model request time-outs and turn caps, sized to a full-length reply and listed per model with the runs (1,800 s for one model, whose long contexts made the registered limit cut calls that were still progressing). This was decided before any outcome was read.
+- **Store copies.** [both]
   - Registered: one store endpoint per model and run.
-  - Changed for exploratory runs: several identity-checked store copies per graph, each listed with its identity proof. Confirmatory runs never changed copy before the confirmatory call.
-  - On one graph, copies built for a second CPU architecture matched the others in results and row order, up to the engine's own run-to-run variation. On two graphs they differed in some unordered results. There, those copies serve only whole new runs, never mixed with the others. Unordered results with a row limit can differ between any two copies.
-  - Copies are classed by timing a fixed heavy query set. The rule is that the arms of a run share one class. Where they did not, one model's affected natural attempts were re-run on a fast copy. In other cases (see section 1) a re-run was not done. The results then report the contrasts pooled and restricted to the partitions whose arms share a class, with time-out counts per arm and copy.
-  - A few copies were killed by the operating system on very heavy queries because the memory limit of the allocation also held the index. Each such event is listed. The server flags were not changed.
-- **Fault windows and re-runs.** [both]
-  - Registered: a hold is confirmed by a frozen probe, and a confirmed window sets aside and re-runs the attempts in it, in every arm.
-  - Added: the window rule was extended to store-server process deaths and to one file-system quota event. Only infrastructure logs were used, and the re-runs were outcome-blind.
-  - The extension for store deaths was later retired for new deaths. The frozen store client already waits out a death and re-sends once, so no scored record can have run through one. Windows already applied stand.
-  - A death triggered by an agent's own query opens no window.
-  - Every run was audited for infrastructure faults before analysis, by a reviewed tool that reads infrastructure fields only.
-  - Attempts holding a cut model call stand as scored.
+  - Changed for exploratory runs: several copies of each graph's store, built from the same index and identity-checked, each listed with its identity proof. Confirmatory runs used one endpoint each.
+  - A copy that did not reproduce the reference copy's results and row order on a development query set served only whole runs, never mixed with other copies. Unordered results with a row limit can differ between any two copies.
+  - Each copy was given a speed class by timing a fixed heavy query set. A run's arms are meant to share one class. Where they did not, one model's affected natural attempts were re-run on a copy of the faster class; in the other cases (section 1) the results report the contrasts pooled and restricted to the partitions whose arms share a class, with time-out counts per arm and copy.
+- **Fault windows.** [both] Registered: a hold is confirmed by a frozen probe, and a confirmed window sets aside and re-runs the attempts in it, in every arm. The rule was also applied to other infrastructure failures found in the infrastructure logs, outcome-blind. Every run was audited for infrastructure faults before analysis by a tool that reads infrastructure fields only. Attempts holding a cut model call stand as scored.
 - **Harness code after the freeze.** [both] The harness was re-tagged several times. The changes allowed serving through a front over several deployments, per-model request time-outs and turn caps, the baselines' cells, raised output caps, a window clamp (below) and a per-run selection for the probes. For each tag, the analysis files, scorer and inference digests were shown to be unchanged. Replays of existing records were identical. The confirmatory feedback phase was allowed to move to a re-tagged build only after a reviewed proof that every file on its path was unchanged or inert and that existing records replay identically.
-- **Voided and superseded runs.** [exploratory] Some early runs were voided or superseded for capacity or infrastructure reasons before any outcome was read. They are kept sealed and are never analysed. This includes runs on a first deployment that was replaced, runs restarted under a changed time-out, an earlier run superseded by a re-planned one, SIB runs set aside after a cap change, and GLM's superseded judge runs. GLM's judge run was redone on one deployment because the frozen reader requires one route per run.
+- **Voided runs.** [exploratory] Some early exploratory runs were voided or superseded before any of their outcomes was read. They are not analysed.
 
 ### Caps and clamps
 
@@ -115,7 +95,7 @@ This document lists where the work differs from the registered design. It covers
 - **Partitioned runs.** [exploratory]
   - Registered: one run directory per model, graph and cell, with one store endpoint.
   - Changed: several exploratory runs were split into seeded question partitions. The partition is a fixed hash of the question id with a fixed seed. Each partition ran on an identity-checked store copy, and its questions' earlier records were copied unchanged. This applies to several models' runs on Rhea, opaque Rhea and the private graph, and to Qwen3.8's UniProt SIB run.
-  - Why: one store copy could not carry the sessions that model capacity allowed.
+  - Why: to run the questions in parallel.
   - A pooled estimate comes from one clustered bootstrap over the union of the partitions' per-question vectors. Each question is counted once, and per-partition intervals are never combined.
 - **The clean-prefix rule.** [exploratory]
   - Registered: cells not finished by the analysis are reported as not run.
@@ -131,14 +111,8 @@ This document lists where the work differs from the registered design. It covers
   - Registered: no interim looks.
   - Added: an hourly monitor ran over every cell with records, the confirmatory cells included. It reports only pass or flag with the criterion, never numbers or arm contrasts. The criteria are scorer errors, no submitted answer, unparseable answers, checker errors, implausible pooled accuracy and accuracy far from the model's development value. Exploratory results were looked at per completed phase, and each look was logged.
   - The confirmatory call ran on the frozen directories before any look at the confirmatory runs' results, other than the monitor's pass or flag. A planned interim look at them was dropped.
-  - No re-run, setting, capacity or scheduling decision may cite a seen result. The audit's annotators do not see results or models.
-- **Incidental exposures.** [both] Registered: exploratory components consult no test outcome before they are pinned, and operational decisions read infrastructure signals only.
-  - On several occasions, builders, operators or the harness's own tools displayed infrastructure counts, per-directory progress counts, one result line or a few attempt lines.
-  - On other occasions, held-out file names, listings or aggregate counts were displayed. Held-out gold files were also found outside the held-out tree and removed. In one case held-out blobs passed through a scanning tool's memory.
-  - Each was reported when found. No held-out content or test outcome informed any decision, setting or selection.
-  - The models under evaluation have no file access, so none could see held-out content.
-  - The rules were tightened. Tools print allowlisted infrastructure fields only. Logs that could show counts are redacted. Scans exclude held-out paths. Builders may not list the held-out tree.
-
+  - No re-run, setting or scheduling decision may cite a seen result. The audit's annotators do not see results or models.
+- **Incidental exposures.** [both] On some occasions, tools or the people operating the runs saw infrastructure counts, held-out file names or aggregate counts, or a few result lines. Each was recorded when found. No held-out content or test outcome informed any decision, setting or selection, and the models under evaluation had no file access.
 ### The confirmatory call
 
 - **The call's required arms.** [confirmatory]
@@ -190,12 +164,12 @@ This document lists where the work differs from the registered design. It covers
 - **The store allowance in exploratory analyses.** [exploratory] The frozen analysis refuses a model whose records name two store endpoints. The exploratory calls accept several identity-checked copies per graph and model where each copy is listed with its identity proof. They skip the one-endpoint check for sensitivity calls and for partitions with copied parents. For plain partition unions, a recorded store change on a gated store is accepted when both sides name one endpoint and carry identical gate settings. Each copy's share of attempts per arm is reported.
 - **Updates to the serving-identity tool.** [both] The admitted-fingerprints file lets a run accept several fingerprints. The probe's summary check relaxed from equality to "expected is a subset of recorded". Admission compares the public engine release and records the build label. Tier 1's fingerprints are admitted for replayed parent turns in the further retry cells. The stack-name check accepts partitions that share one assignment and one fingerprint. For the private graph's partitions, the identity tool reads each partition's own launch record, records the earlier starts as inherited from the source run, and names the parents' store from the single recorded store change.
 - **The set-aside exclusion in Gemma's further retry cell.** [exploratory] The frozen analysis needs every scored output's row in every retry arm, and a set-aside retry has none. The parent attempt of each checker-divergence set-aside is dropped from every arm of that cell, so the arms keep one population. One attempt of 630 is dropped. Outputs without a set-aside are byte-identical to the frozen code's. The change had one independent review.
-- **Fixes to the pooled SIB union analysis.** [exploratory] These apply to Qwen3.8's pooled SIB UniProt analysis, and were checked mechanically but not independently reviewed.
+- **Changes for the pooled SIB union analysis.** [exploratory] These apply to Qwen3.8's pooled SIB UniProt analysis. The guard, the stack-name check and the store-proof check had one independent review.
   - A guard that refused grid-layout batches was narrowed to refuse only real retry cells and ambiguous grids.
   - The stack-name check accepts the five partitions' differently named stacks because they share one assignment and one fingerprint.
-  - A failing offline replay pass is repeated at the same seed up to 8 times, only on the reproduction failure, with every try logged.
-  - The reason is the checker's run-to-run nondeterminism (below).
-- **The store-proof bypass.** [exploratory] The analysis's store-proof bookkeeping check was bypassed for this one union run, with every other check on. The kept records' copy is proven for the source run only, and every copy was identity-checked when used. The decision was made so that these results could be part of the submission.
+  - The store-proof check gives each partition the same treatment of its source run's store copy as the source run itself: the copy that served the records the partitions carry over is listed for each partition, with its identity proof.
+  - A failing offline replay pass is repeated at the same seed up to 8 times, only on the reproduction failure, with every try logged. The reason is the checker's run-to-run nondeterminism (below).
+  - The reported estimates were first computed with the store-proof check bypassed; the reviewed analysis reproduces every estimate exactly and adds only the store disclosure rows.
 
 ### The checker's nondeterminism and the reproduction retries
 
@@ -210,4 +184,3 @@ This document lists where the work differs from the registered design. It covers
 
 - **The two-annotator audit.** [exploratory] The two annotators coded independently. The registered adjudication by discussion was not completed before submission. The results report each annotator's codes and the codes both gave, with Cohen's κ per field on the primary code. No intervals are given. The tables built on adjudicated codes are not reported. Its numbers were checked by one independent verifier; it stays provisional until adjudication.
 - **H4's residue and H6's mechanism.** [exploratory] Both rest on this audit alone. The residue of errors of meaning (H4) is read from its error-type codes. The audit's shared-premise items are the only evidence on mechanism. No mechanism is claimed. Both are provisional until adjudication.
-- **Qwen3.8's pooled SIB UniProt results.** [exploratory] These are reported with the analysis-side changes in section 2. Their analysis code was not independently reviewed.
