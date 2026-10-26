@@ -31,6 +31,7 @@ The files keep the relative paths of the development repository, because the cod
 | `replication/PINS.md` | Integrity pins that anonymization changed: original and package values. |
 | `replication/KNOWN-ISSUES.md` | Known issues: the checker's non-deterministic offline replay and how the analyses handled it. |
 | `replication/DEVIATIONS.md` | Deviations from the pre-registration: what was not run, what changed after the freeze, and what is provisional. |
+| `replication/MODELS.md` | The model configurations per graph and run group, and the harness settings per model. |
 
 ## Versions
 

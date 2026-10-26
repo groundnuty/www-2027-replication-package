@@ -56,10 +56,10 @@ This document lists where the work differs from the registered design. It covers
 
 - **Serving deployments.** [both]
   - Registered: replicas must report the same served identity; a deployment that differs is a new stack.
-  - Changed: a model's runs may be served by more than one vLLM deployment with the same engine release, checkpoint and model-side settings, so that runs proceed in parallel. A deployment that joins a running run first passes a short malfunction check on development questions; the check reads the share of capped and looping attempts, never accuracy.
+  - Changed: a model's runs may be served by more than one vLLM deployment with the same engine release and checkpoint, so that runs proceed in parallel. A deployment that joins a running run first passes a short malfunction check on development questions; the check reads the share of capped and looping attempts, never accuracy.
   - A matching release and checkpoint is not behavioural equivalence. Each turn records its deployment, the results report each arm's share per deployment, and the contrasts are read under the serving actually used.
   - Two deployments of the same checkpoint can render prompts differently: a hosted deployment adds a short fixed segment to every prompt, and deployments can differ in chat-template revision. Such deployments are never mixed within a run; the deployment per graph is listed with the runs.
-  - The retry cells and time-out re-runs of GLM, Gemma and DeepSeek ran on another deployment of the same checkpoint than their initial outputs; the initial deployment's fingerprints were admitted for the replayed turns. GLM's deployments differ in attention implementation (dense in some layers on some, sparse on others), and its comparisons across them carry that difference.
+  - The retry cells and time-out re-runs of GLM, Gemma and DeepSeek ran on another deployment of the same checkpoint than their initial outputs; the initial deployment's fingerprints were admitted for the replayed turns. GLM's deployments differ in attention implementation (dense in some layers on some, sparse on others). Gemma's deployments differ in vLLM's FP8 kernel path (weight-only FP8 with bfloat16 activations on some; FP8 activations with power-of-two block scales on others) and in attention kernel. Comparisons across such deployments carry these differences; `replication/MODELS.md` lists the configurations.
   - One model's private-graph arms moved once to a second deployment of the same weights; completed attempts were not re-run.
 - **Request time-outs and turn caps.** [exploratory] Registered: a 600 s request time-out per model call. Changed: per-model request time-outs and turn caps, sized to a full-length reply and listed per model with the runs (1,800 s for one model, whose long contexts made the registered limit cut calls that were still progressing). This was decided before any outcome was read.
 - **Store copies.** [both]
@@ -167,9 +167,9 @@ This document lists where the work differs from the registered design. It covers
 - **Changes for the pooled SIB union analysis.** [exploratory] These apply to Qwen3.8's pooled SIB UniProt analysis. The guard, the stack-name check and the store-proof check had one independent review.
   - A guard that refused grid-layout batches was narrowed to refuse only real retry cells and ambiguous grids.
   - The stack-name check accepts the five partitions' differently named stacks because they share one assignment and one fingerprint.
-  - The store-proof check gives each partition the same treatment of its source run's store copy as the source run itself: the copy that served the records the partitions carry over is listed for each partition, with its identity proof.
+  - The store-proof check gives each partition the same treatment of its source run's store copy as the source run itself: the copy that served the records the partitions carry over is listed for each partition, with a post-hoc identity proof (its answers to the known-answer queries), which does not cover that copy's index files, server image or server settings.
   - A failing offline replay pass is repeated at the same seed up to 8 times, only on the reproduction failure, with every try logged. The reason is the checker's run-to-run nondeterminism (below).
-  - The reported estimates were first computed with the store-proof check bypassed; the reviewed analysis reproduces every estimate exactly and adds only the store disclosure rows.
+  - The reported estimates were first computed with the store-proof check bypassed. The reviewed analysis reproduces every estimate exactly; only its store disclosure differs, because it identifies the store copy of the attempts carried over from the source run (of the same speed class as the partitions' copies).
 
 ### The checker's nondeterminism and the reproduction retries
 
