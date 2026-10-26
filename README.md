@@ -92,8 +92,9 @@ is released it prints them and exits.
   hashes of the anonymized addresses.
 - Where such a name was part of an identifier, the identifier was renamed the same way in every file (for example,
   `harness/sources/generated_gateway.py`, `scripts/run_gateway_ab.py`, and the options, environment variables and
-  constants named after the gateway service). Nothing else in the code changed: for every Python file, the syntax tree
-  with all string constants blanked is identical before and after anonymization, except for these consistent renames, and for the tests adapted to the synthetic store-copy tables (`tests/test_copy_classes.py`; `tests/test_dsh_store_proofs.py` is not included).
+  constants named after the gateway service). Nothing else in the code changed, except: for every Python file, the syntax tree
+  with all string constants blanked is identical before and after anonymization, apart from these consistent renames and the three substitutions below. (A) `harness/agent/store_fault.py`: the comments, and the copy ids in its string constants, were neutralized (its syntax tree with string constants blanked is unchanged; the frozen-code digest is re-pinned in `replication/PINS.md`; the run-tag patches that touch the file were edited identically and still apply). (B) `STORE_ALIASES` in `exploratory.py` and (C) the host-rule table in `copy_classes.py` (`HOSTS`, `HOST_RULE` and the text of `RULE`) were replaced by example data matching the synthetic tables; their logic is unchanged. The tests adapted to the synthetic tables are `tests/test_copy_classes.py` and `tests/test_exploratory.py` (and `tests/test_dsh_store_proofs.py` is not included).
+  Note that copy speed classes were measured, or for some copies assigned by a rule over the authors' hosts; the shipped rule table is an example.
 - The analysis pins the digests of the code and configuration it runs on. Anonymization changes file contents, so the
   affected pins were recomputed on the anonymized files; `replication/PINS.md` lists the original and the package
   value of each. The digests recorded inside the data of step 2 refer to the code before anonymization.

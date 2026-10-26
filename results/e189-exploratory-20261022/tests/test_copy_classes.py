@@ -4,8 +4,8 @@ against the copies it covers and the outcomes the lead worked out by hand from t
 
 Hand-derived facts: the first source that gives a class wins, in the order v3 FINAL speed-class.json, the per-copy
 records, cell-classes.tsv, the host rule; "partial" is no class; a note with the word unmeasured is the table's host
-rule, so its label says so; the host rule gives rhea-142 sitea fast, sitec medium, siteb-x86 slow, arm64 medium, opaque
-and UniProt sitea fast, sitec fast, siteb-x86 slow, arm64 medium, and corporate (text2sparql-ck26) none."""
+rule, so its label says so; the host rule (an example table over example hosts) gives rhea-142 example-host-1 fast, example-host-2
+medium, opaque and UniProt example-host-1 fast, example-host-2 slow, and corporate (text2sparql-ck26) none."""
 
 from __future__ import annotations
 
@@ -72,7 +72,7 @@ def _info_entry(replica: str, table_rows=None, **more) -> dict:
 
 def _basis_entry(replica: str, basis: str = "a test basis text", table_rows=None, **more) -> dict:
     """A basis override; the default lines are r3's line in the fixture table."""
-    rows = table_rows if table_rows is not None else _lines(("fast", "SiteA, measured fast"))
+    rows = table_rows if table_rows is not None else _lines(("fast", "Host1, measured fast"))
     return {"replica": replica, "table_rows": rows, "basis": basis, "why": "a test why",
             "sources": [{"path": "/summary.txt", "sha256": SHA}], **more}
 
@@ -114,9 +114,9 @@ def test_v3_partial_is_no_class_and_falls_through_to_the_table():
     v3 = cc.parse_v3({"copies": {"c": {"speed_class": "partial", "basis": "earlier"},
                                   "d": {"speed_class": "slow", "basis": "fresh"}}})
     assert v3 == {"d": ("slow", "fresh")}  # c has no class in v3
-    cells = {"c": ("fast", "SiteA, measured fast")}
+    cells = {"c": ("fast", "Host1, measured fast")}
     assert cc.classify("c", "rhea-142", v3, [], cells, {}) == {
-        "class": "fast", "label": "fast", "basis": "SiteA, measured fast", "source": "cell-classes"}
+        "class": "fast", "label": "fast", "basis": "Host1, measured fast", "source": "cell-classes"}
 
 
 @pytest.mark.parametrize("value", [None, "", "unknown", "FAST", 3, True, ["fast"]])
@@ -142,8 +142,8 @@ def test_the_table_is_read_by_columns_and_a_copy_on_several_lines_has_one_class_
             "a:1\tc\tslow\tfirst note\n"
             "b:2\tc\tslow\tsecond note\n"
             "# a comment line\n"
-            "x:3\td\tfast\tSiteA, measured fast\n")
-    assert cc.parse_cell_classes(text) == {"c": ("slow", "first note"), "d": ("fast", "SiteA, measured fast")}
+            "x:3\td\tfast\tHost1, measured fast\n")
+    assert cc.parse_cell_classes(text) == {"c": ("slow", "first note"), "d": ("fast", "Host1, measured fast")}
     with pytest.raises(cc.Refused, match=r"c is on several lines with different classes"):
         cc.parse_cell_classes("a:1\tc\tslow\tn\nb:2\tc\tfast\tn\n")
     with pytest.raises(cc.Refused, match=r"not one of fast, medium, slow"):
@@ -154,10 +154,10 @@ def test_the_table_is_read_by_columns_and_a_copy_on_several_lines_has_one_class_
 
 
 @pytest.mark.parametrize("note, label", [
-    ("SiteB, unmeasured = slow", "slow (host rule, unmeasured)"),
-    ("SiteA, unmeasured, dead since 23 Oct", "slow (host rule, unmeasured)"),
-    ("SiteB, measured slow", "slow"),
-    ("SiteC, represented by 28951", "slow"),
+    ("Host2, unmeasured = slow", "slow (host rule, unmeasured)"),
+    ("Host1, unmeasured, dead since 23 Oct", "slow (host rule, unmeasured)"),
+    ("Host2, measured slow", "slow"),
+    ("Host3, represented by 28951", "slow"),
     ("unmeasuredish is not the word", "slow"),
 ])
 def test_a_note_with_the_word_unmeasured_is_the_tables_host_rule_and_its_label_says_so(note, label):
@@ -166,12 +166,9 @@ def test_a_note_with_the_word_unmeasured_is_the_tables_host_rule_and_its_label_s
 
 
 @pytest.mark.parametrize("graph, host, speed", [
-    ("rhea-142", "sitea", "fast"), ("rhea-142", "sitec", "medium"), ("rhea-142", "siteb-x86", "slow"),
-    ("rhea-142", "arm64", "medium"),
-    ("opaque-rhea-142", "sitea", "fast"), ("opaque-rhea-142", "sitec", "fast"), ("opaque-rhea-142", "siteb-x86", "slow"),
-    ("opaque-rhea-142", "arm64", "medium"),
-    ("uniprot-sp-2026_03", "sitea", "fast"), ("uniprot-sp-2026_03", "sitec", "fast"),
-    ("uniprot-sp-2026_03", "siteb-x86", "slow"), ("uniprot-sp-2026_03", "arm64", "medium"),
+    ("rhea-142", "example-host-1", "fast"), ("rhea-142", "example-host-2", "medium"),
+    ("opaque-rhea-142", "example-host-1", "fast"), ("opaque-rhea-142", "example-host-2", "slow"),
+    ("uniprot-sp-2026_03", "example-host-1", "fast"), ("uniprot-sp-2026_03", "example-host-2", "slow"),
 ])
 def test_the_host_rule_by_graph_and_host(graph, host, speed):
     hosts = cc.parse_hosts(_hosts_doc(c=_hosts_entry(graph, host, "the entry's own basis")))
@@ -180,11 +177,11 @@ def test_the_host_rule_by_graph_and_host(graph, host, speed):
         "source": "copy-hosts"}
 
 
-def test_rhea_on_sitec_is_medium_where_opaque_on_sitec_is_fast():
-    a = cc.parse_hosts(_hosts_doc(c=_hosts_entry("rhea-142", "sitec")))
-    b = cc.parse_hosts(_hosts_doc(c=_hosts_entry("opaque-rhea-142", "sitec")))
+def test_rhea_on_the_second_host_is_medium_where_opaque_on_it_is_slow():
+    a = cc.parse_hosts(_hosts_doc(c=_hosts_entry("rhea-142", "example-host-2")))
+    b = cc.parse_hosts(_hosts_doc(c=_hosts_entry("opaque-rhea-142", "example-host-2")))
     assert cc.classify("c", "rhea-142", {}, [], {}, a)["class"] == "medium"
-    assert cc.classify("c", "opaque-rhea-142", {}, [], {}, b)["class"] == "fast"
+    assert cc.classify("c", "opaque-rhea-142", {}, [], {}, b)["class"] == "slow"
 
 
 @pytest.mark.parametrize("host", cc.HOSTS)
@@ -197,13 +194,13 @@ def test_corporate_has_no_host_rule_its_class_is_null_whatever_the_host(host):
 
 def test_an_unknown_graph_or_host_and_a_copy_found_nowhere_refuse():
     with pytest.raises(cc.Refused, match=r"no host rule for its graph"):
-        cc.parse_hosts(_hosts_doc(c=_hosts_entry("some-other-graph", "sitea")))
+        cc.parse_hosts(_hosts_doc(c=_hosts_entry("some-other-graph", "example-host-1")))
     with pytest.raises(cc.Refused, match=r"its host is not one of"):
         cc.parse_hosts(_hosts_doc(c=_hosts_entry("rhea-142", "mars")))
     with pytest.raises(cc.Refused, match=r"c: found in no class source and not in the hosts file"):
         cc.classify("c", "rhea-142", {"d": ("fast", "b")}, [("r", "d", "fast", "b")], {"d": ("fast", "n")},
-                    cc.parse_hosts(_hosts_doc(d=_hosts_entry("rhea-142", "sitea"))))
-    hosts = cc.parse_hosts(_hosts_doc(c=_hosts_entry("rhea-142", "sitea")))
+                    cc.parse_hosts(_hosts_doc(d=_hosts_entry("rhea-142", "example-host-1"))))
+    hosts = cc.parse_hosts(_hosts_doc(c=_hosts_entry("rhea-142", "example-host-1")))
     with pytest.raises(cc.Refused, match=r"names another graph than its store proof does"):
         cc.classify("c", "opaque-rhea-142", {}, [], {}, hosts)
 
@@ -216,7 +213,7 @@ def test_an_unknown_graph_or_host_and_a_copy_found_nowhere_refuse():
     lambda d: d["copies"].update(c=None),
 ])
 def test_a_malformed_hosts_file_refuses(edit):
-    doc = _hosts_doc(c=_hosts_entry("rhea-142", "sitea"))
+    doc = _hosts_doc(c=_hosts_entry("rhea-142", "example-host-1"))
     edit(doc)
     with pytest.raises(cc.Refused):
         cc.parse_hosts(doc)
@@ -241,17 +238,17 @@ def test_the_store_proofs_give_the_copies_and_a_replica_of_two_graphs_refuses():
 def _sources(tmp: Path) -> dict:
     """Nine copies, one per precedence case, as files (r9 only in the endpoint copies, with a table row; r12 only in the
     extra copies, with a table row): r1 in v3 (and the table, as slow: v3 wins), r2 only in a record,
-    r3 v3 partial with a table row, r4 an unmeasured table row, r5 a copy of the host rule (sitec, Rhea: medium), r6 a
-    corporate copy (no host rule), r7 an opaque copy on sitea."""
+    r3 v3 partial with a table row, r4 an unmeasured table row, r5 a copy of the host rule (example-host-2, Rhea: medium), r6 a
+    corporate copy (no host rule), r7 an opaque copy on example-host-1."""
     proofs = [{"replica": r, "graph": g} for r, g in (
         ("r1", "rhea-142"), ("r2", "rhea-142"), ("r3", "rhea-142"), ("r4", "rhea-142"), ("r5", "rhea-142"),
         ("r6", "text2sparql-ck26"), ("r7", "opaque-rhea-142"))]
     v3 = {"copies": {"r1": {"speed_class": "fast", "basis": "fresh"}, "r3": {"speed_class": "partial", "basis": "earlier"}}}
     record = {"copy": "r2", "speed_class": "medium", "basis": "r2 itself was timed"}
-    tsv = ("# comment\nh:1\tr1\tslow\tSiteB\nh:2\tr3\tfast\tSiteA, measured fast\nh:3\tr4\tslow\tSiteB, unmeasured = slow\n"
-           "h:9\tr9\tmedium\tSiteA, timed by hand\n" "h:12\tr12\tmedium\tSiteB, timed on siblings\n")
-    hosts = _hosts_doc(r5=_hosts_entry("rhea-142", "sitec", "b5"), r6=_hosts_entry("text2sparql-ck26", "sitea", "b6"),
-                       r7=_hosts_entry("opaque-rhea-142", "sitea", "b7"))
+    tsv = ("# comment\nh:1\tr1\tslow\tHost2\nh:2\tr3\tfast\tHost1, measured fast\nh:3\tr4\tslow\tHost2, unmeasured = slow\n"
+           "h:9\tr9\tmedium\tHost1, timed by hand\n" "h:12\tr12\tmedium\tHost2, timed on siblings\n")
+    hosts = _hosts_doc(r5=_hosts_entry("rhea-142", "example-host-2", "b5"), r6=_hosts_entry("text2sparql-ck26", "example-host-1", "b6"),
+                       r7=_hosts_entry("opaque-rhea-142", "example-host-1", "b7"))
     return {"store_proofs": _write(tmp / "store-proofs.json", {"schema": "e189-store-proofs/1", "proofs": proofs}),
             "v3": _write(tmp / "speed-class.json", v3), "records": [_write(tmp / "speed-class-r2.json", record)],
             "cell_classes": _write(tmp / "cell-classes.tsv", tsv), "hosts": _write(tmp / "copy-hosts.json", hosts),
@@ -263,14 +260,14 @@ def _sources(tmp: Path) -> dict:
 EXPECTED = {
     "r1": {"class": "fast", "label": "fast", "basis": "fresh", "source": "speed-class-v3"},
     "r2": {"class": "medium", "label": "medium", "basis": "r2 itself was timed", "source": "record:speed-class-r2.json"},
-    "r3": {"class": "fast", "label": "fast", "basis": "SiteA, measured fast", "source": "cell-classes"},
-    "r4": {"class": "slow", "label": "slow (host rule, unmeasured)", "basis": "SiteB, unmeasured = slow",
+    "r3": {"class": "fast", "label": "fast", "basis": "Host1, measured fast", "source": "cell-classes"},
+    "r4": {"class": "slow", "label": "slow (host rule, unmeasured)", "basis": "Host2, unmeasured = slow",
            "source": "cell-classes"},
     "r5": {"class": "medium", "label": "medium (host rule, unmeasured)", "basis": "b5", "source": "copy-hosts"},
     "r6": {"class": None, "label": "unmeasured (no host rule for corporate)", "basis": "b6", "source": "copy-hosts"},
     "r7": {"class": "fast", "label": "fast (host rule, unmeasured)", "basis": "b7", "source": "copy-hosts"},
-    "r9": {"class": "medium", "label": "medium", "basis": "SiteA, timed by hand", "source": "cell-classes"},
-    "r12": {"class": "medium", "label": "medium", "basis": "SiteB, timed on siblings", "source": "cell-classes"},
+    "r9": {"class": "medium", "label": "medium", "basis": "Host1, timed by hand", "source": "cell-classes"},
+    "r12": {"class": "medium", "label": "medium", "basis": "Host2, timed on siblings", "source": "cell-classes"},
 }
 
 
@@ -280,10 +277,9 @@ def test_the_build_gives_each_copy_its_first_source_and_names_every_source_by_pa
     assert doc["copies"] == EXPECTED
     assert doc["schema"] == "e189-copy-classes/1"
     # the rule says, in words, what the brief requires of it (written by hand, not read back from the constant)
-    for words in ("a3a1881da084", "differs only by the example-copy-45 row", "sitec medium", "siteb-x86 slow",
-                  "unmeasured (no host rule for corporate)", "a copy found nowhere", "v3's partial is none",
-                  "bd3b83f8ec7e", "two example-copy-48 rows", "6c4293552da7", "two example-copy-49 rows", "two example-copy-50 rows",
-                  "extra-copies.json", "a copy in several of the three has one graph"):
+    for words in ("example-host-2 medium", "example-host-2 slow", "unmeasured (no host rule for corporate)",
+                  "a copy found nowhere", "a partial measurement is none", "extra-copies.json",
+                  "a copy in several of the three has one graph"):
         assert words in doc["rule"], words
     assert set(doc["sources"]) == {"store-proofs", "speed-class-v3", "cell-classes", "copy-hosts", "endpoint-copies",
                                    "extra-copies", "class-overrides", "record:speed-class-r2.json"}
@@ -457,7 +453,7 @@ def test_every_field_of_the_file_refuses_every_wrong_type_with_refused_and_never
 
 
 def test_the_hosts_file_refuses_every_wrong_type_with_refused_and_never_another_exception():
-    base = _hosts_doc(c=_hosts_entry("rhea-142", "sitea"))
+    base = _hosts_doc(c=_hosts_entry("rhea-142", "example-host-1"))
     shapes = list(_wrong_shapes(base))
     assert len(shapes) > 100 and (("copies", "c", "graph"), []) in shapes
     for position, junk in shapes:
@@ -551,10 +547,10 @@ def test_the_build_covers_the_endpoint_copies_and_leaves_every_other_entry_as_it
     # the same sources with a table that names a second copy changes that copy's entry only
     more = _write(tmp_path / "endpoint-copies-2.json", _endpoint_doc(_endpoint_entry("r9"), _endpoint_entry(
         "r10", "rhea-142", "d" * 64)))
-    tsv = Path(s["cell_classes"]).read_text(encoding="utf-8") + "h:10\tr10\tslow\tSiteB, timed\n"
+    tsv = Path(s["cell_classes"]).read_text(encoding="utf-8") + "h:10\tr10\tslow\tHost2, timed\n"
     again = cc.build(s["store_proofs"], s["v3"], s["records"], _write(tmp_path / "cells-2.tsv", tsv), s["hosts"], more, s["extra_copies"], s["class_overrides"])
     assert {k: v for k, v in again["copies"].items() if k != "r10"} == with_table["copies"] == EXPECTED
-    assert again["copies"]["r10"] == {"class": "slow", "label": "slow", "basis": "SiteB, timed", "source": "cell-classes"}
+    assert again["copies"]["r10"] == {"class": "slow", "label": "slow", "basis": "Host2, timed", "source": "cell-classes"}
 
 
 def test_a_table_copy_with_no_class_source_refuses_the_build_and_a_copy_in_both_files_has_one_graph(tmp_path):
@@ -696,11 +692,11 @@ def test_the_build_covers_the_extra_copies_and_leaves_every_other_entry_as_it_wa
     assert with_extra["copies"] == EXPECTED and "r12" in with_extra["copies"]
     # the same sources with an extra file that names a second copy (with a table row) changes that copy's entry only
     more = _write(tmp_path / "extra-copies-2.json", _extra_doc(_extra_entry("r12"), _extra_entry("r13")))
-    tsv = Path(s["cell_classes"]).read_text(encoding="utf-8") + "h:13\tr13\tslow\tSiteB, timed\n"
+    tsv = Path(s["cell_classes"]).read_text(encoding="utf-8") + "h:13\tr13\tslow\tHost2, timed\n"
     again = cc.build(s["store_proofs"], s["v3"], s["records"], _write(tmp_path / "cells-3.tsv", tsv), s["hosts"],
                      s["endpoint_copies"], more, s["class_overrides"])
     assert {k: v for k, v in again["copies"].items() if k != "r13"} == EXPECTED
-    assert again["copies"]["r13"] == {"class": "slow", "label": "slow", "basis": "SiteB, timed", "source": "cell-classes"}
+    assert again["copies"]["r13"] == {"class": "slow", "label": "slow", "basis": "Host2, timed", "source": "cell-classes"}
     # and without its extra file's copy the copy is not covered (nothing else changes)
     one = _write(tmp_path / "extra-copies-3.json", _extra_doc(_extra_entry("r13")))
     without = cc.build(s["store_proofs"], s["v3"], s["records"], _write(tmp_path / "cells-4.tsv", tsv), s["hosts"],
@@ -715,10 +711,10 @@ def test_an_extra_copy_with_no_class_source_refuses_the_build_and_a_copy_in_seve
         cc.build(s["store_proofs"], s["v3"], s["records"], s["cell_classes"], s["hosts"], s["endpoint_copies"], nowhere, s["class_overrides"])
     # (a class from the host rule is not a fallback for an extra copy: it must be in the hosts file to get one)
     hosts_doc = json.loads(Path(s["hosts"]).read_text(encoding="utf-8"))
-    hosts_doc["copies"]["r14"] = _hosts_entry("rhea-142", "siteb-x86", "b14")
+    hosts_doc["copies"]["r14"] = _hosts_entry("rhea-142", "example-host-2", "b14")
     hosts_has = _write(tmp_path / "hosts-2.json", hosts_doc)
     again = cc.build(s["store_proofs"], s["v3"], s["records"], s["cell_classes"], hosts_has, s["endpoint_copies"], nowhere, s["class_overrides"])
-    assert again["copies"]["r14"] == {"class": "slow", "label": "slow (host rule, unmeasured)", "basis": "b14",
+    assert again["copies"]["r14"] == {"class": "medium", "label": "medium (host rule, unmeasured)", "basis": "b14",
                                       "source": "copy-hosts"}
     for name, graph in (("r1", "text2sparql-ck26"), ("r9", "rhea-142")):  # a proof's copy and an endpoint copy's
         other = _write(tmp_path / f"extra-copies-{name}.json", _extra_doc(_extra_entry(name, graph)))
@@ -852,11 +848,11 @@ def test_every_field_of_the_overrides_refuses_every_wrong_type_with_refused_and_
 
 def _with_r15(tmp_path, s):
     """The fixture sources plus r15: an extra copy (rhea-142) with an informational table row (medium) and a host-rule entry
-    (SiteB x86 on Rhea: slow); returns the keyword sources with those files swapped in."""
+    (example-host-2 on Rhea: medium); returns the keyword sources with those files swapped in."""
     extra = _write(tmp_path / "extra-r15.json", _extra_doc(_extra_entry("r12"), _extra_entry("r15")))
     tsv = Path(s["cell_classes"]).read_text(encoding="utf-8") + "h:15\tr15\tmedium\tinformational: same class as a sibling\n"
     hosts_doc = json.loads(Path(s["hosts"]).read_text(encoding="utf-8"))
-    hosts_doc["copies"]["r15"] = _hosts_entry("rhea-142", "siteb-x86", "b15")
+    hosts_doc["copies"]["r15"] = _hosts_entry("rhea-142", "example-host-2", "b15")
     return {**s, "extra_copies": extra, "cell_classes": _write(tmp_path / "cells-r15.tsv", tsv),
             "hosts": _write(tmp_path / "hosts-r15.json", hosts_doc)}
 
@@ -868,7 +864,7 @@ def test_an_informational_row_is_ignored_for_the_copies_the_overrides_name_and_n
                                       "source": "cell-classes"}
     overrides = _write(tmp_path / "ov.json", _overrides_doc([_info_entry("r15")]))
     done = cc.build(**{**s, "class_overrides": overrides})
-    assert done["copies"]["r15"] == {"class": "slow", "label": "slow (host rule, unmeasured)", "basis": "b15",
+    assert done["copies"]["r15"] == {"class": "medium", "label": "medium (host rule, unmeasured)", "basis": "b15",
                                      "source": "copy-hosts"}
     assert {k: v for k, v in done["copies"].items() if k != "r15"} == {k: v for k, v in plain["copies"].items() if k != "r15"}
     assert done["sources"]["class-overrides"] == {"path": str(overrides), "sha256": hashlib.sha256(overrides.read_bytes()).hexdigest()}
@@ -894,7 +890,7 @@ def test_an_override_with_nothing_to_override_refuses_the_build(tmp_path):
     refused(r"zz: an informational-row override for a copy the build does not cover", info=[_info_entry("zz")])
     refused(r"r6: its informational-row override has no row in the cell table", info=[_info_entry("r6")])  # (a stale override)
     refused(r"r1: its informational-row override is for a copy with a measurement",
-            info=[_info_entry("r1", _lines(("slow", "SiteB")))])  # v3 (r1's table line is slow, "SiteB")
+            info=[_info_entry("r1", _lines(("slow", "Host2")))])  # v3 (r1's table line is slow, "Host2")
     with_row = _write(tmp_path / "cells-r2.tsv", Path(s["cell_classes"]).read_text(encoding="utf-8") + "h:2\tr2\tfast\tn\n")
     refused(r"r2: its informational-row override is for a copy with a measurement",
             info=[_info_entry("r2", _lines(("fast", "n")))], cell_classes=with_row)  # a record
@@ -905,8 +901,8 @@ def test_an_override_with_nothing_to_override_refuses_the_build(tmp_path):
     gone = r"the cell table's lines are no longer the ones its (informational-row|basis) override was reviewed against"
     refused(rf"r15: {gone}", info=[_info_entry("r15", _lines(("slow", "informational: same class as a sibling")))])  # class
     refused(rf"r15: {gone}", info=[_info_entry("r15", _lines(("medium", "informational: same class as a sibling, but measured")))])
-    refused(rf"r3: {gone}", bases=[_basis_entry("r3", table_rows=_lines(("medium", "SiteA, measured fast")))])
-    refused(rf"r3: {gone}", bases=[_basis_entry("r3", table_rows=_lines(("fast", "SiteA, measured fast, again")))])
+    refused(rf"r3: {gone}", bases=[_basis_entry("r3", table_rows=_lines(("medium", "Host1, measured fast")))])
+    refused(rf"r3: {gone}", bases=[_basis_entry("r3", table_rows=_lines(("fast", "Host1, measured fast, again")))])
     refused(rf"r15: {gone}", info=[_info_entry("r15", _lines(("medium", "informational: same class as a sibling"),
                                                              ("medium", "a second line the override never saw")))])  # fewer lines
     # the case that matters: a LINE ADDED after the reviewed one (same class: the parser keeps only the first note) says the copy was
@@ -1017,7 +1013,7 @@ def test_the_committed_classes_of_the_branch_phase_copies_are_the_ones_the_lead_
     assert (entry["class"], entry["label"], entry["source"]) == LEAD_EXPECTS[replica]
 
 
-def test_the_committed_sitec_28952_carries_the_tables_note_and_the_hosts_rule_copies_carry_the_registrys_basis():
+def test_the_committed_tables_note_and_the_hosts_rule_copies_carry_the_registrys_basis():
     pytest.skip("needs the authors' store tables")
 
 

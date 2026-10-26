@@ -133,7 +133,7 @@ def test_the_tracked_coder_record_is_the_pinned_file_and_is_accepted(tmp_path, d
     ids, qsha = design
     raw = CODER_TRACKED.read_bytes()
     assert _sha(raw) == CODER_SHA == ex.PINNED_RECORDS["coder-dh2-partition/1"]
-    original = Path("/home/user/wt/coder-opaque-siteb2/results/coder-opaque-siteb2-20261023/out/partitions/opaque-coder-k2.json")
+    original = Path("/home/user/wt/coder-example-copy-54/results/coder-example-copy-55/out/partitions/opaque-coder-k2.json")
     if original.exists():  # the untracked source file on this host: the tracked copy is byte-identical to it
         assert original.read_bytes() == raw
     record, sha = ex.read_record(CODER_TRACKED)
@@ -374,7 +374,7 @@ OUT_MUTATIONS = [  # (name, partition, mutation of (identity, path) -> (identity
     ("another binding named", 1, setp("binding_sha256", "0" * 64), "does not name the cited binding"),
     ("the plan unnamed", 2, popp("plan_sha256"), "does not name partition 2's plan"),
     ("another partition's plan named (p0's for p3: the same copy)", 3, setp("plan_sha256", DSH[0][1]), "does not name partition 3's plan"),
-    ("the record's copy (an x86 copy of the record's list)", 0, set_copy("example-copy-14", "example-copy-14"),
+    ("the record's copy (another copy of the record's list)", 0, set_copy("example-copy-14", "example-copy-14"),
      "is not partition 0's copy in the cited binding (example-copy-24)"),
     ("the partition copy right, the store replica another", 4, set_copy(replica="example-copy-24"),
      "is not partition 4's copy in the cited binding"),

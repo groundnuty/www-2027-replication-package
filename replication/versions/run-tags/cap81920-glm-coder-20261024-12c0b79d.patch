@@ -32,11 +32,11 @@ index 957a7dc8..1c28e2dc 100644
 --- a/harness/agent/store_fault.py
 +++ b/harness/agent/store_fault.py
 @@ -113,8 +113,6 @@ COPY_ENDPOINTS = {
-     "uniprot-b-c03": ("192.0.2.101", 7026), "uniprot-c-c04": ("192.0.2.101", 7028),
-     "rhea-c06": ("192.0.2.105", 7039), "opaque-rhea-c05": ("192.0.2.101", 7033),
-     "corporate-c07": ("192.0.2.101", 7041),
--    "opaque-rhea-c09": ("192.0.2.105", 7045),  # opaque-rhea-sitea-2, job 24401 (store agent, 22 Oct)
--    "rhea-c08": ("192.0.2.105", 7043),  # rhea-sitea-2, job 24400 (store agent, 22 Oct)
+     "example-copy-53": ("192.0.2.101", 7026), "example-copy-47": ("192.0.2.101", 7028),
+     "example-copy-38": ("192.0.2.105", 7039), "example-copy-12": ("192.0.2.101", 7033),
+     "example-copy-9": ("192.0.2.101", 7041),
+-    "example-copy-13": ("192.0.2.105", 7045),
+-    "example-copy-39": ("192.0.2.105", 7043),
  }
  HOST_ALIASES = {"node-1.cluster-a.example": "192.0.2.105", "node-1": "192.0.2.105",
                  "node-2.cluster-a.example": "192.0.2.101", "node-2": "192.0.2.101"}

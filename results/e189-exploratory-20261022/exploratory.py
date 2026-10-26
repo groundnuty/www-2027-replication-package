@@ -173,7 +173,7 @@ CONFIG = "data/analysis/prereg-config.json"
 # The frozen analysis this script runs on: the config-fill head's code (harness/ and scripts/, digest.code_digest) and its
 # final analysis config (the pinned e46fd504...); any other deploy is refused, not merely recorded
 FROZEN_COMMIT = "847cc27563a3c7a505c8ec0fd647c9314acaae8c"
-FROZEN_CODE_DIGEST = "23992dea14a531c42f3fdc96f6f8d23a6350a241bc08879079023d89ed154578"
+FROZEN_CODE_DIGEST = "a5e7607b5d2027078437879b32de270c715ccba78b891f5c6ed149c683551387"
 FROZEN_CONFIG_SHA256 = "ddca19da589e268ed5b88c8275c4d51106ab2cd40bf25920840848e63f5d97dd"
 # The voided OUTs recorded when this script was written (entry 173: SiteB Rhea 213, opaque 33; entry 180: gw-node-1 Rhea 99,
 # opaque 28, a15 16): every voided-run record given must hold at least these, so a wrong or partial file is refused
@@ -289,9 +289,9 @@ STORE_FIELDS = ("run_id", "model", "store.name", "store.endpoint", "started_at",
 STORECHECK_SCHEMA = "entry180-store-check/2"  # partition_run.py storecheck's file
 # Each graph's recorded reference stats and the index it names (name-index "<graph>@<sha256 of the index list>"),
 # pinned before any exploratory call (science, ~10:35Z): the sha256 of the store agent's recorded reference file, the
-# registered store's ?cmd=stats that check-copies.sh compares every copy with in all fields (store-copies-20261021/
-# siteb/ref-<graph>-stats.json; partition_run.REFERENCE_STATS_SHA256, entry 180, for Rhea and opaque). UniProt's is
-# ref-7022-stats-20261021T175545Z.json, whose stats are copies.json's "reference" that its copies were checked identical
+# registered store's ?cmd=stats that check-copies.sh compares every copy with in all fields (the store agent's
+# ref-<graph>-stats.json; partition_run.REFERENCE_STATS_SHA256, entry 180, for Rhea and opaque). UniProt's is
+# its reference-stats file, whose stats are copies.json's "reference" that its copies were checked identical
 # to; SIB's records are on the UniProt store, so it is SIB's too. Corporate's is ref-text2sparql-ck26-stats.json. A
 # graph not listed here or in PRIVATE_REFERENCE_PINS has no copies to prove
 REFERENCE_STATS_SHA256 = {"rhea-142": "63f7562f8b90f430741002431926a843c863447f2eaf34a82ff0d6d107b89638",
@@ -350,9 +350,9 @@ FORWARD_START = re.compile(r"(?P<at>\S+) (?P<name>\S+) ssh pid (?P<pid>[0-9]+) (
 FORWARD_EXIT = re.compile(r"(?P<at>\S+) (?P<name>\S+) ssh pid (?P<pid>[0-9]+) exited rc=-?[0-9]+ after [0-9]+ s")
 FORWARD_END = re.compile(r"(?P<at>\S+) (?P<name>\S+) (?:STOP file: watchdog ends|watchdog stopped)")
 # A copy its OUTs name by its node's host name while its recorded identity checks and known answers name it by address
-# (science, ~18:1xZ 23 Oct, relayed by the lead: example-copy-38, the same host by the copy table): accepted only for
+# (by ruling, the same host by the copy table): accepted only for
 # the pair pinned here, by sha256 (no address committed), and only where the entry's ``alias`` names that pair's alias
-# endpoint and the copy table pinned with it (the store-copy tooling's copy-assignments/1 snapshot of 18:14:19Z), given
+# endpoint and the copy table pinned with it (the store-copy tooling's copy-assignments/1 snapshot), given
 # by --store-proof: its "aliases" map both the OUT endpoint's and the alias's host:port to the entry's replica, whose
 # "copies" entry lists the alias among its endpoints. The alias counts for ident.py's copy URL and load10.py's endpoint
 # alone. Never a general host-name rule. Such a copy's proof has three points (the same ruling): its entry's pair, and
@@ -363,17 +363,17 @@ ALIAS_FIELDS = ("endpoint_sha256", "record_sha256")
 FURTHER_FIELDS = ("point", "storecheck_sha256", "known_answers_sha256")
 COPY_TABLE_SCHEMA = "copy-assignments/1"
 STORE_ALIASES = {  # (graph, sha256 of the OUT's endpoint) -> (sha256 of the alias endpoint, sha256 of the copy table)
-    ("rhea-142", "0d4386b1394edd1aa67f23d0b51d90aa6a66345526be51a164116ce9f7fcd037"): (
-        "10d664f0e09a2afd038a0976aba2beb91451353265f9e2d5eb09e038d16f7d6c",
-        "2bac52722532af6d4da30d4bd7b92581c55c74673acebf4919c40a3f5b4c3b63"),
-    # science, 25 Oct 00:10Z, point (ii): the corporate OUT of Gemma names its node by host name too; the fresh copy
-    # table of 25 Oct (copy-assignments-20261025T002051Z.json) maps both names to the entry's replica. The key is that
+    ("rhea-142", "a1477ccde3766bea29cacd8ca3245d570203678b2093eb8c341fa15f353f2ab4"): (
+        "54ef810f2bd38c722e09a50776e23d99cb78777421f0c25b67d456b32c5cb03d",
+        "2a36d6b2aa1775a5a1c057b66f2066df262b4b92dfec5276814e58dbe1789274"),
+    # a second pair: an OUT of the corporate graph names its node by host name too; its copy table maps both names to
+    # the entry's replica. The key is that
     # OUT endpoint's sha256 and the value the alias endpoint's, then the copy table's: no address committed
-    ("text2sparql-ck26", "588836988a85adcc45c488e8cadd0e91d1f5e72e62072b8254eea01f8dd6e7f0"): (
-        "39e7e948895a527bbd9da773024e528a52092c5aebc2d17b051725e2fc321616",
-        "b5d234e05051a1f29df565e3623814cf120259893a6c818cc025270ae1491fed")}
-# The store agent's ident.py identity file (science, ~11:30Z: entry 150's UniProt copies 7028 and 7024, checked before
-# entry180-store-check/2 existed: ident-7028.json, and the copies block of the UniProt reference file itself), read in
+    ("text2sparql-ck26", "75b1b34649e44b4da267e822be64ab5a3d8e6be3b921de6a63c1fb96bb3d66aa"): (
+        "7ba4d5531600b913827cd5e5e7df0fc7c0daddf601c85ae9d9bdd16b08df99b3",
+        "6f195ca5f876f52b936a7f270ef6d10e02c75dfc8345fafca206885a225b3142")}
+# The store agent's ident.py identity file (science, ~11:30Z: entry 150's UniProt copies, checked before
+# entry180-store-check/2 existed: an ident.json, and the copies block of the UniProt reference file itself), read in
 # place of a storecheck only for an entry naming identity_format "ident.py" and listing as not_checked exactly what
 # that format does not compare. It records the copy's ?cmd=stats in the reference's 13 fields (IDENT_PY_FIELDS: the
 # stats, the name-index, the triple counts), compared here again, by type and value, with the pinned reference file's;

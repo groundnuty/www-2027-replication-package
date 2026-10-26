@@ -62,7 +62,7 @@
   },
   "copy-hosts": {
    "path": "copy-hosts.json",
-   "sha256": "edda5023032d7716d6157e6449790e4d9917c71571c8ff9a11feb0c54700da8c"
+   "sha256": "31f4087fb4006b0900a64a34f9a5f4c224c7115ecd2b7865a71fd808646d17aa"
   },
   "endpoint-copies": {
    "path": "endpoint-copies.json",

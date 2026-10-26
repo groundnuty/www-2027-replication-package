@@ -19,13 +19,13 @@ digest functions. The logic of the code did not change (see the README), except 
 | sha256 of results/e189-exploratory-20261022/class-overrides.json | `5e43df1e4cbe228ca4287883ce36a53e391e07acde3fbeacf407169fd70c2c80` | `9aa84f10a22b89b25d76aef51ff7969de5574c7fec78d0e30288b36f4de4e382` |
 | sha256 of results/e189-exploratory-20261022/attribution.py | `4eaf5a00405ab250db560d408ad5eca4d75e9e58c61f9b1816154768340dac53` | `9299922566fd8f0a3878663f813386f8eaee4f6a785db5f4bba5732ba527f875` |
 | sha256 of results/e189-exploratory-20261022/extra-copies.json | `968e7621b239ca817ccf62c77a301cb142c2cbacc2cfecf81ac07a0bdd44c331` | `affd31ef2ba166a604b677d1cd827beeabacc6b04b886f31e82c652dceeabe66` |
-| sha256 of results/e189-exploratory-20261022/copy-hosts.json | `34d1c7cb51d9bcf5f9915ac1a7ef9f9f2edf6fc67bd9010fd9546d247f161bce` | `edda5023032d7716d6157e6449790e4d9917c71571c8ff9a11feb0c54700da8c` |
-| exploratory.py FROZEN_CODE_DIGEST (every file under harness/ and scripts/) | `917d47e000456a8023a3c3873f504413faff502b841a5d8c35da85c968d9f67d` | `23992dea14a531c42f3fdc96f6f8d23a6350a241bc08879079023d89ed154578` |
+| sha256 of results/e189-exploratory-20261022/copy-hosts.json | `34d1c7cb51d9bcf5f9915ac1a7ef9f9f2edf6fc67bd9010fd9546d247f161bce` | `31f4087fb4006b0900a64a34f9a5f4c224c7115ecd2b7865a71fd808646d17aa` |
+| exploratory.py FROZEN_CODE_DIGEST (every file under harness/ and scripts/) | `917d47e000456a8023a3c3873f504413faff502b841a5d8c35da85c968d9f67d` | `a5e7607b5d2027078437879b32de270c715ccba78b891f5c6ed149c683551387` |
 | exploratory.py UNTOUCHED_LIST_SHA256 (33 files) | `cdcf2db2d7f32224349d308503067415ec826bb48586b6e8d5117d6fc41633a3` | `e74b844c42b639cfba874078ee3ced6fc721b7d5c4ae1da121ef596844deba81` |
 
 `FROZEN_CODE_DIGEST`'s original value is the digest of every file under `harness/` and `scripts/` of the frozen
 analysis commit `847cc275`, including the scripts this package does not include (see the README); the package value
-is the digest of this package's `harness/` and `scripts/`. The scorer digest and `calibrated_inference_digest` are
+is the digest of this package's `harness/` and `scripts/`. It also moved because the comments and copy ids in `harness/agent/store_fault.py` were neutralized (syntax tree unchanged apart from string constants). The scorer digest and `calibrated_inference_digest` are
 unchanged: the comment neutralization was not applied to the files they cover, and no identity anonymization fell
 inside the functions they hash. `grouping_digest` and `multiplicity_digest` hash the source text of their registered
 functions, comments included, and move because anonymization rewrote comments inside some of them; the logic is unchanged.

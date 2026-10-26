@@ -398,7 +398,7 @@ index 18b013f..9e512ea 100644
      assert set(e["replica"] for e in extra) <= set(_committed()["copies"])
      assert not {"example-copy-16", "example-copy-19", "example-copy-46"} & {e["replica"] for e in extra}
 -    assert len(_committed()["copies"]) == 42  # the 32 of 50ca6fbf, those two, DeepSeek's dsh copies -22 .. -25, and these four
-+    # the 32 of 50ca6fbf, those two, DeepSeek's dsh copies -22 .. -25, these four, and uniprot-b-c03 (the entry 150 retry
++    # the 32 of 50ca6fbf, those two, DeepSeek's dsh copies -22 .. -25, these four, and example-copy-56 (the entry 150 retry
 +    # OUTs' second copy: a store-proofs.json replica with its copy-hosts.json entry)
 +    assert len(_committed()["copies"]) == 43
  
@@ -797,10 +797,10 @@ index c0059a0..ff83fc7 100644
          ("opaque-gemma-4-31b-e190-p2of3", "example-copy-37"): "2026-10-24T01:52:21Z",
 -        ("opaque-gemma-4-31b-e190-p0of3", "example-copy-35"): "2026-10-24T09:56:52Z"}
 +        ("opaque-gemma-4-31b-e190-p0of3", "example-copy-35"): "2026-10-24T09:56:52Z",
-+        # entry 150's DeepSeek retry OUTs (branch-only, on example-copy-47 then uniprot-b-c03): the manifest store change's
++        # entry 150's DeepSeek retry OUTs (branch-only, on example-copy-47 then example-copy-56): the manifest store change's
 +        # own instant, typed by hand from each manifest's store_changes[0].at (no store timeline is run for these)
-+        ("uniprot-e150-deepseek-v4-flash-0731-p1", "uniprot-b-c03"): "2026-10-25T23:14:16Z",
-+        ("uniprot-e150-deepseek-v4-flash-0731-p2", "uniprot-b-c03"): "2026-10-26T01:08:35Z"}
++        ("uniprot-e150-deepseek-v4-flash-0731-p1", "example-copy-56"): "2026-10-25T23:14:16Z",
++        ("uniprot-e150-deepseek-v4-flash-0731-p2", "example-copy-56"): "2026-10-26T01:08:35Z"}
      got = {(e["out"].rsplit("/", 1)[1], e["replica"]): e["change_at"] for e in entries
             if "change_at" in e and not e.get("behind_endpoint") and not e.get("second_period")}
      assert got == {**rederived, **state_based}
@@ -808,13 +808,13 @@ index c0059a0..ff83fc7 100644
      rhea_7039 = {(out, "example-copy-38") for out in ("rhea-qwen3-coder-30b-a3b", "rhea-gemma-4-31b")}
      # and (science 25 Oct 00:10Z, point ii) for example-copy-9 as the first copy of Gemma's corporate OUT only
      corporate_7041 = {("corporate-gemma-4-31b", "example-copy-9")}
-+    # and the two DeepSeek retry OUTs' two copies (example-copy-47 then uniprot-b-c03), by the e150x store agent's ident.py files
++    # and the two DeepSeek retry OUTs' two copies (example-copy-47 then example-copy-56), by the e150x store agent's ident.py files
      assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "identity_format" in e} == {
          (out, copy) for out in ("uniprot-e150-claude-sonnet-5-5", "uniprot-e150-qwen3.8-27b")
 -        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_7041
 +        for copy in ("example-copy-47", "example-copy-46")} | {
 +        (out, copy) for out in ("uniprot-e150-deepseek-v4-flash-0731-p1", "uniprot-e150-deepseek-v4-flash-0731-p2")
-+        for copy in ("example-copy-47", "uniprot-b-c03")} | rhea_7039 | corporate_7041
++        for copy in ("example-copy-47", "example-copy-56")} | rhea_7039 | corporate_7041
      assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "alias" in e} == rhea_7039 | corporate_7041
      # science 25 Oct 00:10Z (point iii): the second period of example-copy-38 in Gemma's Rhea OUT, and no other second period
      assert [(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if e.get("second_period")] == [

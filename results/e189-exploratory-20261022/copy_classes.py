@@ -48,14 +48,15 @@ OVERRIDE_INFO_KEYS = {"replica", "table_rows", "why", "sources"}
 OVERRIDE_BASIS_KEYS = {"replica", "table_rows", "basis", "why", "sources"}
 OVERRIDE_MEASURED_KEYS = {"replica", "class", "basis", "why", "sources"}
 CLASSES = ("fast", "medium", "slow")
-HOSTS = ("sitea", "sitec", "siteb-x86", "arm64")
-_BY_SITEA_SITEC = {"sitea": "fast", "sitec": "fast", "siteb-x86": "slow", "arm64": "medium"}
-# The standing host rule (science, 25 Oct ~05:4xZ): the graph (a store name, as store-proofs.json names it) -> host -> class.
+HOSTS = ("example-host-1", "example-host-2")
+_BY_HOST = {"example-host-1": "fast", "example-host-2": "slow"}
+# The standing host rule: the graph (a store name, as store-proofs.json names it) -> host -> class. The table shipped here is an
+# example over example hosts; the authors' own rule assigned classes by their hosts.
 # None: no host rule for the graph (corporate): its copies are unmeasured and carry no class.
 HOST_RULE: dict[str, dict[str, str] | None] = {
-    "rhea-142": {"sitea": "fast", "sitec": "medium", "siteb-x86": "slow", "arm64": "medium"},
-    "opaque-rhea-142": _BY_SITEA_SITEC,
-    "uniprot-sp-2026_03": _BY_SITEA_SITEC,
+    "rhea-142": {"example-host-1": "fast", "example-host-2": "medium"},
+    "opaque-rhea-142": _BY_HOST,
+    "uniprot-sp-2026_03": _BY_HOST,
     "text2sparql-ck26": None,
 }
 NO_RULE_LABEL = "unmeasured (no host rule for corporate)"
@@ -63,30 +64,26 @@ V3_SOURCE, CELLS_SOURCE, HOSTS_SOURCE, PROOFS_SOURCE = "speed-class-v3", "cell-c
 ENDPOINTS_SOURCE, EXTRAS_SOURCE, OVERRIDES_SOURCE = "endpoint-copies", "extra-copies", "class-overrides"
 RECORD_PREFIX = "record:"  # a per-copy record's source name is this and its file name
 RULE = (
-    "science, 25 Oct ~05:40-05:50Z: a copy's speed class is the first source that gives one. 1. The v3 FINAL measurement "
-    "(speed-class.json: copies.<copy>.speed_class and .basis) and the per-copy records (speed-class-<copy>*.json: copy, "
-    "speed_class, basis): only fast, medium or slow is a class, so v3's partial is none and falls through; if v3 and a "
-    "record both give a class for a copy and they differ the build refuses; v3's basis is used where it gives a class. "
-    "2. The reviewed tier2 replay table cell-classes.tsv (external reviewer APPROVE of each rollout: the r21 table f4d0700e6679 plus r22's two "
-    "example-copy-48 rows (sha256 bd3b83f8ec7e), r23's two example-copy-49 rows and r27's two example-copy-50 rows, "
-    "sha256 6c4293552da7; r21's pre-r21 version a3a1881da084 differs only by the example-copy-45 "
-    "row): a copy id on several lines has one class (else the build refuses), its basis is "
-    "the note of its first line, and a note with the word unmeasured is that table's host rule (science, 24 Oct ~13:00Z), "
-    "labelled '<class> (host rule, unmeasured)'. 3. The standing host rule (science, 25 Oct ~05:4xZ), for a copy in "
-    "neither source, from copy-hosts.json (per copy its graph, host and basis): rhea-142 on sitea fast, sitec medium, "
-    "siteb-x86 slow, arm64 medium; opaque-rhea-142 and uniprot-sp-2026_03 on sitea fast, sitec fast, siteb-x86 slow, "
-    "arm64 medium; text2sparql-ck26 (corporate) has no host rule, so its class is null, labelled "
-    f"'{NO_RULE_LABEL}'. Any other graph or host, or a copy found nowhere, refuses the build. The copies are the replica names of "
-    "store-proofs.json plus those of endpoint-copies.json (the copies of the endpoints that OUTs with a single store "
-    "endpoint used, whose deployment identities name no replica; science, 25 Oct ~05:3xZ: every copy a look reads has a "
-    "class) plus those of extra-copies.json (analysis lead 5, 25 Oct ~09:2xZ and ~12:5xZ: the copies a look or a Tier 2 replay "
-    "reads that neither file names, each with its graph and the registry that gives it; no endpoint, host or port); a copy in several of the "
-    "three has one graph. The one exception to the order is the reviewed list class-overrides.json (analysis lead 5, 25 Oct "
-    "~12:5xZ; science: a table row that is informational, not a measurement, is no class source): for the copies it names "
-    "the table's row is ignored, so the copy falls to the host rule, and for the copies it gives a basis the entry from the "
-    "table keeps its class and label and takes that basis; and for a copy measured after the last v3 FINAL and not yet issued as a "
-    "per-copy record (example-copy-51, 25 Oct 13:29Z) a measured class gives it the class of the measurement, label the class, "
-    "citing the measurement's files, only while v3, the records and the table have no class for it; an override with nothing to "
+    "A copy's speed class is the first source that gives one. 1. The measurement table (speed-class.json: "
+    "copies.<copy>.speed_class and .basis) and the per-copy records (speed-class-<copy>*.json: copy, speed_class, basis): "
+    "only fast, medium or slow is a class, so a partial measurement is none and falls through; if the table and a record "
+    "both give a class for a copy and they differ the build refuses; the table's basis is used where it gives a class. "
+    "2. The reviewed replay table cell-classes.tsv: a copy id on several lines has one class (else the build refuses), its "
+    "basis is the note of its first line, and a note with the word unmeasured is that table's host rule, labelled "
+    "'<class> (host rule, unmeasured)'. 3. The standing host rule, for a copy in neither source, from copy-hosts.json (per "
+    "copy its graph, host and basis); the table shipped here is an example: rhea-142 on example-host-1 fast, "
+    "example-host-2 medium; opaque-rhea-142 and uniprot-sp-2026_03 on example-host-1 fast, example-host-2 slow; "
+    "text2sparql-ck26 (corporate) has no host rule, so its class is null, labelled "
+    f"'{NO_RULE_LABEL}'. Any other graph or host, or a copy found nowhere, refuses the build. The copies are the replica "
+    "names of store-proofs.json plus those of endpoint-copies.json (the copies of the endpoints that OUTs with a single "
+    "store endpoint used, whose deployment identities name no replica) plus those of extra-copies.json (the copies a "
+    "look or a replay reads that neither file names, each with its graph and the registry that gives it; no endpoint, "
+    "host or port); a copy in several of the three has one graph. The one exception to the order is the reviewed list "
+    "class-overrides.json: for the copies it names a table row that is informational, not a measurement, is no class "
+    "source, so the copy falls to the host rule; for the copies it gives a basis the entry from the table keeps its class "
+    "and label and takes that basis; and for a copy measured after the last measurement table and not yet issued as a "
+    "per-copy record, a measured class gives it the class of the measurement, label the class, citing the measurement's "
+    "files, only while the table, the records and the cell table have no class for it; an override with nothing to "
     "override refuses the build."
 )
 ENTRY_KEYS = {"class", "label", "basis", "source"}

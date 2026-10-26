@@ -66,13 +66,13 @@ STORE_RULE = {
     "window": "first triggering bin's start until the probe passes; every attempt with a query overlapping it, "
               "every arm"}
 PROBE_SEED_BASE = "20261021"
-# the approved copy ids (lead, 21 Oct) and the rule later copies are named by: '<graph>-<port>',
-# '<graph>-<host tag>-<port>', '<graph>-siteb-<n>'; an a15 copy is named by its site
-COPY_IDS = ("uniprot-c01", "uniprot-a-c02", "uniprot-b-c03", "uniprot-c-c04", "rhea-c06", "opaque-rhea-c05",
-            "corporate-c07", "a15-k8s", "a15-sitea", "a15-siteb")
+# the approved copy ids and the rule later copies are named by: '<graph>-<port>',
+# '<graph>-<host tag>-<port>', '<graph>-<host>-<n>'; an a15 copy is named by its site
+COPY_IDS = ("example-copy-52", "example-copy-46", "example-copy-53", "example-copy-47", "example-copy-38", "example-copy-12",
+            "example-copy-9", "a15-example-1", "a15-example-2", "a15-example-3")
 COPY_GRAPHS = ("uniprot", "rhea", "opaque-rhea", "corporate")
 COPY_ID_RULE = re.compile(rf"(?:{'|'.join(COPY_GRAPHS)})(?:-[a-z][a-z0-9]*)?-[0-9]{{4,5}}"
-                          rf"|(?:{'|'.join(COPY_GRAPHS)}|a15)-siteb-[0-9]+|a15-(?:k8s|sitea|siteb)")
+                          rf"|(?:{'|'.join(COPY_GRAPHS)}|a15)-example-[0-9]+|a15-example-[1-3]")
 STORE_PROBE_PROCEDURE_VERSION = "store-probe-procedure/1"
 STORE_PROBE_PROCEDURE = {
     "version": STORE_PROBE_PROCEDURE_VERSION,
@@ -89,8 +89,8 @@ STORE_PROBE_PROCEDURE = {
     "reference": ("a copy of a non-a15 store: its store's dev time-out share x 10; an a15 copy: its qualification "
                   "rate sample (timed out of sample) x 2"),
     "copy_ids": list(COPY_IDS),
-    "copy_id_rule": ("'<graph>-<port>', '<graph>-<host tag>-<port>' or '<graph>-siteb-<n>', graph one of "
-                     + ", ".join(COPY_GRAPHS) + "; a15 copies 'a15-<site>' (k8s, sitea, siteb)"),
+    "copy_id_rule": ("'<graph>-<port>', '<graph>-<host tag>-<port>' or '<graph>-example-<n>', graph one of "
+                     + ", ".join(COPY_GRAPHS) + "; a15 copies 'a15-<site>' (example-1, example-2, example-3)"),
 }
 
 
@@ -100,21 +100,21 @@ def probe_seed(copy: str) -> str:
 
 
 _PORTED_COPY = re.compile(rf"(?:{'|'.join(COPY_GRAPHS)})(?:-[a-z][a-z0-9]*)?-(?P<port>[0-9]{{4,5}})")
-_SITEB_COPY = re.compile(rf"(?:{'|'.join(COPY_GRAPHS)}|a15)-siteb-[0-9]+")
+_SITEB_COPY = re.compile(rf"(?:{'|'.join(COPY_GRAPHS)}|a15)-example-[0-9]+")
 
 
 # Each approved non-a15 copy's endpoint, registered from records made before and apart from its gold run: the store
-# agent's copy record (www2027-reviews/store-copies-20261021/copies.json: 7022 the reference, A 7024 on node-1, B 7026
-# and C 7028 on node-2) and the dev-grid store descriptions (data/runs/dev-grid/store-*.json). An identity-check gold
+# agent's copy record (the copies.json of the store agent's reviews: the reference copy and the copies on two
+# nodes) and the dev-grid store descriptions (data/runs/dev-grid/store-*.json). An identity-check gold
 # run reads exactly this (host, port), or it is refused: a port alone does not name a replica. A later copy is added
 # here before its gold run. HOST_ALIASES: one server's names.
 COPY_ENDPOINTS = {
-    "uniprot-c01": ("192.0.2.105", 7022), "uniprot-a-c02": ("192.0.2.105", 7024),
-    "uniprot-b-c03": ("192.0.2.101", 7026), "uniprot-c-c04": ("192.0.2.101", 7028),
-    "rhea-c06": ("192.0.2.105", 7039), "opaque-rhea-c05": ("192.0.2.101", 7033),
-    "corporate-c07": ("192.0.2.101", 7041),
-    "opaque-rhea-c09": ("192.0.2.105", 7045),  # opaque-rhea-sitea-2, job 24401 (store agent, 22 Oct)
-    "rhea-c08": ("192.0.2.105", 7043),  # rhea-sitea-2, job 24400 (store agent, 22 Oct)
+    "example-copy-52": ("192.0.2.105", 7022), "example-copy-46": ("192.0.2.105", 7024),
+    "example-copy-53": ("192.0.2.101", 7026), "example-copy-47": ("192.0.2.101", 7028),
+    "example-copy-38": ("192.0.2.105", 7039), "example-copy-12": ("192.0.2.101", 7033),
+    "example-copy-9": ("192.0.2.101", 7041),
+    "example-copy-13": ("192.0.2.105", 7045),
+    "example-copy-39": ("192.0.2.105", 7043),
 }
 HOST_ALIASES = {"node-1.cluster-a.example": "192.0.2.105", "node-1": "192.0.2.105",
                 "node-2.cluster-a.example": "192.0.2.101", "node-2": "192.0.2.101"}
@@ -134,7 +134,7 @@ def check_copy_endpoint(copy: str, endpoint: str | None) -> None:
 
 def copy_port(copy: str) -> int | None:
     """The port a copy id ending in '-<port>' names (its identity-check gold run must read that port); None for an id
-    that names none (an a15 copy, '<graph>-siteb-<n>')."""
+    that names none (an a15 copy, '<graph>-example-<n>')."""
     if _SITEB_COPY.fullmatch(copy or ""):
         return None
     m = _PORTED_COPY.fullmatch(copy or "")

@@ -1107,7 +1107,7 @@ def test_the_time_file_format_is_gnu_times(tmp_path):
 
 
 def test_text_inside_an_argument_cannot_supply_another_arguments_value(tmp_path):
-    # external reviewer r15: T2_COPYID_OPAQUE_ARM64 is unrestricted in the worker; a copy id carrying "--out /x --endpoint http://..." must not parse
+    # external reviewer r15: the opaque copy-id constant is unrestricted in the worker; a copy id carrying "--out /x --endpoint http://..." must not parse
     real = launch_command("opaque-sonnet", "s1", "natural", "127.0.0.1:47278", "example-copy-33")
     assert rm.LAUNCH_COMMAND.fullmatch(real)
     injected_id = "x, run-node --out /tmp/x --endpoint http://192.0.2.101:7033/ --split test --note Tier 2 natural replay, freeze 126a111, opaque-sonnet shard s1, example-copy-12"
@@ -1486,7 +1486,7 @@ def test_an_attestation_never_overrides_a_recorded_launch(tmp_path, capsys):
 
 def test_a_recorded_launch_conflicting_with_an_informational_recorded_attestation_row_is_unverifiable(tmp_path, capsys):
     w = good_world(tmp_path)
-    # the attestation says copy 7033 (fast); shard 02of02's recorded launch is on siteb-8 (slow, a row of the table): they disagree
+    # the attestation says one copy; shard 02of02's recorded launch is on another (a row of the table): they disagree
     w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "example-copy-33", rm.utc_epoch(SEALED_UTC) - 5)
     _, _, doc = make_attestation(w)
     row = doc["shards"][1]

@@ -44,7 +44,7 @@ results/e189-exploratory-20261022/tests/test_exploratory.py::test_the_template_b
 
 # Need the authors' store tables (their operational notes, cited evidence files, store-proof entries, or measurements); the
 # package ships synthetic tables with the same schemas
-results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_sitec_28952_carries_the_tables_note_and_the_hosts_rule_copies_carry_the_registrys_basis
+results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_tables_note_and_the_hosts_rule_copies_carry_the_registrys_basis
 results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_extra_copies_classes_carry_the_sources_own_words
 results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_class_overrides_are_the_three_the_rulings_name_and_cite_files_that_say_so
 results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_two_extra_entries_read_back_from_their_named_sources_by_code_that_shares_nothing_with_the_build

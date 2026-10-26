@@ -2,42 +2,7 @@ diff --git a/results/e189-exploratory-20261022/copy_classes.py b/results/e189-ex
 index bec008f..93acc7b 100644
 --- a/results/e189-exploratory-20261022/copy_classes.py
 +++ b/results/e189-exploratory-20261022/copy_classes.py
-@@ -19,6 +19,8 @@ A copy's class is the first source that gives one:
- An explicit, reviewed list of overrides, class-overrides.json (``parse_overrides``), is the only exception to the order, and it is
- narrow: a cell-table row that is informational (a similarity note, not a measurement) is ignored for the copies it names, so
- they fall to the host rule; and the basis text of an entry that comes from the cell table is replaced by the text it gives.
-+A third kind, a measured class, gives a copy measured after the last v3 FINAL (and not yet issued as a per-copy record) the class
-+its measurement gives, citing the measurement's files, and only while no other source has a class for it.
- Every override is checked against what it overrides, and a stale one refuses the build.
- 
- Every failure raises Refused (exit 2 on the command line): nothing is guessed, nothing is a warning or an empty result."""
-@@ -41,9 +43,10 @@ ENDPOINT_COPIES_SCHEMA = "e189-endpoint-copies/1"
- ENDPOINT_COPY_KEYS = {"graph", "endpoint_sha256", "replica", "basis", "sources"}
- EXTRA_COPIES_SCHEMA = "e189-extra-copies/1"
- EXTRA_COPY_KEYS = {"replica", "graph", "basis", "sources"}
--OVERRIDES_SCHEMA = "e189-class-overrides/1"
-+OVERRIDES_SCHEMA = "e189-class-overrides/2"
- OVERRIDE_INFO_KEYS = {"replica", "table_rows", "why", "sources"}
- OVERRIDE_BASIS_KEYS = {"replica", "table_rows", "basis", "why", "sources"}
-+OVERRIDE_MEASURED_KEYS = {"replica", "class", "basis", "why", "sources"}
- CLASSES = ("fast", "medium", "slow")
- HOSTS = ("sitea", "sitec", "siteb-x86", "arm64")
- _BY_SITEA_SITEC = {"sitea": "fast", "sitec": "fast", "siteb-x86": "slow", "arm64": "medium"}
-@@ -81,7 +84,12 @@ RULE = (
-     "three has one graph. The one exception to the order is the reviewed list class-overrides.json (analysis lead 5, 25 Oct "
-     "~12:5xZ; science: a table row that is informational, not a measurement, is no class source): for the copies it names "
-     "the table's row is ignored, so the copy falls to the host rule, and for the copies it gives a basis the entry from the "
--    "table keeps its class and label and takes that basis; an override with nothing to override refuses the build."
-+    "table keeps its class and label and takes that basis; and for a copy measured after the last v3 FINAL and not yet issued as a "
-+    "per-copy record (example-copy-51, 25 Oct 13:29Z, and uniprot-siteb-10 to -16, 25 Oct 13:56-17:42Z) a measured class gives "
-+    "it the class of the measurement, label the class, "
-+    "citing the measurement's files (example-copy-51) or, for uniprot-siteb-10 to -16, the lead's copy-policy.json "
-+    "summary of their timings, as a frozen copy, only while v3, the records and the table have no class for it; an override with "
-+    "nothing to override refuses the build."
- )
- ENTRY_KEYS = {"class", "label", "basis", "source"}
- _SHA = re.compile(r"[0-9a-f]{64}")
-@@ -241,10 +249,30 @@ def parse_endpoint_copies(doc: Any) -> list[dict[str, Any]]:
+@@ -241,10 +241,30 @@ def parse_endpoint_copies(doc: Any) -> list[dict[str, Any]]:
      return doc["copies"]
  
  
@@ -69,70 +34,7 @@ index bec008f..93acc7b 100644
  
  
  def endpoint_replicas(entries: Sequence[Mapping[str, Any]]) -> dict[str, str]:
-@@ -293,35 +321,42 @@ def extra_replicas(entries: Sequence[Mapping[str, Any]]) -> dict[str, str]:
-     return {e["replica"]: e["graph"] for e in entries}
- 
- 
--def parse_overrides(doc: Any) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
--    """class-overrides.json (e189-class-overrides/1) -> ({replica: entry} of the informational rows, {replica: entry} of the
--    bases). Exactly schema, rule, informational_rows and bases (each a list, possibly empty); an informational row is exactly
--    replica, table_rows (a non-empty list of exactly {class, note}: ALL the cell-table lines of the copy, in file order, that the
--    override was reviewed against; the build refuses when the table's lines for the copy differ in any way, so an override never
--    outlives its rows and a line added later cannot slip past it), why and sources (a non-empty list of {path, sha256}, 64 hex);
--    a basis is exactly replica, table_rows, basis, why and sources. A replica is listed once in all (an informational row falls
--    to the host rule, a basis keeps the table's entry: not both)."""
--    if not isinstance(doc, dict) or set(doc) != {"schema", "rule", "informational_rows", "bases"} \
-+def parse_overrides(doc: Any) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
-+    """class-overrides.json (e189-class-overrides/2) -> ({replica: entry} of the informational rows, of the bases, of the
-+    measured classes). Exactly schema, rule, informational_rows, bases and measured (each a list, possibly empty). An
-+    informational row is exactly replica, table_rows (a non-empty list of exactly {class, note}: ALL the cell-table lines of the
-+    copy, in file order, that the override was reviewed against; the build refuses when the table's lines for the copy differ in
-+    any way, so an override never outlives its rows and a line added later cannot slip past it), why and sources (a non-empty
-+    list of {path, sha256}, 64 hex); a basis is exactly replica, table_rows, basis, why and sources; a measured class is exactly
-+    replica, class (fast, medium or slow), basis, why and sources (the measurement's files). A replica is listed once in all (an
-+    informational row falls to the host rule, a basis keeps the table's entry, a measured class stands in for every source: one
-+    kind only)."""
-+    sections = (("informational_rows", OVERRIDE_INFO_KEYS), ("bases", OVERRIDE_BASIS_KEYS),
-+                ("measured", OVERRIDE_MEASURED_KEYS))
-+    if not isinstance(doc, dict) or set(doc) != {"schema", "rule", *(n for n, _ in sections)} \
-             or doc["schema"] != OVERRIDES_SCHEMA or not _text(doc["rule"]) \
--            or not isinstance(doc["informational_rows"], list) or not isinstance(doc["bases"], list):
--        raise Refused(f"the class overrides are not a {OVERRIDES_SCHEMA} file (schema, rule, informational_rows and bases, "
--                      f"nothing else)")
-+            or not all(isinstance(doc[n], list) for n, _ in sections):
-+        raise Refused(f"the class overrides are not a {OVERRIDES_SCHEMA} file (schema, rule, informational_rows, bases and "
-+                      f"measured, nothing else)")
-     seen: set[str] = set()
-     found: list[dict[str, dict[str, Any]]] = []
--    for name, keys in (("informational_rows", OVERRIDE_INFO_KEYS), ("bases", OVERRIDE_BASIS_KEYS)):
-+    for name, keys in sections:
-         entries: dict[str, dict[str, Any]] = {}
-         for entry in doc[name]:
-             if not isinstance(entry, dict) or set(entry) != keys:
-                 raise Refused(f"a class override of {name} is not exactly {', '.join(sorted(keys))}")
-             replica = entry["replica"]
--            if not _text(replica) or not _text(entry["why"]) or (name == "bases" and not _text(entry["basis"])):
-+            if not _text(replica) or not _text(entry["why"]) or (name != "informational_rows" and not _text(entry["basis"])):
-                 raise Refused(f"a class override of {name} lacks its replica, why or basis")
--            rows = entry["table_rows"]
--            if not (isinstance(rows, list) and rows and all(
--                    isinstance(r, dict) and set(r) == {"class", "note"} and r["class"] in CLASSES and _text(r["note"])
--                    for r in rows)):
--                raise Refused(f"the class override of {replica}: table_rows are not a non-empty list of class "
--                              f"({', '.join(CLASSES)}) and note")
-+            if name == "measured" and entry["class"] not in CLASSES:
-+                raise Refused(f"the class override of {replica}: class is not one of {', '.join(CLASSES)}")
-+            if name != "measured":
-+                rows = entry["table_rows"]
-+                if not (isinstance(rows, list) and rows and all(
-+                        isinstance(r, dict) and set(r) == {"class", "note"} and r["class"] in CLASSES and _text(r["note"])
-+                        for r in rows)):
-+                    raise Refused(f"the class override of {replica}: table_rows are not a non-empty list of class "
-+                                  f"({', '.join(CLASSES)}) and note")
-             if not _sources_ok(entry["sources"]):
-                 raise Refused(f"the class override of {replica}: its sources are not a non-empty list of path and sha256")
-             if replica in seen:
-@@ -329,10 +364,10 @@ def parse_overrides(doc: Any) -> tuple[dict[str, dict[str, Any]], dict[str, dict
+@@ -329,10 +349,10 @@ def parse_overrides(doc: Any) -> tuple[dict[str, dict[str, Any]], dict[str, dict
              seen.add(replica)
              entries[replica] = entry
          found.append(entries)
@@ -145,7 +47,7 @@ index bec008f..93acc7b 100644
      """The committed class-overrides file, validated (a file that cannot be read is Refused, never an OSError)."""
      try:
          raw = Path(path).read_bytes()
-@@ -385,15 +420,16 @@ def check_measurements(v3: Mapping[str, tuple[str, str]], records: Sequence[tupl
+@@ -385,15 +405,16 @@ def check_measurements(v3: Mapping[str, tuple[str, str]], records: Sequence[tupl
  def build_doc(replicas: Mapping[str, str], v3: Mapping[str, tuple[str, str]],
                records: Sequence[tuple[str, str, str, str]], cells: Mapping[str, tuple[str, str]],
                hosts: Mapping[str, Mapping[str, Any]], sources: Mapping[str, Mapping[str, str]],
@@ -166,7 +68,7 @@ index bec008f..93acc7b 100644
      lines = cell_rows if cell_rows is not None else {copy: [row] for copy, row in cells.items()}
  
      def bound(replica: str, entry: Mapping[str, Any], what: str) -> None:
-@@ -413,7 +449,16 @@ def build_doc(replicas: Mapping[str, str], v3: Mapping[str, tuple[str, str]],
+@@ -413,7 +434,16 @@ def build_doc(replicas: Mapping[str, str], v3: Mapping[str, tuple[str, str]],
      check_measurements(v3, records)
      ordered = sorted(records)
      effective = {copy: row for copy, row in cells.items() if copy not in informational}
@@ -184,7 +86,7 @@ index bec008f..93acc7b 100644
      for replica in sorted(bases):
          if replica not in copies:
              raise Refused(f"{replica}: a basis override for a copy the build does not cover")
-@@ -463,10 +508,30 @@ def validate(doc: Any) -> dict[str, Any]:
+@@ -463,10 +493,30 @@ def validate(doc: Any) -> dict[str, Any]:
      return doc
  
  
@@ -2955,15 +2857,6 @@ index 18b013f..7c350cc 100644
  
  
  # --- the precedence, step by step (the pure function on parsed sources) ------------------------------------------------
-@@ -277,7 +283,7 @@ def test_the_build_gives_each_copy_its_first_source_and_names_every_source_by_pa
-     for words in ("a3a1881da084", "differs only by the example-copy-45 row", "sitec medium", "siteb-x86 slow",
-                   "unmeasured (no host rule for corporate)", "a copy found nowhere", "v3's partial is none",
-                   "bd3b83f8ec7e", "two example-copy-48 rows", "6c4293552da7", "two example-copy-49 rows", "two example-copy-50 rows",
--                  "extra-copies.json", "a copy in several of the three has one graph"):
-+                  "extra-copies.json", "a copy in several of the three has one graph", "uniprot-siteb-10 to -16"):
-         assert words in doc["rule"], words
-     assert set(doc["sources"]) == {"store-proofs", "speed-class-v3", "cell-classes", "copy-hosts", "endpoint-copies",
-                                    "extra-copies", "class-overrides", "record:speed-class-r2.json"}
 @@ -750,14 +756,24 @@ def test_the_command_requires_the_extra_copies(tmp_path, capsys):
  
  
@@ -3079,10 +2972,10 @@ index 18b013f..7c350cc 100644
 +        "example-copy-51": "uniprot-sp-2026_03",
 +        "example-copy-45": "rhea-142", "example-copy-49": "uniprot-sp-2026_03", "example-copy-50": "uniprot-sp-2026_03",
 +        # COPY 10-16 (analysis lead 6, 25 Oct ~19:3xZ): SIB U's units p0-p4, its standby and the probes' glmx-uniprot copy
-+        "uniprot-siteb-10": "uniprot-sp-2026_03", "uniprot-siteb-11": "uniprot-sp-2026_03",
-+        "uniprot-siteb-12": "uniprot-sp-2026_03", "uniprot-siteb-13": "uniprot-sp-2026_03",
-+        "uniprot-siteb-14": "uniprot-sp-2026_03", "uniprot-siteb-15": "uniprot-sp-2026_03",
-+        "uniprot-siteb-16": "uniprot-sp-2026_03"}
++        "example-copy-57": "uniprot-sp-2026_03", "example-copy-58": "uniprot-sp-2026_03",
++        "example-copy-59": "uniprot-sp-2026_03", "example-copy-60": "uniprot-sp-2026_03",
++        "example-copy-61": "uniprot-sp-2026_03", "example-copy-62": "uniprot-sp-2026_03",
++        "example-copy-63": "uniprot-sp-2026_03"}
      assert set(e["replica"] for e in extra) <= set(_committed()["copies"])
      assert not {"example-copy-16", "example-copy-19", "example-copy-46"} & {e["replica"] for e in extra}
 -    assert len(_committed()["copies"]) == 42  # the 32 of 50ca6fbf, those two, DeepSeek's dsh copies -22 .. -25, and these four
@@ -3090,17 +2983,7 @@ index 18b013f..7c350cc 100644
  
  
  def test_the_committed_file_names_the_committed_hosts_copy_and_the_store_proofs_by_their_sha256():
-@@ -1129,7 +1186,8 @@ def test_the_four_tier2_replay_copies_read_back_from_their_named_sources_by_code
-         assert (hosts[copy]["graph"], hosts[copy]["host"]) == ("uniprot-sp-2026_03", "siteb-x86")
-     assert [r[2] for r in rows if r[1] == "example-copy-33"] == ["slow", "slow"]  # the table agrees with v3
-     assert [r[2] for r in rows if r[1] == "example-copy-45"] == ["medium", "medium"]
--    registry = Path(json.loads((RESULTS / "extra-copies.json").read_text(encoding="utf-8"))["copies"][-1]["sources"][0]["path"])
-+    registry = Path(next(e for e in json.loads((RESULTS / "extra-copies.json").read_text(encoding="utf-8"))["copies"]
-+                         if e["replica"] == "example-copy-51")["sources"][0]["path"])  # (a registry entry; COPY 10-16 cite the policy file)
-     if registry.is_file():  # (regenerated: its bytes are not pinned here)
-         found = json.loads(registry.read_text(encoding="utf-8"))["copies"]
-         assert [found[c]["store"] for c in ("example-copy-33", "example-copy-45", "example-copy-49", "example-copy-50")] == [
-@@ -1149,7 +1207,7 @@ def test_the_committed_class_overrides_are_the_three_the_rulings_name_and_cite_f
+@@ -1149,7 +1206,7 @@ def test_the_committed_class_overrides_are_the_three_the_rulings_name_and_cite_f
      assert not re.search(r"https?:|run-node|fwd[0-9]|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|:[0-9]{3,5}\b", text)
      # every file an override cites is the cited bytes (a skip on a machine without it); the table's rows are informational, and
      # the sibling timing summary gives the ratio the basis states (read here with str.split, not through the build)
@@ -3192,7 +3075,7 @@ index 38734d3..6984f66 100644
 +# the six OUTs the committed store-proofs.json names for SIB run U (its source OUT and the five partitions), each with the one problem
 +# prove() returns for it today (tests/test_sibu_store_proofs.py pins the same two texts)
 +SIBU_OUTS = (("sib-qwen3.8-27b-81920", "example-copy-48", "its identity check does not have exactly one entry of the OUT's endpoint"),
-+             *((f"sib-qwen3.8-27b-81920-p{i}of5", f"uniprot-siteb-{10 + i}", "its storecheck is not a entry180-store-check/2 file")
++             *((f"sib-qwen3.8-27b-81920-p{i}of5", f"example-copy-{10 + i}", "its storecheck is not a entry180-store-check/2 file")
 +               for i in range(5)))
 +
 +
@@ -3304,7 +3187,7 @@ index 38734d3..6984f66 100644
 +        pytest.skip("the SIB U facts are not on this machine")
 +    u_ep = (u_facts / "endpoint.txt").read_text(encoding="utf-8").removesuffix("\n")
 +    own_ep = (p_facts / "endpoint.txt").read_text(encoding="utf-8").removesuffix("\n")
-+    replica = f"uniprot-siteb-{10 + i}"
++    replica = f"example-copy-{10 + i}"
 +    committed = HERE.parent / ex.STORE_PROOFS
 +    entries = json.loads(committed.read_text(encoding="utf-8"))["proofs"]
 +    part_name, u_name = SIBU_RUNS + f"sib-qwen3.8-27b-81920-p{i}of5", SIBU_RUNS + "sib-qwen3.8-27b-81920"
@@ -3468,11 +3351,11 @@ index 38734d3..6984f66 100644
 +        ("opaque-gemma-4-31b-e190-p0of3", "example-copy-35"): "2026-10-24T09:56:52Z",
 +        # SIB U's five partitions' own copies (26 Oct, push6 data fix, typed from the five manifests): each manifest's store change 1
 +        # instant; no timeline run for these entries here (the call's first-record rule times them and discloses the gap)
-+        ("sib-qwen3.8-27b-81920-p0of5", "uniprot-siteb-10"): "2026-10-25T18:21:29Z",
-+        ("sib-qwen3.8-27b-81920-p1of5", "uniprot-siteb-11"): "2026-10-25T18:21:46Z",
-+        ("sib-qwen3.8-27b-81920-p2of5", "uniprot-siteb-12"): "2026-10-25T18:21:52Z",
-+        ("sib-qwen3.8-27b-81920-p3of5", "uniprot-siteb-13"): "2026-10-25T18:21:55Z",
-+        ("sib-qwen3.8-27b-81920-p4of5", "uniprot-siteb-14"): "2026-10-25T18:22:04Z"}
++        ("sib-qwen3.8-27b-81920-p0of5", "example-copy-57"): "2026-10-25T18:21:29Z",
++        ("sib-qwen3.8-27b-81920-p1of5", "example-copy-58"): "2026-10-25T18:21:46Z",
++        ("sib-qwen3.8-27b-81920-p2of5", "example-copy-59"): "2026-10-25T18:21:52Z",
++        ("sib-qwen3.8-27b-81920-p3of5", "example-copy-60"): "2026-10-25T18:21:55Z",
++        ("sib-qwen3.8-27b-81920-p4of5", "example-copy-61"): "2026-10-25T18:22:04Z"}
      got = {(e["out"].rsplit("/", 1)[1], e["replica"]): e["change_at"] for e in entries
             if "change_at" in e and not e.get("behind_endpoint") and not e.get("second_period")}
      assert got == {**rederived, **state_based}
@@ -4486,7 +4369,7 @@ index 38734d3..6984f66 100644
 +    (ex.SIB, "example-copy-47", "fast (host rule, unmeasured)"),  # a copy the committed classes do cover
 +    (ex.SIB, "example-copy-48", "medium"),  # the SIB U run copy (relabelled by the reviewed table)
 +    (ex.SIB, "example-copy-49", "slow (host rule, unmeasured)"),
-+    *[(ex.SIB, f"uniprot-siteb-{n}", "medium") for n in range(10, 15)],  # SIB U's five partition units (COPY 10-14), measured
++    *[(ex.SIB, f"example-copy-{n}", "medium") for n in range(10, 15)],  # SIB U's five partition units (COPY 10-14), measured
 +])
 +def test_a_single_endpoint_sib_call_labels_a_copy_without_a_class_entry_and_never_refuses_for_it(world, monkeypatch, graph,
 +                                                                                                 replica, label):
