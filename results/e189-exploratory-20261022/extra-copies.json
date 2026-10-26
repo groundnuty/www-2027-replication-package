@@ -1,83 +1,28 @@
 {
  "copies": [
   {
-   "basis": "operational note withheld",
-   "graph": "rhea-142",
-   "replica": "rhea-c08",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ]
-  },
-  {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "replica": "uniprot-siteb-2",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ]
-  },
-  {
-   "basis": "operational note withheld",
+   "basis": "synthetic example",
    "graph": "opaque-rhea-142",
-   "replica": "opaque-rhea-siteb-8",
+   "replica": "example-copy-7",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/registry-example-copy-7.json",
+     "sha256": "f015934ce064ca40f888564e84a67ad1ab71b501a78f673d974651908f672a15"
     }
    ]
   },
   {
-   "basis": "operational note withheld",
-   "graph": "rhea-142",
-   "replica": "rhea-sitec-c13",
+   "basis": "synthetic example",
+   "graph": "text2sparql-ck26",
+   "replica": "example-copy-8",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ]
-  },
-  {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "replica": "uniprot-siteb-5",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ]
-  },
-  {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "replica": "uniprot-siteb-8",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ]
-  },
-  {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "replica": "uniprot-siteb-9",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/registry-example-copy-8.json",
+     "sha256": "b719703a180ce0a4925cb5a3cef3d9563b720de7e10a2a3af3237825ad263631"
     }
    ]
   }
  ],
- "rule": "operational note withheld",
+ "rule": "synthetic example: invented values for illustration, not the authors' store copies",
  "schema": "e189-extra-copies/1"
 }

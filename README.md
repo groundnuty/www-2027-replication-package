@@ -112,6 +112,7 @@ is released it prints them and exits.
   included; the graph-specific vocabulary and templates live outside the code by design.
 - **SIB gold.** Restricted; not released.
 - **Operational material.** Operator notes, run logs, job scripts for the computing sites, and probe outputs.
+- The store-copy and admitted-fingerprint tables are synthetic examples; the analysis's store and attribution checks need the authors' tables and the withheld run records.
 - **Some tests.** The framework's own test suite is not in this version (its fixtures are being reviewed for
   release); the tests of the site job scripts are left out with those scripts, and the analysis tests that need data or the
   development repository's history are listed in `replication/deselected-tests.txt`.

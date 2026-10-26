@@ -1,51 +1,33 @@
 {
  "copies": {
-  "opaque-rhea-siteb-12": {
-   "basis": "operational note withheld",
+  "example-copy-2": {
+   "basis": "synthetic example",
    "graph": "opaque-rhea-142",
    "host": "siteb-x86",
    "source": {
-    "path": "operational note withheld",
-    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    "path": "example/registry-example-copy-2.json",
+    "sha256": "8925022be3f66a4d28302c80f26c7f40ef1ee95e664a359c7fca3e02b45148a8"
    }
   },
-  "uniprot-a-c02": {
-   "basis": "operational note withheld",
+  "example-copy-6": {
+   "basis": "synthetic example",
    "graph": "uniprot-sp-2026_03",
+   "host": "sitec",
+   "source": {
+    "path": "example/registry-example-copy-6.json",
+    "sha256": "65d1b6fc2c56b8aa6fd0d4ffce56ae688dbc93dbd6b54c68ffebbe2ebb33a96c"
+   }
+  },
+  "example-copy-8": {
+   "basis": "synthetic example",
+   "graph": "text2sparql-ck26",
    "host": "sitea",
    "source": {
-    "path": "operational note withheld",
-    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-   }
-  },
-  "uniprot-c-c04": {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "host": "sitea",
-   "source": {
-    "path": "operational note withheld",
-    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-   }
-  },
-  "uniprot-siteb-5": {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "host": "siteb-x86",
-   "source": {
-    "path": "operational note withheld",
-    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-   }
-  },
-  "uniprot-siteb-8": {
-   "basis": "operational note withheld",
-   "graph": "uniprot-sp-2026_03",
-   "host": "siteb-x86",
-   "source": {
-    "path": "operational note withheld",
-    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    "path": "example/registry-example-copy-8.json",
+    "sha256": "b719703a180ce0a4925cb5a3cef3d9563b720de7e10a2a3af3237825ad263631"
    }
   }
  },
- "rule": "operational note withheld",
+ "rule": "synthetic example: invented values for illustration, not the authors' store copies",
  "schema": "e189-copy-hosts/1"
 }

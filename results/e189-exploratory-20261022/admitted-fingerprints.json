@@ -1,5 +1,5 @@
 {
- "schema": "e189-admitted-fingerprints/1",
- "rule": "operational note withheld",
- "admitted": []
+ "admitted": [],
+ "rule": "synthetic example: invented values for illustration, not the authors' store copies",
+ "schema": "e189-admitted-fingerprints/1"
 }

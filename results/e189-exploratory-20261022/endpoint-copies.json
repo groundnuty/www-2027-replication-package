@@ -1,114 +1,42 @@
 {
  "copies": [
   {
-   "basis": "operational note withheld",
-   "endpoint_sha256": "0eb6764ce2a660fc1e889c526dc13750dfaf2127cc0dc250e8d76b8df631d90f",
-   "graph": "opaque-rhea-142",
-   "replica": "opaque-rhea-c05",
+   "basis": "synthetic example",
+   "endpoint_sha256": "2805a689b1da4baab370479dc86db2c3304a497c949bbb7aa4e6354ea0c4ea44",
+   "graph": "uniprot-sp-2026_03",
+   "replica": "example-copy-4",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/registry-4.json",
+     "sha256": "c56adda96965141ca576f02915e1edf3d9b3d721fa26cd883f6391fb2e3e8af4"
     }
    ]
   },
   {
-   "basis": "operational note withheld",
-   "endpoint_sha256": "0d4386b1394edd1aa67f23d0b51d90aa6a66345526be51a164116ce9f7fcd037",
+   "basis": "synthetic example",
+   "endpoint_sha256": "f23c80fbc9a7011a2b7bc66aa675e797ef0a228346ff50b670496d97246199ef",
    "graph": "rhea-142",
-   "replica": "rhea-c06",
+   "replica": "example-copy-5",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/registry-5.json",
+     "sha256": "23131990c5b36ce09446f463bfd7c6fac5db30a908332b20cf7c248752cf26dc"
     }
    ]
   },
   {
-   "basis": "operational note withheld",
-   "endpoint_sha256": "588836988a85adcc45c488e8cadd0e91d1f5e72e62072b8254eea01f8dd6e7f0",
-   "graph": "text2sparql-ck26",
-   "replica": "corporate-c07",
+   "basis": "synthetic example",
+   "endpoint_sha256": "04015f265acde37906fd1adc8a6a3ab38b12e640f522794269fcc3f74eb5e813",
+   "graph": "uniprot-sp-2026_03",
+   "replica": "example-copy-6",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ]
-  },
-  {
-   "basis": "operational note withheld",
-   "endpoint_sha256": "76bf86d5bfea5f1f650decb891db72a5c9319583ab6fac4da587722715222d81",
-   "graph": "text2sparql-ck26",
-   "replica": "corporate-siteb-1",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/registry-6.json",
+     "sha256": "090ad68d1ad3325befc8ae9f450a1a30d263bbe383bffd8e4c4a1135998d1a58"
     }
    ]
   }
  ],
- "rule": "operational note withheld",
+ "rule": "synthetic example: invented values for illustration, not the authors' store copies",
  "schema": "e189-endpoint-copies/1"
 }

@@ -1,91 +1,55 @@
 {
  "bases": [
   {
-   "basis": "operational note withheld",
-   "replica": "uniprot-siteb-2",
+   "basis": "synthetic example basis",
+   "replica": "example-copy-4",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/review-o2.json",
+     "sha256": "308ede86f4a1000d89e563f934a94f30383ce28320484a076d0b754808f9debd"
     }
    ],
    "table_rows": [
     {
-     "class": "medium",
-     "note": "operational note withheld"
-    },
-    {
-     "class": "medium",
-     "note": "operational note withheld"
+     "class": "fast",
+     "note": "synthetic example note"
     }
    ],
-   "why": "operational note withheld"
+   "why": "synthetic example"
   }
  ],
  "informational_rows": [
   {
-   "replica": "uniprot-siteb-5",
+   "replica": "example-copy-5",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/review-o1.json",
+     "sha256": "5c81ed6101a09c6a4341f5da80fbeba3a8b4ea069651b7c9eba79007aace2ea8"
     }
    ],
    "table_rows": [
     {
-     "class": "medium",
-     "note": "operational note withheld"
-    },
-    {
-     "class": "medium",
-     "note": "operational note withheld"
+     "class": "slow",
+     "note": "synthetic example note"
     }
    ],
-   "why": "operational note withheld"
-  },
-  {
-   "replica": "uniprot-siteb-8",
-   "sources": [
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    },
-    {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-   ],
-   "table_rows": [
-    {
-     "class": "medium",
-     "note": "operational note withheld"
-    },
-    {
-     "class": "medium",
-     "note": "operational note withheld"
-    }
-   ],
-   "why": "operational note withheld"
+   "why": "synthetic example"
   }
  ],
  "measured": [
   {
-   "basis": "operational note withheld",
+   "basis": "synthetic example basis",
    "class": "medium",
-   "replica": "uniprot-siteb-9",
+   "replica": "example-copy-7",
    "sources": [
     {
-     "path": "operational note withheld",
-     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+     "path": "example/measurement-o3.json",
+     "sha256": "56d208623878b6cc35e5d22e631c9be14ca50b27170a233b844aae94c2763147"
     }
    ],
-   "why": "operational note withheld"
+   "why": "synthetic example"
   }
  ],
- "rule": "operational note withheld",
+ "rule": "synthetic example: invented values for illustration, not the authors' store copies",
  "schema": "e189-class-overrides/2"
 }

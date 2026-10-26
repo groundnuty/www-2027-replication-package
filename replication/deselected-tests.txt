@@ -49,3 +49,18 @@ results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed
 results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_class_overrides_are_the_three_the_rulings_name_and_cite_files_that_say_so
 results/e189-exploratory-20261022/tests/test_dsh_store_proofs.py::test_the_six_entries_are_the_plans_copies_with_the_hand_typed_hashes
 results/e189-exploratory-20261022/tests/test_exploratory.py::test_the_committed_store_proofs_config_cites_the_recorded_checks_of_each_entry
+
+
+# Hard-code the authors' real copy names and endpoint hashes, which the synthetic store-copy tables do not carry
+results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_endpoint_copies_carry_the_full_hashes_worked_out_from_the_evidence
+results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_endpoint_copies_are_the_four_the_lead_found
+results/e189-exploratory-20261022/tests/test_labels_only_diff.py::test_the_command_runs_under_isolated_mode_with_the_committed_table_by_default
+
+# Need copy-classes.json (the authors' copies, not regenerated for the synthetic store-copy tables) to cover the tables' copies
+results/e189-exploratory-20261022/tests/test_copy_classes.py::test_the_committed_file_covers_exactly_the_replicas_of_store_proofs_json_endpoint_copies_json_and_extra_copies_json
+results/e189-exploratory-20261022/tests/test_exploratory.py::test_the_committed_endpoint_copies_agree_with_the_committed_store_proofs_and_have_their_classes
+
+# Need the authors' 49 store-proof entries, six of them for the DeepSeek opaque partitions, and their cited check files
+results/e189-exploratory-20261022/tests/test_dsh_store_proofs.py::test_the_file_reads_and_no_other_entry_changed
+results/e189-exploratory-20261022/tests/test_dsh_store_proofs.py::test_each_entry_passes_the_analysis_own_proof_against_its_cited_files
+results/e189-exploratory-20261022/tests/test_dsh_store_proofs.py::test_a_wrong_file_is_refused_by_the_same_proof
