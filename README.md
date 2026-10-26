@@ -28,6 +28,7 @@ The files keep the relative paths of the development repository, because the cod
 | `replication/run_tests.sh`, `replication/deselected-tests.txt` | Runs the analysis tests that need no data. |
 | `replication/reproduce.sh` | How the analysis is run once the data of step 2 is in place. |
 | `replication/PINS.md` | Integrity pins that anonymization changed: original and package values. |
+| `replication/KNOWN-ISSUES.md` | Known issues: the checker's non-deterministic offline replay and how the analyses handled it. |
 
 ## Versions
 
