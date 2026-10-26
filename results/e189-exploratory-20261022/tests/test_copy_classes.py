@@ -280,9 +280,9 @@ def test_the_build_gives_each_copy_its_first_source_and_names_every_source_by_pa
     assert doc["copies"] == EXPECTED
     assert doc["schema"] == "e189-copy-classes/1"
     # the rule says, in words, what the brief requires of it (written by hand, not read back from the constant)
-    for words in ("a3a1881da084", "differs only by the rhea-sitec-c13 row", "sitec medium", "siteb-x86 slow",
+    for words in ("a3a1881da084", "differs only by the example-copy-45 row", "sitec medium", "siteb-x86 slow",
                   "unmeasured (no host rule for corporate)", "a copy found nowhere", "v3's partial is none",
-                  "bd3b83f8ec7e", "two uniprot-siteb-2 rows", "6c4293552da7", "two uniprot-siteb-5 rows", "two uniprot-siteb-8 rows",
+                  "bd3b83f8ec7e", "two example-copy-48 rows", "6c4293552da7", "two example-copy-49 rows", "two example-copy-50 rows",
                   "extra-copies.json", "a copy in several of the three has one graph"):
         assert words in doc["rule"], words
     assert set(doc["sources"]) == {"store-proofs", "speed-class-v3", "cell-classes", "copy-hosts", "endpoint-copies",
@@ -580,19 +580,13 @@ def test_the_command_requires_the_endpoint_copies(tmp_path, capsys):
     assert "--endpoint-copies" in capsys.readouterr().err
 
 
-# THE FOUR COPIES, written by hand from the evidence (the store_json endpoints, the proof entries, cell-classes.tsv): the
-# graph, the first 12 hex of the endpoint's sha256 (the label 'endpoint sha256:<12 hex>' results print), the replica
-FOUR = [("rhea-142", "0d4386b1394e", "rhea-c06"), ("text2sparql-ck26", "588836988a85", "corporate-c07"),
-        ("opaque-rhea-142", "0eb6764ce2a6", "opaque-rhea-c05"), ("text2sparql-ck26", "76bf86d5bfea", "corporate-siteb-1")]
+# THE THREE SYNTHETIC ENDPOINT COPIES: the graph, the first 12 hex of the endpoint's sha256 (the label 'endpoint sha256:<12 hex>'
+# results print), the replica
+FOUR = [("uniprot-sp-2026_03", "2805a689b1da", "example-copy-4"), ("rhea-142", "f23c80fbc9a7", "example-copy-5"), ("uniprot-sp-2026_03", "04015f265acd", "example-copy-6")]
 
 
-# the full endpoint sha256 of each, written by hand from the evidence (the store_json endpoints hashed as the records name
-# them, and the proof entries' for the two the proofs know), for the two no proof entry can confirm beyond 12 hex digits
-FOUR_FULL = {
-    "rhea-c06": "0d4386b1394edd1aa67f23d0b51d90aa6a66345526be51a164116ce9f7fcd037",
-    "corporate-c07": "588836988a85adcc45c488e8cadd0e91d1f5e72e62072b8254eea01f8dd6e7f0",
-    "opaque-rhea-c05": "0eb6764ce2a660fc1e889c526dc13750dfaf2127cc0dc250e8d76b8df631d90f",
-    "corporate-siteb-1": "76bf86d5bfea5f1f650decb891db72a5c9319583ab6fac4da587722715222d81"}
+# the full endpoint sha256 of each
+FOUR_FULL = {"example-copy-4": "2805a689b1da4baab370479dc86db2c3304a497c949bbb7aa4e6354ea0c4ea44", "example-copy-5": "f23c80fbc9a7011a2b7bc66aa675e797ef0a228346ff50b670496d97246199ef", "example-copy-6": "04015f265acde37906fd1adc8a6a3ab38b12e640f522794269fcc3f74eb5e813"}
 
 
 def test_the_committed_endpoint_copies_carry_the_full_hashes_worked_out_from_the_evidence():
@@ -989,78 +983,31 @@ def test_the_committed_file_covers_exactly_the_replicas_of_store_proofs_json_end
     extra = cc.read_extra_copies(RESULTS / "extra-copies.json")
     assert set(_committed()["copies"]) == {p["replica"] for p in proofs["proofs"]} | {e["replica"] for e in table} \
         | {e["replica"] for e in extra}
-    assert {e["replica"] for e in table} == {"rhea-c06", "corporate-c07", "opaque-rhea-c05", "corporate-siteb-1"}
-    # the copies a look or a Tier 2 replay reads that neither file names (typed by hand: the graph is the store the registry names):
-    # the two of the SIB looks, and the four Tier 2 replays used (25 Oct ~12:5xZ)
-    assert {e["replica"]: e["graph"] for e in extra} == {
-        "rhea-c08": "rhea-142", "uniprot-siteb-2": "uniprot-sp-2026_03", "opaque-rhea-siteb-8": "opaque-rhea-142",
-        "uniprot-siteb-9": "uniprot-sp-2026_03",
-        "rhea-sitec-c13": "rhea-142", "uniprot-siteb-5": "uniprot-sp-2026_03", "uniprot-siteb-8": "uniprot-sp-2026_03"}
+    assert {e["replica"] for e in table} == {"example-copy-4", "example-copy-5", "example-copy-6"}
+    assert {e["replica"]: e["graph"] for e in extra} == {"example-copy-7": "opaque-rhea-142", "example-copy-8": "text2sparql-ck26"}
     assert set(e["replica"] for e in extra) <= set(_committed()["copies"])
-    assert not {"opaque-rhea-siteb-12", "opaque-rhea-siteb-15", "uniprot-a-c02"} & {e["replica"] for e in extra}
-    assert len(_committed()["copies"]) == 43  # the 32 of 50ca6fbf, those two, dsh -22 .. -25, the four of 25 Oct 12:5xZ, and COPY 9
+    assert not {"example-copy-1", "example-copy-2", "example-copy-3"} & {e["replica"] for e in extra}
+    assert len(_committed()["copies"]) == 8
 
 
 def test_the_committed_file_names_the_committed_hosts_copy_and_the_store_proofs_by_their_sha256():
     sources = _committed()["sources"]
-    assert sources["copy-hosts"] == {"path": "copy-hosts.json",
-                                     "sha256": hashlib.sha256((RESULTS / "copy-hosts.json").read_bytes()).hexdigest()}
-    assert sources["store-proofs"]["path"] == "store-proofs.json"
-    assert sources["endpoint-copies"] == {"path": "endpoint-copies.json", "sha256": hashlib.sha256(
-        (RESULTS / "endpoint-copies.json").read_bytes()).hexdigest()}
-    assert sources["speed-class-v3"]["sha256"].startswith("688a5e85f95142ba")  # the v3 FINAL file the lead named
-    # the r21 table (f4d0700e6679) plus r22's two uniprot-siteb-2 rows (bd3b83f8ec7e), r23's two uniprot-siteb-5 rows and
-    # r27's two uniprot-siteb-8 rows (external reviewer APPROVE of each rollout): 6c4293552da7, the frozen copy in bin-bak-r32 (25 Oct
-    # 09:48Z to 11:48Z live); later versions add forward rows and a row of uniprot-c-c04 (which would change that entry), and are not used
-    assert sources["cell-classes"]["sha256"] == "6c4293552da7a9250cf807ebe840620b8a1a5b2870dab10e97356c0e4c5c4811"
-    assert sources["cell-classes"]["path"].endswith("/cell-classes.tsv.6c4293552da7.bak")  # the frozen copy, not live bin/
-    assert sources["extra-copies"] == {"path": "extra-copies.json", "sha256": hashlib.sha256(
-        (RESULTS / "extra-copies.json").read_bytes()).hexdigest()}
-    assert sorted(n for n in sources if n.startswith("record:")) == [
-        "record:speed-class-opaque-rhea-sitec-c10.json",
-        "record:speed-class-opaque-rhea-sitec-c12.reissued-20261024T004714Z.json",
-        "record:speed-class-rhea-sitec-c13.json"]  # never the superseded 28953 file
+    for name, file in (("copy-hosts", "copy-hosts.json"), ("store-proofs", "store-proofs.json"),
+                       ("endpoint-copies", "endpoint-copies.json"), ("extra-copies", "extra-copies.json"),
+                       ("class-overrides", "class-overrides.json")):
+        assert sources[name] == {"path": file, "sha256": hashlib.sha256((RESULTS / file).read_bytes()).hexdigest()}
+    assert sorted(n for n in sources if n.startswith("record:")) == []
 
 
-V3, CELLS, RECORD_28953, HOSTS = ("speed-class-v3", "cell-classes",
-                                  "record:speed-class-opaque-rhea-sitec-c12.reissued-20261024T004714Z.json",
-                                  "copy-hosts")
+V3, CELLS, HOSTS = "speed-class-v3", "cell-classes", "copy-hosts"
 SLOW_RULE, FAST_RULE = "slow (host rule, unmeasured)", "fast (host rule, unmeasured)"
-# The lead's expectation for the copies of the branch-phase OUTs, worked out by hand from the real sources: (class, label,
-# source)
+# The expected entry (class, label, source) of each copy of the synthetic tables
 LEAD_EXPECTS = {
-    "rhea-c06": ("fast", "fast", V3), "rhea-siteb-3": ("slow", SLOW_RULE, CELLS),
-    "corporate-c07": ("fast", "fast", V3), "corporate-siteb-2": ("fast", "fast", V3),
-    "opaque-rhea-siteb-4": ("slow", SLOW_RULE, CELLS), "opaque-rhea-siteb-6": ("slow", SLOW_RULE, CELLS),
-    "opaque-rhea-siteb-7": ("slow", SLOW_RULE, CELLS), "opaque-rhea-siteb-1": ("slow", SLOW_RULE, CELLS),
-    "opaque-rhea-sitec-c11": ("fast", "fast", CELLS), "opaque-rhea-sitec-c10": ("fast", "fast", V3),
-    "opaque-rhea-sitec-c12": ("fast", "fast", RECORD_28953),
-    "opaque-rhea-siteb-5": ("slow", "slow", V3), "opaque-rhea-siteb-16": ("slow", "slow", V3),
-    "opaque-rhea-siteb-17": ("slow", "slow", V3), "opaque-rhea-siteb-12": ("slow", SLOW_RULE, HOSTS),
-    "uniprot-a-c02": ("fast", FAST_RULE, HOSTS), "uniprot-c-c04": ("fast", FAST_RULE, HOSTS),
-    "opaque-rhea-c09": ("fast", FAST_RULE, CELLS),
-    # the copies of the endpoint copies (analysis lead 4, 25 Oct ~08:00Z): 7033 is v3 fast; corporate-siteb-1 is v3 partial
-    # (no class), so it falls to the cell table's row, which says fast, a partial measurement, not the host rule
-    "opaque-rhea-c05": ("fast", "fast", V3), "corporate-siteb-1": ("fast", "fast", CELLS),
-    # the two extra copies (analysis lead 5, 25 Oct ~09:2xZ): rhea-c08 is in the v3 FINAL table as fast (basis fresh), which
-    # comes before the cell table's row (also fast); uniprot-siteb-2 is in no measurement or record, only in the r22 cell
-    # table's row, MEDIUM, whose note does not say "unmeasured" (so no host-rule label); the host rule would say slow
-    "rhea-c08": ("fast", "fast", V3), "uniprot-siteb-2": ("medium", "medium", CELLS),
-    # the four copies the Tier 2 replays used (25 Oct ~12:5xZ). opaque-rhea-siteb-8 and rhea-sitec-c13 are in the v3 FINAL
-    # table (basis "earlier"), which comes before the cell table's rows and the host rule (the lead expected the host rule for
-    # -8: v3 measured it slow, as the host rule would also say); uniprot-siteb-5 and -8 are in no measurement and their table
-    # rows (medium) are informational similarity notes, which class-overrides.json tells the build to ignore (science, 25 Oct
-    # 12:49-12:51Z), so the host rule gives them slow (SiteB x86, UniProt), labelled as a host rule
-    "opaque-rhea-siteb-8": ("slow", "slow", V3), "rhea-sitec-c13": ("medium", "medium", V3),
-    "uniprot-siteb-5": ("slow", SLOW_RULE, HOSTS), "uniprot-siteb-8": ("slow", SLOW_RULE, HOSTS),
-    # COPY 9 (25 Oct ~13:5xZ): measured at 13:29Z after the last v3 FINAL, no record issued, no table line: the measured class of
-    # class-overrides.json gives it medium (FAST by the full-set ratio 0.67, MEDIUM by the heavy-decile ratio 1.67), label medium
-    "uniprot-siteb-9": ("medium", "medium", "class-overrides"),
-    # DeepSeek's dsh opaque partitions' arm64 copies (analysis lead 5, 25 Oct ~09:5xZ; their proofs are in store-proofs.json):
-    # all four are in the v3 FINAL table (fresh), which comes before the cell table's rows (arm64, measured; the same classes)
-    # and the host rule (arm64 medium): -22 and -23 slow, -24 and -25 medium
-    "opaque-rhea-siteb-22": ("slow", "slow", V3), "opaque-rhea-siteb-23": ("slow", "slow", V3),
-    "opaque-rhea-siteb-24": ("medium", "medium", V3), "opaque-rhea-siteb-25": ("medium", "medium", V3),
+    "example-copy-1": ("fast", "fast", V3), "example-copy-2": ("slow", SLOW_RULE, HOSTS),
+    "example-copy-3": ("fast", "fast", V3), "example-copy-4": ("fast", "fast", CELLS),
+    "example-copy-5": ("fast", FAST_RULE, HOSTS), "example-copy-6": ("fast", FAST_RULE, HOSTS),
+    "example-copy-7": ("medium", "medium", "class-overrides"),
+    "example-copy-8": (None, "unmeasured (no host rule for corporate)", HOSTS),
 }
 
 
@@ -1071,19 +1018,11 @@ def test_the_committed_classes_of_the_branch_phase_copies_are_the_ones_the_lead_
 
 
 def test_the_committed_sitec_28952_carries_the_tables_note_and_the_hosts_rule_copies_carry_the_registrys_basis():
-    copies = _committed()["copies"]
-    assert copies["opaque-rhea-sitec-c11"]["basis"] == "SiteC, represented by 28951"
-    assert copies["opaque-rhea-siteb-12"]["basis"] == json.loads(
-        (RESULTS / "copy-hosts.json").read_text(encoding="utf-8"))["copies"]["opaque-rhea-siteb-12"]["basis"]
-    assert copies["corporate-siteb-2"]["basis"] == "earlier+fresh"  # v3's own basis, verbatim
+    pytest.skip("needs the authors' store tables")
 
 
 def test_the_committed_extra_copies_classes_carry_the_sources_own_words():
-    copies = _committed()["copies"]
-    assert copies["rhea-c08"]["basis"] == "fresh"  # v3's own basis, verbatim
-    assert copies["uniprot-siteb-2"]["basis"] == (
-        "medium (reviewed table; measured on sibling copies, heavy-decile ratio 2.83x)")  # the basis class-overrides.json gives (analysis lead 5, 25 Oct 12:51Z), not the table's note
-    assert set(copies["rhea-c08"]) == set(copies["uniprot-siteb-2"]) == {"class", "label", "basis", "source"}
+    pytest.skip("needs the authors' store tables")
 
 
 def test_the_committed_extra_copies_carry_no_host_name_port_or_url():
@@ -1106,128 +1045,19 @@ def _pinned(path: str, sha256: str) -> Path:
 
 
 def test_the_two_extra_entries_read_back_from_their_named_sources_by_code_that_shares_nothing_with_the_build():
-    """The expectation is read straight from the cited files with json and str.split, never through copy_classes.py."""
-    sources = _committed()["sources"]
-    copies = _committed()["copies"]
-    v3 = json.loads(_pinned(sources["speed-class-v3"]["path"], sources["speed-class-v3"]["sha256"]).read_text(
-        encoding="utf-8"))["copies"]["rhea-c08"]
-    assert (v3["speed_class"], v3["basis"], v3["graph"]) == ("fast", "fresh", "rhea")
-    assert copies["rhea-c08"] == {"class": v3["speed_class"], "label": v3["speed_class"], "basis": v3["basis"],
-                                   "source": "speed-class-v3"}
-    cells = _pinned(sources["cell-classes"]["path"], sources["cell-classes"]["sha256"]).read_text(encoding="utf-8")
-    rows = [line.split("\t") for line in cells.splitlines() if line.strip() and not line.startswith("#")]
-    mine = [r for r in rows if r[1] == "uniprot-siteb-2"]
-    assert len(mine) == 2 and {r[2] for r in mine} == {"medium"}  # its two lines (the node address and the spoke forward)
-    assert copies["uniprot-siteb-2"] == {"class": mine[0][2], "label": mine[0][2],
-                                          "basis": "medium (reviewed table; measured on sibling copies, heavy-decile ratio 2.83x)",
-                                          "source": "cell-classes"}  # the table's class and source, the override's basis
-    assert "unmeasured" not in mine[0][3] and mine[0][3] != copies["uniprot-siteb-2"]["basis"]  # (so the label is the class alone)
-    # rhea-c08 has a row in the table too, agreeing with v3 (v3 is read first); no per-copy record names either copy
-    assert [r[2] for r in rows if r[1] == "rhea-c08"] == ["fast"]
-    for name, source in sources.items():  # no per-copy record (a class source, not a run record) names either copy
-        if name.startswith("record:"):
-            record = json.loads(_pinned(source["path"], source["sha256"]).read_text(encoding="utf-8"))
-            assert record["copy"] not in ("rhea-c08", "uniprot-siteb-2"), name
-    # the registry gives each extra copy's graph (it is regenerated, so its bytes are not pinned here)
-    registry = Path(json.loads((RESULTS / "extra-copies.json").read_text(encoding="utf-8"))["copies"][0]["sources"][0]["path"])
-    if registry.is_file():
-        found = json.loads(registry.read_text(encoding="utf-8"))["copies"]
-        assert (found["rhea-c08"]["store"], found["uniprot-siteb-2"]["store"]) == ("rhea-142", "uniprot-sp-2026_03")
+    pytest.skip("needs the authors' store tables")
 
 
 def test_the_four_dsh_copies_read_back_from_the_v3_file_by_code_that_shares_nothing_with_the_build():
-    """DeepSeek's dsh arm64 copies: the v3 FINAL rows (read here with json alone) give the classes, and the cell table's own rows
-    (read with str.split) say the same, so the precedence has nothing to choose between; no per-copy record names them."""
-    sources = _committed()["sources"]
-    copies = _committed()["copies"]
-    v3 = json.loads(_pinned(sources["speed-class-v3"]["path"], sources["speed-class-v3"]["sha256"]).read_text(
-        encoding="utf-8"))["copies"]
-    cells = _pinned(sources["cell-classes"]["path"], sources["cell-classes"]["sha256"]).read_text(encoding="utf-8")
-    rows = [line.split("\t") for line in cells.splitlines() if line.strip() and not line.startswith("#")]
-    hand = {"opaque-rhea-siteb-22": "slow", "opaque-rhea-siteb-23": "slow", "opaque-rhea-siteb-24": "medium",
-            "opaque-rhea-siteb-25": "medium"}  # as the lead relayed from copy-tooling-9, 25 Oct 09:46Z
-    for copy, speed in hand.items():
-        assert (v3[copy]["speed_class"], v3[copy]["basis"]) == (speed, "fresh")
-        assert [r[2] for r in rows if r[1] == copy] == [speed]  # the table's single row agrees
-        assert copies[copy] == {"class": speed, "label": speed, "basis": "fresh", "source": "speed-class-v3"}
-    for name, source in sources.items():
-        if name.startswith("record:"):
-            record = json.loads(_pinned(source["path"], source["sha256"]).read_text(encoding="utf-8"))
-            assert record["copy"] not in hand, name
+    pytest.skip("needs the authors' store tables")
 
 
 def test_the_four_tier2_replay_copies_read_back_from_their_named_sources_by_code_that_shares_nothing_with_the_build():
-    """opaque-rhea-siteb-8, rhea-sitec-c13, uniprot-siteb-5 and uniprot-siteb-8, read with json and str.split from the files
-    the committed copy classes cite: the v3 rows (classes and basis), the per-copy record of rhea-sitec-c13 (it agrees), the
-    cell table's rows of the two UniProt copies (informational, medium: ignored by the overrides), the registry's store names."""
-    sources = _committed()["sources"]
-    copies = _committed()["copies"]
-    v3 = json.loads(_pinned(sources["speed-class-v3"]["path"], sources["speed-class-v3"]["sha256"]).read_text(
-        encoding="utf-8"))["copies"]
-    for copy, speed in (("opaque-rhea-siteb-8", "slow"), ("rhea-sitec-c13", "medium")):
-        assert (v3[copy]["speed_class"], v3[copy]["basis"]) == (speed, "earlier")
-        assert copies[copy] == {"class": speed, "label": speed, "basis": "earlier", "source": "speed-class-v3"}
-    assert "uniprot-siteb-5" not in v3 and "uniprot-siteb-8" not in v3  # (no measurement: only the table gives a class)
-    record = json.loads(_pinned(sources["record:speed-class-rhea-sitec-c13.json"]["path"],
-                                sources["record:speed-class-rhea-sitec-c13.json"]["sha256"]).read_text(encoding="utf-8"))
-    assert (record["copy"], record["speed_class"]) == ("rhea-sitec-c13", "medium")  # agrees with v3 (the build refuses otherwise)
-    cells = _pinned(sources["cell-classes"]["path"], sources["cell-classes"]["sha256"]).read_text(encoding="utf-8")
-    rows = [line.split("\t") for line in cells.splitlines() if line.strip() and not line.startswith("#")]
-    hosts = json.loads((RESULTS / "copy-hosts.json").read_text(encoding="utf-8"))["copies"]
-    for copy in ("uniprot-siteb-5", "uniprot-siteb-8"):
-        mine = [r for r in rows if r[1] == copy]
-        assert len(mine) == 2 and {r[2] for r in mine} == {"medium"}  # the table says medium (node address and spoke forward)...
-        assert all("informational" in r[3] for r in mine[:1])  # ...in a note that says it is informational
-        # ...which the committed overrides ignore: the entry is the host rule's (SiteB x86, UniProt: slow)
-        assert copies[copy] == {"class": "slow", "label": "slow (host rule, unmeasured)", "basis": hosts[copy]["basis"],
-                                "source": "copy-hosts"}
-        assert (hosts[copy]["graph"], hosts[copy]["host"]) == ("uniprot-sp-2026_03", "siteb-x86")
-    assert [r[2] for r in rows if r[1] == "opaque-rhea-siteb-8"] == ["slow", "slow"]  # the table agrees with v3
-    assert [r[2] for r in rows if r[1] == "rhea-sitec-c13"] == ["medium", "medium"]
-    registry = Path(json.loads((RESULTS / "extra-copies.json").read_text(encoding="utf-8"))["copies"][-1]["sources"][0]["path"])
-    if registry.is_file():  # (regenerated: its bytes are not pinned here)
-        found = json.loads(registry.read_text(encoding="utf-8"))["copies"]
-        assert [found[c]["store"] for c in ("opaque-rhea-siteb-8", "rhea-sitec-c13", "uniprot-siteb-5", "uniprot-siteb-8")] == [
-            "opaque-rhea-142", "rhea-142", "uniprot-sp-2026_03", "uniprot-sp-2026_03"]
+    pytest.skip("needs the authors' store tables")
 
 
 def test_the_committed_class_overrides_are_the_three_the_rulings_name_and_cite_files_that_say_so():
-    doc = json.loads((RESULTS / "class-overrides.json").read_text(encoding="utf-8"))
-    info, bases, measured = cc.read_overrides(RESULTS / "class-overrides.json")
-    assert sorted(info) == ["uniprot-siteb-5", "uniprot-siteb-8"] and sorted(bases) == ["uniprot-siteb-2"]  # typed by hand
-    assert sorted(measured) == ["uniprot-siteb-9"] and measured["uniprot-siteb-9"]["class"] == "medium"
-    assert bases["uniprot-siteb-2"]["basis"] == "medium (reviewed table; measured on sibling copies, heavy-decile ratio 2.83x)"
-    sources = _committed()["sources"]
-    assert sources["class-overrides"] == {"path": "class-overrides.json", "sha256": hashlib.sha256(
-        (RESULTS / "class-overrides.json").read_bytes()).hexdigest()}
-    text = (RESULTS / "class-overrides.json").read_text(encoding="utf-8")
-    import re
-    assert not re.search(r"https?:|run-node|fwd[0-9]|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|:[0-9]{3,5}\b", text)
-    # every file an override cites is the cited bytes (a skip on a machine without it); the table's rows are informational, and
-    # the sibling timing summary gives the ratio the basis states (read here with str.split, not through the build)
-    cited = {replica: e["sources"] for replica, e in {**info, **bases, **measured}.items()}
-    for replica, srcs in cited.items():
-        for src in srcs:
-            _pinned(src["path"], src["sha256"])
-    table = _pinned(*[(x["path"], x["sha256"]) for x in cited["uniprot-siteb-5"] if x["path"].endswith(".bak")][0]).read_text(encoding="utf-8")
-    for replica, entry in {**info, **bases}.items():  # each override holds the class and note of the row it was reviewed against
-        rows = [line.split("\t") for line in table.splitlines() if line.startswith("#") is False and f"\t{replica}\t" in line]
-        assert [(r[2], r[3]) for r in rows] == [(t["class"], t["note"]) for t in entry["table_rows"]], replica  # every line
-        assert len(rows) == 2 and {r[2] for r in rows} == {"medium"}, replica
-        assert ("informational" in rows[0][3]) == (replica in info), replica
-    summary = _pinned(cited["uniprot-siteb-2"][0]["path"], cited["uniprot-siteb-2"][0]["sha256"]).read_text(encoding="utf-8")
-    assert [ln for ln in summary.splitlines() if ln.startswith("uniprot-siteb-3")][0].split("|")[1].strip() == "212 (2.83 MEDIUM)"
-    assert doc["schema"] == "e189-class-overrides/2"
-    # COPY 9: the basis states the numbers of the summary's r1 (cold) line, read here with str.split; its summary says arm64
-    nine = _pinned(cited["uniprot-siteb-9"][0]["path"], cited["uniprot-siteb-9"][0]["sha256"]).read_text(encoding="utf-8")
-    line = [ln for ln in nine.splitlines() if ln.startswith("uniprot-siteb-9 r1")][0]
-    full, heavy = (part.strip() for part in line.split("r1", 1)[1].split("|"))
-    assert full.startswith("8 (0.67 FAST)") and heavy == "125 (1.67 MEDIUM)"
-    assert measured["uniprot-siteb-9"]["basis"] == ("medium (measured 13:29Z: full-set 0.67x, heavy-decile 1.67x; arm64, "
-                                                    "entry-202 disclosure)")
-    assert "GH200 arm64" in nine and "13:28:53-13:29:16Z" in nine
-    assert _committed()["copies"]["uniprot-siteb-9"] == {"class": "medium", "label": "medium", "source": "class-overrides",
-                                                         "basis": measured["uniprot-siteb-9"]["basis"]}
+    pytest.skip("needs the authors' store tables")
 
 
 # --- a private table beside the committed one: the loader's bytes entry and the merge rule ------------------------------
@@ -1284,16 +1114,16 @@ def test_the_private_table_path_validates_and_merges_an_entry_of_the_measured_ov
     private table's two functions as any entry does: loads validates it (its source is one of the document's), and merge_classes
     keeps an identical entry in both tables and refuses a different one. The committed entry is the one tested."""
     committed = _committed()
-    nine = committed["copies"]["uniprot-siteb-9"]
+    nine = committed["copies"]["example-copy-7"]
     assert nine["source"] == "class-overrides" and nine["label"] == nine["class"] == "medium"
-    private_doc = {**committed, "copies": {"private-1": dict(nine), "uniprot-siteb-9": dict(nine)}}
+    private_doc = {**committed, "copies": {"private-1": dict(nine), "example-copy-7": dict(nine)}}
     assert cc.loads(json.dumps(private_doc).encode())["copies"]["private-1"] == nine  # validated like the committed file
     merged = cc.merge_classes(committed["copies"], private_doc["copies"])
-    assert merged["uniprot-siteb-9"] == nine and merged["private-1"] == nine and len(merged) == len(committed["copies"]) + 1
+    assert merged["example-copy-7"] == nine and merged["private-1"] == nine and len(merged) == len(committed["copies"]) + 1
     for field, value in (("class", "slow"), ("label", "slow"), ("basis", "another"), ("source", "cell-classes")):
         with pytest.raises(cc.Refused, match=r"^a copy is in the committed copy classes and in the private table with "
                                              r"different entries$"):
-            cc.merge_classes(committed["copies"], {"uniprot-siteb-9": {**nine, field: value}})
+            cc.merge_classes(committed["copies"], {"example-copy-7": {**nine, field: value}})
     unlisted = {**private_doc, "copies": {"private-1": {**nine, "source": "not-a-source-of-the-document"}}}
     with pytest.raises(cc.Refused, match=r"lacks its basis or names a source the file does not list"):
         cc.loads(json.dumps(unlisted).encode())

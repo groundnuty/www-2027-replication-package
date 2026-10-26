@@ -2,7 +2,7 @@
 
 The analysis refuses to run unless the code and configuration it loads match pinned digests. Anonymization changed
 the bytes of some pinned files, so each affected pin was recomputed on the anonymized files with the code's own
-digest functions. The logic of the code did not change (see the README). Digests recorded inside the run data
+digest functions. The logic of the code did not change (see the README), except for the tests adapted to the synthetic store-copy tables. Digests recorded inside the run data
 (step 2) refer to the original values below.
 
 | Pin | Original | Package |
@@ -36,5 +36,5 @@ anonymized addresses, so that they match anonymized run data; their original val
 The package value of the five store-copy table rows above (`store-proofs.json`, `endpoint-copies.json`,
 `class-overrides.json`, `extra-copies.json`, `copy-hosts.json`) is the digest of the synthetic example table that replaced
 the authors' table (the original is the digest of the authors' table); `admitted-fingerprints.json` is replaced the same
-way and no code pins it. `copy-classes.json` was not replaced and still records, in its `sources`, the digests of the
-anonymized authors' tables, not of these synthetic ones.
+way and no code pins it. `copy-classes.json` is replaced the same way (invented copy names and classes, consistent with the synthetic tables), and its
+`sources` record the digests of the synthetic tables; no code pins it.

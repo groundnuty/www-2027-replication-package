@@ -53,12 +53,12 @@ _spec.loader.exec_module(ex)
 # typed in from the six dsh OUTs' deployment identities (partition.binding_sha256 / plan_sha256 / copy), not from the plan files
 BINDING_SHA = "015aa5e74a391b266db346f480978f46d7f706aad2d022aa48160f173f14326b"
 DSH = [  # (partition, plan_sha256, copy)
-    (0, "0d0cf40446fcc60976a66bca893a3730589814c313afcb92c43d553b45cc20cc", "opaque-rhea-siteb-22"),
-    (1, "7efb050424205cb849b1c0eabe495a2f00ac65b79d6b1bcad8953ea44b85267d", "opaque-rhea-siteb-25"),
-    (2, "18f9bd250b7d3df31ef5cf88f4d4424ec7ec36d0fad5ad0aa3e302c353373bca", "opaque-rhea-siteb-24"),
-    (3, "6b5cff90edc2e4000cf90b3439c29db557aef04fdf9ca4ddf736ba7efb1c9c88", "opaque-rhea-siteb-22"),
-    (4, "d4a045074cdec610e350cf0b439f9dc0087eb0427fc18d19b3b48c4ceb40fcd7", "opaque-rhea-siteb-23"),
-    (5, "671bc3743ede5f89b78bb294abff53cc0ca71302b7f6a9027ba0b1fce37e5ac7", "opaque-rhea-siteb-25"),
+    (0, "0d0cf40446fcc60976a66bca893a3730589814c313afcb92c43d553b45cc20cc", "example-copy-24"),
+    (1, "7efb050424205cb849b1c0eabe495a2f00ac65b79d6b1bcad8953ea44b85267d", "example-copy-27"),
+    (2, "18f9bd250b7d3df31ef5cf88f4d4424ec7ec36d0fad5ad0aa3e302c353373bca", "example-copy-26"),
+    (3, "6b5cff90edc2e4000cf90b3439c29db557aef04fdf9ca4ddf736ba7efb1c9c88", "example-copy-24"),
+    (4, "d4a045074cdec610e350cf0b439f9dc0087eb0427fc18d19b3b48c4ceb40fcd7", "example-copy-25"),
+    (5, "671bc3743ede5f89b78bb294abff53cc0ca71302b7f6a9027ba0b1fce37e5ac7", "example-copy-27"),
 ]
 OUTP = "opaque-deepseek-v4-flash-0731-dsh-p{}of6"
 CODER_SHA = "639bb65af66828821bb774bf9e65b6194510fe343587c145a1615fb66b856714"
@@ -199,7 +199,7 @@ BINDING_MUTATIONS = [  # (name, mutation of the parsed binding, expected refusal
     ("another rule", lambda d: d["record"].__setitem__("rule", "mod K"), "record block"),
     ("another question count", lambda d: d["record"].__setitem__("n_questions", 209), "record block"),
     ("no copies", lambda d: d.__setitem__("copies", {}), "names no store copies"),
-    ("copies as a list", lambda d: d.__setitem__("copies", ["opaque-rhea-siteb-22"]), "names no store copies"),
+    ("copies as a list", lambda d: d.__setitem__("copies", ["example-copy-24"]), "names no store copies"),
     ("a copy name with a slash", lambda d: d.__setitem__("copies", {"a/b": {}}), "names no store copies"),
 ]
 
@@ -231,8 +231,8 @@ PLAN_MUTATIONS = [  # (name, plan index, mutation, expected refusal)
     ("another question count", 4, lambda d: d.__setitem__("n_questions", 34), "K or question count"),
     ("an OUT path", 0, lambda d: d.__setitem__("out", "/net/x/" + OUTP.format(0)), "not a plain name"),
     ("no OUT", 0, lambda d: d.pop("out"), "not a plain name"),
-    ("a copy that is not the binding's", 2, lambda d: d.__setitem__("copy", "opaque-rhea-siteb-1"), "one of the binding's copies"),
-    ("a copy with a slash", 2, lambda d: d.__setitem__("copy", "opaque-rhea-siteb-22/"), "one of the binding's copies"),
+    ("a copy that is not the binding's", 2, lambda d: d.__setitem__("copy", "example-copy-14"), "one of the binding's copies"),
+    ("a copy with a slash", 2, lambda d: d.__setitem__("copy", "example-copy-24/"), "one of the binding's copies"),
     ("an OUT shared by two plans", 4, lambda d: d.__setitem__("out", OUTP.format(3)), "distinct OUTs"),
 ]
 
@@ -374,11 +374,11 @@ OUT_MUTATIONS = [  # (name, partition, mutation of (identity, path) -> (identity
     ("another binding named", 1, setp("binding_sha256", "0" * 64), "does not name the cited binding"),
     ("the plan unnamed", 2, popp("plan_sha256"), "does not name partition 2's plan"),
     ("another partition's plan named (p0's for p3: the same copy)", 3, setp("plan_sha256", DSH[0][1]), "does not name partition 3's plan"),
-    ("the record's copy (an x86 copy of the record's list)", 0, set_copy("opaque-rhea-siteb-1", "opaque-rhea-siteb-1"),
-     "is not partition 0's copy in the cited binding (opaque-rhea-siteb-22)"),
-    ("the partition copy right, the store replica another", 4, set_copy(replica="opaque-rhea-siteb-22"),
+    ("the record's copy (an x86 copy of the record's list)", 0, set_copy("example-copy-14", "example-copy-14"),
+     "is not partition 0's copy in the cited binding (example-copy-24)"),
+    ("the partition copy right, the store replica another", 4, set_copy(replica="example-copy-24"),
      "is not partition 4's copy in the cited binding"),
-    ("the store replica right, the partition copy another", 5, set_copy(partition_copy="opaque-rhea-siteb-24"),
+    ("the store replica right, the partition copy another", 5, set_copy(partition_copy="example-copy-26"),
      "is not partition 5's copy in the cited binding"),
     ("the OUT directory named for another partition", 2, rename_to(OUTP.format(3)), "is not partition 2's plan OUT"),
     ("the identity's out another OUT", 2, set_out(f"{HOST_RUNS}/{OUTP.format(1)}"), "is not partition 2's plan OUT"),
@@ -490,16 +490,16 @@ def test_a_subset_of_one_partition_is_refused_under_a_binding(real, design) -> N
 
 def test_a_subset_out_whose_copy_differs_from_its_plans_is_refused(real, design) -> None:
     record, rsha, binding = _dsh_world(real)
-    outs = _subset_outs(record, rsha, SLOW)  # partitions 0, 3, 4 in this order; partition 3's plan copy is opaque-rhea-siteb-22
+    outs = _subset_outs(record, rsha, SLOW)  # partitions 0, 3, 4 in this order; partition 3's plan copy is example-copy-24
     assert _union(design, record, rsha, outs, binding, subset=SLOW).subset == SLOW  # baseline
-    assert record["partitions"][3]["copy"] == "opaque-rhea-siteb-5"  # the record's own copy of partition 3, typed from the real record
-    for what, fn in (("the record's copy", set_copy("opaque-rhea-siteb-5", "opaque-rhea-siteb-5")),
-                     ("partition 4's plan copy", set_copy("opaque-rhea-siteb-23", "opaque-rhea-siteb-23")),
-                     ("a copy that is not the binding's", set_copy("opaque-rhea-siteb-1", "opaque-rhea-siteb-1")),
-                     ("the store replica alone", set_copy(replica="opaque-rhea-siteb-23"))):
+    assert record["partitions"][3]["copy"] == "example-copy-30"  # the record's own copy of partition 3, typed from the real record
+    for what, fn in (("the record's copy", set_copy("example-copy-30", "example-copy-30")),
+                     ("partition 4's plan copy", set_copy("example-copy-25", "example-copy-25")),
+                     ("a copy that is not the binding's", set_copy("example-copy-14", "example-copy-14")),
+                     ("the store replica alone", set_copy(replica="example-copy-25"))):
         with pytest.raises(ex.Refused) as e:
             _union(design, record, rsha, _mutate_outs(outs, 1, fn), binding, subset=SLOW)
-        assert f"/stage/{OUTP.format(3)}: its store copy (" in str(e.value) and "is not partition 3's copy in the cited binding (opaque-rhea-siteb-22)" in str(e.value), (what, str(e.value))
+        assert f"/stage/{OUTP.format(3)}: its store copy (" in str(e.value) and "is not partition 3's copy in the cited binding (example-copy-24)" in str(e.value), (what, str(e.value))
 
 
 def test_a_subset_refuses_an_out_of_a_partition_it_does_not_name_and_a_named_one_missing(real, design) -> None:
@@ -609,11 +609,11 @@ def test_check_union_for_the_coder_record_needs_no_binding_and_takes_the_records
     ids, qsha = design
     record, sha = ex.read_record(CODER_TRACKED)
     copies = [(p["index"], "", p["copy"]) for p in record["partitions"]]
-    assert [c for _, _, c in copies] == ["opaque-rhea-siteb-21"] * 2
+    assert [c for _, _, c in copies] == ["example-copy-23"] * 2
     outs = _outs(record, sha, None, copies, "opaque-qwen3-coder-30b-a3b-dh2", 2)
     assert _union(design, record, sha, outs).k == 2
     # each partition's copy is still the record's: another copy is refused
-    bad = _mutate_outs(outs, 1, lambda i, p: (i["partition"].__setitem__("copy", "opaque-rhea-siteb-1") or i, p))
+    bad = _mutate_outs(outs, 1, lambda i, p: (i["partition"].__setitem__("copy", "example-copy-14") or i, p))
     with pytest.raises(ex.Refused, match="is not partition 1's copy in the record"):
         _union(design, record, sha, bad)
 

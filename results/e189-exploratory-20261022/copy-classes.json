@@ -1,306 +1,84 @@
 {
  "copies": {
-  "corporate-c07": {
-   "basis": "operational note withheld",
+  "example-copy-1": {
+   "basis": "synthetic example",
    "class": "fast",
    "label": "fast",
    "source": "speed-class-v3"
   },
-  "corporate-siteb-1": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast",
-   "source": "cell-classes"
-  },
-  "corporate-siteb-2": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-c05": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-c09": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-sitec-c10": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-sitec-c11": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-sitec-c12": {
-   "basis": "operational note withheld",
-   "class": "fast",
-   "label": "fast",
-   "source": "record:speed-class-opaque-rhea-sitec-c12.reissued-20261024T004714Z.json"
-  },
-  "opaque-rhea-siteb-1": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-10": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-12": {
-   "basis": "operational note withheld",
+  "example-copy-2": {
+   "basis": "synthetic example",
    "class": "slow",
    "label": "slow (host rule, unmeasured)",
    "source": "copy-hosts"
   },
-  "opaque-rhea-siteb-13": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-14": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-15": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-16": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-17": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-2": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-21": {
-   "basis": "operational note withheld",
-   "class": "medium",
-   "label": "medium",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-22": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-23": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-24": {
-   "basis": "operational note withheld",
-   "class": "medium",
-   "label": "medium",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-25": {
-   "basis": "operational note withheld",
-   "class": "medium",
-   "label": "medium",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-3": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-4": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-5": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-6": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-7": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "opaque-rhea-siteb-8": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "opaque-rhea-siteb-9": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "rhea-c06": {
-   "basis": "operational note withheld",
+  "example-copy-3": {
+   "basis": "synthetic example",
    "class": "fast",
    "label": "fast",
    "source": "speed-class-v3"
   },
-  "rhea-c08": {
-   "basis": "operational note withheld",
+  "example-copy-4": {
+   "basis": "synthetic example basis",
    "class": "fast",
    "label": "fast",
-   "source": "speed-class-v3"
-  },
-  "rhea-sitec-c13": {
-   "basis": "operational note withheld",
-   "class": "medium",
-   "label": "medium",
-   "source": "speed-class-v3"
-  },
-  "rhea-siteb-1": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "rhea-siteb-2": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
    "source": "cell-classes"
   },
-  "rhea-siteb-3": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "rhea-siteb-4": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow",
-   "source": "speed-class-v3"
-  },
-  "rhea-siteb-5": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "cell-classes"
-  },
-  "uniprot-a-c02": {
-   "basis": "operational note withheld",
+  "example-copy-5": {
+   "basis": "synthetic example",
    "class": "fast",
    "label": "fast (host rule, unmeasured)",
    "source": "copy-hosts"
   },
-  "uniprot-c-c04": {
-   "basis": "operational note withheld",
+  "example-copy-6": {
+   "basis": "synthetic example",
    "class": "fast",
    "label": "fast (host rule, unmeasured)",
    "source": "copy-hosts"
   },
-  "uniprot-siteb-2": {
-   "basis": "operational note withheld",
-   "class": "medium",
-   "label": "medium",
-   "source": "cell-classes"
-  },
-  "uniprot-siteb-5": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "copy-hosts"
-  },
-  "uniprot-siteb-8": {
-   "basis": "operational note withheld",
-   "class": "slow",
-   "label": "slow (host rule, unmeasured)",
-   "source": "copy-hosts"
-  },
-  "uniprot-siteb-9": {
-   "basis": "operational note withheld",
+  "example-copy-7": {
+   "basis": "synthetic example basis",
    "class": "medium",
    "label": "medium",
    "source": "class-overrides"
+  },
+  "example-copy-8": {
+   "basis": "synthetic example",
+   "class": null,
+   "label": "unmeasured (no host rule for corporate)",
+   "source": "copy-hosts"
   }
  },
- "rule": "operational note withheld",
+ "rule": "synthetic example: invented values for illustration, not the authors' store copies",
  "schema": "e189-copy-classes/1",
  "sources": {
   "cell-classes": {
-   "path": "operational note withheld",
-   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   "path": "example/cell-classes.tsv",
+   "sha256": "06b741a15437fe4c738fd830186587dea28bd42ea8401a13299f6b7875679f63"
   },
   "class-overrides": {
    "path": "class-overrides.json",
-   "sha256": "9185b85e5ab6a261e0f95da77b2261ecd08e8ceb07c9982220be3c646887451b"
+   "sha256": "9aa84f10a22b89b25d76aef51ff7969de5574c7fec78d0e30288b36f4de4e382"
   },
   "copy-hosts": {
    "path": "copy-hosts.json",
-   "sha256": "cb43dd4a724ee2bca34c57ca73e9d04ac1d9852f7fc01526893c80c51d12e3ab"
+   "sha256": "edda5023032d7716d6157e6449790e4d9917c71571c8ff9a11feb0c54700da8c"
   },
   "endpoint-copies": {
    "path": "endpoint-copies.json",
-   "sha256": "304dd4d564755db4657e84d401eb69e6695d2715b1d24ac4ce6cdf3ee68a52b7"
+   "sha256": "90bb0d3e33a421af9150220f3a3aaddd3a98ebc724c8b4087773b69e9da303c1"
   },
   "extra-copies": {
    "path": "extra-copies.json",
-   "sha256": "12f5ac23917a46efc977fe3be7d45e0c7bc9a346f6f7ad35bb89c77552bce486"
-  },
-  "record:speed-class-opaque-rhea-sitec-c10.json": {
-   "path": "operational note withheld",
-   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-  },
-  "record:speed-class-opaque-rhea-sitec-c12.reissued-20261024T004714Z.json": {
-   "path": "operational note withheld",
-   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-  },
-  "record:speed-class-rhea-sitec-c13.json": {
-   "path": "operational note withheld",
-   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   "sha256": "affd31ef2ba166a604b677d1cd827beeabacc6b04b886f31e82c652dceeabe66"
   },
   "speed-class-v3": {
-   "path": "operational note withheld",
-   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   "path": "example/speed-class.json",
+   "sha256": "a7303ff11e4d574e2c0365d929752e9d89d7f6ce378a306bc5993879f8c1bf57"
   },
   "store-proofs": {
    "path": "store-proofs.json",
-   "sha256": "82f618fee959b06f0ea8b2d385c612ce1c83d51966d3ba6b890f3a8df047730e"
+   "sha256": "42f5bcaffb960ec85e85ad9d3970a23a310cbad43b3d38a8df3ca704da8f92fa"
   }
  }
 }

@@ -2273,7 +2273,7 @@ def test_a_mismatching_old_format_identity_file_is_refused(world, old_world, mon
     _refused_stores(world, [old_world["out"]], proofs, [a, b], rf"single {ex.endpoint_label(E1)} \(copy-b\): .*{match}")
 
 
-# --- an alias (science ~18:1xZ 23 Oct: rhea-c06, named by its OUTs by host name and by its recorded checks by address,
+# --- an alias (science ~18:1xZ 23 Oct: example-copy-38, named by its OUTs by host name and by its recorded checks by address,
 # the same host by the copy table): only the pair pinned in STORE_ALIASES, for ident.py and load10.py files ----------
 EA = "http://192.0.2.39:7039/"  # copy-a's address, as its recorded checks name it; E0 is its host name
 
@@ -2336,7 +2336,7 @@ def _alias_world(world, monkeypatch, host: str, addr: str) -> dict:
 
 @pytest.fixture
 def alias_world(world, monkeypatch) -> dict:
-    """The first pinned pair's world (rhea-c06's shape): E0 by host name, EA its address."""
+    """The first pinned pair's world (example-copy-38's shape): E0 by host name, EA its address."""
     return _alias_world(world, monkeypatch, E0, EA)
 
 
@@ -2415,9 +2415,9 @@ def test_a_copy_named_by_host_name_without_its_pinned_alias_and_table_is_refused
 
 
 def test_the_aliases_are_the_two_pinned_by_hand():
-    # By hand: for each pair the sha256 of the endpoint string the OUTs name (rhea-c06's; Gemma's corporate OUT's
+    # By hand: for each pair the sha256 of the endpoint string the OUTs name (example-copy-38's; Gemma's corporate OUT's
     # "http://" + its node's host name + ":7041/"), of its address as "http://HOST:PORT/" (the copy table's keys), and
-    # the sha256sum of the copy table's snapshot (rhea-c06's copy-assignments.json of 18:14:19Z; the corporate pair's
+    # the sha256sum of the copy table's snapshot (example-copy-38's copy-assignments.json of 18:14:19Z; the corporate pair's
     # copy-assignments-20261025T002051Z.json); the repository names no address
     assert ex.STORE_ALIASES == {
         ("rhea-142", "0d4386b1394edd1aa67f23d0b51d90aa6a66345526be51a164116ce9f7fcd037"): (
@@ -2594,31 +2594,31 @@ def test_the_committed_store_proofs_config_cites_the_recorded_checks_of_each_ent
     # (the first record on the copy, as the reviewed store-timeline command printed it from the OUTs' records), and the STATE-based
     # instants of the OUTs whose timeline was not run (entry 150's copied UniProt OUTs, Gemma's opaque OUTs), which keep refusing
     rederived = {
-        ("opaque-glm-5.3-flash", "opaque-rhea-siteb-17"): "2026-10-23T09:19:22.624+00:00",
-        ("opaque-glm-5.3-flash-e184-p0of3", "opaque-rhea-siteb-12"): "2026-10-23T03:37:55.853+00:00",
-        ("opaque-glm-5.3-flash-e184-p1of3", "opaque-rhea-siteb-13"): "2026-10-23T03:38:29.618+00:00",
-        ("opaque-glm-5.3-flash-e184-p2of3", "opaque-rhea-siteb-14"): "2026-10-23T03:39:05.063+00:00",
-        ("rhea-gemma-4-31b", "rhea-siteb-4"): "2026-10-23T18:07:10.343+00:00",
-        ("opaque-qwen3.8-27b-e180-p0of6", "opaque-rhea-sitec-c10"): "2026-10-23T21:11:07.494+00:00",
+        ("opaque-glm-5.3-flash", "example-copy-21"): "2026-10-23T09:19:22.624+00:00",
+        ("opaque-glm-5.3-flash-e184-p0of3", "example-copy-16"): "2026-10-23T03:37:55.853+00:00",
+        ("opaque-glm-5.3-flash-e184-p1of3", "example-copy-17"): "2026-10-23T03:38:29.618+00:00",
+        ("opaque-glm-5.3-flash-e184-p2of3", "example-copy-18"): "2026-10-23T03:39:05.063+00:00",
+        ("rhea-gemma-4-31b", "example-copy-43"): "2026-10-23T18:07:10.343+00:00",
+        ("opaque-qwen3.8-27b-e180-p0of6", "example-copy-35"): "2026-10-23T21:11:07.494+00:00",
         # the OUTs whose branch phase had started (science's branch-phase ruling, 25 Oct): the first record on the copy
-        ("rhea-qwen3-coder-30b-a3b", "rhea-siteb-3"): "2026-10-23T16:14:46.908+00:00",
-        ("corporate-gemma-4-31b", "corporate-siteb-2"): "2026-10-23T18:03:02.031+00:00",
-        ("opaque-qwen3.8-27b-e180-p2of6", "opaque-rhea-sitec-c11"): "2026-10-23T21:44:04.556+00:00",
-        ("opaque-qwen3.8-27b-e180-p3of6", "opaque-rhea-siteb-16"): "2026-10-23T12:26:22.537+00:00",
-        ("opaque-qwen3.8-27b-e180-p4of6", "opaque-rhea-sitec-c12"): "2026-10-23T22:16:46.390+00:00",
-        ("opaque-qwen3.8-27b-e180-p5of6", "opaque-rhea-siteb-17"): "2026-10-24T14:41:13.696+00:00"}
-    second_period_at = {("rhea-gemma-4-31b", "rhea-c06"): "2026-10-24T03:00:07.440+00:00"}
+        ("rhea-qwen3-coder-30b-a3b", "example-copy-42"): "2026-10-23T16:14:46.908+00:00",
+        ("corporate-gemma-4-31b", "example-copy-11"): "2026-10-23T18:03:02.031+00:00",
+        ("opaque-qwen3.8-27b-e180-p2of6", "example-copy-36"): "2026-10-23T21:44:04.556+00:00",
+        ("opaque-qwen3.8-27b-e180-p3of6", "example-copy-20"): "2026-10-23T12:26:22.537+00:00",
+        ("opaque-qwen3.8-27b-e180-p4of6", "example-copy-37"): "2026-10-23T22:16:46.390+00:00",
+        ("opaque-qwen3.8-27b-e180-p5of6", "example-copy-21"): "2026-10-24T14:41:13.696+00:00"}
+    second_period_at = {("rhea-gemma-4-31b", "example-copy-38"): "2026-10-24T03:00:07.440+00:00"}
     state_based = {
-        ("uniprot-e150-claude-sonnet-5-5", "uniprot-a-c02"): "2026-10-22T18:30:02Z",
-        ("uniprot-e150-qwen3.8-27b", "uniprot-a-c02"): "2026-10-23T04:01:39Z",
-        ("opaque-gemma-4-31b-e190-p2of3", "opaque-rhea-sitec-c12"): "2026-10-24T01:52:21Z",
-        ("opaque-gemma-4-31b-e190-p0of3", "opaque-rhea-sitec-c10"): "2026-10-24T09:56:52Z"}
+        ("uniprot-e150-claude-sonnet-5-5", "example-copy-46"): "2026-10-22T18:30:02Z",
+        ("uniprot-e150-qwen3.8-27b", "example-copy-46"): "2026-10-23T04:01:39Z",
+        ("opaque-gemma-4-31b-e190-p2of3", "example-copy-37"): "2026-10-24T01:52:21Z",
+        ("opaque-gemma-4-31b-e190-p0of3", "example-copy-35"): "2026-10-24T09:56:52Z"}
     got = {(e["out"].rsplit("/", 1)[1], e["replica"]): e["change_at"] for e in entries
            if "change_at" in e and not e.get("behind_endpoint") and not e.get("second_period")}
     assert got == {**rederived, **state_based}
     # the route switch behind an unchanged forward (no manifest store change, so no timeline): its switch instant by hand
     assert {(e["out"].rsplit("/", 1)[1], e["replica"]): e["change_at"] for e in entries if e.get("behind_endpoint")} == {
-        ("opaque-glm-5.3-flash-e184-p2of3", "opaque-rhea-siteb-15"): "2026-10-23T07:55:27Z"}
+        ("opaque-glm-5.3-flash-e184-p2of3", "example-copy-19"): "2026-10-23T07:55:27Z"}
     assert {(e["out"].rsplit("/", 1)[1], e["replica"]): e["change_at"] for e in entries if e.get("second_period")} == second_period_at
     for e in entries:
         key = (e["out"].rsplit("/", 1)[1], e["replica"])
@@ -2632,28 +2632,28 @@ def test_the_committed_store_proofs_config_cites_the_recorded_checks_of_each_ent
     # science ~11:30Z, by hand: the forward allowance for GLM's partitions' own copies only, ident.py for entry 150's
     # UniProt OUTs' two copies only
     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "forward" in e} == {
-        ("opaque-glm-5.3-flash-e184-p0of3", "opaque-rhea-siteb-12"),
-        ("opaque-glm-5.3-flash-e184-p1of3", "opaque-rhea-siteb-13"),
-        ("opaque-glm-5.3-flash-e184-p2of3", "opaque-rhea-siteb-14")}
-    # science ~18:1xZ, by hand: the alias, with ident.py, for rhea-c06 as the two Rhea OUTs' first copy only
-    rhea_7039 = {(out, "rhea-c06") for out in ("rhea-qwen3-coder-30b-a3b", "rhea-gemma-4-31b")}
-    # and (science 25 Oct 00:10Z, point ii) for corporate-c07 as the first copy of Gemma's corporate OUT only
-    corporate_7041 = {("corporate-gemma-4-31b", "corporate-c07")}
+        ("opaque-glm-5.3-flash-e184-p0of3", "example-copy-16"),
+        ("opaque-glm-5.3-flash-e184-p1of3", "example-copy-17"),
+        ("opaque-glm-5.3-flash-e184-p2of3", "example-copy-18")}
+    # science ~18:1xZ, by hand: the alias, with ident.py, for example-copy-38 as the two Rhea OUTs' first copy only
+    rhea_7039 = {(out, "example-copy-38") for out in ("rhea-qwen3-coder-30b-a3b", "rhea-gemma-4-31b")}
+    # and (science 25 Oct 00:10Z, point ii) for example-copy-9 as the first copy of Gemma's corporate OUT only
+    corporate_7041 = {("corporate-gemma-4-31b", "example-copy-9")}
     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "identity_format" in e} == {
         (out, copy) for out in ("uniprot-e150-claude-sonnet-5-5", "uniprot-e150-qwen3.8-27b")
-        for copy in ("uniprot-c-c04", "uniprot-a-c02")} | rhea_7039 | corporate_7041
+        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_7041
     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "alias" in e} == rhea_7039 | corporate_7041
-    # science 25 Oct 00:10Z (point iii): the second period of rhea-c06 in Gemma's Rhea OUT, and no other second period
+    # science 25 Oct 00:10Z (point iii): the second period of example-copy-38 in Gemma's Rhea OUT, and no other second period
     assert [(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if e.get("second_period")] == [
-        ("rhea-gemma-4-31b", "rhea-c06")]
+        ("rhea-gemma-4-31b", "example-copy-38")]
     assert all(e["not_checked"] == NOT_CHECKED for e in entries if "identity_format" in e)
-    # science ~15:1xZ 23 Oct (entry 202), by hand: corporate-siteb-2, the arm64 copy ruled IDENTICAL (build variant), is
+    # science ~15:1xZ 23 Oct (entry 202), by hand: example-copy-11, the arm64 copy ruled IDENTICAL (build variant), is
     # named only by Gemma's corporate OUT's in-OUT move, with the ruling cited; no entry names another corporate copy,
     # and its change_at is before the prompted runner's start (the first attempt on it)
     corporate = [e for e in entries if e["graph"] == "text2sparql-ck26"]
     assert [(e["out"].rsplit("/", 1)[1], e["replica"]) for e in corporate] == [
-        ("corporate-gemma-4-31b", "corporate-c07"), ("corporate-gemma-4-31b", "corporate-siteb-2")]
-    (siteb_2,) = [e for e in corporate if e["replica"] == "corporate-siteb-2"]
+        ("corporate-gemma-4-31b", "example-copy-9"), ("corporate-gemma-4-31b", "example-copy-11")]
+    (siteb_2,) = [e for e in corporate if e["replica"] == "example-copy-11"]
     # the first record on the copy (the timeline's instant) is the prompted runner's first attempt, a moment after the runner's
     # start (18:03:01.826Z, the manifest's phase-prompted addition), not before it as the STATE-based instant was
     assert (ex.parse_utc("2026-10-23T18:03:01.826+00:00") <= ex.parse_utc(siteb_2["change_at"])
@@ -2662,18 +2662,18 @@ def test_the_committed_store_proofs_config_cites_the_recorded_checks_of_each_ent
     # its identity records (no ident.py, forward or alias), change_at the first record on the copy (the STATE restart that
     # resumed the OUT on it is kept in sources as provenance), with the move tool's own lines (runner stopped, manifest change, confirmed restart, prep) cited beside it
     moved = {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "sitec" in e["replica"]
-             or (e["replica"] == "opaque-rhea-siteb-17" and "e180-p5of6" in e["out"])}
+             or (e["replica"] == "example-copy-21" and "e180-p5of6" in e["out"])}
     assert moved == {
-        ("opaque-qwen3.8-27b-e180-p0of6", "opaque-rhea-sitec-c10"),
-        ("opaque-qwen3.8-27b-e180-p2of6", "opaque-rhea-sitec-c11"),
-        ("opaque-qwen3.8-27b-e180-p4of6", "opaque-rhea-sitec-c12"),
-        ("opaque-qwen3.8-27b-e180-p5of6", "opaque-rhea-siteb-17"),
-        ("opaque-gemma-4-31b-e190-p0of3", "opaque-rhea-sitec-c10"),
-        ("opaque-gemma-4-31b-e190-p2of3", "opaque-rhea-sitec-c12")}
+        ("opaque-qwen3.8-27b-e180-p0of6", "example-copy-35"),
+        ("opaque-qwen3.8-27b-e180-p2of6", "example-copy-36"),
+        ("opaque-qwen3.8-27b-e180-p4of6", "example-copy-37"),
+        ("opaque-qwen3.8-27b-e180-p5of6", "example-copy-21"),
+        ("opaque-gemma-4-31b-e190-p0of3", "example-copy-35"),
+        ("opaque-gemma-4-31b-e190-p2of3", "example-copy-37")}
     for e in entries:
         if (e["out"].rsplit("/", 1)[1], e["replica"]) in moved:
             # science 25 Oct 00:10Z (point i): p5's siteb-17 carries one further point, the fresh check at its own endpoint
-            fresh = ("e180-p5of6" in e["out"] and e["replica"] == "opaque-rhea-siteb-17")
+            fresh = ("e180-p5of6" in e["out"] and e["replica"] == "example-copy-21")
             assert not {"forward", "alias", "identity_format", "behind_endpoint"} & set(e)
             assert ("further" in e) == fresh and (len(e.get("further", ())) == 1) == fresh
             at = e["sources"]["change_at"]
@@ -4099,7 +4099,7 @@ def test_two_periods_of_old_format_and_new_format_identity_checks_are_accepted_t
 
 
 def test_each_period_of_a_copy_named_by_host_name_is_proven_at_its_pinned_alias(world, monkeypatch):
-    """Gemma's Rhea OUT shape: the OUT names rhea-c06 by host name in both periods and the recorded checks name its
+    """Gemma's Rhea OUT shape: the OUT names example-copy-38 by host name in both periods and the recorded checks name its
     address, so each period's entry carries the pinned alias with its own pair and the same further points."""
     w = _aba_world(world)
     tmp = world["tmp"]
@@ -4613,7 +4613,7 @@ def test_the_copy_classes_are_read_as_replica_entries_with_the_sha256_of_the_fil
     copies, sha = ex.read_copy_classes(path)
     assert copies == {"copy-a": CLASS_A, "copy-b": CLASS_B, "copy-c": CLASS_C} and sha == _sha(path)
     committed, committed_sha = ex.read_copy_classes(HERE.parent / "copy-classes.json")  # the committed one
-    assert committed["rhea-c06"]["label"] == "fast" and committed_sha == _sha(HERE.parent / "copy-classes.json")
+    assert committed["example-copy-1"]["label"] == "fast" and committed_sha == _sha(HERE.parent / "copy-classes.json")
 
 
 @pytest.mark.parametrize("label, replicas, expected", [

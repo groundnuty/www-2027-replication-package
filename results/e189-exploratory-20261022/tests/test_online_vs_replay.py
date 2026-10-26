@@ -646,7 +646,7 @@ def test_the_checkers_own_output_is_read_by_the_analysis_including_the_fallback_
     # a split OUT: proven for the cells, recorded for the main tree, and a changed time file unverifiable
     import shutil
     w2 = trm.split_world(tmp_path / "second")
-    w2.write_time("rhea-gemma-4-31b", "m1-natural-01of01", "natural", "192.0.2.105:7043", "rhea-c08", rm.utc_epoch(trm.SEALED_UTC) - 5)
+    w2.write_time("rhea-gemma-4-31b", "m1-natural-01of01", "natural", "192.0.2.105:7043", "example-copy-39", rm.utc_epoch(trm.SEALED_UTC) - 5)
     rc, out, err = w2.run("natural,prompted", capsys)
     assert rc == 0, err
     got = ex.read_replay_routing([w2.stage / "replay-routing.json"])

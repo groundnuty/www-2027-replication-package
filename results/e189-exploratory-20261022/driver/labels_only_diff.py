@@ -9,7 +9,7 @@ OLD and NEW are two e189 ``results.json`` files of the same look, made before an
     identical-outside-labels: true
 or
     identical-outside-labels: false
-    ["stores", "copies", "rhea-c06", "outs"]      (one line per differing JSON key path, sorted; a JSON array of keys)
+    ["stores", "copies", "example-copy-38", "outs"]      (one line per differing JSON key path, sorted; a JSON array of keys)
 
 Never a value and never a count: only key names (an arm or OUT or copy label is a key; no number or text that is a value),
 a list element is the key ``[]`` in a path, two lists of different length differ at the list's own path, and the messages

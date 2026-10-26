@@ -46,6 +46,8 @@ Commit identifiers refer to the authors' development repository, which is privat
 | Parallel analysis line | Commit `5837f28e` (route admission for the further UniProt retry cells, and the set-aside exclusion), as a patch from the common base `a538ba9d` of both lines (it does not apply on top of the shipped analysis, which has moved on from that base). The analyses of the further UniProt retry cells used this line; the analyses of the private graph used the line shipped above. |
 | Pooled SIB UniProt analysis line | Commit `0a1b5566`: the pooled SIB UniProt analysis line (partitioned runs pooled as one union), as a patch from its common base `692d83ee` with the shipped analysis (it does not apply on top of the shipped analysis, which has moved on from that base). |
 
+The patches omit the changes to the store-copy tables, which are shipped as synthetic examples. They also omit the tests of those tables' content (`test_dsh_store_proofs.py`, `test_sibu_store_proofs.py` and the hunks that cite the authors' measurements), and the store-copy names in the remaining hunks are renamed as in the shipped tests.
+
 Each `replication/versions/run-tags/<tag>.patch` turns the shipped framework into the framework of that tag
 (`git apply` from the repository root). The tags are listed below.
 
@@ -91,15 +93,16 @@ is released it prints them and exits.
 - Where such a name was part of an identifier, the identifier was renamed the same way in every file (for example,
   `harness/sources/generated_gateway.py`, `scripts/run_gateway_ab.py`, and the options, environment variables and
   constants named after the gateway service). Nothing else in the code changed: for every Python file, the syntax tree
-  with all string constants blanked is identical before and after anonymization, except for these consistent renames.
+  with all string constants blanked is identical before and after anonymization, except for these consistent renames, and for the tests adapted to the synthetic store-copy tables (`tests/test_copy_classes.py`; `tests/test_dsh_store_proofs.py` is not included).
 - The analysis pins the digests of the code and configuration it runs on. Anonymization changes file contents, so the
   affected pins were recomputed on the anonymized files; `replication/PINS.md` lists the original and the package
   value of each. The digests recorded inside the data of step 2 refer to the code before anonymization.
-- The store-copy tables of the exploratory analysis list the store copies the runs used, in anonymized form. Their
-  free-text fields (bases, notes, citations) read `operational note withheld`, and the digests of the private
-  evidence files they cite are zeros; the fields the code reads (copy names, classes, graphs, hosts, endpoint
-  hashes, the digests of the store checks) are kept. A replicator who reruns the experiments supplies tables for their
-  own store copies (see `replication/reproduce.sh`).
+- The store-copy tables of the exploratory analysis (`copy-classes.json`, `class-overrides.json`, `extra-copies.json`,
+  `copy-hosts.json`, `endpoint-copies.json`, `store-proofs.json`) and `admitted-fingerprints.json` are synthetic
+  examples: invented copy names, hosts, graphs, classes, endpoint hashes and citations with the same schemas as the
+  authors' tables, which are not shipped. The tests that need the authors' tables are listed in
+  `replication/deselected-tests.txt`. A replicator who reruns the experiments supplies tables for their own store
+  copies (see `replication/reproduce.sh`).
 - References in comments to the project's internal design log and review process are neutralized ("design log",
   "design ruling", "study lead", "external reviewer").
 

@@ -25,8 +25,8 @@ lod = importlib.util.module_from_spec(_spec)
 sys.modules["labels_only_diff_under_test"] = lod
 _spec.loader.exec_module(lod)
 
-L1, R1 = "endpoint sha256:0d4386b1394e", "rhea-c06"  # a table copy: its label in OLD, its replica
-L2, R2 = "endpoint sha256:588836988a85", "corporate-c07"
+L1, R1 = "endpoint sha256:2805a689b1da", "example-copy-4"  # a table copy: its label in OLD, its replica
+L2, R2 = "endpoint sha256:f23c80fbc9a7", "example-copy-5"
 OUT_A, OUT_B, OUT_C = "/runs/rhea-sonnet", "/runs/rhea-qwen", "/runs/rhea-haiku"
 ARM = "s01|Qwen|none|prompt|-"
 NONE = "no copy class (no entry in the copy classes)"
@@ -103,9 +103,9 @@ def new_results() -> dict:
 @pytest.fixture
 def table(tmp_path) -> Path:
     doc = {"schema": "e189-endpoint-copies/1", "rule": "a test", "copies": [
-        {"graph": "rhea-142", "endpoint_sha256": "0d4386b1394e" + "0" * 52, "replica": R1, "basis": "b",
+        {"graph": "rhea-142", "endpoint_sha256": "2805a689b1da" + "0" * 52, "replica": R1, "basis": "b",
          "sources": [{"path": "/i.json", "sha256": "ab" * 32}]},
-        {"graph": "text2sparql-ck26", "endpoint_sha256": "588836988a85" + "0" * 52, "replica": R2, "basis": "b",
+        {"graph": "text2sparql-ck26", "endpoint_sha256": "f23c80fbc9a7" + "0" * 52, "replica": R2, "basis": "b",
          "sources": [{"path": "/i.json", "sha256": "ab" * 32}]}]}
     path = tmp_path / "endpoint-copies.json"
     path.write_text(json.dumps(doc), encoding="utf-8")
@@ -346,7 +346,7 @@ def test_bad_input_exits_2_and_prints_no_value(tmp_path, table, capsys):
     bad_table = tmp_path / "bad-table.json"
     bad_table.write_text(json.dumps({"schema": "x"}), encoding="utf-8")
     twice = json.loads(table.read_text(encoding="utf-8"))
-    twice["copies"][1]["endpoint_sha256"] = "0d4386b1394e" + "1" * 52
+    twice["copies"][1]["endpoint_sha256"] = "2805a689b1da" + "1" * 52
     twice["copies"][1]["graph"] = "another"
     shared = tmp_path / "shared-prefix.json"
     shared.write_text(json.dumps(twice), encoding="utf-8")
@@ -363,8 +363,8 @@ def test_bad_input_exits_2_and_prints_no_value(tmp_path, table, capsys):
 
 
 def test_the_command_runs_under_isolated_mode_with_the_committed_table_by_default(tmp_path):
-    """python3 -I labels_only_diff.py OLD NEW: no flag, so the table beside the exploratory script, whose rhea-c06 label is
-    'endpoint sha256:0d4386b1394e'."""
+    """python3 -I labels_only_diff.py OLD NEW: no flag, so the table beside the exploratory script, whose example-copy-4 label is
+    'endpoint sha256:2805a689b1da'."""
     old, new = old_results(), new_results()
     (tmp_path / "old.json").write_text(json.dumps(old), encoding="utf-8")
     (tmp_path / "new.json").write_text(json.dumps(new), encoding="utf-8")

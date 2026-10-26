@@ -29,6 +29,6 @@ voided-run records, the partition records, the checker ledgers, the fault-bank m
 frozen analysis inputs that data/analysis/prereg-config.json pins (calibration, cluster map,
 multiplicity tables). The store-copy tables the exploratory analysis reads from its own
 directory (copy-classes.json, class-overrides.json, extra-copies.json, copy-hosts.json,
-endpoint-copies.json, store-proofs.json) are included, anonymized; a replicator who reruns the
-experiments on their own infrastructure supplies these tables for their own store copies.
+endpoint-copies.json, store-proofs.json) are synthetic examples with the real schemas; a replicator who
+reruns the experiments on their own infrastructure supplies these tables for their own store copies.
 STEPS

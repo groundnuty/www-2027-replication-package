@@ -350,7 +350,7 @@ FORWARD_START = re.compile(r"(?P<at>\S+) (?P<name>\S+) ssh pid (?P<pid>[0-9]+) (
 FORWARD_EXIT = re.compile(r"(?P<at>\S+) (?P<name>\S+) ssh pid (?P<pid>[0-9]+) exited rc=-?[0-9]+ after [0-9]+ s")
 FORWARD_END = re.compile(r"(?P<at>\S+) (?P<name>\S+) (?:STOP file: watchdog ends|watchdog stopped)")
 # A copy its OUTs name by its node's host name while its recorded identity checks and known answers name it by address
-# (science, ~18:1xZ 23 Oct, relayed by the lead: rhea-c06, the same host by the copy table): accepted only for
+# (science, ~18:1xZ 23 Oct, relayed by the lead: example-copy-38, the same host by the copy table): accepted only for
 # the pair pinned here, by sha256 (no address committed), and only where the entry's ``alias`` names that pair's alias
 # endpoint and the copy table pinned with it (the store-copy tooling's copy-assignments/1 snapshot of 18:14:19Z), given
 # by --store-proof: its "aliases" map both the OUT endpoint's and the alias's host:port to the entry's replica, whose

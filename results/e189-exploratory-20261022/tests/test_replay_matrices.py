@@ -110,9 +110,9 @@ class World:
         self.cell_classes = tmp / "cell-classes.tsv"
         self.cell_classes.write_text(
             "# endpoint\tcopy id\tspeed class\tnote\n"
-            "192.0.2.105:7039\trhea-c06\tfast\tx\n192.0.2.105:7043\trhea-c08\tfast\tx\n127.0.0.1:47125\trhea-siteb-1\tslow\tx\n"
-            "192.0.2.101:7033\topaque-rhea-c05\tfast\tx\n127.0.0.1:47278\topaque-rhea-siteb-8\tslow\tx\n"
-            "192.0.2.101:7041\tcorporate-c07\tfast\tx\n")
+            "192.0.2.105:7039\texample-copy-38\tfast\tx\n192.0.2.105:7043\texample-copy-39\tfast\tx\n127.0.0.1:47125\texample-copy-40\tslow\tx\n"
+            "192.0.2.101:7033\texample-copy-12\tfast\tx\n127.0.0.1:47278\texample-copy-33\tslow\tx\n"
+            "192.0.2.101:7041\texample-copy-9\tfast\tx\n")
         (self.out / "served-models.json").write_text(json.dumps({"models": {"m1": {"route_model": "route-1"}}}))
         self.order: dict[str, list] = {}
         self.runrecs: dict[tuple, dict] = {}
@@ -153,8 +153,8 @@ class World:
 
     def default_launch(self, tree: str):
         if tree.endswith("-cell-slow"):
-            return ("127.0.0.1:47125", "rhea-siteb-1")
-        return ("192.0.2.101:7033", "opaque-rhea-c05") if tree.startswith("opaque") else ("192.0.2.105:7043", "rhea-c08")
+            return ("127.0.0.1:47125", "example-copy-40")
+        return ("192.0.2.101:7033", "example-copy-12") if tree.startswith("opaque") else ("192.0.2.105:7043", "example-copy-39")
 
     def write_time(self, tree: str, shard: str, phase: str, endpoint: str, copy: str, mtime: float | None = None, *,
                    command: str | None = None, exit_status: int = 0) -> None:
@@ -1099,18 +1099,18 @@ def routing_doc(w: World) -> dict:
 def test_the_time_file_format_is_gnu_times(tmp_path):
     # the command line GNU time -v wrote on the spoke for the same argument shapes (a run of /usr/bin/time -v -o f echo ... on run-node)
     first = ('\tCommand being timed: "echo --records /a/b --endpoint http://127.0.0.1:47125/ --split test --note Tier 2 natural replay, '
-             'freeze 126a111, rhea-gemma-4-31b-cell-slow shard m1-natural-01of02, rhea-siteb-1, run-node --out /o"')
+             'freeze 126a111, rhea-gemma-4-31b-cell-slow shard m1-natural-01of02, example-copy-40, run-node --out /o"')
     assert rm.COMMAND_LINE.fullmatch(first)
-    cmd = launch_command("rhea-gemma-4-31b-cell-slow", "m1-natural-01of02", "natural", "127.0.0.1:47125", "rhea-siteb-1")
+    cmd = launch_command("rhea-gemma-4-31b-cell-slow", "m1-natural-01of02", "natural", "127.0.0.1:47125", "example-copy-40")
     m = rm.LAUNCH_COMMAND.fullmatch(cmd)
-    assert m and m.groups() == ("127.0.0.1:47125", "natural", "rhea-gemma-4-31b-cell-slow", "m1-natural-01of02", "rhea-siteb-1")
+    assert m and m.groups() == ("127.0.0.1:47125", "natural", "rhea-gemma-4-31b-cell-slow", "m1-natural-01of02", "example-copy-40")
 
 
 def test_text_inside_an_argument_cannot_supply_another_arguments_value(tmp_path):
     # external reviewer r15: T2_COPYID_OPAQUE_ARM64 is unrestricted in the worker; a copy id carrying "--out /x --endpoint http://..." must not parse
-    real = launch_command("opaque-sonnet", "s1", "natural", "127.0.0.1:47278", "opaque-rhea-siteb-8")
+    real = launch_command("opaque-sonnet", "s1", "natural", "127.0.0.1:47278", "example-copy-33")
     assert rm.LAUNCH_COMMAND.fullmatch(real)
-    injected_id = "x, run-node --out /tmp/x --endpoint http://192.0.2.101:7033/ --split test --note Tier 2 natural replay, freeze 126a111, opaque-sonnet shard s1, opaque-rhea-c05"
+    injected_id = "x, run-node --out /tmp/x --endpoint http://192.0.2.101:7033/ --split test --note Tier 2 natural replay, freeze 126a111, opaque-sonnet shard s1, example-copy-12"
     assert rm.LAUNCH_COMMAND.fullmatch(launch_command("opaque-sonnet", "s1", "natural", "127.0.0.1:47278", "x", note_copy=injected_id)) is None
     # an endpoint argument that carries a second endpoint inside one argv element (a valid URL never contains a space)
     spaced = real.replace("--endpoint http://127.0.0.1:47278/", "--endpoint http://127.0.0.1:47278/ --endpoint http://192.0.2.101:7033")
@@ -1144,7 +1144,7 @@ def test_the_routing_of_cells_and_a_whole_phase_tree_is_each_shards_recorded_cop
 def test_the_recorded_endpoint_not_the_cells_name_gives_the_class(tmp_path, capsys):
     # a shard of cell-fast whose time file records the slow copy is routed slow: the class is the record's, never the tree name's
     w = split_world(tmp_path)
-    w.write_time("rhea-gemma-4-31b-cell-fast", "m1-prompted-01of01", "prompted", "127.0.0.1:47125", "rhea-siteb-1",
+    w.write_time("rhea-gemma-4-31b-cell-fast", "m1-prompted-01of01", "prompted", "127.0.0.1:47125", "example-copy-40",
                  mtime=rm.utc_epoch(SEALED_UTC) - 5)
     rc, out, err = w.run(capsys=capsys)
     assert rc == 0, err
@@ -1155,7 +1155,7 @@ def test_the_recorded_endpoint_not_the_cells_name_gives_the_class(tmp_path, caps
 def test_an_endpoint_override_shows_in_the_recorded_command(tmp_path, capsys):
     # the worker's copy id says fast (7033) while T2_EP_OPAQUE sent the checker to a slow copy's endpoint: the pair is not a row of the table
     w = good_world(tmp_path)
-    w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "opaque-rhea-c05", mtime=rm.utc_epoch(SEALED_UTC) - 5)
+    w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "example-copy-12", mtime=rm.utc_epoch(SEALED_UTC) - 5)
     rc, out, err = w.run(capsys=capsys)
     assert rc == 0, err
     shards = routing_doc(w)["trees"]["opaque-sonnet"]["shards"]
@@ -1182,7 +1182,7 @@ def test_a_time_file_that_is_not_this_shards_launch_is_not_recorded(tmp_path, ca
     w = good_world(tmp_path)
     tree, shard, phase = "opaque-sonnet", "m1-natural-02of02", "natural"
     mt = rm.utc_epoch(SEALED_UTC) - 5
-    ep, copy = "192.0.2.101:7033", "opaque-rhea-c05"
+    ep, copy = "192.0.2.101:7033", "example-copy-12"
     base = launch_command(tree, shard, phase, ep, copy)
     path = w.root / tree / "logs" / f"{shard}.time"
 
@@ -1263,7 +1263,7 @@ def test_a_recorded_copy_the_table_does_not_bind_is_unverifiable(tmp_path, capsy
     w = good_world(tmp_path)
     mt = rm.utc_epoch(SEALED_UTC) - 5
     w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "192.0.2.101:7033", "opaque-rhea-unlisted", mt)  # copy not in the table
-    w.write_time("opaque-sonnet", "m1-natural-01of02", "natural", "10.0.0.9:1234", "opaque-rhea-c05", mt)  # endpoint not in the table
+    w.write_time("opaque-sonnet", "m1-natural-01of02", "natural", "10.0.0.9:1234", "example-copy-12", mt)  # endpoint not in the table
     rc, out, err = w.run(capsys=capsys)
     assert rc == 0, err
     shards = routing_doc(w)["trees"]["opaque-sonnet"]["shards"]
@@ -1274,7 +1274,7 @@ def test_a_recorded_copy_the_table_does_not_bind_is_unverifiable(tmp_path, capsy
 def test_a_table_row_of_the_endpoint_for_another_copy_does_not_bind_this_one(tmp_path, capsys):
     # the pair (endpoint, copy id) must be ONE row: the endpoint of one copy with the id of another is not bound
     w = good_world(tmp_path)
-    w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "opaque-rhea-c05", rm.utc_epoch(SEALED_UTC) - 5)
+    w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "example-copy-12", rm.utc_epoch(SEALED_UTC) - 5)
     rc, out, err = w.run(capsys=capsys)
     assert rc == 0 and routing_doc(w)["records"]["rid-n3"] == "unverifiable"
 
@@ -1295,7 +1295,7 @@ def test_no_store_map_config_or_attestation_is_an_input_any_more(tmp_path, capsy
 @pytest.mark.parametrize("what", ["cell-classes-conflict", "cell-classes-malformed"])
 def test_malformed_class_tables_are_refused(tmp_path, capsys, what):
     w = good_world(tmp_path)
-    extra = "1.2.3.4:5\trhea-c06\tslow\tx\n" if what == "cell-classes-conflict" else "1.2.3.4:5\trhea-c06\tfastest\tx\n"
+    extra = "1.2.3.4:5\texample-copy-38\tslow\tx\n" if what == "cell-classes-conflict" else "1.2.3.4:5\texample-copy-38\tfastest\tx\n"
     w.cell_classes.write_text(w.cell_classes.read_text() + extra)
     rc, out, err = w.run(capsys=capsys)
     assert rc == 2 and err.startswith(f"REFUSED {what}"), err
@@ -1307,7 +1307,7 @@ def test_malformed_class_tables_are_refused(tmp_path, capsys, what):
 def make_attestation(w: World, name="att.json", *, phase="natural", out=None, trees=None, **over):
     """A synthetic t2-attest/1 file with the producer's per-shard shape and canonical hash."""
     out = out or w.out_name
-    tree_rows = trees if trees is not None else [{"tree": out, "class": "fast", "copy": "opaque-rhea-c05", "endpoint": "192.0.2.101:7033"}]
+    tree_rows = trees if trees is not None else [{"tree": out, "class": "fast", "copy": "example-copy-12", "endpoint": "192.0.2.101:7033"}]
     rows = []
     for t in tree_rows:
         sl = w.root / t["tree"] / f"shards-{phase}.tsv"
@@ -1385,10 +1385,10 @@ def test_an_attestation_covers_a_shard_with_no_recorded_launch_under_its_own_lab
     assert r["attested_runs"] == {"opaque-sonnet/natural/m1-natural-02of02": ["rid-n3"]}  # only the shard with no recorded launch
     assert r["trees"]["opaque-sonnet"]["attested"] == ["natural/m1-natural-02of02"]
     assert r["inputs"]["attestations"] == [{"out": "opaque-sonnet", "phase": "natural",
-                                           "shards": [{"tree": "opaque-sonnet", "shard": "m1-natural-02of02", "class": "fast", "copy": "opaque-rhea-c05", "endpoint": "192.0.2.101:7033"}],
+                                           "shards": [{"tree": "opaque-sonnet", "shard": "m1-natural-02of02", "class": "fast", "copy": "example-copy-12", "endpoint": "192.0.2.101:7033"}],
                                            "file_sha256": sha(path.read_bytes()), "content_sha256": doc["content_sha256"],
                                            "agent": "tier2-replay-5"}]
-    assert r["shards"]["opaque-sonnet/natural/m1-natural-02of02"]["copy"] == {"endpoint": "192.0.2.101:7033", "copy": "opaque-rhea-c05"}
+    assert r["shards"]["opaque-sonnet/natural/m1-natural-02of02"]["copy"] == {"endpoint": "192.0.2.101:7033", "copy": "example-copy-12"}
     assert sorted(r["inputs"]["time_files_sha256"]) == ["opaque-sonnet/natural/m1-natural-01of02", "opaque-sonnet/prompted/m1-prompted-01of01"]
 
 
@@ -1487,7 +1487,7 @@ def test_an_attestation_never_overrides_a_recorded_launch(tmp_path, capsys):
 def test_a_recorded_launch_conflicting_with_an_informational_recorded_attestation_row_is_unverifiable(tmp_path, capsys):
     w = good_world(tmp_path)
     # the attestation says copy 7033 (fast); shard 02of02's recorded launch is on siteb-8 (slow, a row of the table): they disagree
-    w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "opaque-rhea-siteb-8", rm.utc_epoch(SEALED_UTC) - 5)
+    w.write_time("opaque-sonnet", "m1-natural-02of02", "natural", "127.0.0.1:47278", "example-copy-33", rm.utc_epoch(SEALED_UTC) - 5)
     _, _, doc = make_attestation(w)
     row = doc["shards"][1]
     row["checks"]["c1"] = False
@@ -1504,7 +1504,7 @@ def test_a_recorded_launch_conflicting_with_an_informational_recorded_attestatio
     assert routing_doc(w)["attested_runs"] == {}
 
 
-@pytest.mark.parametrize("field,value", [("copy", "opaque-rhea-siteb-8"), ("class", "slow")])
+@pytest.mark.parametrize("field,value", [("copy", "example-copy-33"), ("class", "slow")])
 def test_recorded_attestation_copy_or_class_conflict_is_unverifiable(tmp_path, capsys, field, value):
     w = attested_world(tmp_path)
     _, _, doc = make_attestation(w)
@@ -1566,8 +1566,8 @@ def test_an_attestation_of_a_cell_tree_covers_that_cells_unrecorded_shards_only(
     path = w.root / "rhea-gemma-4-31b-cell-slow" / "logs" / "m1-prompted-01of01.time"
     path.write_text("Command exited with non-zero status 1\n" + path.read_text().replace("Exit status: 0", "Exit status: 1"))
     os.utime(path, (rm.utc_epoch(SEALED_UTC) - 5,) * 2)
-    trees = [{"tree": "rhea-gemma-4-31b-cell-fast", "class": "fast", "copy": "rhea-c08", "endpoint": "192.0.2.105:7043"},
-             {"tree": "rhea-gemma-4-31b-cell-slow", "class": "slow", "copy": "rhea-siteb-1", "endpoint": "127.0.0.1:47125"}]
+    trees = [{"tree": "rhea-gemma-4-31b-cell-fast", "class": "fast", "copy": "example-copy-39", "endpoint": "192.0.2.105:7043"},
+             {"tree": "rhea-gemma-4-31b-cell-slow", "class": "slow", "copy": "example-copy-40", "endpoint": "127.0.0.1:47125"}]
     pin, _, _ = make_attestation(w, phase="prompted", trees=trees)
     rc, out, err = w.run("natural,prompted", capsys, extra=("--attestation", pin))
     assert rc == 0, err
@@ -1604,7 +1604,7 @@ def test_attested_cell_class_must_equal_the_cell(tmp_path, capsys):
     path.write_text("Command exited with non-zero status 1\n" + path.read_text().replace("Exit status: 0", "Exit status: 1"))
     os.utime(path, (rm.utc_epoch(SEALED_UTC) - 5,) * 2)
     pin, _, doc = make_attestation(w, phase="prompted",
-                                   trees=[{"tree": tree, "class": "fast", "copy": "rhea-c08", "endpoint": "192.0.2.105:7043"}])
+                                   trees=[{"tree": tree, "class": "fast", "copy": "example-copy-39", "endpoint": "192.0.2.105:7043"}])
     rc, out, err = w.run("natural,prompted", capsys, extra=("--attestation", pin))
     assert rc == 0, err
     assert doc["shards"][0]["ok"] is True
@@ -1614,7 +1614,7 @@ def test_attested_cell_class_must_equal_the_cell(tmp_path, capsys):
 def test_two_recorded_files_cannot_be_overridden_by_one_attested_copy(tmp_path, capsys):
     w = good_world(tmp_path)
     for shard in ("m1-natural-01of02", "m1-natural-02of02"):
-        w.write_time("opaque-sonnet", shard, "natural", "127.0.0.1:47278", "opaque-rhea-siteb-8",
+        w.write_time("opaque-sonnet", shard, "natural", "127.0.0.1:47278", "example-copy-33",
                      rm.utc_epoch(SEALED_UTC) - 5)
     pin = w.make_manifest()
     att, _, doc = make_attestation(w)
@@ -1652,7 +1652,7 @@ def test_missing_line_allows_fallback_and_line_two_requires_an_unavailable_rc_re
         w.root / "opaque-sonnet" / "TIMEFILES-natural.sha256").read_text()
     assert routing_doc(w)["shards"]["opaque-sonnet/natural/m1-natural-02of02"]["basis"] == "attested"
     shutil.rmtree(w.stage)
-    w.write_time("opaque-sonnet", shard, "natural", "192.0.2.101:7033", "opaque-rhea-c05",
+    w.write_time("opaque-sonnet", shard, "natural", "192.0.2.101:7033", "example-copy-12",
                  rm.utc_epoch(SEALED_UTC) - 5, exit_status=1)
     path.write_text("Command exited with non-zero status 1\n" + path.read_text())
     os.utime(path, (rm.utc_epoch(SEALED_UTC) - 5,) * 2)
@@ -1784,7 +1784,7 @@ def test_a_time_file_that_differs_from_the_manifest_is_unverifiable_and_never_at
 
 def test_a_cells_recorded_copy_of_another_class_is_unverifiable(tmp_path, capsys):
     w = split_world(tmp_path)
-    w.write_time("rhea-gemma-4-31b-cell-fast", "m1-prompted-01of01", "prompted", "127.0.0.1:47125", "rhea-siteb-1", rm.utc_epoch(SEALED_UTC) - 5)
+    w.write_time("rhea-gemma-4-31b-cell-fast", "m1-prompted-01of01", "prompted", "127.0.0.1:47125", "example-copy-40", rm.utc_epoch(SEALED_UTC) - 5)
     rc, out, err = w.run(capsys=capsys)
     assert rc == 0, err
     s = routing_doc(w)["shards"]["rhea-gemma-4-31b-cell-fast/prompted/m1-prompted-01of01"]
@@ -1866,9 +1866,9 @@ def test_every_classed_shard_names_the_copy_it_rests_on(tmp_path, capsys):
     rc, out, err = w.run(capsys=capsys)
     assert rc == 0, err
     c = {k: v["copy"] for k, v in routing_doc(w)["shards"].items()}
-    assert c == {"rhea-gemma-4-31b/natural/m1-natural-01of01": {"endpoint": "192.0.2.105:7043", "copy": "rhea-c08"},
-                 "rhea-gemma-4-31b-cell-fast/prompted/m1-prompted-01of01": {"endpoint": "192.0.2.105:7043", "copy": "rhea-c08"},
-                 "rhea-gemma-4-31b-cell-slow/prompted/m1-prompted-01of01": {"endpoint": "127.0.0.1:47125", "copy": "rhea-siteb-1"}}
+    assert c == {"rhea-gemma-4-31b/natural/m1-natural-01of01": {"endpoint": "192.0.2.105:7043", "copy": "example-copy-39"},
+                 "rhea-gemma-4-31b-cell-fast/prompted/m1-prompted-01of01": {"endpoint": "192.0.2.105:7043", "copy": "example-copy-39"},
+                 "rhea-gemma-4-31b-cell-slow/prompted/m1-prompted-01of01": {"endpoint": "127.0.0.1:47125", "copy": "example-copy-40"}}
 
 
 def test_a_listed_time_file_is_read_once_so_the_manifest_comparison_and_the_parse_see_the_same_bytes(tmp_path, capsys, monkeypatch):
@@ -1916,10 +1916,10 @@ def test_the_date_windows_are_compared_in_integer_nanoseconds():
     seal = rm.utc_epoch(SEALED_UTC)
     sealed = round(seal)
     claim_ns = (sealed - 100) * 10**9 + 123_456_789  # a 2026 epoch is ~1.8e18 ns: far beyond a float's 2**53 of exact integers
-    data = (f'\tCommand being timed: "{launch_command("t", "s", "natural", "192.0.2.101:7033", "opaque-rhea-c05")}"\n\tExit status: 0\n').encode()
+    data = (f'\tCommand being timed: "{launch_command("t", "s", "natural", "192.0.2.101:7033", "example-copy-12")}"\n\tExit status: 0\n').encode()
     assert claim_ns > 2**53
     ok = rm.parse_launch_record(data, claim_ns, "t", "s", "natural", sealed, claim_ns)
-    assert ok == ("192.0.2.101:7033", "opaque-rhea-c05")  # exactly at the claim
+    assert ok == ("192.0.2.101:7033", "example-copy-12")  # exactly at the claim
     assert rm.parse_launch_record(data, claim_ns - 1, "t", "s", "natural", sealed, claim_ns) is None  # one nanosecond before it
     assert rm.parse_launch_record(data, claim_ns + 1, "t", "s", "natural", sealed, claim_ns) is not None
     # the seal window: [seal - 300 s, seal + 60 s], exact at both ends
