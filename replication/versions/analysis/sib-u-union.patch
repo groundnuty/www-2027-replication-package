@@ -3071,7 +3071,7 @@ index 38734d3..6984f66 100644
  
 +SIBU_FACTS = Path("/home/user/project-reviews/sibu-proofs-src")
 +SIBU_RUNS = "/scratch/user/project/runs/test-20261021/"
-+SIBU_REF = Path("/home/user/project-reviews/e189-store-proofs/files/ref-7022-stats-20261021T175545Z.json")
++SIBU_REF = Path("/home/user/project-reviews/e189-store-proofs/files/ref-5108-stats-20261021T175545Z.json")
 +# the six OUTs the committed store-proofs.json names for SIB run U (its source OUT and the five partitions), each with the one problem
 +# prove() returns for it today (tests/test_sibu_store_proofs.py pins the same two texts)
 +SIBU_OUTS = (("sib-qwen3.8-27b-81920", "example-copy-48", "its identity check does not have exactly one entry of the OUT's endpoint"),
@@ -3360,14 +3360,14 @@ index 38734d3..6984f66 100644
             if "change_at" in e and not e.get("behind_endpoint") and not e.get("second_period")}
      assert got == {**rederived, **state_based}
 @@ -2148,7 +2461,9 @@ def test_the_committed_store_proofs_config_cites_the_recorded_checks_of_each_ent
-     corporate_7041 = {("corporate-gemma-4-31b", "example-copy-9")}
+     corporate_9102 = {("corporate-gemma-4-31b", "example-copy-9")}
      assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "identity_format" in e} == {
          (out, copy) for out in ("uniprot-e150-claude-sonnet-5-5", "uniprot-e150-qwen3.8-27b")
--        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_7041
-+        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_7041 | {
+-        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_9102
++        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_9102 | {
 +        ("sib-qwen3.8-27b-81920", "example-copy-48")} | {
 +        (f"sib-qwen3.8-27b-81920-p{i}of5", "example-copy-48") for i in range(5)}  # SIB U's source OUT: ident.py read after its start (science's ruling (a), 25 Oct), and each partition OUT's entry for the records kept from U (the same files; science's approval, 26 Oct)
-     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "alias" in e} == rhea_7039 | corporate_7041
+     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "alias" in e} == rhea_7039 | corporate_9102
      # science 25 Oct 00:10Z (point iii): the second period of example-copy-38 in Gemma's Rhea OUT, and no other second period
      assert [(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if e.get("second_period")] == [
 @@ -5155,6 +5470,22 @@ def test_a_declared_change_with_another_change_at_is_timed_by_its_first_record_t
@@ -5436,7 +5436,7 @@ index 38734d3..6984f66 100644
 +    with pytest.raises(ex.Refused, match="its storecheck is not a entry180-store-check/2 file"):
 +        _sib_check_stores(world, files, entries, {k: v for k, v in bound.items() if k != str(world["parts"][1])})  # one OUT
 +    # a binding that names another sha256 than the file the entry cites
-+    other = _sib_unit_check(world["tmp"] / "sib-sc-other.json", "http://10.1.1.1:7010/", "copy-1",
++    other = _sib_unit_check(world["tmp"] / "sib-sc-other.json", "http://10.1.1.1:9210/", "copy-1",
 +                            checked_utc="2026-10-23T09:05:00Z")
 +    wrong = {**bound, str(world["parts"][1]): _sha(other)}
 +    with pytest.raises(ex.Refused, match=r"\(copy-1\): its SIB unit storecheck is not the one the partition identity binds"):
@@ -5448,7 +5448,7 @@ index 38734d3..6984f66 100644
 +    ({"identical_to_reference": False}, "not identical to the reference"),
 +    ({"identical_to_reference": 1}, "not identical to the reference"),
 +    ({"differ": ["num-triples-normal"]}, "not identical to the reference"),
-+    ({"endpoint": "http://10.9.9.9:7090/"}, "another endpoint or replica"),
++    ({"endpoint": "http://10.9.9.9:9107/"}, "another endpoint or replica"),
 +    ({"replica": "copy-9"}, "another endpoint or replica"),
 +    ({"index_identity": "s01@" + "ee" * 32}, "does not name the reference index"),
 +    ({"checked_utc": None}, "no check time"),
@@ -5470,7 +5470,7 @@ index 38734d3..6984f66 100644
 +
 +def test_a_sib_u_unit_check_made_after_the_copy_took_the_attempts_is_refused(world, ref):
 +    files, entries, _bound = _sib_union_copies(world)
-+    endpoint, ka = "http://10.1.1.0:7000/", files[1]
++    endpoint, ka = "http://10.1.1.0:9200/", files[1]
 +
 +    def proved(check: Path):
 +        entry = {**entries[0], "storecheck_sha256": _sha(check), "change_at": CHANGE_AT}
@@ -5512,7 +5512,7 @@ index 38734d3..6984f66 100644
 +def test_a_strict_entry_has_no_forward_read_disclosure(world, ref):
 +    """Only a SIB U unit check or the source's entry says so: an ordinary entry of the strict path has no such key."""
 +    out = world["parts"][0]
-+    endpoint = "http://10.1.1.0:7000/"
++    endpoint = "http://10.1.1.0:9200/"
 +    _set_endpoints(out, lambda r: endpoint)
 +    sc, ka = _copy_proofs(world["tmp"], "strict", endpoint, "copy-0")
 +    _edit_identity(out, lambda i: i["store"].update(endpoint=endpoint, replica="copy-0", identity_check="checked"))
@@ -5530,13 +5530,13 @@ index 38734d3..6984f66 100644
 +== pid 4101
 +    PID    PPID                  STARTED ELAPSED STAT
 +   4101       1 Fri Oct 23 08:00:00 2026   23512 Ss
-+cmdline: bash /home/x/siteb-forwards/spoke_forward_watchdog.sh copy-u 47711 10.2.2.2 27711 /home/x/siteb-forwards 
++cmdline: bash /home/x/siteb-forwards/spoke_forward_watchdog.sh copy-u 9114 10.2.2.2 27711 /home/x/siteb-forwards 
 +== pid 4102
-+cmdline: ssh -N -o BatchMode=yes -o ExitOnForwardFailure=yes -L 127.0.0.1:47711:10.2.2.2:27711 user@login.invalid 
++cmdline: ssh -N -o BatchMode=yes -o ExitOnForwardFailure=yes -L 127.0.0.1:9114:10.2.2.2:27711 user@login.invalid 
 +== listener
-+LISTEN 0      128        127.0.0.1:47711      0.0.0.0:*    users:(("ssh",pid=4102,fd=4))    
++LISTEN 0      128        127.0.0.1:9114      0.0.0.0:*    users:(("ssh",pid=4102,fd=4))    
 +== fwd log (all lines, <=20)
-+2026-10-23T08:00:01Z copy-u ssh pid 4102 127.0.0.1:47711 -> 10.2.2.2:27711
++2026-10-23T08:00:01Z copy-u ssh pid 4102 127.0.0.1:9114 -> 10.2.2.2:27711
 +"""
 +
 +
@@ -5551,15 +5551,15 @@ index 38734d3..6984f66 100644
 +@pytest.fixture
 +def u_world(world, monkeypatch):
 +    """The fixture's one OUT as SIB U's source: one copy at EU, identity check 'checked' with no store check sha256, proven by an
-+    ident.py file that names its one copy at a spoke forward address (127.0.0.1:47711), a frozen forward record that records that
++    ident.py file that names its one copy at a spoke forward address (127.0.0.1:9114), a frozen forward record that records that
 +    address's mapping to EU, and the known answers at its own endpoint."""
 +    out, tmp = world["single"], world["tmp"]
 +    _set_endpoints(out, lambda r: EU)
 +    _edit_identity(out, lambda i: i["store"].update(endpoint=EU, replica="copy-u", identity_check="checked"))
-+    reference = _ident(tmp / "ref-u.json", {"http://ref.invalid:7022": dict(STATS)}, checked_utc="2026-10-23T08:00:00Z")
++    reference = _ident(tmp / "ref-u.json", {"http://ref.invalid:5108": dict(STATS)}, checked_utc="2026-10-23T08:00:00Z")
 +    monkeypatch.setitem(ex.REFERENCE_STATS_SHA256, "s01", _sha(reference))
 +    monkeypatch.setitem(ex.REFERENCE_NAME_INDEX, "s01", NAME_INDEX)
-+    ident = _ident(tmp / "ident-u.json", {"http://127.0.0.1:47711/": dict(STATS)})
++    ident = _ident(tmp / "ident-u.json", {"http://127.0.0.1:9114/": dict(STATS)})
 +    ka = _load10(tmp / "ka-u.json", EU)
 +    ka_doc = json.loads(ka.read_text(encoding="utf-8"))
 +    ka_doc["checked_utc"] = "20261025T154238Z"
@@ -5598,15 +5598,15 @@ index 38734d3..6984f66 100644
 +def test_the_frozen_forward_record_is_read_as_the_mapping_its_command_lines_record(world, u_world):
 +    ((_, log),) = ex.read_proof_files([u_world["record"]]).values()
 +    assert isinstance(log, ex.ForwardLog)
-+    assert log.frozen == (("copy-u", "127.0.0.1:47711", "10.2.2.2:27711"),) and log.frozen_problems == ()
++    assert log.frozen == (("copy-u", "127.0.0.1:9114", "10.2.2.2:27711"),) and log.frozen_problems == ()
 +    assert [e[0] for e in log.events] == ["start"]  # and its log line is read as a watchdog log's line is
-+    assert ex.recorded_forward(ex.read_proof_files([u_world["record"]]), "http://127.0.0.1:47711", EU, "copy-u") == (
++    assert ex.recorded_forward(ex.read_proof_files([u_world["record"]]), "http://127.0.0.1:9114", EU, "copy-u") == (
 +        _sha(u_world["record"]), [])
 +    # a plain watchdog log (the ordinary forward evidence) records no mapping by command line
-+    plain = _forward_log(world["tmp"] / "plain.log", ("2026-10-23T08:00:01Z copy-u ssh pid 4102 127.0.0.1:47711 -> 10.2.2.2:27711",))
++    plain = _forward_log(world["tmp"] / "plain.log", ("2026-10-23T08:00:01Z copy-u ssh pid 4102 127.0.0.1:9114 -> 10.2.2.2:27711",))
 +    ((_, log),) = ex.read_proof_files([plain]).values()
 +    assert log.frozen == () and log.frozen_problems == ()
-+    assert ex.recorded_forward(ex.read_proof_files([plain]), "http://127.0.0.1:47711", EU, "copy-u")[0] is None
++    assert ex.recorded_forward(ex.read_proof_files([plain]), "http://127.0.0.1:9114", EU, "copy-u")[0] is None
 +
 +
 +def test_the_source_outs_proof_is_for_the_bound_source_alone_and_a_read_through_key_is_refused(world, u_world):
@@ -5624,21 +5624,21 @@ index 38734d3..6984f66 100644
 +
 +@pytest.mark.parametrize("swap,match", [
 +    ({}, None),  # the twin
-+    ({"copy-u 47711 10.2.2.2 27711": "copy-u 47711 10.2.2.3 27711", "-L 127.0.0.1:47711:10.2.2.2:27711": "-L 127.0.0.1:47711:10.2.2.3:27711",
++    ({"copy-u 9114 10.2.2.2 27711": "copy-u 9114 10.2.2.3 27711", "-L 127.0.0.1:9114:10.2.2.2:27711": "-L 127.0.0.1:9114:10.2.2.3:27711",
 +      "-> 10.2.2.2:27711": "-> 10.2.2.3:27711"}, "records its mapping to the OUT's endpoint"),  # another target
-+    ({"copy-u 47711 10.2.2.2 27711": "copy-u 47711 10.2.2.2 27712", "-L 127.0.0.1:47711:10.2.2.2:27711": "-L 127.0.0.1:47711:10.2.2.2:27712",
++    ({"copy-u 9114 10.2.2.2 27711": "copy-u 9114 10.2.2.2 27712", "-L 127.0.0.1:9114:10.2.2.2:27711": "-L 127.0.0.1:9114:10.2.2.2:27712",
 +      "-> 10.2.2.2:27711": "-> 10.2.2.2:27712"}, "records its mapping to the OUT's endpoint"),  # another target port
-+    ({"copy-u 47711": "copy-u 47712", "-L 127.0.0.1:47711": "-L 127.0.0.1:47712", "-> 10.2.2.2": "-> 10.2.2.2"},
++    ({"copy-u 9114": "copy-u 9115", "-L 127.0.0.1:9114": "-L 127.0.0.1:9115", "-> 10.2.2.2": "-> 10.2.2.2"},
 +     "records its mapping to the OUT's endpoint"),  # another listen port than the ident file's key
 +    ({"spoke_forward_watchdog.sh copy-u": "spoke_forward_watchdog.sh copy-other"}, "for this replica"),  # another replica's watchdog
-+    ({"-L 127.0.0.1:47711:10.2.2.2:27711": "-L 127.0.0.1:47711:10.2.2.9:27711"}, "ssh -L is not the watchdog's mapping"),
-+    ({"-L 127.0.0.1:47711:10.2.2.2:27711": "-L 127.0.0.1:47711:10.2.2.2:27711 -L 127.0.0.1:1:10.2.2.2:2"}, "ssh -L is not the watchdog's mapping"),
-+    ({"-L 127.0.0.1:47711:10.2.2.2:27711": "-L 0.0.0.0:47711:10.2.2.2:27711"}, "ssh -L is not the watchdog's mapping"),
++    ({"-L 127.0.0.1:9114:10.2.2.2:27711": "-L 127.0.0.1:9114:10.2.2.9:27711"}, "ssh -L is not the watchdog's mapping"),
++    ({"-L 127.0.0.1:9114:10.2.2.2:27711": "-L 127.0.0.1:9114:10.2.2.2:27711 -L 127.0.0.1:1:10.2.2.2:2"}, "ssh -L is not the watchdog's mapping"),
++    ({"-L 127.0.0.1:9114:10.2.2.2:27711": "-L 0.0.0.0:9114:10.2.2.2:27711"}, "ssh -L is not the watchdog's mapping"),
 +    ({"-> 10.2.2.2:27711": "-> 10.2.2.9:27711"}, "log line names another mapping than its command lines"),
-+    ({"== listener": "cmdline: ssh -N -L 127.0.0.1:47711:10.2.2.2:27711 other@login.invalid\n== listener"},
++    ({"== listener": "cmdline: ssh -N -L 127.0.0.1:9114:10.2.2.2:27711 other@login.invalid\n== listener"},
 +     "not one watchdog's command line and one ssh child's"),  # a second ssh command line
-+    ({"copy-u 47711 10.2.2.2 27711 /home": "copy-u 47711 10.2.2.2 /home"}, "watchdog command line is not NAME PORT HOST RPORT"),
-+    ({"copy-u 47711 10.2.2.2 27711 /home": "copy-u 0 10.2.2.2 27711 /home"}, "watchdog command line is not NAME PORT HOST RPORT"),
++    ({"copy-u 9114 10.2.2.2 27711 /home": "copy-u 9114 10.2.2.2 /home"}, "watchdog command line is not NAME PORT HOST RPORT"),
++    ({"copy-u 9114 10.2.2.2 27711 /home": "copy-u 0 10.2.2.2 27711 /home"}, "watchdog command line is not NAME PORT HOST RPORT"),
 +    ({"== pid 4102": "cmdline: bash /x/other.sh a b c d\n== pid 4102"}, "not one watchdog's command line and one ssh child's"),
 +    ({"cmdline: ssh": "cmdline_gone: ssh"}, "not one watchdog's command line and one ssh child's"),
 +])
@@ -5659,7 +5659,7 @@ index 38734d3..6984f66 100644
 +    with pytest.raises(ex.Refused, match="no forward record given .* records its mapping to the OUT's endpoint for this replica"):
 +        _u_check_stores(world, u_world, [entry], files=files)
 +    # a plain watchdog log's start line maps nothing by command line: it is no frozen record
-+    plain = _forward_log(world["tmp"] / "plain-u.log", ("2026-10-23T08:00:01Z copy-u ssh pid 4102 127.0.0.1:47711 -> 10.2.2.2:27711",))
++    plain = _forward_log(world["tmp"] / "plain-u.log", ("2026-10-23T08:00:01Z copy-u ssh pid 4102 127.0.0.1:9114 -> 10.2.2.2:27711",))
 +    with pytest.raises(ex.Refused, match="no forward record given"):
 +        _u_check_stores(world, u_world, [entry], files=[*files, plain])
 +    # two frozen records of the same mapping are one too many (which one the proof rests on would be a guess)
@@ -5668,12 +5668,12 @@ index 38734d3..6984f66 100644
 +        _u_check_stores(world, u_world, [entry], files=[*files, u_world["record"], twin])
 +    # the record is evidence of the mapping only: the file's content is held to the same checks as ever
 +    for name, copies, over, match in (
-+            ("two", {"http://127.0.0.1:47711/": dict(STATS), "http://127.0.0.1:47712/": dict(STATS)}, {},
++            ("two", {"http://127.0.0.1:9114/": dict(STATS), "http://127.0.0.1:9115/": dict(STATS)}, {},
 +             "does not have exactly one entry of the OUT's endpoint"),
-+            ("stats", {"http://127.0.0.1:47711/": {**STATS, "num-triples-normal": 1}}, {}, "differs from s01's recorded reference"),
-+            ("index", {"http://127.0.0.1:47711/": {**STATS, "name-index": "s01@" + "ee" * 32}}, {},
++            ("stats", {"http://127.0.0.1:9114/": {**STATS, "num-triples-normal": 1}}, {}, "differs from s01's recorded reference"),
++            ("index", {"http://127.0.0.1:9114/": {**STATS, "name-index": "s01@" + "ee" * 32}}, {},
 +             "does not serve s01's reference index"),
-+            ("late", {"http://127.0.0.1:47711/": dict(STATS)}, {"checked_utc": "2026-10-23T09:30:00Z"}, None)):
++            ("late", {"http://127.0.0.1:9114/": dict(STATS)}, {"checked_utc": "2026-10-23T09:30:00Z"}, None)):
 +        ident = _ident(world["tmp"] / f"ident-{name}.json", copies, **over)
 +        bad = {**entry, "storecheck_sha256": _sha(ident)}
 +        if match is None:
@@ -5682,9 +5682,9 @@ index 38734d3..6984f66 100644
 +            continue
 +        with pytest.raises(ex.Refused, match=match):
 +            _u_check_stores(world, u_world, [bad], files=[u_world["reference"], ident, u_world["ka"], u_world["record"]])
-+    ident = _ident(world["tmp"] / "ident-mismatch.json", {"http://127.0.0.1:47711/": dict(STATS)})
++    ident = _ident(world["tmp"] / "ident-mismatch.json", {"http://127.0.0.1:9114/": dict(STATS)})
 +    doc = json.loads(ident.read_text(encoding="utf-8"))
-+    doc["copies"]["http://127.0.0.1:47711"]["identical"] = False
++    doc["copies"]["http://127.0.0.1:9114"]["identical"] = False
 +    ident.write_text(json.dumps(doc), encoding="utf-8")
 +    with pytest.raises(ex.Refused, match="not identical to the reference stats"):
 +        _u_check_stores(world, u_world, [{**entry, "storecheck_sha256": _sha(ident)}],

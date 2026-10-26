@@ -109,12 +109,12 @@ _SITEB_COPY = re.compile(rf"(?:{'|'.join(COPY_GRAPHS)}|a15)-example-[0-9]+")
 # run reads exactly this (host, port), or it is refused: a port alone does not name a replica. A later copy is added
 # here before its gold run. HOST_ALIASES: one server's names.
 COPY_ENDPOINTS = {
-    "example-copy-52": ("192.0.2.105", 7022), "example-copy-46": ("192.0.2.105", 7024),
-    "example-copy-53": ("192.0.2.101", 7026), "example-copy-47": ("192.0.2.101", 7028),
-    "example-copy-38": ("192.0.2.105", 7039), "example-copy-12": ("192.0.2.101", 7033),
-    "example-copy-9": ("192.0.2.101", 7041),
-    "example-copy-13": ("192.0.2.105", 7045),
-    "example-copy-39": ("192.0.2.105", 7043),
+    "example-copy-52": ("192.0.2.105", 5108), "example-copy-46": ("192.0.2.105", 5109),
+    "example-copy-53": ("192.0.2.101", 5110), "example-copy-47": ("192.0.2.101", 5111),
+    "example-copy-38": ("192.0.2.105", 9113), "example-copy-12": ("192.0.2.101", 5112),
+    "example-copy-9": ("192.0.2.101", 9102),
+    "example-copy-13": ("192.0.2.105", 9104),
+    "example-copy-39": ("192.0.2.105", 9103),
 }
 HOST_ALIASES = {"node-1.cluster-a.example": "192.0.2.105", "node-1": "192.0.2.105",
                 "node-2.cluster-a.example": "192.0.2.101", "node-2": "192.0.2.101"}

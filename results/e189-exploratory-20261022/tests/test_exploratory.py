@@ -312,7 +312,7 @@ PLAIN_NOTE = "not recorded for this OUT (identity view): no store check is claim
 PLAIN_DISCLOSURE = "a15 copies: identity by manifest and pinned description; no store-stats check (not QLever)"
 PLAIN_ENDPOINT_PROOFS = ("a15 copies: no store-proofs.json entry is required for any (OUT, endpoint); each endpoint is named "
                          "by its OUT's identity and is the pinned endpoint copies' endpoint of that OUT's copy")
-PLAIN_ENDPOINTS = ("http://plain-copy-0.invalid:7000/", "http://plain-copy-1.invalid:7000/")  # the private table's defaults
+PLAIN_ENDPOINTS = ("http://plain-copy-0.invalid:9200/", "http://plain-copy-1.invalid:9200/")  # the private table's defaults
 
 
 def _plain_union_private(tmp_path, monkeypatch, copies, *, name="plain", endpoints=None):
@@ -326,7 +326,7 @@ def _plain_union_private(tmp_path, monkeypatch, copies, *, name="plain", endpoin
     pin.chmod(0o600)
     monkeypatch.setitem(ex.PRIVATE_REFERENCE_PINS, "rhea-test", _sha(pin))
     classes = _private_table(tmp_path, name=f"{name}-classes", copies={c: CLASS_C for c in copies})
-    endpoints = _private_endpoints(tmp_path, *(("rhea-test", (endpoints or {}).get(c, f"http://plain-{c}.invalid:7000/"), c)
+    endpoints = _private_endpoints(tmp_path, *(("rhea-test", (endpoints or {}).get(c, f"http://plain-{c}.invalid:9200/"), c)
                                                for c in copies), name=f"{name}-endpoints")
     return {"pin": pin, "classes": classes, "endpoints": endpoints}
 
@@ -495,7 +495,7 @@ def test_a_plain_union_is_refused_without_the_pin_and_both_tables_and_for_a_copy
                              f"a plain partition union's copies must be listed in the pinned copy classes and endpoint copies: "
                              f"not listed for partitions {bad}")
     classes_only = _private_table(tmp_path, name="classes-only", copies={"copy-0": CLASS_C, "copy-1": CLASS_C})
-    other = _private_endpoints(tmp_path, ("rhea-test", "http://plain-copy-0.invalid:7000/", "copy-0"), name="one-endpoint")
+    other = _private_endpoints(tmp_path, ("rhea-test", "http://plain-copy-0.invalid:9200/", "copy-0"), name="one-endpoint")
     _plain_union_refuses({**inputs, "classes": classes_only, "endpoints": other}, outs, prefix, pins,
                          "a plain partition union's copies must be listed in the pinned copy classes and endpoint copies: "
                          "not listed for partitions [1]")
@@ -530,7 +530,7 @@ def test_a_plain_union_is_refused_for_an_endpoint_the_pinned_description_does_no
 
     # the second copy is pinned at another endpoint
     other = _plain_union_private(tmp_path, monkeypatch, ("copy-0", "copy-1"), name="other",
-                                 endpoints={"copy-1": "http://elsewhere.invalid:7000/"})
+                                 endpoints={"copy-1": "http://elsewhere.invalid:9200/"})
     _plain_union_refuses({**inputs, **other}, outs, prefix, pins, refusal + where(1) + UNPINNED)
     # each endpoint is pinned for the other partition's copy (check_stores' older identity-against-table check refuses first,
     # then this rule says the same of both endpoints)
@@ -547,9 +547,9 @@ def test_a_plain_union_is_refused_for_an_endpoint_the_pinned_description_does_no
             where(0) + UNPINNED, where(1) + UNPINNED])
     # the second partition's records name an endpoint its own identity does not (the pinned table cannot make it so)
     unnamed = _plain_union_outs(tmp_path, inputs, "unnamed", endpoints=PLAIN_ENDPOINTS,
-                                recorded=(PLAIN_ENDPOINTS[0], "http://other.invalid:7000/"))
+                                recorded=(PLAIN_ENDPOINTS[0], "http://other.invalid:9200/"))
     _plain_union_refuses(inputs, unnamed, str(tmp_path / "unnamed"), _plain_union_pins(unnamed),
-                         refusal + f"{unnamed[1]} endpoint sha256:{_h('http://other.invalid:7000/')[:12]}: " + NOT_LISTED)
+                         refusal + f"{unnamed[1]} endpoint sha256:{_h('http://other.invalid:9200/')[:12]}: " + NOT_LISTED)
 
 
 def test_a_plain_union_on_one_endpoint_or_none_has_the_store_section_it_had_without_the_pinned_rule(tmp_path, monkeypatch):
@@ -564,7 +564,7 @@ def test_a_plain_union_on_one_endpoint_or_none_has_the_store_section_it_had_with
         return ex.check_stores(ex.load_attribution(), [ex.Out.read(o) for o in path], "rhea-test", (), None,
                                ex.reference_pin("rhea-test", given["pin"]), None, None, classes, endpoints, plain_union=flag)
 
-    for name, endpoints in (("none", None), ("one", ("http://shared.invalid:7000/",) * 2)):
+    for name, endpoints in (("none", None), ("one", ("http://shared.invalid:9200/",) * 2)):
         outs = _plain_union_outs(tmp_path, inputs, name, endpoints=endpoints)  # no endpoint recorded, or the same in both
         with_flag, without_flag = table(True, inputs, outs), table(False, inputs, outs)
         assert with_flag == without_flag and with_flag.several == []
@@ -1553,8 +1553,8 @@ def test_a_mixed_fingerprint_is_refused_even_as_the_baseline(world):
 # A retry is on its parent's question, so on its parent's copy: no checker arm's row is mixed.
 
 E0 = "http://store.invalid:7039/"
-E1 = "http://copy-b.invalid:7040/"
-EX = "http://copy-x.invalid:7050/"
+E1 = "http://copy-b.invalid:9101/"
+EX = "http://copy-x.invalid:9105/"
 REF_SHA, NAME_INDEX = "fe" * 32, "s01@" + "cd" * 32
 BEFORE_Q = {"s01-pass", "s01-flag"}
 CELLS = ("none", "alpha", "beta")
@@ -1637,7 +1637,7 @@ def _copies(path: Path, ep: str, replica: str, **over) -> Path:
     entry = {"replica": replica, "store": "s01", "endpoint": ep, "identical_stats": True,
              "name_index": NAME_INDEX, "index_list_sha256": NAME_INDEX.split("@")[1], "index_identity_ok": True,
              "load": {"passed": 10, "of": 10}, "ok": True, **over}
-    other = {**entry, "replica": "another-copy", "endpoint": "http://another.invalid:28780/"}
+    other = {**entry, "replica": "another-copy", "endpoint": "http://another.invalid:9109/"}
     path.write_text(json.dumps({"checked_utc": CHECKED_AT, "copies": [other, entry]}, indent=1) + "\n",
                     encoding="utf-8")
     return path
@@ -1931,7 +1931,7 @@ def _union_copies(world) -> tuple[list[Path], list[dict]]:
     storecheck's sha256 (partition_run.py identity's form), and the copies' proofs and entries."""
     files, entries = [], []
     for p, out in enumerate(world["parts"]):
-        endpoint = f"http://copy-{p}.invalid:70{p}0/"
+        endpoint = f"http://copy-{p}.invalid:92{p}0/"
         _set_endpoints(out, lambda r, e=endpoint: e)
         sc, ka = _copy_proofs(world["tmp"], f"p{p}", endpoint, f"copy-{p}")
         check = f"?cmd=stats equal to ref in 2 fields at {CHECKED_AT} (store check sha256 {_sha(sc)})"
@@ -1956,7 +1956,7 @@ def test_per_partition_copies_with_their_proofs_are_accepted_and_their_shares_re
 
 def test_a_partition_copy_proven_by_another_storecheck_than_its_identity_records_is_refused(world, ref):
     files, entries = _union_copies(world)
-    other = _storecheck(world["tmp"] / "sc-p1-later.json", "http://copy-1.invalid:7010/", "copy-1",
+    other = _storecheck(world["tmp"] / "sc-p1-later.json", "http://copy-1.invalid:9210/", "copy-1",
                         checked_utc="2026-10-23T09:05:00Z")
     entries[1] = {**entries[1], "storecheck_sha256": _sha(other)}
     _refused_stores(world, world["parts"], [*files, other], entries,
@@ -1965,7 +1965,7 @@ def test_a_partition_copy_proven_by_another_storecheck_than_its_identity_records
 
 def test_an_unlisted_endpoint_in_a_partition_is_refused(world, ref):
     files, entries = _union_copies(world)
-    _set_endpoints(world["parts"][2], lambda r: EX if r["model"] == QWEN else "http://copy-2.invalid:7020/")
+    _set_endpoints(world["parts"][2], lambda r: EX if r["model"] == QWEN else "http://copy-2.invalid:9220/")
     _refused_stores(world, world["parts"], files, entries,
                     rf"part-2 {ex.endpoint_label(EX)}: an endpoint the OUT does not list", record=True)
 
@@ -1973,7 +1973,7 @@ def test_an_unlisted_endpoint_in_a_partition_is_refused(world, ref):
 def test_a_partition_moved_within_its_out_is_its_records_copy_and_a_broken_chain_is_refused(world, ref):
     files, entries = _union_copies(world)
     out = world["parts"][1]
-    e1, e1b = "http://copy-1.invalid:7010/", "http://copy-1b.invalid:7011/"
+    e1, e1b = "http://copy-1.invalid:9210/", "http://copy-1b.invalid:5106/"
     before = _set_endpoints(out, lambda r: E0 if r["question_id"] == "s01-flag" else e1b)  # s01-flag before the move
     _set_endpoints(out, lambda r: e1 if r["question_id"] == "s01-flag" else e1b)
     _store_change(out, e1, e1b, before)
@@ -2000,8 +2000,8 @@ def test_a_partitions_parents_copy_and_its_own_both_proven_are_accepted(world, r
     """GLM's partitions (entry 184): the natural parents copied in ran on the parents' copy, named by the identity's
     parents_store and listed by the build's manifest store change to the partition's copy (its records made before)."""
     files, entries = _union_copies(world)
-    out, ep = world["parts"][0], "http://parents.invalid:7045/"
-    e0 = "http://copy-0.invalid:7000/"
+    out, ep = world["parts"][0], "http://parents.invalid:9104/"
+    e0 = "http://copy-0.invalid:9200/"
     before = _set_endpoints(out, lambda r: E0 if r["load"]["arm"] == "none" else e0)  # the parents: s01-pass's none
     _set_endpoints(out, lambda r: ep if r["load"]["arm"] == "none" else e0)
     _store_change(out, ep, e0, before)
@@ -2021,7 +2021,7 @@ def test_a_partitions_parents_copy_and_its_own_both_proven_are_accepted(world, r
                     r"\(parents\): its storecheck is not the one the OUT's identity records", record=True)
 
 
-PARENTS, LATER = "http://parents.invalid:7045/", "http://natural-later.invalid:48787/"
+PARENTS, LATER = "http://parents.invalid:9104/", "http://natural-later.invalid:9118/"
 
 
 def _glm_top_up(world, top_up_endpoint: str) -> tuple[list[Path], list[dict]]:
@@ -2029,7 +2029,7 @@ def _glm_top_up(world, top_up_endpoint: str) -> tuple[list[Path], list[dict]]:
     to its own copy, all proven, but for one parent added after the build (a top-up) on ``top_up_endpoint``, which the
     build's pre_change_run_ids do not hold; and the natural OUT's later copy proven for the natural OUT itself."""
     files, entries = _union_copies(world)
-    out, e0 = world["parts"][0], "http://copy-0.invalid:7000/"
+    out, e0 = world["parts"][0], "http://copy-0.invalid:9200/"
     parents = _set_endpoints(out, lambda r: E0 if r["load"]["arm"] == "none" else e0)  # the natural parents
     top_up = parents[-1]
     _set_endpoints(out, lambda r: top_up_endpoint if r["run_id"] == top_up
@@ -2062,7 +2062,7 @@ def test_a_glm_top_up_on_the_natural_outs_later_copy_is_refused_though_that_copy
 
 def test_a_copy_behind_an_endpoint_is_accepted_with_its_proof_and_reported_unsplittable(world, ref):
     files, entries = _union_copies(world)
-    e2 = "http://copy-2.invalid:7020/"
+    e2 = "http://copy-2.invalid:9220/"
     sc, ka = _copy_proofs(world["tmp"], "p2b", e2, "copy-2b")
     behind = _entry("part-2", e2, "copy-2b", (sc, ka), behind_endpoint=True, change_at=CHANGE_AT)
     st = _stores(world, world["parts"], [*files, sc, ka], [*entries, behind], record=True)
@@ -2087,15 +2087,15 @@ def test_a_copy_behind_an_endpoint_the_out_does_not_list_is_refused(world, ref):
 
 
 # --- the two reviewed allowances (science, ~11:30Z): a forwarded copy's direct-endpoint known answers (GLM e184
-# p0/p1/p2's own copies), and the old ident.py identity files (entry 150's UniProt copies 7028 and 7024) -------------
+# p0/p1/p2's own copies), and the old ident.py identity files (entry 150's UniProt copies 5111 and 5109) -------------
 
-FWD, DIRECT = "http://127.0.0.1:48782/", "http://192.0.2.7:28782/"  # a spoke forward, and its copy's direct endpoint
+FWD, DIRECT = "http://127.0.0.1:9116/", "http://192.0.2.7:9110/"  # a spoke forward, and its copy's direct endpoint
 # spoke_forward_watchdog.sh's lines for one forward, by hand in its format: an ssh started, ssh's own message, its exit
 # and a restart, both ssh to the same target; up at 00:52:24Z, well before CHANGE_AT, never ended
-FORWARD_LINES = ("2026-10-23T00:52:24Z e184-copy-b ssh pid 101 127.0.0.1:48782 -> 192.0.2.7:28782",
+FORWARD_LINES = ("2026-10-23T00:52:24Z e184-copy-b ssh pid 101 127.0.0.1:9116 -> 192.0.2.7:9110",
                  "Timeout, server login.invalid not responding.",
                  "2026-10-23T02:10:54Z e184-copy-b ssh pid 101 exited rc=255 after 4710 s",
-                 "2026-10-23T02:10:59Z e184-copy-b ssh pid 102 127.0.0.1:48782 -> 192.0.2.7:28782")
+                 "2026-10-23T02:10:59Z e184-copy-b ssh pid 102 127.0.0.1:9116 -> 192.0.2.7:9110")
 
 
 def _forward_log(path: Path, lines: tuple[str, ...]) -> Path:
@@ -2147,11 +2147,11 @@ def test_a_forwarded_copys_known_answers_at_its_direct_endpoint_are_accepted_wit
     ("storecheck at the direct endpoint", r"its storecheck is of another endpoint than the OUT's"),
 ])
 def test_a_forwarded_copy_without_a_record_proving_its_forward_is_refused(world, ref, case, match):
-    start = "{} e184-copy-b ssh pid 103 127.0.0.1:{} -> 192.0.2.{}:28782"
+    start = "{} e184-copy-b ssh pid 103 127.0.0.1:{} -> 192.0.2.{}:9110"
     end = "{} e184-copy-b STOP file: watchdog ends"
-    lines = {"two targets": (*FORWARD_LINES, start.format("2026-10-23T03:00:00Z", 48782, 8)),
-             "another listen port": (start.format("2026-10-23T00:52:24Z", 48783, 7),),
-             "up after change_at": (start.format("2026-10-23T09:30:00Z", 48782, 7),),
+    lines = {"two targets": (*FORWARD_LINES, start.format("2026-10-23T03:00:00Z", 9116, 8)),
+             "another listen port": (start.format("2026-10-23T00:52:24Z", 9117, 7),),
+             "up after change_at": (start.format("2026-10-23T09:30:00Z", 9116, 7),),
              "ended before change_at": (*FORWARD_LINES, end.format("2026-10-23T09:00:00Z")),
              "its one ssh exited before change_at": FORWARD_LINES[:3],  # no restart: a stale forward
              "lines out of time order": (FORWARD_LINES[3], FORWARD_LINES[0]),
@@ -2162,7 +2162,7 @@ def test_a_forwarded_copy_without_a_record_proving_its_forward_is_refused(world,
     if case == "no forward":
         b = {k: v for k, v in b.items() if k != "forward"}
     elif case == "another direct endpoint":
-        b = {**b, "forward": {**b["forward"], "direct_endpoint_sha256": _h("http://192.0.2.8:28782/")}}
+        b = {**b, "forward": {**b["forward"], "direct_endpoint_sha256": _h("http://192.0.2.8:9110/")}}
     elif case == "record not given":
         proofs.remove(f["log"])
     elif case == "record not a log":
@@ -2197,7 +2197,7 @@ OLD = {"identity_format": "ident.py", "not_checked": NOT_CHECKED}
 def _ident(path: Path, copies: dict[str, dict], **over) -> Path:
     """ident.py's output: the reference's 13 stats fields, and per copy, by its URL without its slash, its stats in
     those fields, identical."""
-    doc = {"checked_utc": CHECKED_AT, "reference": "http://ref.invalid:7022", "reference_stats": dict(STATS),
+    doc = {"checked_utc": CHECKED_AT, "reference": "http://ref.invalid:5108", "reference_stats": dict(STATS),
            "reference_missing_fields": [],
            "copies": {url.rstrip("/"): {"reachable": True, "stats_seconds": 0.01, "stats": stats, "mismatches": {},
                                         "identical": True} for url, stats in copies.items()}, **over}
@@ -2209,7 +2209,7 @@ def _ident(path: Path, copies: dict[str, dict], **over) -> Path:
 def old_world(world, monkeypatch) -> dict:
     """The fixture whole moved from copy-a (E0) to copy-b (E1), both identity-checked by ident.py only: copy-a in the
     pinned reference file's own copies block (as a UniProt copy in the reference file), copy-b in its own file against a live read
-    of the reference (as 7028); load10.py's known answers for each."""
+    of the reference (as 5111); load10.py's known answers for each."""
     out, tmp = world["single"], world["tmp"]
     before = _set_endpoints(out, lambda r: E0 if r["question_id"] in BEFORE_Q else E1)
     _store_change(out, E0, E1, before)
@@ -2281,9 +2281,9 @@ EA = "http://192.0.2.39:7039/"  # copy-a's address, as its recorded checks name 
 def _table(path: Path, host_port: str = "store.invalid:7039", addr_port: str = "192.0.2.39:7039", **over) -> Path:
     """The store-copy tooling's copy table (copy-assignments/1): both host:port forms of copy-a, and its endpoints."""
     doc = {"schema": "copy-assignments/1",
-           "aliases": {host_port: "copy-a", addr_port: "copy-a", "copy-b.invalid:7040": "copy-b"},
+           "aliases": {host_port: "copy-a", addr_port: "copy-a", "copy-b.invalid:9101": "copy-b"},
            "copies": {"copy-a": {"copy": "copy-a", "endpoints": [addr_port], "node": "store"},
-                      "copy-b": {"copy": "copy-b", "endpoints": ["copy-b.invalid:7040"]}}, **over}
+                      "copy-b": {"copy": "copy-b", "endpoints": ["copy-b.invalid:9101"]}}, **over}
     path.write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8")
     return path
 
@@ -2394,7 +2394,7 @@ def test_a_copy_named_by_host_name_without_its_pinned_alias_and_table_is_refused
         proofs.append(_load10(tmp / "ka-x.json", EX))
         a = {**a, "known_answers_sha256": _sha(proofs[-1])}
     elif case == "the reference not read from it":  # the pinned reference read from another server
-        other = _ident(tmp / "ref-other.json", {}, reference="http://ref.invalid:7022")
+        other = _ident(tmp / "ref-other.json", {}, reference="http://ref.invalid:5108")
         monkeypatch.setitem(ex.REFERENCE_STATS_SHA256, "s01", _sha(other))
         proofs += [other, _storecheck(tmp / "sc-b2.json", E1, "copy-b", reference_sha256=_sha(other))]
         b = {**b, "storecheck_sha256": _sha(proofs[-1])}
@@ -2416,7 +2416,7 @@ def test_a_copy_named_by_host_name_without_its_pinned_alias_and_table_is_refused
 
 def test_the_aliases_are_the_two_pinned_by_hand():
     # By hand: for each pair the sha256 of the endpoint string the OUTs name (example-copy-38's; Gemma's corporate OUT's
-    # "http://" + its node's host name + ":7041/"), of its address as "http://HOST:PORT/" (the copy table's keys), and
+    # "http://" + its node's host name + ":9102/"), of its address as "http://HOST:PORT/" (the copy table's keys), and
     # the sha256sum of the copy table's snapshot (example-copy-38's copy-assignments.json of 18:14:19Z; the corporate pair's
     # copy-assignments-20261025T002051Z.json); the repository names no address
     assert ex.STORE_ALIASES == {
@@ -2430,7 +2430,7 @@ def test_the_aliases_are_the_two_pinned_by_hand():
 
 # A pin is keyed by (graph, the OUT's endpoint sha256) and by nothing else: a second pair, with fixtures of its own
 # invention (a node named node-2.test and an address on a private network), behaves as the first does
-HOST2, ADDR2 = "http://node-2.test:7041/", "http://10.0.0.1:7041/"
+HOST2, ADDR2 = "http://node-2.test:9102/", "http://10.0.0.1:9102/"
 
 
 @pytest.fixture
@@ -2454,11 +2454,11 @@ def test_a_second_pinned_pair_is_accepted_with_a_table_that_maps_both_names_to_t
 def test_a_second_pinned_pair_is_refused_when_the_table_does_not_map_both_names_to_the_replica(world, alias_world_2,
                                                                                                monkeypatch, case):
     tmp, proofs, (a, b) = world["tmp"], alias_world_2["proofs"], alias_world_2["entries"]
-    names = {"host name": {"node-2.test:7041": "copy-z", "10.0.0.1:7041": "copy-a"},
-             "address": {"node-2.test:7041": "copy-a", "10.0.0.1:7041": "copy-z"},
-             "both": {"node-2.test:7041": "copy-z", "10.0.0.1:7041": "copy-z"}}[case]
+    names = {"host name": {"node-2.test:9102": "copy-z", "10.0.0.1:9102": "copy-a"},
+             "address": {"node-2.test:9102": "copy-a", "10.0.0.1:9102": "copy-z"},
+             "both": {"node-2.test:9102": "copy-z", "10.0.0.1:9102": "copy-z"}}[case]
     proofs.remove(alias_world_2["table"])
-    proofs.append(_table(tmp / "copy-table-bad.json", "node-2.test:7041", "10.0.0.1:7041", aliases=names))
+    proofs.append(_table(tmp / "copy-table-bad.json", "node-2.test:9102", "10.0.0.1:9102", aliases=names))
     a = {**a, "alias": _pin_table(monkeypatch, proofs[-1], ADDR2, HOST2)}
     _refused_stores(world, [alias_world_2["out"]], proofs, [a, b],
                     rf"single {ex.endpoint_label(HOST2)} \(copy-a\): its alias record does not map the OUT's endpoint "
@@ -2568,7 +2568,7 @@ PINNED = {"uniprot-sp-2026_03": ("0513d3f79dfdd75bade876d713e29eb23cfa46962d499e
                                  "uniprot-sp-2026_03@9484989e47e8903a78937402a0b3c69b43a12499721ea71d3c940ec9e62a62b1"),
           "text2sparql-ck26": ("61d538bb8e110a01213d0b9c084667a631981f2d2fcc299bc1e0413c7833d5c9",
                                "text2sparql-ck26@c51a9638d28fd0c27b262336aa04df3d9b7faa371d216678c1e8d77e4cbc9691")}
-EP = "http://copy.invalid:28741/"
+EP = "http://copy.invalid:9108/"
 
 
 def _real_check(graph: str, **over) -> dict:
@@ -5135,9 +5135,9 @@ def test_a_copy_behind_the_endpoint_is_ordered_after_the_change_point_not_after_
 
 @pytest.mark.parametrize(("lines", "refused"), [
     # the only ssh came up at 09:15, after T_e and before F: running when the copy took attempts
-    (("2026-10-23T09:15:00Z e184-copy-b ssh pid 101 127.0.0.1:48782 -> 192.0.2.7:28782",), False),
+    (("2026-10-23T09:15:00Z e184-copy-b ssh pid 101 127.0.0.1:9116 -> 192.0.2.7:9110",), False),
     # an ssh up at 09:00 that exited at 09:15 ran at T_e but not at F: refused, as the first record is the bound
-    (("2026-10-23T09:00:00Z e184-copy-b ssh pid 101 127.0.0.1:48782 -> 192.0.2.7:28782",
+    (("2026-10-23T09:00:00Z e184-copy-b ssh pid 101 127.0.0.1:9116 -> 192.0.2.7:9110",
       "2026-10-23T09:15:00Z e184-copy-b ssh pid 101 exited rc=255 after 900 s"), True)])
 def test_a_forward_is_held_to_the_first_record_for_an_entry_recording_an_earlier_instant(world, ref, lines, refused):
     # Opus review N3. T_e = 09:10:00, F = 09:18:45.000, so the gap is F - T_e = 525 s
@@ -6634,7 +6634,7 @@ def test_a_branch_only_copys_change_at_is_the_manifests_instant_not_the_first_br
 
 
 @pytest.mark.parametrize("store", [{"out": "/host/single"}, {"out": "/host/single", "endpoint": E0},
-                                   {"out": "/host/single", "endpoint": "http://copy-b.invalid:7040"}, None])
+                                   {"out": "/host/single", "endpoint": "http://copy-b.invalid:9101"}, None])
 def test_a_branch_only_outs_identity_must_name_the_last_copy_of_the_chain_as_its_store(world, ref, store):
     w = _branch_only_world(world)
     ident = json.loads((w["out"] / "deployment-identity.json").read_text(encoding="utf-8"))
@@ -7018,7 +7018,7 @@ def test_a_branch_only_outs_identity_history_must_follow_the_copies_of_the_manif
     w = _branch_only_world(world, three=True)
     ident = json.loads((w["out"] / "deployment-identity.json").read_text(encoding="utf-8"))
     store = ident["store"]  # the last copy, EX
-    other = "http://copy-d.invalid:7060/"
+    other = "http://copy-d.invalid:9106/"
     # a history that joins up but goes through another copy than the manifest's chain (E0, E1, EX)
     ident["store_changes"] = [{"from": {"endpoint": E0}, "to": {"endpoint": other}},
                               {"from": {"endpoint": other}, "to": store}]

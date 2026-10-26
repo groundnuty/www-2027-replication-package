@@ -275,7 +275,7 @@ STUB = types.SimpleNamespace(
 
 
 def _check() -> str:  # a store block's passed identity check in the builders' form
-    return "?cmd=stats equal to http://192.0.2.101:7033 in 13 fields at 2026-10-23T18:14:55Z (store check sha256 " + "a" * 64 + ")"
+    return "?cmd=stats equal to http://192.0.2.101:5112 in 13 fields at 2026-10-23T18:14:55Z (store check sha256 " + "a" * 64 + ")"
 
 
 def _outs(record: dict, rsha: str, binding_sha: str | None, plans: list[tuple[int, str, str]], prefix: str, k: int) -> list:
@@ -289,7 +289,7 @@ def _outs(record: dict, rsha: str, binding_sha: str | None, plans: list[tuple[in
         if binding_sha is not None:
             part.update(binding_sha256=binding_sha, plan_sha256=plan_sha)
         ident = {"out": f"{HOST_RUNS}/{name}", "partition": part,
-                 "store": {"replica": copy_, "endpoint": f"http://192.0.2.160:289{i}/", "identity_check": _check()}}
+                 "store": {"replica": copy_, "endpoint": f"http://192.0.2.160:930{i}/", "identity_check": _check()}}
         outs.append(ex.Out(Path("/stage") / name, ident, {}))
     return outs
 

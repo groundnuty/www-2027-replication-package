@@ -807,15 +807,15 @@ index c0059a0..ff83fc7 100644
 @@ -2146,9 +2150,12 @@ def test_the_committed_store_proofs_config_cites_the_recorded_checks_of_each_ent
      rhea_7039 = {(out, "example-copy-38") for out in ("rhea-qwen3-coder-30b-a3b", "rhea-gemma-4-31b")}
      # and (science 25 Oct 00:10Z, point ii) for example-copy-9 as the first copy of Gemma's corporate OUT only
-     corporate_7041 = {("corporate-gemma-4-31b", "example-copy-9")}
+     corporate_9102 = {("corporate-gemma-4-31b", "example-copy-9")}
 +    # and the two DeepSeek retry OUTs' two copies (example-copy-47 then example-copy-56), by the e150x store agent's ident.py files
      assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "identity_format" in e} == {
          (out, copy) for out in ("uniprot-e150-claude-sonnet-5-5", "uniprot-e150-qwen3.8-27b")
--        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_7041
+-        for copy in ("example-copy-47", "example-copy-46")} | rhea_7039 | corporate_9102
 +        for copy in ("example-copy-47", "example-copy-46")} | {
 +        (out, copy) for out in ("uniprot-e150-deepseek-v4-flash-0731-p1", "uniprot-e150-deepseek-v4-flash-0731-p2")
-+        for copy in ("example-copy-47", "example-copy-56")} | rhea_7039 | corporate_7041
-     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "alias" in e} == rhea_7039 | corporate_7041
++        for copy in ("example-copy-47", "example-copy-56")} | rhea_7039 | corporate_9102
+     assert {(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if "alias" in e} == rhea_7039 | corporate_9102
      # science 25 Oct 00:10Z (point iii): the second period of example-copy-38 in Gemma's Rhea OUT, and no other second period
      assert [(e["out"].rsplit("/", 1)[1], e["replica"]) for e in entries if e.get("second_period")] == [
 diff --git a/results/e189-exploratory-20261022/tests/test_setaside_exclusion.py b/results/e189-exploratory-20261022/tests/test_setaside_exclusion.py

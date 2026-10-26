@@ -173,10 +173,10 @@ CONFIG = "data/analysis/prereg-config.json"
 # The frozen analysis this script runs on: the config-fill head's code (harness/ and scripts/, digest.code_digest) and its
 # final analysis config (the pinned e46fd504...); any other deploy is refused, not merely recorded
 FROZEN_COMMIT = "847cc27563a3c7a505c8ec0fd647c9314acaae8c"
-FROZEN_CODE_DIGEST = "a5e7607b5d2027078437879b32de270c715ccba78b891f5c6ed149c683551387"
+FROZEN_CODE_DIGEST = "6b50a93c0c458fe6c37d485ed5fe4bab4abcf96c1654e06b7cd9ebf45a907969"
 FROZEN_CONFIG_SHA256 = "ddca19da589e268ed5b88c8275c4d51106ab2cd40bf25920840848e63f5d97dd"
-# The voided OUTs recorded when this script was written (entry 173: SiteB Rhea 213, opaque 33; entry 180: gw-node-1 Rhea 99,
-# opaque 28, a15 16): every voided-run record given must hold at least these, so a wrong or partial file is refused
+# The voided OUTs recorded when this script was written: every voided-run record given must hold at least these, so a
+# wrong or partial file is refused
 KNOWN_VOIDED = (
     "/scratch/user/project/runs/test-20261021/rhea-qwen3.8-27b",
     "/scratch/user/project/runs/test-20261021/opaque-qwen3.8-27b",

@@ -19,7 +19,7 @@ from test_exploratory import _private_a15_root, _store_refusals_carry_no_number 
 ex = TE.ex
 F = TE.F
 
-EP_A, EP_B, EP_C = "http://gate-a.invalid:7001/", "http://gate-b.invalid:7002/", "http://gate-c.invalid:7003/"
+EP_A, EP_B, EP_C = "http://gate-a.invalid:5102/", "http://gate-b.invalid:5103/", "http://gate-c.invalid:5104/"
 SECRET_CLIENT = {"gate": "SECRET-GATE-NAME", "max_in_flight": 7, "timeouts": {"client": 60, "server": 120}}
 TODAYS_TEXT = "a gated store (store_client), which this allowance does not cover"
 
@@ -161,7 +161,7 @@ def test_refusals_carry_no_endpoint_and_no_gate_value():
         _, problems = refusal(ch)
         assert problems
         for text in problems:
-            assert not any(s in text for s in ("gate-a", "gate-b", "gate-c", "SECRET", "max_in_flight", "7001", "7002"))
+            assert not any(s in text for s in ("gate-a", "gate-b", "gate-c", "SECRET", "max_in_flight", "5102", "5103"))
 
 
 def test_two_gated_changes_report_each_by_its_position():
@@ -226,7 +226,7 @@ def test_every_caller_threads_the_flag_only_where_it_is_a_plain_union_call():
 
 # --- the whole call: a plain union whose OUT's records sit on two endpoints ------------------------------------------------------
 
-PARENTS = "http://plain-copy-p.invalid:7000/"  # the first copy (the copied records' endpoint), a replica of the pinned tables
+PARENTS = "http://plain-copy-p.invalid:9200/"  # the first copy (the copied records' endpoint), a replica of the pinned tables
 OWN = TE.PLAIN_ENDPOINTS  # each partition's own copy endpoint, as the pinned endpoint copies name them
 
 

@@ -157,7 +157,7 @@ def test_the_table_is_read_by_columns_and_a_copy_on_several_lines_has_one_class_
     ("Host2, unmeasured = slow", "slow (host rule, unmeasured)"),
     ("Host1, unmeasured, dead since 23 Oct", "slow (host rule, unmeasured)"),
     ("Host2, measured slow", "slow"),
-    ("Host3, represented by 28951", "slow"),
+    ("Host3, represented by 9111", "slow"),
     ("unmeasuredish is not the word", "slow"),
 ])
 def test_a_note_with_the_word_unmeasured_is_the_tables_host_rule_and_its_label_says_so(note, label):

@@ -239,7 +239,7 @@ def _routing_doc(out, records, *, kind="main", classes=None, attested=(), pendin
     for i, ((cls, basis), ids) in enumerate(sorted(groups.items(), key=str)):
         tree = out if kind == "main" else f"{out}-cell-{cls if cls in REAL else 'fast'}"
         key = f"{tree}/natural/s{i}"
-        copy = {"endpoint": "192.0.2.101:7033", "copy": f"copy-{cls}"} if cls in REAL else None
+        copy = {"endpoint": "192.0.2.101:5112", "copy": f"copy-{cls}"} if cls in REAL else None
         shards[key] = {"class": "unverifiable" if cls == "not_recorded" else cls, "basis": basis, "copy": copy, "runs": sorted(ids)}
         if cls == "not_recorded":
             shards[key]["subkind"] = "pending_attestation" if any(r in pending for r in ids) else "no_launch_record"
@@ -424,7 +424,7 @@ def test_the_routing_reader_ties_every_basis_to_its_evidence(tmp_path):
         "attestation-tree-as-string": (mut(lambda d: d["inputs"]["attestations"][0].update(shards=["o"])), "not a replay-routing/5"),
         "attestation-other-phase": (mut(lambda d: d["inputs"]["attestations"][0].update(phase="prompted")), "attested shard is not tied"),
         "attestation-other-tree": (mut(lambda d: d["inputs"]["attestations"][0].update(
-            shards=[{"tree": "o-cell-fast", "shard": "s1", "class": "fast", "copy": "copy-fast", "endpoint": "192.0.2.101:7033"}])), "attested shard is not tied"),
+            shards=[{"tree": "o-cell-fast", "shard": "s1", "class": "fast", "copy": "copy-fast", "endpoint": "192.0.2.101:5112"}])), "attested shard is not tied"),
         "attestation-extra-key": (mut(lambda d: d["inputs"]["attestations"][0].update(x=1)), "not a replay-routing/5"),
         "manifest-missing": (mut(lambda d: d["inputs"].pop("timefiles_manifest")), "not a replay-routing/5"),
         "manifest-bad-time": (mut(lambda d: d["inputs"]["timefiles_manifest"].update(taken_at="yesterday")), "not a replay-routing/5"),
@@ -646,7 +646,7 @@ def test_the_checkers_own_output_is_read_by_the_analysis_including_the_fallback_
     # a split OUT: proven for the cells, recorded for the main tree, and a changed time file unverifiable
     import shutil
     w2 = trm.split_world(tmp_path / "second")
-    w2.write_time("rhea-gemma-4-31b", "m1-natural-01of01", "natural", "192.0.2.105:7043", "example-copy-39", rm.utc_epoch(trm.SEALED_UTC) - 5)
+    w2.write_time("rhea-gemma-4-31b", "m1-natural-01of01", "natural", "192.0.2.105:9103", "example-copy-39", rm.utc_epoch(trm.SEALED_UTC) - 5)
     rc, out, err = w2.run("natural,prompted", capsys)
     assert rc == 0, err
     got = ex.read_replay_routing([w2.stage / "replay-routing.json"])
