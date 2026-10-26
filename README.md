@@ -25,6 +25,7 @@ The files keep the relative paths of the development repository, because the cod
 | `tests/fixtures/analysis/` | Synthetic fixtures (toy questions and runs) used by the analysis tests. |
 | `replication/versions/run-tags/*.patch` | One patch per other code version that runs were made with (see [Versions](#versions)). |
 | `replication/versions/analysis/e150-route-and-setaside.patch` | The analysis changes of the parallel analysis line (see [Versions](#versions)). |
+| `replication/versions/analysis/sib-u-union.patch` | The analysis changes of the pooled SIB UniProt analysis line (see [Versions](#versions)). |
 | `replication/run_tests.sh`, `replication/deselected-tests.txt` | Runs the analysis tests that need no data. |
 | `replication/reproduce.sh` | How the analysis is run once the data of step 2 is in place. |
 | `replication/PINS.md` | Integrity pins that anonymization changed: original and package values. |
@@ -42,6 +43,7 @@ Commit identifiers refer to the authors' development repository, which is privat
 | Frozen analysis configuration (`data/`) | Commit `847cc275`. |
 | Exploratory analysis (`results/e189-exploratory-20261022/`) | Commit `b048d3e5` (the analysis line used for the private graph, which includes the weighted partition records and gated store sides). |
 | Parallel analysis line | Commit `5837f28e` (route admission for the further UniProt retry cells, and the set-aside exclusion), as a patch from the common base `a538ba9d` of both lines (it does not apply on top of the shipped analysis, which has moved on from that base). The analyses of the further UniProt retry cells used this line; the analyses of the private graph used the line shipped above. |
+| Pooled SIB UniProt analysis line | Commit `0a1b5566`: the pooled SIB UniProt analysis line (partitioned runs pooled as one union), as a patch from its common base `692d83ee` with the shipped analysis (it does not apply on top of the shipped analysis, which has moved on from that base). |
 
 Each `replication/versions/run-tags/<tag>.patch` turns the shipped framework into the framework of that tag
 (`git apply` from the repository root). The tags are listed below.
