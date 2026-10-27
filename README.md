@@ -69,7 +69,8 @@ Each run records the code version it ran on in its manifest; that manifest is pa
 
 ## Environment
 
-- Python 3.12 (the analysis and the runs used CPython 3.12.3 on x86_64).
+- Python 3.12 (the analysis used CPython 3.12.3).
+- Stores: QLever at commit 9bebc60, one index per graph.
 - Dependencies are pinned in `uv.lock`: `uv sync --frozen` creates the environment.
 - The confirmatory analysis runs single-threaded: `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1` (the analysis refuses to
   start otherwise). Its recorded environment is numpy 2.5.4 with OpenBLAS 0.3.34.
