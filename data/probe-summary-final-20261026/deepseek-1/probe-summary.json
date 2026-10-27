@@ -1,0 +1,336 @@
+{
+ "summary": {
+  "corporate": {
+   "deepseek-ai/DeepSeek-V4-Flash-0731": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.004312930300325258,
+     "mean_f1_ci95": [
+      0.0011895128421739066,
+      0.008249784244182004
+     ],
+     "answered_rate": 0.4793650793650794,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 606,
+      "unparseable": 24
+     },
+     "declined_rate": 0.48253968253968255,
+     "declined_by_rule": {
+      "empty_rows": 304
+     },
+     "unparseable_rate": 0.0380952380952381
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.8412698412698413,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 530,
+      "query_error:not_a_query": 25,
+      "query_error:parse_error": 75
+     },
+     "parse_rate": 0.15873015873015872,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.03968253968253968,
+      "parse_error": 0.11904761904761904,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "plain_fence": 23,
+      "reply": 34,
+      "sparql_fence": 573
+     }
+    }
+   }
+  },
+  "opaque-rhea-142": {
+   "deepseek-ai/DeepSeek-V4-Flash-0731": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.01111111111111111,
+     "exact_ci95": [
+      0.0015873015873015873,
+      0.023809523809523808
+     ],
+     "mean_f1": 0.01111111111111111,
+     "mean_f1_ci95": [
+      0.0015873015873015873,
+      0.023809523809523808
+     ],
+     "answered_rate": 0.273015873015873,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0015873015873015873,
+     "labels": {
+      "answered": 610,
+      "unparseable": 20
+     },
+     "declined_rate": 0.6952380952380952,
+     "declined_by_rule": {
+      "empty_rows": 438
+     },
+     "unparseable_rate": 0.031746031746031744
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.006349206349206349,
+     "exact_ci95": [
+      0.0,
+      0.015873015873015872
+     ],
+     "mean_f1": 0.01810339816755237,
+     "mean_f1_ci95": [
+      0.007177325956837762,
+      0.031317402157401183
+     ],
+     "answered_rate": 0.6015873015873016,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 379,
+      "query_error:not_a_query": 43,
+      "query_error:parse_error": 203,
+      "query_error:timeout": 5
+     },
+     "parse_rate": 0.3904761904761905,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.007936507936507936,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.06825396825396825,
+      "parse_error": 0.32222222222222224,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.007936507936507936
+     },
+     "query_source": {
+      "plain_fence": 106,
+      "reply": 98,
+      "sparql_fence": 426
+     }
+    }
+   }
+  },
+  "rhea-142": {
+   "deepseek-ai/DeepSeek-V4-Flash-0731": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.02222222222222222,
+     "exact_ci95": [
+      0.007936507936507936,
+      0.03968253968253969
+     ],
+     "mean_f1": 0.023280423280423276,
+     "mean_f1_ci95": [
+      0.0082010582010582,
+      0.041798941798941794
+     ],
+     "answered_rate": 0.40793650793650793,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.007936507936507936,
+     "labels": {
+      "answered": 598,
+      "unparseable": 32
+     },
+     "declined_rate": 0.5412698412698412,
+     "declined_by_rule": {
+      "empty_rows": 341
+     },
+     "unparseable_rate": 0.050793650793650794
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.014285714285714285,
+     "exact_ci95": [
+      0.0015873015873015873,
+      0.030158730158730156
+     ],
+     "mean_f1": 0.025445906785444648,
+     "mean_f1_ci95": [
+      0.01093354420085061,
+      0.04293178629649852
+     ],
+     "answered_rate": 0.6126984126984127,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 386,
+      "query_error:not_a_query": 34,
+      "query_error:parse_error": 209,
+      "query_error:timeout": 1
+     },
+     "parse_rate": 0.38571428571428573,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0015873015873015873,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.05396825396825397,
+      "parse_error": 0.33174603174603173,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0015873015873015873
+     },
+     "query_source": {
+      "plain_fence": 116,
+      "reply": 110,
+      "sparql_fence": 404
+     }
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "deepseek-ai/DeepSeek-V4-Flash-0731": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0015873015873015873,
+     "exact_ci95": [
+      0.0,
+      0.004761904761904762
+     ],
+     "mean_f1": 0.0036532007438990926,
+     "mean_f1_ci95": [
+      0.00031230883157860846,
+      0.008586545729402872
+     ],
+     "answered_rate": 0.4587301587301587,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.007936507936507936,
+     "labels": {
+      "answered": 580,
+      "unparseable": 50
+     },
+     "declined_rate": 0.46190476190476193,
+     "declined_by_rule": {
+      "empty_rows": 291
+     },
+     "unparseable_rate": 0.07936507936507936
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.01904761904761905,
+     "exact_ci95": [
+      0.007936507936507936,
+      0.03333333333333333
+     ],
+     "mean_f1": 0.023150718217266577,
+     "mean_f1_ci95": [
+      0.010402576489533012,
+      0.03887917071590541
+     ],
+     "answered_rate": 0.7571428571428571,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 477,
+      "query_error:not_a_query": 41,
+      "query_error:parse_error": 104,
+      "query_error:refused": 5,
+      "query_error:timeout": 3
+     },
+     "parse_rate": 0.23015873015873015,
+     "refused_rate": 0.007936507936507936,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.004761904761904762,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.06507936507936508,
+      "parse_error": 0.16507936507936508,
+      "refused": 0.007936507936507936,
+      "store_error": 0.0,
+      "timeout": 0.004761904761904762
+     },
+     "query_source": {
+      "plain_fence": 78,
+      "reply": 20,
+      "sparql_fence": 532
+     }
+    }
+   }
+  }
+ },
+ "opaque_pairs": [
+  {
+   "natural": "rhea-142",
+   "opaque": "opaque-rhea-142",
+   "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "natural_exact": 0.014285714285714285,
+   "opaque_exact": 0.006349206349206349,
+   "natural_minus_opaque": 0.007936507936507936,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "uniprot-sp-2026_03",
+   "opaque": "opaque-uniprot-sp-2026_03",
+   "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "natural_exact": 0.01904761904761905,
+   "opaque_exact": null,
+   "natural_minus_opaque": null,
+   "agent_opaque_minus_natural": null
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T184400Z",
+ "cells": [
+  {
+   "model": "claude-sonnet-5-5",
+   "graph": "rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "graph": "rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "gemma-4-31b",
+   "graph": "rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "deepseek-v4-flash-0731",
+   "graph": "rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "qwen3-coder-30b-a3b",
+   "graph": "rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "claude-opus-5-5",
+   "graph": "rhea-142",
+   "phases": "natural"
+  },
+  {
+   "model": "glm-5.3-flash",
+   "graph": "rhea-142",
+   "phases": "natural"
+  }
+ ]
+}

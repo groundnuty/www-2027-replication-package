@@ -1,0 +1,722 @@
+{
+ "accuracy": "prereg §3 'accuracy': per question the mean over its attempts of the recorded correctness (a missing attempt counts wrong), then the mean over questions; the frozen metrics.question_vectors/metric_of",
+ "bootstrap": {
+  "level": 0.95,
+  "method": "paired: one draw of the shared clusters per resample, applied to both graphs; percentile interval (frozen stats.interval, inverted-CDF quantiles) of the per-draw differences",
+  "n_boot": 10000,
+  "n_clusters": 196,
+  "n_questions": 210,
+  "seed": 20261026
+ },
+ "pairs": [
+  {
+   "arm": "census",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.17452830188679247,
+     -0.08754208754208755
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.13015873015873014,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.12626262626262627,
+     0.2095238095238095
+    ],
+    "estimate": 0.16666666666666666,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.020100502512562814,
+     0.05582137161084529
+    ],
+    "estimate": 0.0365079365079365,
+    "n_units": 630,
+    "partitions": 2
+   }
+  },
+  {
+   "arm": "curated",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.08258258258258255,
+     -0.0014814814814814864
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.041269841269841255,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.06018518518518518,
+     0.13078149920255183
+    ],
+    "estimate": 0.09365079365079364,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.028985507246376812,
+     0.07967479674796747
+    ],
+    "estimate": 0.05238095238095238,
+    "n_units": 630,
+    "partitions": 2
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.03431372549019608,
+     -0.009049773755656108
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.020634920634920634,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.009009009009009009,
+     0.03431372549019608
+    ],
+    "estimate": 0.020634920634920634,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "estimate": 0.0,
+    "n_units": 630,
+    "partitions": 2
+   }
+  },
+  {
+   "arm": "census",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.6699507389162559,
+     -0.5593495934959349
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.615873015873016,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3.8-27B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8699551569506725,
+     0.934294871794872
+    ],
+    "estimate": 0.9031746031746033,
+    "n_units": 630,
+    "partitions": 5
+   },
+   "opaque": {
+    "ci": [
+     0.23088685015290517,
+     0.3462783171521036
+    ],
+    "estimate": 0.2873015873015873,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "curated",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.6931464174454824,
+     -0.5817307692307692
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.638095238095238,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3.8-27B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8841269841269842,
+     0.9425287356321839
+    ],
+    "estimate": 0.9142857142857143,
+    "n_units": 630,
+    "partitions": 5
+   },
+   "opaque": {
+    "ci": [
+     0.22113821138211387,
+     0.334913112164297
+    ],
+    "estimate": 0.2761904761904762,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "generated-1",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.477346278317152,
+     -0.34672619047619024
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.4111111111111112,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3.8-27B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.95260663507109,
+     0.9851485148514849
+    ],
+    "estimate": 0.9698412698412698,
+    "n_units": 630,
+    "partitions": 5
+   },
+   "opaque": {
+    "ci": [
+     0.4929577464788733,
+     0.6242690058479531
+    ],
+    "estimate": 0.5587301587301586,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.6818181818181817,
+     -0.5582524271844658
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.6206349206349207,
+    "undefined_share": 0.0
+   },
+   "model": "Qwen/Qwen3.8-27B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.88783570300158,
+     0.9496855345911949
+    ],
+    "estimate": 0.9206349206349206,
+    "n_units": 630,
+    "partitions": 5
+   },
+   "opaque": {
+    "ci": [
+     0.24170616113744073,
+     0.3596059113300492
+    ],
+    "estimate": 0.3,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "census",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.5436337625178826,
+     -0.41788617886178864
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.48095238095238096,
+    "undefined_share": 0.0
+   },
+   "model": "claude-haiku-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8761061946902655,
+     0.9379084967320261
+    ],
+    "estimate": 0.9079365079365079,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.36448598130841126,
+     0.4908789386401327
+    ],
+    "estimate": 0.42698412698412697,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "curated",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.5545454545454547,
+     -0.45314900153609833
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.5047619047619047,
+    "undefined_share": 0.0
+   },
+   "model": "claude-haiku-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8995433789954338,
+     0.9730639730639729
+    ],
+    "estimate": 0.9396825396825396,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.38095238095238093,
+     0.4897314375987363
+    ],
+    "estimate": 0.4349206349206349,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.4056603773584907,
+     -0.29780033840947573
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.35238095238095235,
+    "undefined_share": 0.0
+   },
+   "model": "claude-haiku-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8605769230769229,
+     0.9232026143790847
+    ],
+    "estimate": 0.8936507936507936,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.48929663608562696,
+     0.5952380952380951
+    ],
+    "estimate": 0.5412698412698412,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.15514592933947768,
+     -0.07642276422764216
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.11428571428571421,
+    "undefined_share": 0.0
+   },
+   "model": "claude-opus-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.9849246231155779,
+     1.0
+    ],
+    "estimate": 0.9936507936507936,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.8395061728395061,
+     0.9158249158249159
+    ],
+    "estimate": 0.8793650793650793,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "census",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.2656765676567656,
+     -0.16901408450704214
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.21587301587301577,
+    "undefined_share": 0.0
+   },
+   "model": "claude-sonnet-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8893871449925262,
+     0.9800995024875622
+    ],
+    "estimate": 0.9396825396825396,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.6698564593301437,
+     0.7755443886097153
+    ],
+    "estimate": 0.7238095238095238,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "curated",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.32253086419753074,
+     -0.20793650793650809
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.26349206349206356,
+    "undefined_share": 0.0
+   },
+   "model": "claude-sonnet-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8868778280542986,
+     0.9852941176470589
+    ],
+    "estimate": 0.9428571428571428,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.6196969696969696,
+     0.7379767827529022
+    ],
+    "estimate": 0.6793650793650793,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "generated-1",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.4368932038834953,
+     -0.27653213751868455
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.3555555555555556,
+    "undefined_share": 0.0
+   },
+   "model": "claude-sonnet-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8986175115207373,
+     0.9900990099009901
+    ],
+    "estimate": 0.9492063492063493,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.5258899676375405,
+     0.6589861751152074
+    ],
+    "estimate": 0.5936507936507937,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.325991189427313,
+     -0.22906793048973118
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.2777777777777778,
+    "undefined_share": 0.0
+   },
+   "model": "claude-sonnet-5-5",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.9293394777265744,
+     0.9869281045751634
+    ],
+    "estimate": 0.9603174603174602,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.6251920122887864,
+     0.738562091503268
+    ],
+    "estimate": 0.6825396825396824,
+    "n_units": 630,
+    "partitions": null
+   }
+  },
+  {
+   "arm": "census",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.6148867313915858,
+     -0.5
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.5587301587301587,
+    "undefined_share": 0.0
+   },
+   "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.897196261682243,
+     0.9539682539682539
+    ],
+    "estimate": 0.9269841269841269,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.30973451327433627,
+     0.42973856209150313
+    ],
+    "estimate": 0.3682539682539682,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "curated",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.6793048973143758,
+     -0.5699999999999998
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.6253968253968255,
+    "undefined_share": 0.0
+   },
+   "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.9124423963133641,
+     0.9583333333333333
+    ],
+    "estimate": 0.9365079365079366,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.2558139534883721,
+     0.36893203883495146
+    ],
+    "estimate": 0.3111111111111111,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.5619047619047621,
+     -0.4477124183006537
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.5047619047619047,
+    "undefined_share": 0.0
+   },
+   "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.8287037037037036,
+     0.9022435897435896
+    ],
+    "estimate": 0.8666666666666666,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.3023255813953488,
+     0.4236453201970443
+    ],
+    "estimate": 0.3619047619047619,
+    "n_units": 630,
+    "partitions": 6
+   }
+  },
+  {
+   "arm": "census",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.7586206896551726,
+     -0.6444444444444447
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.7015873015873015,
+    "undefined_share": 0.0
+   },
+   "model": "google/gemma-4-31B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.7803379416282642,
+     0.8779342723004694
+    ],
+    "estimate": 0.8301587301587301,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.0892018779342723,
+     0.17204301075268816
+    ],
+    "estimate": 0.12857142857142856,
+    "n_units": 630,
+    "partitions": 3
+   }
+  },
+  {
+   "arm": "curated",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.35566188197767146,
+     -0.23943661971830982
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.2968253968253968,
+    "undefined_share": 0.0
+   },
+   "model": "google/gemma-4-31B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.34803921568627444,
+     0.4660347551342812
+    ],
+    "estimate": 0.40634920634920635,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.07317073170731707,
+     0.1490384615384615
+    ],
+    "estimate": 0.10952380952380952,
+    "n_units": 630,
+    "partitions": 3
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.32286995515695066,
+     -0.20975609756097552
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.265079365079365,
+    "undefined_share": 0.0
+   },
+   "model": "google/gemma-4-31B",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.3603174603174603,
+     0.4759615384615383
+    ],
+    "estimate": 0.4174603174603174,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.110062893081761,
+     0.19900497512437812
+    ],
+    "estimate": 0.1523809523809524,
+    "n_units": 630,
+    "partitions": 3
+   }
+  },
+  {
+   "arm": "none",
+   "difference_opaque_minus_natural": {
+    "ci": [
+     -0.5800653594771241,
+     -0.47572815533980595
+    ],
+    "ci_excludes_zero": true,
+    "estimate": -0.5285714285714285,
+    "undefined_share": 0.0
+   },
+   "model": "zai-org/GLM-5.3-Flash",
+   "n_questions": 210,
+   "natural": {
+    "ci": [
+     0.6586921850079746,
+     0.7398030942334739
+    ],
+    "estimate": 0.7,
+    "n_units": 630,
+    "partitions": null
+   },
+   "opaque": {
+    "ci": [
+     0.1291866028708134,
+     0.215686274509804
+    ],
+    "estimate": 0.17142857142857143,
+    "n_units": 630,
+    "partitions": null
+   }
+  }
+ ],
+ "refused_pairs": [],
+ "schema": "rhea-gap-table/1",
+ "unpaired_arms": [],
+ "unpaired_models": [],
+ "what": "accuracy of opaque Rhea minus Rhea natural per model and prompt arm both graphs have, paired cluster bootstrap over the shared base questions"
+}

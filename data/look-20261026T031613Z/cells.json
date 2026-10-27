@@ -1,0 +1,11 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261026T031613Z",
+ "cells": [
+  {
+   "model": "glm-5.3-flash",
+   "graph": "rhea-142",
+   "phases": "natural+prompted+branch"
+  }
+ ]
+}

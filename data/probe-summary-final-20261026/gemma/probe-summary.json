@@ -1,0 +1,321 @@
+{
+ "summary": {
+  "corporate": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0015873015873015873,
+     "exact_ci95": [
+      0.0,
+      0.004761904761904762
+     ],
+     "mean_f1": 0.002453102453102453,
+     "mean_f1_ci95": [
+      0.0,
+      0.006493506493506493
+     ],
+     "answered_rate": 0.8095238095238095,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 571,
+      "unparseable": 59
+     },
+     "declined_rate": 0.09682539682539683,
+     "declined_by_rule": {
+      "empty_rows": 61
+     },
+     "unparseable_rate": 0.09365079365079365
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.9380952380952381,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 591,
+      "query_error:parse_error": 39
+     },
+     "parse_rate": 0.06190476190476191,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.06190476190476191,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   }
+  },
+  "opaque-rhea-142": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0031746031746031746,
+     "exact_ci95": [
+      0.0,
+      0.007936507936507936
+     ],
+     "mean_f1": 0.0031746031746031746,
+     "mean_f1_ci95": [
+      0.0,
+      0.007936507936507936
+     ],
+     "answered_rate": 0.6111111111111112,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.006349206349206349,
+     "labels": {
+      "answered": 412,
+      "unparseable": 218
+     },
+     "declined_rate": 0.04285714285714286,
+     "declined_by_rule": {
+      "empty_rows": 27
+     },
+     "unparseable_rate": 0.346031746031746
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.009523809523809525,
+     "exact_ci95": [
+      0.0,
+      0.022222222222222223
+     ],
+     "mean_f1": 0.009523809523809525,
+     "mean_f1_ci95": [
+      0.0,
+      0.022222222222222223
+     ],
+     "answered_rate": 0.49523809523809526,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 312,
+      "query_error:parse_error": 318
+     },
+     "parse_rate": 0.5047619047619047,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.5047619047619047,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   }
+  },
+  "rhea-142": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.025396825396825397,
+     "exact_ci95": [
+      0.006349206349206349,
+      0.047619047619047616
+     ],
+     "mean_f1": 0.025396825396825397,
+     "mean_f1_ci95": [
+      0.006349206349206349,
+      0.047619047619047616
+     ],
+     "answered_rate": 0.707936507936508,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.004761904761904762,
+     "labels": {
+      "answered": 473,
+      "unparseable": 157
+     },
+     "declined_rate": 0.04285714285714286,
+     "declined_by_rule": {
+      "empty_rows": 27
+     },
+     "unparseable_rate": 0.2492063492063492
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.2523809523809524,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0031746031746031746,
+     "labels": {
+      "answered": 159,
+      "query_error:not_a_query": 1,
+      "query_error:parse_error": 470
+     },
+     "parse_rate": 0.7476190476190476,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0015873015873015873,
+      "parse_error": 0.746031746031746,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.6777777777777778,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 487,
+      "unparseable": 143
+     },
+     "declined_rate": 0.09523809523809523,
+     "declined_by_rule": {
+      "empty_rows": 60
+     },
+     "unparseable_rate": 0.22698412698412698
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.006349206349206349,
+     "exact_ci95": [
+      0.0,
+      0.01746031746031746
+     ],
+     "mean_f1": 0.006349206349206349,
+     "mean_f1_ci95": [
+      0.0,
+      0.01746031746031746
+     ],
+     "answered_rate": 0.6095238095238096,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0015873015873015873,
+     "labels": {
+      "answered": 384,
+      "query_error:parse_error": 246
+     },
+     "parse_rate": 0.3904761904761905,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.3904761904761905,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   }
+  }
+ },
+ "opaque_pairs": [
+  {
+   "natural": "rhea-142",
+   "opaque": "opaque-rhea-142",
+   "model": "google/gemma-4-31B",
+   "natural_exact": 0.0,
+   "opaque_exact": 0.009523809523809525,
+   "natural_minus_opaque": -0.009523809523809525,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "uniprot-sp-2026_03",
+   "opaque": "opaque-uniprot-sp-2026_03",
+   "model": "google/gemma-4-31B",
+   "natural_exact": 0.006349206349206349,
+   "opaque_exact": null,
+   "natural_minus_opaque": null,
+   "agent_opaque_minus_natural": null
+  }
+ ]
+}

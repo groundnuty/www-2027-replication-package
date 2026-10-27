@@ -1,0 +1,39 @@
+{
+ "schema": "retry-gemma-p2-reproduction/1",
+ "full_checks": [
+  {
+   "n_records": 2502,
+   "n_ok": 2496,
+   "held": true,
+   "halted": false,
+   "held_count": 6
+  },
+  {
+   "n_records": 2502,
+   "n_ok": 2495,
+   "held": true,
+   "halted": false,
+   "held_count": 7
+  },
+  {
+   "n_records": 2502,
+   "n_ok": 2498,
+   "held": true,
+   "halted": false,
+   "held_count": 4
+  },
+  {
+   "n_records": 2502,
+   "n_ok": 2495,
+   "held": true,
+   "halted": false,
+   "held_count": 7
+  }
+ ],
+ "set_aside": {
+  "count": 1
+ },
+ "retry_tries_log_all_entries": {
+  "n": 50
+ }
+}

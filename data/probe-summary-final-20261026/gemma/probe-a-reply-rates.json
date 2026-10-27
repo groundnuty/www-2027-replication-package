@@ -1,0 +1,181 @@
+{
+ "groups": {
+  "corporate": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "answered": 510,
+     "declined": 61,
+     "declined_by_rule": {
+      "empty_rows": 61
+     },
+     "labels": {
+      "answered": 571,
+      "unparseable": 59
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.8095238095238095,
+      "declined": 0.09682539682539683,
+      "unparseable": 0.09365079365079365
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.8095238095238095,
+      "declined": 0.09682539682539683,
+      "refused": 0.0,
+      "unparseable": 0.09365079365079365
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 59
+    }
+   }
+  },
+  "opaque-rhea-142": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "answered": 385,
+     "declined": 27,
+     "declined_by_rule": {
+      "empty_rows": 27
+     },
+     "labels": {
+      "answered": 412,
+      "unparseable": 218
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.6111111111111112,
+      "declined": 0.04285714285714286,
+      "unparseable": 0.346031746031746
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.6111111111111112,
+      "declined": 0.04285714285714286,
+      "refused": 0.0,
+      "unparseable": 0.346031746031746
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 4,
+     "unparseable": 218
+    }
+   }
+  },
+  "rhea-142": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "answered": 446,
+     "declined": 27,
+     "declined_by_rule": {
+      "empty_rows": 27
+     },
+     "labels": {
+      "answered": 473,
+      "unparseable": 157
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.707936507936508,
+      "declined": 0.04285714285714286,
+      "unparseable": 0.2492063492063492
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.707936507936508,
+      "declined": 0.04285714285714286,
+      "refused": 0.0,
+      "unparseable": 0.2492063492063492
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 3,
+     "unparseable": 157
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "google/gemma-4-31B": {
+    "closed-book-answer-v2": {
+     "answered": 427,
+     "declined": 60,
+     "declined_by_rule": {
+      "empty_rows": 60
+     },
+     "labels": {
+      "answered": 487,
+      "unparseable": 143
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.6777777777777778,
+      "declined": 0.09523809523809523,
+      "unparseable": 0.22698412698412698
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.6777777777777778,
+      "declined": 0.09523809523809523,
+      "refused": 0.0,
+      "unparseable": 0.22698412698412698
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 143
+    }
+   }
+  }
+ },
+ "schema": "probe-a-reply-rates/2"
+}

@@ -1,0 +1,219 @@
+{
+ "bank_claims": "C2, C3 and C4 are the fault bank's: no bank row is dropped, so their estimates and tests are the registered ones; their weighted-Holm steps, levels and decisions can still differ, since the family is recomputed with C1's and C5's p-values",
+ "call_arguments": {
+  "n_boot": null,
+  "n_reps": null,
+  "prereg_config": "data/analysis/prereg-config.json",
+  "seed": null,
+  "split": "test"
+ },
+ "checks": {
+  "full_arms_reproduce_the_frozen_confirmatory_block": true,
+  "kept_arms_are_the_full_arms_minus_the_excluded": true
+ },
+ "classification": {
+  "calibration_controls": "none",
+  "label": ""
+ },
+ "excluded": {
+  "claude-haiku-5-5": {
+   "excluded_attempts_total": 97,
+   "excluded_natural_families": 57,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 15,
+     "excluded_share": 0.023809523809523808
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 1,
+     "excluded_attempts": 25,
+     "excluded_share": 0.03968253968253968
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 5,
+     "excluded_attempts": 57,
+     "excluded_share": 0.09047619047619047
+    }
+   }
+  },
+  "claude-sonnet-5-5": {
+   "excluded_attempts_total": 27,
+   "excluded_natural_families": 19,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 4,
+     "excluded_share": 0.006349206349206349
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 2,
+     "excluded_share": 0.0031746031746031746
+    },
+    "generated-1": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 2,
+     "excluded_share": 0.0031746031746031746
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 1,
+     "excluded_attempts": 19,
+     "excluded_share": 0.03015873015873016
+    }
+   }
+  },
+  "deepseek-v4-flash-0731": {
+   "excluded_attempts_total": 59,
+   "excluded_natural_families": 33,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 15,
+     "excluded_share": 0.023809523809523808
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 11,
+     "excluded_share": 0.01746031746031746
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 33,
+     "excluded_share": 0.05238095238095238
+    }
+   }
+  },
+  "gemma-4-31b": {
+   "excluded_attempts_total": 62,
+   "excluded_natural_families": 8,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 24,
+     "excluded_share": 0.0380952380952381
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 30,
+     "excluded_share": 0.047619047619047616
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 8,
+     "excluded_share": 0.012698412698412698
+    }
+   }
+  },
+  "glm-5.3-flash": {
+   "excluded_attempts_total": 239,
+   "excluded_natural_families": 169,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 2,
+     "excluded_attempts": 58,
+     "excluded_share": 0.09206349206349207
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 12,
+     "excluded_share": 0.01904761904761905
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 5,
+     "excluded_attempts": 169,
+     "excluded_share": 0.26825396825396824
+    }
+   }
+  },
+  "qwen3-coder-30b-a3b": {
+   "excluded_attempts_total": 40,
+   "excluded_natural_families": 23,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 14,
+     "excluded_share": 0.022222222222222223
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 3,
+     "excluded_share": 0.004761904761904762
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 23,
+     "excluded_share": 0.03650793650793651
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "excluded_attempts_total": 167,
+   "excluded_natural_families": 91,
+   "per_initial_arm": {
+    "census": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 19,
+     "excluded_share": 0.03015873015873016
+    },
+    "curated": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 37,
+     "excluded_share": 0.05873015873015873
+    },
+    "generated-1": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 20,
+     "excluded_share": 0.031746031746031744
+    },
+    "none": {
+     "attempts_in_design": 630,
+     "base_questions_left_without_attempts": 0,
+     "excluded_attempts": 91,
+     "excluded_share": 0.14444444444444443
+    }
+   }
+  }
+ },
+ "models": [
+  "claude-sonnet-5-5",
+  "claude-haiku-5-5",
+  "qwen3.8-27b",
+  "deepseek-v4-flash-0731",
+  "gemma-4-31b",
+  "qwen3-coder-30b-a3b",
+  "glm-5.3-flash"
+ ],
+ "not_recomputed": [
+  "the per-arm exploratory numbers (the reproduction's 'arms' are the registered ones)",
+  "the descriptive block 'C1 under scorer-rules-v4 (sensitivity)'",
+  "the descriptive block 'C1 leak exclusion'",
+  "the descriptive block 'C2 source-layer ablations'",
+  "the descriptive block 'C1 verdicts changed by the frozen scorer against v4'"
+ ],
+ "not_run": "the six models' Tier 1 re-runs (claude-sonnet-5-5, claude-haiku-5-5, qwen3.8-27b, deepseek-v4-flash-0731, gemma-4-31b, qwen3-coder-30b-a3b): 'original attempts; re-run incomplete' (the design log); GLM's two rounds stand (the design log; the timeout_sensitivity substituted call)",
+ "schema": "exclusion-exclusion-call/1",
+ "status": "sensitivity (the design log item 4): each registered claim's estimate with the attempts touched by a load-induced store time-out or a cut model call excluded; reported BESIDE the registered results, never replacing them; not confirmatory (the preflight's own 'confirmatory' flag inside describes the frozen settings it ran under, not this result's status)"
+}

@@ -1,0 +1,633 @@
+P1-P5 on the dev checker replay (p1p5/1); counts and rates only; no verdict labels.
+recall = W_F/(W_F+W_P+W_U) over wrong outputs; false-flag = C_F/(C_F+C_P+C_U) over correct outputs; U counts in the denominator and is not a flag; primary variant; no intervals (none prescribed for P1-P5).
+
+====================================================================================================
+POPULATION registered_dev_calibration: 19 Oct checker-audit replay on the dev calibration outputs (UniProt + Rhea, rounds 1-2, Sonnet + Qwen3.8, condition none); sources curated, census-t5, generated-1 + union
+  attempts 1512, no output 67, outputs 1445 (wrong 201, correct 1244); wrong by agent {'Qwen/Qwen3.8-27B': 138, 'claude-sonnet-5-5': 63}
+  registered 1445 outputs / 201 wrong (Sonnet 63, Qwen 138): outputs diff +0, wrong diff +0, equal=True
+  union rows' member statuses against the member arms' own rows: checked 2890, disagreeing 0
+  against the judge calibration: matrix outputs 1445, truth keys 1445, only in matrix 0, only in truth 0, label disagreements 0, equal=True
+
+P1  recall on real wrong outputs beside bank recall on non-empty items (same source digest)
+  [rhea-142] wrong outputs 79 (30 questions); by final checked result {'rows': 78, 'empty': 0, 'refused': 1}; non-empty = result rows: 78
+    source          real, all wrong      real, result rows              bank, non-empty       real(all)/bank   real(rows)/bank   bank arm
+    curated         16/79 = 0.203        16/78 = 0.205                  -                     -                -                 not replayed (no dev bank replay for this graph)
+    census-t5       1/79 = 0.013         1/78 = 0.013                   -                     -                -                 not replayed (no dev bank replay for this graph)
+    generated-1     1/79 = 0.013         1/78 = 0.013                   -                     -                -                 not replayed (no dev bank replay for this graph)
+    union           17/79 = 0.215        17/78 = 0.218                  -                     -                -                 not replayed (no dev bank replay for this graph)
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] wrong outputs 122 (36 questions); by final checked result {'rows': 117, 'empty': 2, 'refused': 3}; non-empty = result rows: 117
+    source          real, all wrong      real, result rows              bank, non-empty       real(all)/bank   real(rows)/bank   bank arm
+    curated         39/122 = 0.320       38/117 = 0.325                 490/872 = 0.562       0.569            0.578             curated
+    census-t5       24/122 = 0.197       24/117 = 0.205                 555/872 = 0.636       0.309            0.322             census-t5
+    generated-1     27/122 = 0.221       27/117 = 0.231                 -                     -                -                 not replayed (no bank arm with this source digest)
+    union           39/122 = 0.320       38/117 = 0.325                 -                     -                -                 not replayed (no source digest for this arm)
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P2  recall per source by template (wrong outputs)
+  [rhea-142] focus ['type_members']: wrong 43 (5 questions)
+    curated         0/43 = 0.000
+    census-t5       0/43 = 0.000
+    generated-1     0/43 = 0.000
+    union           0/43 = 0.000
+    absence_negation       wrong   4  curated=3/4 = 0.750  census-t5=1/4 = 0.250  generated-1=1/4 = 0.250  union=4/4 = 1.000
+    aggregation            wrong   8  curated=8/8 = 1.000  census-t5=0/8 = 0.000  generated-1=0/8 = 0.000  union=8/8 = 1.000
+    cross_graph_join       wrong   2  curated=0/2 = 0.000  census-t5=0/2 = 0.000  generated-1=0/2 = 0.000  union=0/2 = 0.000
+    multi_hop_path         wrong   5  curated=3/5 = 0.600  census-t5=0/5 = 0.000  generated-1=0/5 = 0.000  union=3/5 = 0.600
+    numeric_filter         wrong  12  curated=1/12 = 0.083  census-t5=0/12 = 0.000  generated-1=0/12 = 0.000  union=1/12 = 0.083
+    one_hop_attribute      wrong   5  curated=1/5 = 0.200  census-t5=0/5 = 0.000  generated-1=0/5 = 0.000  union=1/5 = 0.200
+    type_members           wrong  43  curated=0/43 = 0.000  census-t5=0/43 = 0.000  generated-1=0/43 = 0.000  union=0/43 = 0.000
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] focus ['aggregation', 'numeric_filter']: wrong 77 (13 questions)
+    curated         30/77 = 0.390
+    census-t5       22/77 = 0.286
+    generated-1     24/77 = 0.312
+    union           30/77 = 0.390
+    absence_negation       wrong   3  curated=2/3 = 0.667  census-t5=2/3 = 0.667  generated-1=2/3 = 0.667  union=2/3 = 0.667
+    aggregation            wrong  40  curated=7/40 = 0.175  census-t5=2/40 = 0.050  generated-1=4/40 = 0.100  union=7/40 = 0.175
+    cross_graph_join       wrong   7  curated=3/7 = 0.429  census-t5=0/7 = 0.000  generated-1=0/7 = 0.000  union=3/7 = 0.429
+    multi_hop_path         wrong   6  curated=1/6 = 0.167  census-t5=0/6 = 0.000  generated-1=0/6 = 0.000  union=1/6 = 0.167
+    numeric_filter         wrong  37  curated=23/37 = 0.622  census-t5=20/37 = 0.541  generated-1=20/37 = 0.541  union=23/37 = 0.622
+    one_hop_attribute      wrong  26  curated=1/26 = 0.038  census-t5=0/26 = 0.000  generated-1=1/26 = 0.038  union=1/26 = 0.038
+    type_members           wrong   3  curated=2/3 = 0.667  census-t5=0/3 = 0.000  generated-1=0/3 = 0.000  union=2/3 = 0.667
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P3  false-flag rate on correct outputs
+  [rhea-142] correct outputs 659
+    curated         450/659 = 0.683
+    census-t5       17/659 = 0.026
+    generated-1     35/659 = 0.053
+    union           459/659 = 0.697
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] correct outputs 585
+    curated         129/585 = 0.221
+    census-t5       29/585 = 0.050
+    generated-1     25/585 = 0.043
+    union           134/585 = 0.229
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [all] correct outputs 1244
+    curated         579/1244 = 0.465
+    census-t5       46/1244 = 0.037
+    generated-1     60/1244 = 0.048
+    union           593/1244 = 0.477
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P4  the union against its single sources (union minus source; positive = union higher)
+  [rhea-142] union = curated+census-t5: recall 17/79 = 0.215, false-flag 459/659 = 0.697
+    vs curated         recall 16/79 = 0.203       false-flag 450/659 = 0.683     d_recall +0.013  d_false_flag +0.014  (wrong only union 1, only source 0)
+    vs census-t5       recall 1/79 = 0.013        false-flag 17/659 = 0.026      d_recall +0.203  d_false_flag +0.671  (wrong only union 16, only source 0)
+    vs generated-1     recall 1/79 = 0.013        false-flag 35/659 = 0.053      d_recall +0.203  d_false_flag +0.643  (wrong only union 16, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.013; d_false_flag +0.014
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.013; d_false_flag +0.014
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] union = curated+census-t5: recall 39/122 = 0.320, false-flag 134/585 = 0.229
+    vs curated         recall 39/122 = 0.320      false-flag 129/585 = 0.221     d_recall +0.000  d_false_flag +0.009  (wrong only union 0, only source 0)
+    vs census-t5       recall 24/122 = 0.197      false-flag 29/585 = 0.050      d_recall +0.123  d_false_flag +0.179  (wrong only union 15, only source 0)
+    vs generated-1     recall 27/122 = 0.221      false-flag 25/585 = 0.043      d_recall +0.098  d_false_flag +0.186  (wrong only union 12, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.000; d_false_flag +0.009
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.000; d_false_flag +0.009
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [all] union = curated+census-t5: recall 56/201 = 0.279, false-flag 593/1244 = 0.477
+    vs curated         recall 55/201 = 0.274      false-flag 579/1244 = 0.465    d_recall +0.005  d_false_flag +0.011  (wrong only union 1, only source 0)
+    vs census-t5       recall 25/201 = 0.124      false-flag 46/1244 = 0.037     d_recall +0.154  d_false_flag +0.440  (wrong only union 31, only source 0)
+    vs generated-1     recall 28/201 = 0.139      false-flag 60/1244 = 0.048     d_recall +0.139  d_false_flag +0.428  (wrong only union 28, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.005; d_false_flag +0.011
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.005; d_false_flag +0.011
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P5  judge recall beside every source's recall on the same wrong outputs
+  agent Qwen [rhea-142] wrong outputs 49 (27 questions)
+    source curated         15/49 = 0.306
+    source census-t5       1/49 = 0.020
+    source generated-1     1/49 = 0.020
+    source union           16/49 = 0.327
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role cross complete          23/49 = 0.469  unparsed/failed 0
+    judge  Haiku           role haiku complete          29/49 = 0.592  unparsed/failed 0
+    judge  Qwen            role self  not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Qwen [uniprot-sp-2026_03] wrong outputs 89 (35 questions)
+    source curated         23/89 = 0.258
+    source census-t5       9/89 = 0.101
+    source generated-1     12/89 = 0.135
+    source union           23/89 = 0.258
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role cross complete          47/89 = 0.528  unparsed/failed 0
+    judge  Haiku           role haiku complete          41/89 = 0.461  unparsed/failed 0
+    judge  Qwen            role self  not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Qwen [all] wrong outputs 138 (62 questions)
+    source curated         38/138 = 0.275
+    source census-t5       10/138 = 0.072
+    source generated-1     13/138 = 0.094
+    source union           39/138 = 0.283
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role cross complete          70/138 = 0.507  unparsed/failed 0
+    judge  Haiku           role haiku complete          70/138 = 0.507  unparsed/failed 0
+    judge  Qwen            role self  not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Sonnet [rhea-142] wrong outputs 30 (9 questions)
+    source curated         1/30 = 0.033
+    source census-t5       0/30 = 0.000
+    source generated-1     0/30 = 0.000
+    source union           1/30 = 0.033
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role self  complete          5/30 = 0.167  unparsed/failed 0
+    judge  Haiku           role haiku complete          4/30 = 0.133  unparsed/failed 0
+    judge  Qwen            role cross not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Sonnet [uniprot-sp-2026_03] wrong outputs 33 (12 questions)
+    source curated         16/33 = 0.485
+    source census-t5       15/33 = 0.455
+    source generated-1     15/33 = 0.455
+    source union           16/33 = 0.485
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role self  complete          2/33 = 0.061  unparsed/failed 0
+    judge  Haiku           role haiku complete          2/33 = 0.061  unparsed/failed 0
+    judge  Qwen            role cross not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Sonnet [all] wrong outputs 63 (21 questions)
+    source curated         17/63 = 0.270
+    source census-t5       15/63 = 0.238
+    source generated-1     15/63 = 0.238
+    source union           17/63 = 0.270
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role self  complete          7/63 = 0.111  unparsed/failed 0
+    judge  Haiku           role haiku complete          6/63 = 0.095  unparsed/failed 0
+    judge  Qwen            role cross not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  judge coverage of the population's outputs:
+    claude-sonnet-5-5: complete, calls 1445, outputs judged 1445 of 1445; raw verdicts {'<unparsed>': 3, 'accept': 1197, 'reject': 245}
+    claude-haiku-5-5: complete, calls 1445, outputs judged 1445 of 1445; raw verdicts {'<unparsed>': 1, 'accept': 1105, 'reject': 339}
+    Qwen/Qwen3.8-27B: not run, calls 0, outputs judged 0 of 1445; raw verdicts {}
+
+====================================================================================================
+POPULATION sensitivity_without_36_rhea_round1: SENSITIVITY of the registered population (which stays primary): without the 36 Rhea round-1 records the audit's own population file labels frame:id_not_dev_in_frozen_set (question ids later reused for test questions)
+  attempts 1476, no output 66, outputs 1410 (wrong 200, correct 1210); wrong by agent {'Qwen/Qwen3.8-27B': 137, 'claude-sonnet-5-5': 63}
+  DROPPED from the registered population: 36 records (35 outputs, 1 without output; wrong 1: {'Qwen/Qwen3.8-27B': 1}; graphs ['rhea-142'])
+  registered minus dropped: outputs 1445 - 35 = 1410 (observed 1410), wrong 201 - 1 = 200 (observed 200): equal=True
+  union rows' member statuses against the member arms' own rows: checked 2820, disagreeing 0
+  against the judge calibration: matrix outputs 1410, truth keys 1410, only in matrix 0, only in truth 0, label disagreements 0, equal=True
+
+P1  recall on real wrong outputs beside bank recall on non-empty items (same source digest)
+  [rhea-142] wrong outputs 78 (29 questions); by final checked result {'rows': 77, 'empty': 0, 'refused': 1}; non-empty = result rows: 77
+    source          real, all wrong      real, result rows              bank, non-empty       real(all)/bank   real(rows)/bank   bank arm
+    curated         15/78 = 0.192        15/77 = 0.195                  -                     -                -                 not replayed (no dev bank replay for this graph)
+    census-t5       1/78 = 0.013         1/77 = 0.013                   -                     -                -                 not replayed (no dev bank replay for this graph)
+    generated-1     1/78 = 0.013         1/77 = 0.013                   -                     -                -                 not replayed (no dev bank replay for this graph)
+    union           16/78 = 0.205        16/77 = 0.208                  -                     -                -                 not replayed (no dev bank replay for this graph)
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] wrong outputs 122 (36 questions); by final checked result {'rows': 117, 'empty': 2, 'refused': 3}; non-empty = result rows: 117
+    source          real, all wrong      real, result rows              bank, non-empty       real(all)/bank   real(rows)/bank   bank arm
+    curated         39/122 = 0.320       38/117 = 0.325                 490/872 = 0.562       0.569            0.578             curated
+    census-t5       24/122 = 0.197       24/117 = 0.205                 555/872 = 0.636       0.309            0.322             census-t5
+    generated-1     27/122 = 0.221       27/117 = 0.231                 -                     -                -                 not replayed (no bank arm with this source digest)
+    union           39/122 = 0.320       38/117 = 0.325                 -                     -                -                 not replayed (no source digest for this arm)
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P2  recall per source by template (wrong outputs)
+  [rhea-142] focus ['type_members']: wrong 43 (5 questions)
+    curated         0/43 = 0.000
+    census-t5       0/43 = 0.000
+    generated-1     0/43 = 0.000
+    union           0/43 = 0.000
+    absence_negation       wrong   4  curated=3/4 = 0.750  census-t5=1/4 = 0.250  generated-1=1/4 = 0.250  union=4/4 = 1.000
+    aggregation            wrong   8  curated=8/8 = 1.000  census-t5=0/8 = 0.000  generated-1=0/8 = 0.000  union=8/8 = 1.000
+    cross_graph_join       wrong   2  curated=0/2 = 0.000  census-t5=0/2 = 0.000  generated-1=0/2 = 0.000  union=0/2 = 0.000
+    multi_hop_path         wrong   4  curated=2/4 = 0.500  census-t5=0/4 = 0.000  generated-1=0/4 = 0.000  union=2/4 = 0.500
+    numeric_filter         wrong  12  curated=1/12 = 0.083  census-t5=0/12 = 0.000  generated-1=0/12 = 0.000  union=1/12 = 0.083
+    one_hop_attribute      wrong   5  curated=1/5 = 0.200  census-t5=0/5 = 0.000  generated-1=0/5 = 0.000  union=1/5 = 0.200
+    type_members           wrong  43  curated=0/43 = 0.000  census-t5=0/43 = 0.000  generated-1=0/43 = 0.000  union=0/43 = 0.000
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] focus ['aggregation', 'numeric_filter']: wrong 77 (13 questions)
+    curated         30/77 = 0.390
+    census-t5       22/77 = 0.286
+    generated-1     24/77 = 0.312
+    union           30/77 = 0.390
+    absence_negation       wrong   3  curated=2/3 = 0.667  census-t5=2/3 = 0.667  generated-1=2/3 = 0.667  union=2/3 = 0.667
+    aggregation            wrong  40  curated=7/40 = 0.175  census-t5=2/40 = 0.050  generated-1=4/40 = 0.100  union=7/40 = 0.175
+    cross_graph_join       wrong   7  curated=3/7 = 0.429  census-t5=0/7 = 0.000  generated-1=0/7 = 0.000  union=3/7 = 0.429
+    multi_hop_path         wrong   6  curated=1/6 = 0.167  census-t5=0/6 = 0.000  generated-1=0/6 = 0.000  union=1/6 = 0.167
+    numeric_filter         wrong  37  curated=23/37 = 0.622  census-t5=20/37 = 0.541  generated-1=20/37 = 0.541  union=23/37 = 0.622
+    one_hop_attribute      wrong  26  curated=1/26 = 0.038  census-t5=0/26 = 0.000  generated-1=1/26 = 0.038  union=1/26 = 0.038
+    type_members           wrong   3  curated=2/3 = 0.667  census-t5=0/3 = 0.000  generated-1=0/3 = 0.000  union=2/3 = 0.667
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P3  false-flag rate on correct outputs
+  [rhea-142] correct outputs 625
+    curated         428/625 = 0.685
+    census-t5       17/625 = 0.027
+    generated-1     33/625 = 0.053
+    union           437/625 = 0.699
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] correct outputs 585
+    curated         129/585 = 0.221
+    census-t5       29/585 = 0.050
+    generated-1     25/585 = 0.043
+    union           134/585 = 0.229
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [all] correct outputs 1210
+    curated         557/1210 = 0.460
+    census-t5       46/1210 = 0.038
+    generated-1     58/1210 = 0.048
+    union           571/1210 = 0.472
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P4  the union against its single sources (union minus source; positive = union higher)
+  [rhea-142] union = curated+census-t5: recall 16/78 = 0.205, false-flag 437/625 = 0.699
+    vs curated         recall 15/78 = 0.192       false-flag 428/625 = 0.685     d_recall +0.013  d_false_flag +0.014  (wrong only union 1, only source 0)
+    vs census-t5       recall 1/78 = 0.013        false-flag 17/625 = 0.027      d_recall +0.192  d_false_flag +0.672  (wrong only union 15, only source 0)
+    vs generated-1     recall 1/78 = 0.013        false-flag 33/625 = 0.053      d_recall +0.192  d_false_flag +0.646  (wrong only union 15, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.013; d_false_flag +0.014
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.013; d_false_flag +0.014
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [uniprot-sp-2026_03] union = curated+census-t5: recall 39/122 = 0.320, false-flag 134/585 = 0.229
+    vs curated         recall 39/122 = 0.320      false-flag 129/585 = 0.221     d_recall +0.000  d_false_flag +0.009  (wrong only union 0, only source 0)
+    vs census-t5       recall 24/122 = 0.197      false-flag 29/585 = 0.050      d_recall +0.123  d_false_flag +0.179  (wrong only union 15, only source 0)
+    vs generated-1     recall 27/122 = 0.221      false-flag 25/585 = 0.043      d_recall +0.098  d_false_flag +0.186  (wrong only union 12, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.000; d_false_flag +0.009
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.000; d_false_flag +0.009
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+  [all] union = curated+census-t5: recall 55/200 = 0.275, false-flag 571/1210 = 0.472
+    vs curated         recall 54/200 = 0.270      false-flag 557/1210 = 0.460    d_recall +0.005  d_false_flag +0.012  (wrong only union 1, only source 0)
+    vs census-t5       recall 25/200 = 0.125      false-flag 46/1210 = 0.038     d_recall +0.150  d_false_flag +0.434  (wrong only union 30, only source 0)
+    vs generated-1     recall 28/200 = 0.140      false-flag 58/1210 = 0.048     d_recall +0.135  d_false_flag +0.424  (wrong only union 27, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.005; d_false_flag +0.012
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.005; d_false_flag +0.012
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+    generated-dc-1  not replayed
+    generated-dc-2  not replayed
+    generated-dc-3  not replayed
+
+P5  judge recall beside every source's recall on the same wrong outputs
+  agent Qwen [rhea-142] wrong outputs 48 (26 questions)
+    source curated         14/48 = 0.292
+    source census-t5       1/48 = 0.021
+    source generated-1     1/48 = 0.021
+    source union           15/48 = 0.312
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role cross complete          22/48 = 0.458  unparsed/failed 0
+    judge  Haiku           role haiku complete          28/48 = 0.583  unparsed/failed 0
+    judge  Qwen            role self  not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Qwen [uniprot-sp-2026_03] wrong outputs 89 (35 questions)
+    source curated         23/89 = 0.258
+    source census-t5       9/89 = 0.101
+    source generated-1     12/89 = 0.135
+    source union           23/89 = 0.258
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role cross complete          47/89 = 0.528  unparsed/failed 0
+    judge  Haiku           role haiku complete          41/89 = 0.461  unparsed/failed 0
+    judge  Qwen            role self  not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Qwen [all] wrong outputs 137 (61 questions)
+    source curated         37/137 = 0.270
+    source census-t5       10/137 = 0.073
+    source generated-1     13/137 = 0.095
+    source union           38/137 = 0.277
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role cross complete          69/137 = 0.504  unparsed/failed 0
+    judge  Haiku           role haiku complete          69/137 = 0.504  unparsed/failed 0
+    judge  Qwen            role self  not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Sonnet [rhea-142] wrong outputs 30 (9 questions)
+    source curated         1/30 = 0.033
+    source census-t5       0/30 = 0.000
+    source generated-1     0/30 = 0.000
+    source union           1/30 = 0.033
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role self  complete          5/30 = 0.167  unparsed/failed 0
+    judge  Haiku           role haiku complete          4/30 = 0.133  unparsed/failed 0
+    judge  Qwen            role cross not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Sonnet [uniprot-sp-2026_03] wrong outputs 33 (12 questions)
+    source curated         16/33 = 0.485
+    source census-t5       15/33 = 0.455
+    source generated-1     15/33 = 0.455
+    source union           16/33 = 0.485
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role self  complete          2/33 = 0.061  unparsed/failed 0
+    judge  Haiku           role haiku complete          2/33 = 0.061  unparsed/failed 0
+    judge  Qwen            role cross not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  agent Sonnet [all] wrong outputs 63 (21 questions)
+    source curated         17/63 = 0.270
+    source census-t5       15/63 = 0.238
+    source generated-1     15/63 = 0.238
+    source union           17/63 = 0.270
+    source curated+doc     not replayed
+    source census-t2       not replayed
+    source census-t20      not replayed
+    source generated-2     not replayed
+    source generated-3     not replayed
+    source generated-dc-1  not replayed
+    source generated-dc-2  not replayed
+    source generated-dc-3  not replayed
+    judge  Sonnet          role self  complete          7/63 = 0.111  unparsed/failed 0
+    judge  Haiku           role haiku complete          6/63 = 0.095  unparsed/failed 0
+    judge  Qwen            role cross not run           not run (no calls for this judge in the input)  unparsed/failed 0
+  judge coverage of the population's outputs:
+    claude-sonnet-5-5: complete, calls 1410, outputs judged 1410 of 1410; raw verdicts {'<unparsed>': 3, 'accept': 1174, 'reject': 233}
+    claude-haiku-5-5: complete, calls 1410, outputs judged 1410 of 1410; raw verdicts {'<unparsed>': 1, 'accept': 1081, 'reject': 328}
+    Qwen/Qwen3.8-27B: not run, calls 0, outputs judged 0 of 1410; raw verdicts {}
+
+====================================================================================================
+POPULATION supplementary_uniprot_dev_natural: SUPPLEMENTARY, not the registered population: UniProt dev natural-phase replay of 20 Oct, panel P (7 models, condition none; sources curated, census-t5, generated-1, generated-dc-1..3 + union); archive-dev-20261022/natreplay-20261020/final
+  attempts 1911, no output 549, outputs 1362 (wrong 333, correct 1029); wrong by agent {'Qwen/Qwen3-Coder-30B-A3B-Instruct': 14, 'Qwen/Qwen3.8-27B': 85, 'claude-haiku-5-5': 47, 'claude-sonnet-5-5': 22, 'deepseek-ai/DeepSeek-V4-Flash-0731': 75, 'google/gemma-4-31B': 4, 'zai-org/GLM-5.3-Flash': 86}
+  models left out of this population (attempts): {'Qwen/Qwen3.6-35B-A3B': 195, 'meta-llama/Llama-3.3-70B-Instruct': 273}
+  NOT the registered population: outputs -83 and wrong +132 against 1,445 / 201
+  union rows' member statuses against the member arms' own rows: checked 2724, disagreeing 0
+
+P1  recall on real wrong outputs beside bank recall on non-empty items (same source digest)
+  [uniprot-sp-2026_03] wrong outputs 333 (76 questions); by final checked result n/a; non-empty = result rows: n/a
+    source          real, all wrong      real, result rows              bank, non-empty       real(all)/bank   real(rows)/bank   bank arm
+    curated         65/333 = 0.195       n/a (no checked-query result)  490/872 = 0.562       0.347            -                 curated
+    census-t5       26/333 = 0.078       n/a (no checked-query result)  555/872 = 0.636       0.123            -                 census-t5
+    generated-1     21/333 = 0.063       n/a (no checked-query result)  -                     -                -                 not replayed (no bank arm with this source digest)
+    generated-dc-1  17/333 = 0.051       n/a (no checked-query result)  423/872 = 0.485       0.105            -                 generated-dc-1
+    generated-dc-2  17/333 = 0.051       n/a (no checked-query result)  434/872 = 0.498       0.103            -                 generated-dc-2
+    generated-dc-3  17/333 = 0.051       n/a (no checked-query result)  423/872 = 0.485       0.105            -                 generated-dc-3
+    union           70/333 = 0.210       n/a (no checked-query result)  -                     -                -                 not replayed (no source digest for this arm)
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+
+P2  recall per source by template (wrong outputs)
+  [uniprot-sp-2026_03] focus ['aggregation', 'numeric_filter']: wrong 125 (22 questions)
+    curated         15/125 = 0.120
+    census-t5       4/125 = 0.032
+    generated-1     5/125 = 0.040
+    generated-dc-1  3/125 = 0.024
+    generated-dc-2  3/125 = 0.024
+    generated-dc-3  3/125 = 0.024
+    union           16/125 = 0.128
+    absence_negation       wrong  31  curated=4/31 = 0.129  census-t5=4/31 = 0.129  generated-1=3/31 = 0.097  generated-dc-1=3/31 = 0.097  generated-dc-2=3/31 = 0.097  generated-dc-3=3/31 = 0.097  union=5/31 = 0.161
+    aggregation            wrong  63  curated=8/63 = 0.127  census-t5=2/63 = 0.032  generated-1=2/63 = 0.032  generated-dc-1=1/63 = 0.016  generated-dc-2=1/63 = 0.016  generated-dc-3=1/63 = 0.016  union=8/63 = 0.127
+    cross_graph_join       wrong  38  curated=10/38 = 0.263  census-t5=1/38 = 0.026  generated-1=1/38 = 0.026  generated-dc-1=1/38 = 0.026  generated-dc-2=1/38 = 0.026  generated-dc-3=1/38 = 0.026  union=10/38 = 0.263
+    multi_hop_path         wrong  50  curated=19/50 = 0.380  census-t5=6/50 = 0.120  generated-1=5/50 = 0.100  generated-dc-1=5/50 = 0.100  generated-dc-2=5/50 = 0.100  generated-dc-3=5/50 = 0.100  union=20/50 = 0.400
+    numeric_filter         wrong  62  curated=7/62 = 0.113  census-t5=2/62 = 0.032  generated-1=3/62 = 0.048  generated-dc-1=2/62 = 0.032  generated-dc-2=2/62 = 0.032  generated-dc-3=2/62 = 0.032  union=8/62 = 0.129
+    one_hop_attribute      wrong  74  curated=8/74 = 0.108  census-t5=5/74 = 0.068  generated-1=4/74 = 0.054  generated-dc-1=2/74 = 0.027  generated-dc-2=2/74 = 0.027  generated-dc-3=2/74 = 0.027  union=9/74 = 0.122
+    type_members           wrong  15  curated=9/15 = 0.600  census-t5=6/15 = 0.400  generated-1=3/15 = 0.200  generated-dc-1=3/15 = 0.200  generated-dc-2=3/15 = 0.200  generated-dc-3=3/15 = 0.200  union=10/15 = 0.667
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+
+P3  false-flag rate on correct outputs
+  [uniprot-sp-2026_03] correct outputs 1029
+    curated         196/1029 = 0.190
+    census-t5       44/1029 = 0.043
+    generated-1     28/1029 = 0.027
+    generated-dc-1  25/1029 = 0.024
+    generated-dc-2  25/1029 = 0.024
+    generated-dc-3  25/1029 = 0.024
+    union           212/1029 = 0.206
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+
+P4  the union against its single sources (union minus source; positive = union higher)
+  [uniprot-sp-2026_03] union = curated+census-t5: recall 70/333 = 0.210, false-flag 212/1029 = 0.206
+    vs curated         recall 65/333 = 0.195      false-flag 196/1029 = 0.190    d_recall +0.015  d_false_flag +0.016  (wrong only union 5, only source 0)
+    vs census-t5       recall 26/333 = 0.078      false-flag 44/1029 = 0.043     d_recall +0.132  d_false_flag +0.163  (wrong only union 44, only source 0)
+    vs generated-1     recall 21/333 = 0.063      false-flag 28/1029 = 0.027     d_recall +0.147  d_false_flag +0.179  (wrong only union 51, only source 2)
+    vs generated-dc-1  recall 17/333 = 0.051      false-flag 25/1029 = 0.024     d_recall +0.159  d_false_flag +0.182  (wrong only union 53, only source 0)
+    vs generated-dc-2  recall 17/333 = 0.051      false-flag 25/1029 = 0.024     d_recall +0.159  d_false_flag +0.182  (wrong only union 53, only source 0)
+    vs generated-dc-3  recall 17/333 = 0.051      false-flag 25/1029 = 0.024     d_recall +0.159  d_false_flag +0.182  (wrong only union 53, only source 0)
+    best_member: curated (tied on recall: ['curated']); d_recall +0.015; d_false_flag +0.016
+    best_single_replayed: curated (tied on recall: ['curated']); d_recall +0.015; d_false_flag +0.016
+    curated+doc     not replayed
+    census-t2       not replayed
+    census-t20      not replayed
+    generated-2     not replayed
+    generated-3     not replayed
+
+P5  judge recall beside every source's recall on the same wrong outputs
+  no judge data for this population
+
+====================================================================================================
+RECONCILIATIONS (match / mismatch only)
+  registered_dev_calibration: six cells against accounting.json: compared 16, mismatches 0, MATCH
+  registered_dev_calibration: printed P1-P5 blocks against accounting.json: compared 206, mismatches 0, MATCH
+  registered_dev_calibration: judge counts against tables.json: compared 12, mismatches 0, MATCH
+  registered_dev_calibration: non-empty denominators against tables.json table 2: compared 22, mismatches 0, MATCH
+  sensitivity_without_36_rhea_round1: six cells against accounting.json: compared 16, mismatches 0, MATCH
+  sensitivity_without_36_rhea_round1: printed P1-P5 blocks against accounting.json less the dropped records: compared 206, mismatches 0, MATCH
+  sensitivity_without_36_rhea_round1: judge counts against tables.json: compared 12, mismatches 0, MATCH
+  sensitivity_without_36_rhea_round1: non-empty denominators against tables.json table 2: compared 22, mismatches 0, MATCH
+  supplementary_uniprot_dev_natural: printed P1-P5 blocks against design_log_summary.json: compared 187, mismatches 0, MATCH
+  supplementary_uniprot_dev_natural: pooled counts against design_log_summary.json: compared 50, mismatches 0, MATCH
+  dev bank: counts against the bank run's bank_rates: compared 15, mismatches 0, MATCH
+  registered_dev_calibration: P1 bank columns and ratios against bank_rates: compared 8, mismatches 0, MATCH
+  sensitivity_without_36_rhea_round1: P1 bank columns and ratios against bank_rates: compared 8, mismatches 0, MATCH
+  supplementary_uniprot_dev_natural: P1 bank columns and ratios against bank_rates: compared 15, mismatches 0, MATCH
+  source files against the frozen tree: rhea-142/census-t5=equal; rhea-142/curated=equal; rhea-142/generated-1=equal; uniprot-sp-2026_03/census-t5=equal; uniprot-sp-2026_03/curated=equal; uniprot-sp-2026_03/generated-1=equal
+RESULT OK

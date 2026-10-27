@@ -1,0 +1,30 @@
+{
+ "graphs": {
+  "rhea-142": {
+   "sources": {
+    "curated": {
+     "sha256": "91debb622c5153328e856dfca17bed4e6c5b60e69e5a8e503c0b383082764800"
+    },
+    "census-t5": {
+     "sha256": "07539be9e69c0ffbf8332b2187db9e58c46ed480cfd7122cc3b981b6462cbed3"
+    },
+    "generated-1": {
+     "sha256": "17d6c5ec74c39c366e83813b79332136712044046ff0a11c5052c387caf3f00a"
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "sources": {
+    "curated": {
+     "sha256": "4027df500a8a247b01de69953d9ee1a3760df0b379dfa39dae8c74e4f590316c"
+    },
+    "census-t5": {
+     "sha256": "7f804abeebf70ecfc799e93005a33256ab39ed5ce23a9d02d7832434c4afba9e"
+    },
+    "generated-1": {
+     "sha256": "207838d58399023565efef3d923bed9b449981629547bab1f489ba5b8a0e64f4"
+    }
+   }
+  }
+ }
+}

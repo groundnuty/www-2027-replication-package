@@ -1,0 +1,26 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T181300Z",
+ "cells": [
+  {
+   "model": "claude-sonnet-5-5",
+   "graph": "opaque-rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "graph": "opaque-rhea-142",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "glm-5.3-flash",
+   "graph": "opaque-rhea-142",
+   "phases": "natural"
+  },
+  {
+   "model": "claude-opus-5-5",
+   "graph": "opaque-rhea-142",
+   "phases": "natural"
+  }
+ ]
+}

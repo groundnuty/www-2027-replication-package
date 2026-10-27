@@ -1,0 +1,11 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T194629Z",
+ "cells": [
+  {
+   "model": "claude-sonnet-5-5",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  }
+ ]
+}

@@ -1,0 +1,346 @@
+{
+ "groups": {
+  "corporate": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 197,
+     "declined": 431,
+     "declined_by_rule": {
+      "empty_rows": 431
+     },
+     "labels": {
+      "answered": 628,
+      "unparseable": 2
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.3126984126984127,
+      "declined": 0.6841269841269841,
+      "unparseable": 0.0031746031746031746
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.3126984126984127,
+      "declined": 0.6841269841269841,
+      "refused": 0.0,
+      "unparseable": 0.0031746031746031746
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 2
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 167,
+     "declined": 463,
+     "declined_by_rule": {
+      "empty_rows": 463
+     },
+     "labels": {
+      "answered": 630
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.2650793650793651,
+      "declined": 0.734920634920635,
+      "unparseable": 0.0
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.2650793650793651,
+      "declined": 0.734920634920635,
+      "refused": 0.0,
+      "unparseable": 0.0
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 0
+    }
+   }
+  },
+  "opaque-rhea-142": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 182,
+     "declined": 446,
+     "declined_by_rule": {
+      "empty_rows": 446
+     },
+     "labels": {
+      "answered": 628,
+      "unparseable": 2
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.28888888888888886,
+      "declined": 0.707936507936508,
+      "unparseable": 0.0031746031746031746
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.28888888888888886,
+      "declined": 0.707936507936508,
+      "refused": 0.0,
+      "unparseable": 0.0031746031746031746
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 2
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 155,
+     "declined": 475,
+     "declined_by_rule": {
+      "empty_rows": 475
+     },
+     "labels": {
+      "answered": 630
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.24603174603174602,
+      "declined": 0.753968253968254,
+      "unparseable": 0.0
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.24603174603174602,
+      "declined": 0.753968253968254,
+      "refused": 0.0,
+      "unparseable": 0.0
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 0
+    }
+   }
+  },
+  "rhea-142": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 449,
+     "declined": 152,
+     "declined_by_rule": {
+      "empty_rows": 152
+     },
+     "labels": {
+      "answered": 601,
+      "unparseable": 29
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.7126984126984127,
+      "declined": 0.24126984126984127,
+      "unparseable": 0.046031746031746035
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.7126984126984127,
+      "declined": 0.24126984126984127,
+      "refused": 0.0,
+      "unparseable": 0.046031746031746035
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 29
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 520,
+     "declined": 110,
+     "declined_by_rule": {
+      "empty_rows": 110
+     },
+     "labels": {
+      "answered": 630
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.8253968253968254,
+      "declined": 0.1746031746031746,
+      "unparseable": 0.0
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.8253968253968254,
+      "declined": 0.1746031746031746,
+      "refused": 0.0,
+      "unparseable": 0.0
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 0
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 496,
+     "declined": 118,
+     "declined_by_rule": {
+      "empty_rows": 118
+     },
+     "labels": {
+      "answered": 614,
+      "unparseable": 16
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.7873015873015873,
+      "declined": 0.1873015873015873,
+      "unparseable": 0.025396825396825397
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.7873015873015873,
+      "declined": 0.1873015873015873,
+      "refused": 0.0,
+      "unparseable": 0.025396825396825397
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 16
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "answered": 495,
+     "declined": 133,
+     "declined_by_rule": {
+      "empty_rows": 133
+     },
+     "labels": {
+      "answered": 628,
+      "unparseable": 2
+     },
+     "n_attempts": 630,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.7857142857142857,
+      "declined": 0.2111111111111111,
+      "unparseable": 0.0031746031746031746
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.7857142857142857,
+      "declined": 0.2111111111111111,
+      "refused": 0.0,
+      "unparseable": 0.0031746031746031746
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 630,
+     "truncated": 0,
+     "unparseable": 2
+    }
+   }
+  }
+ },
+ "schema": "probe-a-reply-rates/2"
+}

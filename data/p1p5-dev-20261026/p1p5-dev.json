@@ -1,0 +1,8259 @@
+{
+ "bank": {
+  "arms": [
+   "census-t5",
+   "curated",
+   "generated-dc-1",
+   "generated-dc-2",
+   "generated-dc-3"
+  ],
+  "graph": "uniprot-sp-2026_03",
+  "items": 5707,
+  "source_digests": {
+   "census-t5": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4",
+   "curated": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d",
+   "generated-dc-1": "0c7e3c90e9296a19f75b3248dcf2344301b169fc69352c98952fc8e9799a922c",
+   "generated-dc-2": "9bcbf79c301eb8e0b941f8973ca8f8aa55fe1343adb9a5da886abfb634cdf789",
+   "generated-dc-3": "1b0acb06e1c19b2422b6a9095c860019bf74010b67dd995e32712bfcaae3a54e"
+  }
+ },
+ "expected_split": "dev",
+ "populations": {
+  "registered_dev_calibration": {
+   "P1": {
+    "rhea-142": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": [
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 79,
+        "num": 16,
+        "rate": 0.20253164556962025
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 49,
+         "num": 15,
+         "rate": 0.30612244897959184
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 1,
+         "rate": 0.03333333333333333
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 78,
+        "num": 16,
+        "rate": 0.20512820512820512
+       },
+       "source": "curated"
+      },
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 79,
+        "num": 1,
+        "rate": 0.012658227848101266
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 49,
+         "num": 1,
+         "rate": 0.02040816326530612
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 78,
+        "num": 1,
+        "rate": 0.01282051282051282
+       },
+       "source": "census-t5"
+      },
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 79,
+        "num": 1,
+        "rate": 0.012658227848101266
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 49,
+         "num": 1,
+         "rate": 0.02040816326530612
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 78,
+        "num": 1,
+        "rate": 0.01282051282051282
+       },
+       "source": "generated-1"
+      },
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 79,
+        "num": 17,
+        "rate": 0.21518987341772153
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 49,
+         "num": 16,
+         "rate": 0.32653061224489793
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 1,
+         "rate": 0.03333333333333333
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 78,
+        "num": 17,
+        "rate": 0.21794871794871795
+       },
+       "source": "union"
+      }
+     ],
+     "wrong_by_result": {
+      "empty": 0,
+      "refused": 1,
+      "rows": 78
+     },
+     "wrong_by_result_by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "empty": 0,
+       "refused": 1,
+       "rows": 48
+      },
+      "claude-sonnet-5-5": {
+       "empty": 0,
+       "refused": 0,
+       "rows": 30
+      }
+     },
+     "wrong_outputs": 79,
+     "wrong_questions": 30,
+     "wrong_with_result_rows": 78
+    },
+    "uniprot-sp-2026_03": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": [
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 234,
+         "C_P": 1089,
+         "C_U": 224,
+         "W": 4160,
+         "W_F": 2496,
+         "W_P": 1325,
+         "W_U": 339,
+         "false_flag": {
+          "den": 1547,
+          "num": 234,
+          "rate": 0.15126050420168066
+         },
+         "recall": {
+          "den": 4160,
+          "num": 2496,
+          "rate": 0.6
+         }
+        },
+        "bank_arm": "curated",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 234,
+         "C_P": 1089,
+         "C_U": 224,
+         "W": 872,
+         "W_F": 490,
+         "W_P": 328,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 234,
+          "rate": 0.15126050420168066
+         },
+         "recall": {
+          "den": 872,
+          "num": 490,
+          "rate": 0.5619266055045872
+         }
+        },
+        "source_digest": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.5688859150217465,
+       "ratio_real_result_rows_over_bank_returns_rows": 0.5779870922728065,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 39,
+        "rate": 0.319672131147541
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 23,
+         "rate": 0.25842696629213485
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 16,
+         "rate": 0.48484848484848486
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 38,
+        "rate": 0.3247863247863248
+       },
+       "source": "curated"
+      },
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 141,
+         "C_P": 1200,
+         "C_U": 206,
+         "W": 4160,
+         "W_F": 3135,
+         "W_P": 722,
+         "W_U": 303,
+         "false_flag": {
+          "den": 1547,
+          "num": 141,
+          "rate": 0.09114414996767937
+         },
+         "recall": {
+          "den": 4160,
+          "num": 3135,
+          "rate": 0.7536057692307693
+         }
+        },
+        "bank_arm": "census-t5",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 141,
+         "C_P": 1200,
+         "C_U": 206,
+         "W": 872,
+         "W_F": 555,
+         "W_P": 263,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 141,
+          "rate": 0.09114414996767937
+         },
+         "recall": {
+          "den": 872,
+          "num": 555,
+          "rate": 0.6364678899082569
+         }
+        },
+        "source_digest": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.3090828533451484,
+       "ratio_real_result_rows_over_bank_returns_rows": 0.3222915222915223,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 24,
+        "rate": 0.19672131147540983
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 9,
+         "rate": 0.10112359550561797
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 15,
+         "rate": 0.45454545454545453
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 24,
+        "rate": 0.20512820512820512
+       },
+       "source": "census-t5"
+      },
+      {
+       "bank": "not replayed (no bank arm with this source digest)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 27,
+        "rate": 0.22131147540983606
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 12,
+         "rate": 0.1348314606741573
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 15,
+         "rate": 0.45454545454545453
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 27,
+        "rate": 0.23076923076923078
+       },
+       "source": "generated-1"
+      },
+      {
+       "bank": "not replayed (no source digest for this arm)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 39,
+        "rate": 0.319672131147541
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 23,
+         "rate": 0.25842696629213485
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 16,
+         "rate": 0.48484848484848486
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 38,
+        "rate": 0.3247863247863248
+       },
+       "source": "union"
+      }
+     ],
+     "wrong_by_result": {
+      "empty": 2,
+      "refused": 3,
+      "rows": 117
+     },
+     "wrong_by_result_by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "empty": 2,
+       "refused": 3,
+       "rows": 84
+      },
+      "claude-sonnet-5-5": {
+       "empty": 0,
+       "refused": 0,
+       "rows": 33
+      }
+     },
+     "wrong_outputs": 122,
+     "wrong_questions": 36,
+     "wrong_with_result_rows": 117
+    }
+   },
+   "P2": {
+    "rhea-142": {
+     "focus": {
+      "sources": {
+       "census-t5": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "curated": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "generated-1": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "union": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       }
+      },
+      "templates": [
+       "type_members"
+      ],
+      "templates_present": [
+       "type_members"
+      ],
+      "wrong_outputs": 43,
+      "wrong_questions": 5
+     },
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "templates": {
+      "absence_negation": {
+       "sources": {
+        "census-t5": {
+         "W": 4,
+         "W_F": 1,
+         "W_P": 3,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 1,
+          "rate": 0.25
+         }
+        },
+        "curated": {
+         "W": 4,
+         "W_F": 3,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 3,
+          "rate": 0.75
+         }
+        },
+        "generated-1": {
+         "W": 4,
+         "W_F": 1,
+         "W_P": 3,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 1,
+          "rate": 0.25
+         }
+        },
+        "union": {
+         "W": 4,
+         "W_F": 4,
+         "W_P": 0,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 4,
+          "rate": 1.0
+         }
+        }
+       },
+       "wrong_outputs": 4,
+       "wrong_questions": 4
+      },
+      "aggregation": {
+       "sources": {
+        "census-t5": {
+         "W": 8,
+         "W_F": 0,
+         "W_P": 8,
+         "W_U": 0,
+         "recall": {
+          "den": 8,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 8,
+         "W_F": 8,
+         "W_P": 0,
+         "W_U": 0,
+         "recall": {
+          "den": 8,
+          "num": 8,
+          "rate": 1.0
+         }
+        },
+        "generated-1": {
+         "W": 8,
+         "W_F": 0,
+         "W_P": 7,
+         "W_U": 1,
+         "recall": {
+          "den": 8,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 8,
+         "W_F": 8,
+         "W_P": 0,
+         "W_U": 0,
+         "recall": {
+          "den": 8,
+          "num": 8,
+          "rate": 1.0
+         }
+        }
+       },
+       "wrong_outputs": 8,
+       "wrong_questions": 6
+      },
+      "cross_graph_join": {
+       "sources": {
+        "census-t5": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "generated-1": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        }
+       },
+       "wrong_outputs": 2,
+       "wrong_questions": 2
+      },
+      "multi_hop_path": {
+       "sources": {
+        "census-t5": {
+         "W": 5,
+         "W_F": 0,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 5,
+         "W_F": 3,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 5,
+          "num": 3,
+          "rate": 0.6
+         }
+        },
+        "generated-1": {
+         "W": 5,
+         "W_F": 0,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 5,
+         "W_F": 3,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 5,
+          "num": 3,
+          "rate": 0.6
+         }
+        }
+       },
+       "wrong_outputs": 5,
+       "wrong_questions": 3
+      },
+      "numeric_filter": {
+       "sources": {
+        "census-t5": {
+         "W": 12,
+         "W_F": 0,
+         "W_P": 11,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 12,
+         "W_F": 1,
+         "W_P": 10,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 1,
+          "rate": 0.08333333333333333
+         }
+        },
+        "generated-1": {
+         "W": 12,
+         "W_F": 0,
+         "W_P": 11,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 12,
+         "W_F": 1,
+         "W_P": 10,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 1,
+          "rate": 0.08333333333333333
+         }
+        }
+       },
+       "wrong_outputs": 12,
+       "wrong_questions": 6
+      },
+      "one_hop_attribute": {
+       "sources": {
+        "census-t5": {
+         "W": 5,
+         "W_F": 0,
+         "W_P": 4,
+         "W_U": 1,
+         "recall": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 5,
+         "W_F": 1,
+         "W_P": 2,
+         "W_U": 2,
+         "recall": {
+          "den": 5,
+          "num": 1,
+          "rate": 0.2
+         }
+        },
+        "generated-1": {
+         "W": 5,
+         "W_F": 0,
+         "W_P": 4,
+         "W_U": 1,
+         "recall": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 5,
+         "W_F": 1,
+         "W_P": 3,
+         "W_U": 1,
+         "recall": {
+          "den": 5,
+          "num": 1,
+          "rate": 0.2
+         }
+        }
+       },
+       "wrong_outputs": 5,
+       "wrong_questions": 4
+      },
+      "type_members": {
+       "sources": {
+        "census-t5": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "generated-1": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        }
+       },
+       "wrong_outputs": 43,
+       "wrong_questions": 5
+      }
+     }
+    },
+    "uniprot-sp-2026_03": {
+     "focus": {
+      "sources": {
+       "census-t5": {
+        "W": 77,
+        "W_F": 22,
+        "W_P": 53,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 22,
+         "rate": 0.2857142857142857
+        }
+       },
+       "curated": {
+        "W": 77,
+        "W_F": 30,
+        "W_P": 45,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 30,
+         "rate": 0.38961038961038963
+        }
+       },
+       "generated-1": {
+        "W": 77,
+        "W_F": 24,
+        "W_P": 51,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 24,
+         "rate": 0.3116883116883117
+        }
+       },
+       "union": {
+        "W": 77,
+        "W_F": 30,
+        "W_P": 45,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 30,
+         "rate": 0.38961038961038963
+        }
+       }
+      },
+      "templates": [
+       "aggregation",
+       "numeric_filter"
+      ],
+      "templates_present": [
+       "aggregation",
+       "numeric_filter"
+      ],
+      "wrong_outputs": 77,
+      "wrong_questions": 13
+     },
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "templates": {
+      "absence_negation": {
+       "sources": {
+        "census-t5": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "curated": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "generated-1": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "union": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 3,
+       "wrong_questions": 2
+      },
+      "aggregation": {
+       "sources": {
+        "census-t5": {
+         "W": 40,
+         "W_F": 2,
+         "W_P": 37,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 2,
+          "rate": 0.05
+         }
+        },
+        "curated": {
+         "W": 40,
+         "W_F": 7,
+         "W_P": 32,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 7,
+          "rate": 0.175
+         }
+        },
+        "generated-1": {
+         "W": 40,
+         "W_F": 4,
+         "W_P": 35,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 4,
+          "rate": 0.1
+         }
+        },
+        "union": {
+         "W": 40,
+         "W_F": 7,
+         "W_P": 32,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 7,
+          "rate": 0.175
+         }
+        }
+       },
+       "wrong_outputs": 40,
+       "wrong_questions": 8
+      },
+      "cross_graph_join": {
+       "sources": {
+        "census-t5": {
+         "W": 7,
+         "W_F": 0,
+         "W_P": 7,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 7,
+         "W_F": 3,
+         "W_P": 4,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 3,
+          "rate": 0.42857142857142855
+         }
+        },
+        "generated-1": {
+         "W": 7,
+         "W_F": 0,
+         "W_P": 7,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 7,
+         "W_F": 3,
+         "W_P": 4,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 3,
+          "rate": 0.42857142857142855
+         }
+        }
+       },
+       "wrong_outputs": 7,
+       "wrong_questions": 5
+      },
+      "multi_hop_path": {
+       "sources": {
+        "census-t5": {
+         "W": 6,
+         "W_F": 0,
+         "W_P": 6,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 6,
+         "W_F": 1,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 1,
+          "rate": 0.16666666666666666
+         }
+        },
+        "generated-1": {
+         "W": 6,
+         "W_F": 0,
+         "W_P": 6,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 6,
+         "W_F": 1,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 1,
+          "rate": 0.16666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 6,
+       "wrong_questions": 4
+      },
+      "numeric_filter": {
+       "sources": {
+        "census-t5": {
+         "W": 37,
+         "W_F": 20,
+         "W_P": 16,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 20,
+          "rate": 0.5405405405405406
+         }
+        },
+        "curated": {
+         "W": 37,
+         "W_F": 23,
+         "W_P": 13,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 23,
+          "rate": 0.6216216216216216
+         }
+        },
+        "generated-1": {
+         "W": 37,
+         "W_F": 20,
+         "W_P": 16,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 20,
+          "rate": 0.5405405405405406
+         }
+        },
+        "union": {
+         "W": 37,
+         "W_F": 23,
+         "W_P": 13,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 23,
+          "rate": 0.6216216216216216
+         }
+        }
+       },
+       "wrong_outputs": 37,
+       "wrong_questions": 5
+      },
+      "one_hop_attribute": {
+       "sources": {
+        "census-t5": {
+         "W": 26,
+         "W_F": 0,
+         "W_P": 24,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 26,
+         "W_F": 1,
+         "W_P": 23,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 1,
+          "rate": 0.038461538461538464
+         }
+        },
+        "generated-1": {
+         "W": 26,
+         "W_F": 1,
+         "W_P": 23,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 1,
+          "rate": 0.038461538461538464
+         }
+        },
+        "union": {
+         "W": 26,
+         "W_F": 1,
+         "W_P": 23,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 1,
+          "rate": 0.038461538461538464
+         }
+        }
+       },
+       "wrong_outputs": 26,
+       "wrong_questions": 9
+      },
+      "type_members": {
+       "sources": {
+        "census-t5": {
+         "W": 3,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 0,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "generated-1": {
+         "W": 3,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 0,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 3,
+       "wrong_questions": 3
+      }
+     }
+    }
+   },
+   "P3": {
+    "all": {
+     "correct_outputs": 1244,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 1244,
+       "C_F": 46,
+       "C_P": 1178,
+       "C_U": 20,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 554,
+         "C_F": 26,
+         "false_flag": {
+          "den": 554,
+          "num": 26,
+          "rate": 0.04693140794223827
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 690,
+         "C_F": 20,
+         "false_flag": {
+          "den": 690,
+          "num": 20,
+          "rate": 0.028985507246376812
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1244,
+        "num": 46,
+        "rate": 0.03697749196141479
+       }
+      },
+      "curated": {
+       "C": 1244,
+       "C_F": 579,
+       "C_P": 649,
+       "C_U": 16,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 554,
+         "C_F": 223,
+         "false_flag": {
+          "den": 554,
+          "num": 223,
+          "rate": 0.40252707581227437
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 690,
+         "C_F": 356,
+         "false_flag": {
+          "den": 690,
+          "num": 356,
+          "rate": 0.5159420289855072
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1244,
+        "num": 579,
+        "rate": 0.4654340836012862
+       }
+      },
+      "generated-1": {
+       "C": 1244,
+       "C_F": 60,
+       "C_P": 1145,
+       "C_U": 39,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 554,
+         "C_F": 39,
+         "false_flag": {
+          "den": 554,
+          "num": 39,
+          "rate": 0.0703971119133574
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 690,
+         "C_F": 21,
+         "false_flag": {
+          "den": 690,
+          "num": 21,
+          "rate": 0.030434782608695653
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1244,
+        "num": 60,
+        "rate": 0.04823151125401929
+       }
+      },
+      "union": {
+       "C": 1244,
+       "C_F": 593,
+       "C_P": 640,
+       "C_U": 11,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 554,
+         "C_F": 233,
+         "false_flag": {
+          "den": 554,
+          "num": 233,
+          "rate": 0.42057761732851984
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 690,
+         "C_F": 360,
+         "false_flag": {
+          "den": 690,
+          "num": 360,
+          "rate": 0.5217391304347826
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1244,
+        "num": 593,
+        "rate": 0.4766881028938907
+       }
+      }
+     }
+    },
+    "rhea-142": {
+     "correct_outputs": 659,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 659,
+       "C_F": 17,
+       "C_P": 624,
+       "C_U": 18,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 311,
+         "C_F": 10,
+         "false_flag": {
+          "den": 311,
+          "num": 10,
+          "rate": 0.03215434083601286
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 348,
+         "C_F": 7,
+         "false_flag": {
+          "den": 348,
+          "num": 7,
+          "rate": 0.020114942528735632
+         }
+        }
+       },
+       "false_flag": {
+        "den": 659,
+        "num": 17,
+        "rate": 0.025796661608497723
+       }
+      },
+      "curated": {
+       "C": 659,
+       "C_F": 450,
+       "C_P": 196,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 311,
+         "C_F": 170,
+         "false_flag": {
+          "den": 311,
+          "num": 170,
+          "rate": 0.5466237942122186
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 348,
+         "C_F": 280,
+         "false_flag": {
+          "den": 348,
+          "num": 280,
+          "rate": 0.8045977011494253
+         }
+        }
+       },
+       "false_flag": {
+        "den": 659,
+        "num": 450,
+        "rate": 0.6828528072837633
+       }
+      },
+      "generated-1": {
+       "C": 659,
+       "C_F": 35,
+       "C_P": 588,
+       "C_U": 36,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 311,
+         "C_F": 27,
+         "false_flag": {
+          "den": 311,
+          "num": 27,
+          "rate": 0.08681672025723473
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 348,
+         "C_F": 8,
+         "false_flag": {
+          "den": 348,
+          "num": 8,
+          "rate": 0.022988505747126436
+         }
+        }
+       },
+       "false_flag": {
+        "den": 659,
+        "num": 35,
+        "rate": 0.05311077389984825
+       }
+      },
+      "union": {
+       "C": 659,
+       "C_F": 459,
+       "C_P": 191,
+       "C_U": 9,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 311,
+         "C_F": 176,
+         "false_flag": {
+          "den": 311,
+          "num": 176,
+          "rate": 0.5659163987138264
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 348,
+         "C_F": 283,
+         "false_flag": {
+          "den": 348,
+          "num": 283,
+          "rate": 0.8132183908045977
+         }
+        }
+       },
+       "false_flag": {
+        "den": 659,
+        "num": 459,
+        "rate": 0.6965098634294385
+       }
+      }
+     }
+    },
+    "uniprot-sp-2026_03": {
+     "correct_outputs": 585,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 585,
+       "C_F": 29,
+       "C_P": 554,
+       "C_U": 2,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 16,
+         "false_flag": {
+          "den": 243,
+          "num": 16,
+          "rate": 0.06584362139917696
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 13,
+         "false_flag": {
+          "den": 342,
+          "num": 13,
+          "rate": 0.038011695906432746
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 29,
+        "rate": 0.04957264957264957
+       }
+      },
+      "curated": {
+       "C": 585,
+       "C_F": 129,
+       "C_P": 453,
+       "C_U": 3,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 53,
+         "false_flag": {
+          "den": 243,
+          "num": 53,
+          "rate": 0.21810699588477367
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 76,
+         "false_flag": {
+          "den": 342,
+          "num": 76,
+          "rate": 0.2222222222222222
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 129,
+        "rate": 0.2205128205128205
+       }
+      },
+      "generated-1": {
+       "C": 585,
+       "C_F": 25,
+       "C_P": 557,
+       "C_U": 3,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 12,
+         "false_flag": {
+          "den": 243,
+          "num": 12,
+          "rate": 0.04938271604938271
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 13,
+         "false_flag": {
+          "den": 342,
+          "num": 13,
+          "rate": 0.038011695906432746
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 25,
+        "rate": 0.042735042735042736
+       }
+      },
+      "union": {
+       "C": 585,
+       "C_F": 134,
+       "C_P": 449,
+       "C_U": 2,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 57,
+         "false_flag": {
+          "den": 243,
+          "num": 57,
+          "rate": 0.2345679012345679
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 77,
+         "false_flag": {
+          "den": 342,
+          "num": 77,
+          "rate": 0.22514619883040934
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 134,
+        "rate": 0.22905982905982905
+       }
+      }
+     }
+    }
+   },
+   "P4": {
+    "all": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.0112540192926045,
+        "union_minus_recall": 0.004975124378109486
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.0112540192926045,
+        "union_minus_recall": 0.004975124378109486
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 547,
+         "false_flag": {
+          "den": 1244,
+          "num": 46,
+          "rate": 0.03697749196141479
+         },
+         "is_member": true,
+         "recall": {
+          "den": 201,
+          "num": 25,
+          "rate": 0.12437810945273632
+         },
+         "union_minus_false_flag": 0.4397106109324759,
+         "union_minus_recall": 0.15422885572139305,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 31
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 14,
+         "false_flag": {
+          "den": 1244,
+          "num": 579,
+          "rate": 0.4654340836012862
+         },
+         "is_member": true,
+         "recall": {
+          "den": 201,
+          "num": 55,
+          "rate": 0.2736318407960199
+         },
+         "union_minus_false_flag": 0.0112540192926045,
+         "union_minus_recall": 0.004975124378109486,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 1
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 2,
+         "correct_flagged_by_union_not_by_source": 535,
+         "false_flag": {
+          "den": 1244,
+          "num": 60,
+          "rate": 0.04823151125401929
+         },
+         "is_member": false,
+         "recall": {
+          "den": 201,
+          "num": 28,
+          "rate": 0.13930348258706468
+         },
+         "union_minus_false_flag": 0.4284565916398714,
+         "union_minus_recall": 0.13930348258706468,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 28
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 1244,
+        "C_F": 593,
+        "W": 201,
+        "W_F": 56,
+        "false_flag": {
+         "den": 1244,
+         "num": 593,
+         "rate": 0.4766881028938907
+        },
+        "recall": {
+         "den": 201,
+         "num": 56,
+         "rate": 0.27860696517412936
+        }
+       }
+      }
+     }
+    },
+    "rhea-142": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.01365705614567525,
+        "union_minus_recall": 0.012658227848101278
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.01365705614567525,
+        "union_minus_recall": 0.012658227848101278
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 442,
+         "false_flag": {
+          "den": 659,
+          "num": 17,
+          "rate": 0.025796661608497723
+         },
+         "is_member": true,
+         "recall": {
+          "den": 79,
+          "num": 1,
+          "rate": 0.012658227848101266
+         },
+         "union_minus_false_flag": 0.6707132018209409,
+         "union_minus_recall": 0.20253164556962025,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 16
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 9,
+         "false_flag": {
+          "den": 659,
+          "num": 450,
+          "rate": 0.6828528072837633
+         },
+         "is_member": true,
+         "recall": {
+          "den": 79,
+          "num": 16,
+          "rate": 0.20253164556962025
+         },
+         "union_minus_false_flag": 0.01365705614567525,
+         "union_minus_recall": 0.012658227848101278,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 1
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 2,
+         "correct_flagged_by_union_not_by_source": 426,
+         "false_flag": {
+          "den": 659,
+          "num": 35,
+          "rate": 0.05311077389984825
+         },
+         "is_member": false,
+         "recall": {
+          "den": 79,
+          "num": 1,
+          "rate": 0.012658227848101266
+         },
+         "union_minus_false_flag": 0.6433990895295902,
+         "union_minus_recall": 0.20253164556962025,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 16
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 659,
+        "C_F": 459,
+        "W": 79,
+        "W_F": 17,
+        "false_flag": {
+         "den": 659,
+         "num": 459,
+         "rate": 0.6965098634294385
+        },
+        "recall": {
+         "den": 79,
+         "num": 17,
+         "rate": 0.21518987341772153
+        }
+       }
+      }
+     }
+    },
+    "uniprot-sp-2026_03": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.008547008547008544,
+        "union_minus_recall": 0.0
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.008547008547008544,
+        "union_minus_recall": 0.0
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 105,
+         "false_flag": {
+          "den": 585,
+          "num": 29,
+          "rate": 0.04957264957264957
+         },
+         "is_member": true,
+         "recall": {
+          "den": 122,
+          "num": 24,
+          "rate": 0.19672131147540983
+         },
+         "union_minus_false_flag": 0.1794871794871795,
+         "union_minus_recall": 0.12295081967213117,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 15
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 5,
+         "false_flag": {
+          "den": 585,
+          "num": 129,
+          "rate": 0.2205128205128205
+         },
+         "is_member": true,
+         "recall": {
+          "den": 122,
+          "num": 39,
+          "rate": 0.319672131147541
+         },
+         "union_minus_false_flag": 0.008547008547008544,
+         "union_minus_recall": 0.0,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 0
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 109,
+         "false_flag": {
+          "den": 585,
+          "num": 25,
+          "rate": 0.042735042735042736
+         },
+         "is_member": false,
+         "recall": {
+          "den": 122,
+          "num": 27,
+          "rate": 0.22131147540983606
+         },
+         "union_minus_false_flag": 0.18632478632478633,
+         "union_minus_recall": 0.09836065573770494,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 12
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 585,
+        "C_F": 134,
+        "W": 122,
+        "W_F": 39,
+        "false_flag": {
+         "den": 585,
+         "num": 134,
+         "rate": 0.22905982905982905
+        },
+        "recall": {
+         "den": 122,
+         "num": 39,
+         "rate": 0.319672131147541
+        }
+       }
+      }
+     }
+    }
+   },
+   "P5": {
+    "Qwen/Qwen3.8-27B": {
+     "all": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 138,
+        "recall": null,
+        "reject": 0,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 138,
+        "of": 138,
+        "recall": {
+         "den": 138,
+         "num": 70,
+         "rate": 0.5072463768115942
+        },
+        "reject": 70,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 138,
+          "num": 10,
+          "rate": 0.07246376811594203
+         },
+         "curated": {
+          "den": 138,
+          "num": 38,
+          "rate": 0.2753623188405797
+         },
+         "generated-1": {
+          "den": 138,
+          "num": 13,
+          "rate": 0.09420289855072464
+         },
+         "union": {
+          "den": 138,
+          "num": 39,
+          "rate": 0.2826086956521739
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 138,
+        "of": 138,
+        "recall": {
+         "den": 138,
+         "num": 70,
+         "rate": 0.5072463768115942
+        },
+        "reject": 70,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 138,
+          "num": 10,
+          "rate": 0.07246376811594203
+         },
+         "curated": {
+          "den": 138,
+          "num": 38,
+          "rate": 0.2753623188405797
+         },
+         "generated-1": {
+          "den": 138,
+          "num": 13,
+          "rate": 0.09420289855072464
+         },
+         "union": {
+          "den": 138,
+          "num": 39,
+          "rate": 0.2826086956521739
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 138,
+        "num": 10,
+        "rate": 0.07246376811594203
+       },
+       "curated": {
+        "den": 138,
+        "num": 38,
+        "rate": 0.2753623188405797
+       },
+       "generated-1": {
+        "den": 138,
+        "num": 13,
+        "rate": 0.09420289855072464
+       },
+       "union": {
+        "den": 138,
+        "num": 39,
+        "rate": 0.2826086956521739
+       }
+      },
+      "wrong_outputs": 138,
+      "wrong_questions": 62
+     },
+     "rhea-142": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 49,
+        "recall": null,
+        "reject": 0,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 49,
+        "of": 49,
+        "recall": {
+         "den": 49,
+         "num": 29,
+         "rate": 0.5918367346938775
+        },
+        "reject": 29,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 49,
+          "num": 1,
+          "rate": 0.02040816326530612
+         },
+         "curated": {
+          "den": 49,
+          "num": 15,
+          "rate": 0.30612244897959184
+         },
+         "generated-1": {
+          "den": 49,
+          "num": 1,
+          "rate": 0.02040816326530612
+         },
+         "union": {
+          "den": 49,
+          "num": 16,
+          "rate": 0.32653061224489793
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 49,
+        "of": 49,
+        "recall": {
+         "den": 49,
+         "num": 23,
+         "rate": 0.46938775510204084
+        },
+        "reject": 23,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 49,
+          "num": 1,
+          "rate": 0.02040816326530612
+         },
+         "curated": {
+          "den": 49,
+          "num": 15,
+          "rate": 0.30612244897959184
+         },
+         "generated-1": {
+          "den": 49,
+          "num": 1,
+          "rate": 0.02040816326530612
+         },
+         "union": {
+          "den": 49,
+          "num": 16,
+          "rate": 0.32653061224489793
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 49,
+        "num": 1,
+        "rate": 0.02040816326530612
+       },
+       "curated": {
+        "den": 49,
+        "num": 15,
+        "rate": 0.30612244897959184
+       },
+       "generated-1": {
+        "den": 49,
+        "num": 1,
+        "rate": 0.02040816326530612
+       },
+       "union": {
+        "den": 49,
+        "num": 16,
+        "rate": 0.32653061224489793
+       }
+      },
+      "wrong_outputs": 49,
+      "wrong_questions": 27
+     },
+     "uniprot-sp-2026_03": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 89,
+        "recall": null,
+        "reject": 0,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 89,
+        "of": 89,
+        "recall": {
+         "den": 89,
+         "num": 41,
+         "rate": 0.4606741573033708
+        },
+        "reject": 41,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 89,
+          "num": 9,
+          "rate": 0.10112359550561797
+         },
+         "curated": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         },
+         "generated-1": {
+          "den": 89,
+          "num": 12,
+          "rate": 0.1348314606741573
+         },
+         "union": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 89,
+        "of": 89,
+        "recall": {
+         "den": 89,
+         "num": 47,
+         "rate": 0.5280898876404494
+        },
+        "reject": 47,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 89,
+          "num": 9,
+          "rate": 0.10112359550561797
+         },
+         "curated": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         },
+         "generated-1": {
+          "den": 89,
+          "num": 12,
+          "rate": 0.1348314606741573
+         },
+         "union": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 89,
+        "num": 9,
+        "rate": 0.10112359550561797
+       },
+       "curated": {
+        "den": 89,
+        "num": 23,
+        "rate": 0.25842696629213485
+       },
+       "generated-1": {
+        "den": 89,
+        "num": 12,
+        "rate": 0.1348314606741573
+       },
+       "union": {
+        "den": 89,
+        "num": 23,
+        "rate": 0.25842696629213485
+       }
+      },
+      "wrong_outputs": 89,
+      "wrong_questions": 35
+     }
+    },
+    "claude-sonnet-5-5": {
+     "all": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 63,
+        "recall": null,
+        "reject": 0,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 63,
+        "of": 63,
+        "recall": {
+         "den": 63,
+         "num": 6,
+         "rate": 0.09523809523809523
+        },
+        "reject": 6,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "curated": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         },
+         "generated-1": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "union": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 63,
+        "of": 63,
+        "recall": {
+         "den": 63,
+         "num": 7,
+         "rate": 0.1111111111111111
+        },
+        "reject": 7,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "curated": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         },
+         "generated-1": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "union": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 63,
+        "num": 15,
+        "rate": 0.23809523809523808
+       },
+       "curated": {
+        "den": 63,
+        "num": 17,
+        "rate": 0.2698412698412698
+       },
+       "generated-1": {
+        "den": 63,
+        "num": 15,
+        "rate": 0.23809523809523808
+       },
+       "union": {
+        "den": 63,
+        "num": 17,
+        "rate": 0.2698412698412698
+       }
+      },
+      "wrong_outputs": 63,
+      "wrong_questions": 21
+     },
+     "rhea-142": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 30,
+        "recall": null,
+        "reject": 0,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 30,
+        "of": 30,
+        "recall": {
+         "den": 30,
+         "num": 4,
+         "rate": 0.13333333333333333
+        },
+        "reject": 4,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "curated": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         },
+         "generated-1": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "union": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 30,
+        "of": 30,
+        "recall": {
+         "den": 30,
+         "num": 5,
+         "rate": 0.16666666666666666
+        },
+        "reject": 5,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "curated": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         },
+         "generated-1": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "union": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 30,
+        "num": 0,
+        "rate": 0.0
+       },
+       "curated": {
+        "den": 30,
+        "num": 1,
+        "rate": 0.03333333333333333
+       },
+       "generated-1": {
+        "den": 30,
+        "num": 0,
+        "rate": 0.0
+       },
+       "union": {
+        "den": 30,
+        "num": 1,
+        "rate": 0.03333333333333333
+       }
+      },
+      "wrong_outputs": 30,
+      "wrong_questions": 9
+     },
+     "uniprot-sp-2026_03": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 33,
+        "recall": null,
+        "reject": 0,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 33,
+        "of": 33,
+        "recall": {
+         "den": 33,
+         "num": 2,
+         "rate": 0.06060606060606061
+        },
+        "reject": 2,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "curated": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         },
+         "generated-1": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "union": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 33,
+        "of": 33,
+        "recall": {
+         "den": 33,
+         "num": 2,
+         "rate": 0.06060606060606061
+        },
+        "reject": 2,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "curated": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         },
+         "generated-1": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "union": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 33,
+        "num": 15,
+        "rate": 0.45454545454545453
+       },
+       "curated": {
+        "den": 33,
+        "num": 16,
+        "rate": 0.48484848484848486
+       },
+       "generated-1": {
+        "den": 33,
+        "num": 15,
+        "rate": 0.45454545454545453
+       },
+       "union": {
+        "den": 33,
+        "num": 16,
+        "rate": 0.48484848484848486
+       }
+      },
+      "wrong_outputs": 33,
+      "wrong_questions": 12
+     }
+    }
+   },
+   "judge_coverage": {
+    "Qwen/Qwen3.8-27B": {
+     "by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "judged": 0,
+       "outputs": 692
+      },
+      "claude-sonnet-5-5": {
+       "judged": 0,
+       "outputs": 753
+      }
+     },
+     "calls_for_population_outputs": 0,
+     "outputs_in_population": 1445,
+     "outputs_judged": 0,
+     "raw_verdicts": {},
+     "status": "not run"
+    },
+    "claude-haiku-5-5": {
+     "by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "judged": 692,
+       "outputs": 692
+      },
+      "claude-sonnet-5-5": {
+       "judged": 753,
+       "outputs": 753
+      }
+     },
+     "calls_for_population_outputs": 1445,
+     "outputs_in_population": 1445,
+     "outputs_judged": 1445,
+     "raw_verdicts": {
+      "<unparsed>": 1,
+      "accept": 1105,
+      "reject": 339
+     },
+     "status": "complete"
+    },
+    "claude-sonnet-5-5": {
+     "by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "judged": 692,
+       "outputs": 692
+      },
+      "claude-sonnet-5-5": {
+       "judged": 753,
+       "outputs": 753
+      }
+     },
+     "calls_for_population_outputs": 1445,
+     "outputs_in_population": 1445,
+     "outputs_judged": 1445,
+     "raw_verdicts": {
+      "<unparsed>": 3,
+      "accept": 1197,
+      "reject": 245
+     },
+     "status": "complete"
+    }
+   },
+   "population_check": {
+    "against_judge_calibration": {
+     "equal": true,
+     "judge_calls_for_keys_outside_the_population": {
+      "Qwen/Qwen3.8-27B": 0,
+      "claude-haiku-5-5": 0,
+      "claude-sonnet-5-5": 0
+     },
+     "keys_removed_with_the_dropped_records": 0,
+     "matrix_outputs": 1445,
+     "only_in_matrix": 0,
+     "only_in_truth": 0,
+     "selection_keys": 1445,
+     "selection_keys_equal_matrix_outputs": true,
+     "selection_keys_equal_truth_keys": true,
+     "selection_model_disagrees_with_matrix_model": 0,
+     "selection_question_id_disagrees_with_matrix": 0,
+     "truth_keys": 1445,
+     "truth_label_disagrees_with_matrix_correct": 0
+    },
+    "against_registered": {
+     "all_equal": true,
+     "outputs": {
+      "difference": 0,
+      "equal": true,
+      "observed": 1445,
+      "registered": 1445
+     },
+     "wrong": {
+      "difference": 0,
+      "equal": true,
+      "observed": 201,
+      "registered": 201
+     },
+     "wrong_by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "difference": 0,
+       "equal": true,
+       "observed": 138,
+       "registered": 138
+      },
+      "claude-sonnet-5-5": {
+       "difference": 0,
+       "equal": true,
+       "observed": 63,
+       "registered": 63
+      }
+     }
+    },
+    "attempts": 1512,
+    "by_graph": {
+     "rhea-142": {
+      "attempts": 756,
+      "no_output": 18,
+      "outputs": 738,
+      "wrong": 79
+     },
+     "uniprot-sp-2026_03": {
+      "attempts": 756,
+      "no_output": 49,
+      "outputs": 707,
+      "wrong": 122
+     }
+    },
+    "cohorts": {
+     "none": 1512
+    },
+    "correct": 1244,
+    "models_left_out_of_the_analysed_set_attempts": {},
+    "no_output": 67,
+    "outputs": 1445,
+    "outputs_by_agent": {
+     "Qwen/Qwen3.8-27B": 692,
+     "claude-sonnet-5-5": 753
+    },
+    "union_consistency": {
+     "available": true,
+     "disagreeing": 0,
+     "member_statuses_checked": 2890
+    },
+    "wrong": 201,
+    "wrong_by_agent": {
+     "Qwen/Qwen3.8-27B": 138,
+     "claude-sonnet-5-5": 63
+    }
+   },
+   "registered_population": true,
+   "source_digests": {
+    "rhea-142": {
+     "census-t5": "6d243f5f8302f2c860b6b6c800757b17aee739b2f779a9dda9193563ebc7de7c",
+     "curated": "95c0373b827cf3def642b376cfe311b11ee2a0f831bd83db7115e69b7717f361",
+     "generated-1": "522bb161e78fb01ae13290137efd939091d683a58f04a4b276442e14888ae8d1"
+    },
+    "uniprot-sp-2026_03": {
+     "census-t5": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4",
+     "curated": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d",
+     "generated-1": "99580391c881c6efb3552b7e9ff62fcb057902a3a3ae128786f557b8de6ea189"
+    }
+   },
+   "title": "19 Oct checker-audit replay on the dev calibration outputs (UniProt + Rhea, rounds 1-2, Sonnet + Qwen3.8, condition none); sources curated, census-t5, generated-1 + union",
+   "unions": {
+    "rhea-142": {
+     "union": [
+      "curated",
+      "census-t5"
+     ]
+    },
+    "uniprot-sp-2026_03": {
+     "union": [
+      "curated",
+      "census-t5"
+     ]
+    }
+   }
+  },
+  "sensitivity_without_36_rhea_round1": {
+   "P1": {
+    "rhea-142": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": [
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 78,
+        "num": 15,
+        "rate": 0.19230769230769232
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 48,
+         "num": 14,
+         "rate": 0.2916666666666667
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 1,
+         "rate": 0.03333333333333333
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 77,
+        "num": 15,
+        "rate": 0.19480519480519481
+       },
+       "source": "curated"
+      },
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 78,
+        "num": 1,
+        "rate": 0.01282051282051282
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 48,
+         "num": 1,
+         "rate": 0.020833333333333332
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 77,
+        "num": 1,
+        "rate": 0.012987012987012988
+       },
+       "source": "census-t5"
+      },
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 78,
+        "num": 1,
+        "rate": 0.01282051282051282
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 48,
+         "num": 1,
+         "rate": 0.020833333333333332
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 77,
+        "num": 1,
+        "rate": 0.012987012987012988
+       },
+       "source": "generated-1"
+      },
+      {
+       "bank": "not replayed (no dev bank replay for this graph)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 78,
+        "num": 16,
+        "rate": 0.20512820512820512
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 48,
+         "num": 15,
+         "rate": 0.3125
+        },
+        "claude-sonnet-5-5": {
+         "den": 30,
+         "num": 1,
+         "rate": 0.03333333333333333
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 77,
+        "num": 16,
+        "rate": 0.2077922077922078
+       },
+       "source": "union"
+      }
+     ],
+     "wrong_by_result": {
+      "empty": 0,
+      "refused": 1,
+      "rows": 77
+     },
+     "wrong_by_result_by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "empty": 0,
+       "refused": 1,
+       "rows": 47
+      },
+      "claude-sonnet-5-5": {
+       "empty": 0,
+       "refused": 0,
+       "rows": 30
+      }
+     },
+     "wrong_outputs": 78,
+     "wrong_questions": 29,
+     "wrong_with_result_rows": 77
+    },
+    "uniprot-sp-2026_03": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": [
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 234,
+         "C_P": 1089,
+         "C_U": 224,
+         "W": 4160,
+         "W_F": 2496,
+         "W_P": 1325,
+         "W_U": 339,
+         "false_flag": {
+          "den": 1547,
+          "num": 234,
+          "rate": 0.15126050420168066
+         },
+         "recall": {
+          "den": 4160,
+          "num": 2496,
+          "rate": 0.6
+         }
+        },
+        "bank_arm": "curated",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 234,
+         "C_P": 1089,
+         "C_U": 224,
+         "W": 872,
+         "W_F": 490,
+         "W_P": 328,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 234,
+          "rate": 0.15126050420168066
+         },
+         "recall": {
+          "den": 872,
+          "num": 490,
+          "rate": 0.5619266055045872
+         }
+        },
+        "source_digest": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.5688859150217465,
+       "ratio_real_result_rows_over_bank_returns_rows": 0.5779870922728065,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 39,
+        "rate": 0.319672131147541
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 23,
+         "rate": 0.25842696629213485
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 16,
+         "rate": 0.48484848484848486
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 38,
+        "rate": 0.3247863247863248
+       },
+       "source": "curated"
+      },
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 141,
+         "C_P": 1200,
+         "C_U": 206,
+         "W": 4160,
+         "W_F": 3135,
+         "W_P": 722,
+         "W_U": 303,
+         "false_flag": {
+          "den": 1547,
+          "num": 141,
+          "rate": 0.09114414996767937
+         },
+         "recall": {
+          "den": 4160,
+          "num": 3135,
+          "rate": 0.7536057692307693
+         }
+        },
+        "bank_arm": "census-t5",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 141,
+         "C_P": 1200,
+         "C_U": 206,
+         "W": 872,
+         "W_F": 555,
+         "W_P": 263,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 141,
+          "rate": 0.09114414996767937
+         },
+         "recall": {
+          "den": 872,
+          "num": 555,
+          "rate": 0.6364678899082569
+         }
+        },
+        "source_digest": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.3090828533451484,
+       "ratio_real_result_rows_over_bank_returns_rows": 0.3222915222915223,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 24,
+        "rate": 0.19672131147540983
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 9,
+         "rate": 0.10112359550561797
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 15,
+         "rate": 0.45454545454545453
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 24,
+        "rate": 0.20512820512820512
+       },
+       "source": "census-t5"
+      },
+      {
+       "bank": "not replayed (no bank arm with this source digest)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 27,
+        "rate": 0.22131147540983606
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 12,
+         "rate": 0.1348314606741573
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 15,
+         "rate": 0.45454545454545453
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 27,
+        "rate": 0.23076923076923078
+       },
+       "source": "generated-1"
+      },
+      {
+       "bank": "not replayed (no source digest for this arm)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 122,
+        "num": 39,
+        "rate": 0.319672131147541
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "den": 89,
+         "num": 23,
+         "rate": 0.25842696629213485
+        },
+        "claude-sonnet-5-5": {
+         "den": 33,
+         "num": 16,
+         "rate": 0.48484848484848486
+        }
+       },
+       "real_wrong_result_rows": {
+        "den": 117,
+        "num": 38,
+        "rate": 0.3247863247863248
+       },
+       "source": "union"
+      }
+     ],
+     "wrong_by_result": {
+      "empty": 2,
+      "refused": 3,
+      "rows": 117
+     },
+     "wrong_by_result_by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "empty": 2,
+       "refused": 3,
+       "rows": 84
+      },
+      "claude-sonnet-5-5": {
+       "empty": 0,
+       "refused": 0,
+       "rows": 33
+      }
+     },
+     "wrong_outputs": 122,
+     "wrong_questions": 36,
+     "wrong_with_result_rows": 117
+    }
+   },
+   "P2": {
+    "rhea-142": {
+     "focus": {
+      "sources": {
+       "census-t5": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "curated": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "generated-1": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       },
+       "union": {
+        "W": 43,
+        "W_F": 0,
+        "W_P": 42,
+        "W_U": 1,
+        "recall": {
+         "den": 43,
+         "num": 0,
+         "rate": 0.0
+        }
+       }
+      },
+      "templates": [
+       "type_members"
+      ],
+      "templates_present": [
+       "type_members"
+      ],
+      "wrong_outputs": 43,
+      "wrong_questions": 5
+     },
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "templates": {
+      "absence_negation": {
+       "sources": {
+        "census-t5": {
+         "W": 4,
+         "W_F": 1,
+         "W_P": 3,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 1,
+          "rate": 0.25
+         }
+        },
+        "curated": {
+         "W": 4,
+         "W_F": 3,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 3,
+          "rate": 0.75
+         }
+        },
+        "generated-1": {
+         "W": 4,
+         "W_F": 1,
+         "W_P": 3,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 1,
+          "rate": 0.25
+         }
+        },
+        "union": {
+         "W": 4,
+         "W_F": 4,
+         "W_P": 0,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 4,
+          "rate": 1.0
+         }
+        }
+       },
+       "wrong_outputs": 4,
+       "wrong_questions": 4
+      },
+      "aggregation": {
+       "sources": {
+        "census-t5": {
+         "W": 8,
+         "W_F": 0,
+         "W_P": 8,
+         "W_U": 0,
+         "recall": {
+          "den": 8,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 8,
+         "W_F": 8,
+         "W_P": 0,
+         "W_U": 0,
+         "recall": {
+          "den": 8,
+          "num": 8,
+          "rate": 1.0
+         }
+        },
+        "generated-1": {
+         "W": 8,
+         "W_F": 0,
+         "W_P": 7,
+         "W_U": 1,
+         "recall": {
+          "den": 8,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 8,
+         "W_F": 8,
+         "W_P": 0,
+         "W_U": 0,
+         "recall": {
+          "den": 8,
+          "num": 8,
+          "rate": 1.0
+         }
+        }
+       },
+       "wrong_outputs": 8,
+       "wrong_questions": 6
+      },
+      "cross_graph_join": {
+       "sources": {
+        "census-t5": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "generated-1": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 2,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 2,
+          "num": 0,
+          "rate": 0.0
+         }
+        }
+       },
+       "wrong_outputs": 2,
+       "wrong_questions": 2
+      },
+      "multi_hop_path": {
+       "sources": {
+        "census-t5": {
+         "W": 4,
+         "W_F": 0,
+         "W_P": 4,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 4,
+         "W_F": 2,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 2,
+          "rate": 0.5
+         }
+        },
+        "generated-1": {
+         "W": 4,
+         "W_F": 0,
+         "W_P": 4,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 4,
+         "W_F": 2,
+         "W_P": 2,
+         "W_U": 0,
+         "recall": {
+          "den": 4,
+          "num": 2,
+          "rate": 0.5
+         }
+        }
+       },
+       "wrong_outputs": 4,
+       "wrong_questions": 2
+      },
+      "numeric_filter": {
+       "sources": {
+        "census-t5": {
+         "W": 12,
+         "W_F": 0,
+         "W_P": 11,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 12,
+         "W_F": 1,
+         "W_P": 10,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 1,
+          "rate": 0.08333333333333333
+         }
+        },
+        "generated-1": {
+         "W": 12,
+         "W_F": 0,
+         "W_P": 11,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 12,
+         "W_F": 1,
+         "W_P": 10,
+         "W_U": 1,
+         "recall": {
+          "den": 12,
+          "num": 1,
+          "rate": 0.08333333333333333
+         }
+        }
+       },
+       "wrong_outputs": 12,
+       "wrong_questions": 6
+      },
+      "one_hop_attribute": {
+       "sources": {
+        "census-t5": {
+         "W": 5,
+         "W_F": 0,
+         "W_P": 4,
+         "W_U": 1,
+         "recall": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 5,
+         "W_F": 1,
+         "W_P": 2,
+         "W_U": 2,
+         "recall": {
+          "den": 5,
+          "num": 1,
+          "rate": 0.2
+         }
+        },
+        "generated-1": {
+         "W": 5,
+         "W_F": 0,
+         "W_P": 4,
+         "W_U": 1,
+         "recall": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 5,
+         "W_F": 1,
+         "W_P": 3,
+         "W_U": 1,
+         "recall": {
+          "den": 5,
+          "num": 1,
+          "rate": 0.2
+         }
+        }
+       },
+       "wrong_outputs": 5,
+       "wrong_questions": 4
+      },
+      "type_members": {
+       "sources": {
+        "census-t5": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "generated-1": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 43,
+         "W_F": 0,
+         "W_P": 42,
+         "W_U": 1,
+         "recall": {
+          "den": 43,
+          "num": 0,
+          "rate": 0.0
+         }
+        }
+       },
+       "wrong_outputs": 43,
+       "wrong_questions": 5
+      }
+     }
+    },
+    "uniprot-sp-2026_03": {
+     "focus": {
+      "sources": {
+       "census-t5": {
+        "W": 77,
+        "W_F": 22,
+        "W_P": 53,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 22,
+         "rate": 0.2857142857142857
+        }
+       },
+       "curated": {
+        "W": 77,
+        "W_F": 30,
+        "W_P": 45,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 30,
+         "rate": 0.38961038961038963
+        }
+       },
+       "generated-1": {
+        "W": 77,
+        "W_F": 24,
+        "W_P": 51,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 24,
+         "rate": 0.3116883116883117
+        }
+       },
+       "union": {
+        "W": 77,
+        "W_F": 30,
+        "W_P": 45,
+        "W_U": 2,
+        "recall": {
+         "den": 77,
+         "num": 30,
+         "rate": 0.38961038961038963
+        }
+       }
+      },
+      "templates": [
+       "aggregation",
+       "numeric_filter"
+      ],
+      "templates_present": [
+       "aggregation",
+       "numeric_filter"
+      ],
+      "wrong_outputs": 77,
+      "wrong_questions": 13
+     },
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "templates": {
+      "absence_negation": {
+       "sources": {
+        "census-t5": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "curated": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "generated-1": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "union": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 1,
+         "W_U": 0,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 3,
+       "wrong_questions": 2
+      },
+      "aggregation": {
+       "sources": {
+        "census-t5": {
+         "W": 40,
+         "W_F": 2,
+         "W_P": 37,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 2,
+          "rate": 0.05
+         }
+        },
+        "curated": {
+         "W": 40,
+         "W_F": 7,
+         "W_P": 32,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 7,
+          "rate": 0.175
+         }
+        },
+        "generated-1": {
+         "W": 40,
+         "W_F": 4,
+         "W_P": 35,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 4,
+          "rate": 0.1
+         }
+        },
+        "union": {
+         "W": 40,
+         "W_F": 7,
+         "W_P": 32,
+         "W_U": 1,
+         "recall": {
+          "den": 40,
+          "num": 7,
+          "rate": 0.175
+         }
+        }
+       },
+       "wrong_outputs": 40,
+       "wrong_questions": 8
+      },
+      "cross_graph_join": {
+       "sources": {
+        "census-t5": {
+         "W": 7,
+         "W_F": 0,
+         "W_P": 7,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 7,
+         "W_F": 3,
+         "W_P": 4,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 3,
+          "rate": 0.42857142857142855
+         }
+        },
+        "generated-1": {
+         "W": 7,
+         "W_F": 0,
+         "W_P": 7,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 7,
+         "W_F": 3,
+         "W_P": 4,
+         "W_U": 0,
+         "recall": {
+          "den": 7,
+          "num": 3,
+          "rate": 0.42857142857142855
+         }
+        }
+       },
+       "wrong_outputs": 7,
+       "wrong_questions": 5
+      },
+      "multi_hop_path": {
+       "sources": {
+        "census-t5": {
+         "W": 6,
+         "W_F": 0,
+         "W_P": 6,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 6,
+         "W_F": 1,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 1,
+          "rate": 0.16666666666666666
+         }
+        },
+        "generated-1": {
+         "W": 6,
+         "W_F": 0,
+         "W_P": 6,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 6,
+         "W_F": 1,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 6,
+          "num": 1,
+          "rate": 0.16666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 6,
+       "wrong_questions": 4
+      },
+      "numeric_filter": {
+       "sources": {
+        "census-t5": {
+         "W": 37,
+         "W_F": 20,
+         "W_P": 16,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 20,
+          "rate": 0.5405405405405406
+         }
+        },
+        "curated": {
+         "W": 37,
+         "W_F": 23,
+         "W_P": 13,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 23,
+          "rate": 0.6216216216216216
+         }
+        },
+        "generated-1": {
+         "W": 37,
+         "W_F": 20,
+         "W_P": 16,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 20,
+          "rate": 0.5405405405405406
+         }
+        },
+        "union": {
+         "W": 37,
+         "W_F": 23,
+         "W_P": 13,
+         "W_U": 1,
+         "recall": {
+          "den": 37,
+          "num": 23,
+          "rate": 0.6216216216216216
+         }
+        }
+       },
+       "wrong_outputs": 37,
+       "wrong_questions": 5
+      },
+      "one_hop_attribute": {
+       "sources": {
+        "census-t5": {
+         "W": 26,
+         "W_F": 0,
+         "W_P": 24,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 26,
+         "W_F": 1,
+         "W_P": 23,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 1,
+          "rate": 0.038461538461538464
+         }
+        },
+        "generated-1": {
+         "W": 26,
+         "W_F": 1,
+         "W_P": 23,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 1,
+          "rate": 0.038461538461538464
+         }
+        },
+        "union": {
+         "W": 26,
+         "W_F": 1,
+         "W_P": 23,
+         "W_U": 2,
+         "recall": {
+          "den": 26,
+          "num": 1,
+          "rate": 0.038461538461538464
+         }
+        }
+       },
+       "wrong_outputs": 26,
+       "wrong_questions": 9
+      },
+      "type_members": {
+       "sources": {
+        "census-t5": {
+         "W": 3,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "curated": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 0,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        },
+        "generated-1": {
+         "W": 3,
+         "W_F": 0,
+         "W_P": 2,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "union": {
+         "W": 3,
+         "W_F": 2,
+         "W_P": 0,
+         "W_U": 1,
+         "recall": {
+          "den": 3,
+          "num": 2,
+          "rate": 0.6666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 3,
+       "wrong_questions": 3
+      }
+     }
+    }
+   },
+   "P3": {
+    "all": {
+     "correct_outputs": 1210,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 1210,
+       "C_F": 46,
+       "C_P": 1144,
+       "C_U": 20,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 538,
+         "C_F": 26,
+         "false_flag": {
+          "den": 538,
+          "num": 26,
+          "rate": 0.048327137546468404
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 672,
+         "C_F": 20,
+         "false_flag": {
+          "den": 672,
+          "num": 20,
+          "rate": 0.02976190476190476
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1210,
+        "num": 46,
+        "rate": 0.03801652892561983
+       }
+      },
+      "curated": {
+       "C": 1210,
+       "C_F": 557,
+       "C_P": 637,
+       "C_U": 16,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 538,
+         "C_F": 216,
+         "false_flag": {
+          "den": 538,
+          "num": 216,
+          "rate": 0.40148698884758366
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 672,
+         "C_F": 341,
+         "false_flag": {
+          "den": 672,
+          "num": 341,
+          "rate": 0.5074404761904762
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1210,
+        "num": 557,
+        "rate": 0.46033057851239667
+       }
+      },
+      "generated-1": {
+       "C": 1210,
+       "C_F": 58,
+       "C_P": 1113,
+       "C_U": 39,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 538,
+         "C_F": 37,
+         "false_flag": {
+          "den": 538,
+          "num": 37,
+          "rate": 0.0687732342007435
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 672,
+         "C_F": 21,
+         "false_flag": {
+          "den": 672,
+          "num": 21,
+          "rate": 0.03125
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1210,
+        "num": 58,
+        "rate": 0.047933884297520664
+       }
+      },
+      "union": {
+       "C": 1210,
+       "C_F": 571,
+       "C_P": 628,
+       "C_U": 11,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 538,
+         "C_F": 226,
+         "false_flag": {
+          "den": 538,
+          "num": 226,
+          "rate": 0.4200743494423792
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 672,
+         "C_F": 345,
+         "false_flag": {
+          "den": 672,
+          "num": 345,
+          "rate": 0.5133928571428571
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1210,
+        "num": 571,
+        "rate": 0.471900826446281
+       }
+      }
+     }
+    },
+    "rhea-142": {
+     "correct_outputs": 625,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 625,
+       "C_F": 17,
+       "C_P": 590,
+       "C_U": 18,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 295,
+         "C_F": 10,
+         "false_flag": {
+          "den": 295,
+          "num": 10,
+          "rate": 0.03389830508474576
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 330,
+         "C_F": 7,
+         "false_flag": {
+          "den": 330,
+          "num": 7,
+          "rate": 0.021212121212121213
+         }
+        }
+       },
+       "false_flag": {
+        "den": 625,
+        "num": 17,
+        "rate": 0.0272
+       }
+      },
+      "curated": {
+       "C": 625,
+       "C_F": 428,
+       "C_P": 184,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 295,
+         "C_F": 163,
+         "false_flag": {
+          "den": 295,
+          "num": 163,
+          "rate": 0.5525423728813559
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 330,
+         "C_F": 265,
+         "false_flag": {
+          "den": 330,
+          "num": 265,
+          "rate": 0.803030303030303
+         }
+        }
+       },
+       "false_flag": {
+        "den": 625,
+        "num": 428,
+        "rate": 0.6848
+       }
+      },
+      "generated-1": {
+       "C": 625,
+       "C_F": 33,
+       "C_P": 556,
+       "C_U": 36,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 295,
+         "C_F": 25,
+         "false_flag": {
+          "den": 295,
+          "num": 25,
+          "rate": 0.0847457627118644
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 330,
+         "C_F": 8,
+         "false_flag": {
+          "den": 330,
+          "num": 8,
+          "rate": 0.024242424242424242
+         }
+        }
+       },
+       "false_flag": {
+        "den": 625,
+        "num": 33,
+        "rate": 0.0528
+       }
+      },
+      "union": {
+       "C": 625,
+       "C_F": 437,
+       "C_P": 179,
+       "C_U": 9,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 295,
+         "C_F": 169,
+         "false_flag": {
+          "den": 295,
+          "num": 169,
+          "rate": 0.5728813559322034
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 330,
+         "C_F": 268,
+         "false_flag": {
+          "den": 330,
+          "num": 268,
+          "rate": 0.8121212121212121
+         }
+        }
+       },
+       "false_flag": {
+        "den": 625,
+        "num": 437,
+        "rate": 0.6992
+       }
+      }
+     }
+    },
+    "uniprot-sp-2026_03": {
+     "correct_outputs": 585,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 585,
+       "C_F": 29,
+       "C_P": 554,
+       "C_U": 2,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 16,
+         "false_flag": {
+          "den": 243,
+          "num": 16,
+          "rate": 0.06584362139917696
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 13,
+         "false_flag": {
+          "den": 342,
+          "num": 13,
+          "rate": 0.038011695906432746
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 29,
+        "rate": 0.04957264957264957
+       }
+      },
+      "curated": {
+       "C": 585,
+       "C_F": 129,
+       "C_P": 453,
+       "C_U": 3,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 53,
+         "false_flag": {
+          "den": 243,
+          "num": 53,
+          "rate": 0.21810699588477367
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 76,
+         "false_flag": {
+          "den": 342,
+          "num": 76,
+          "rate": 0.2222222222222222
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 129,
+        "rate": 0.2205128205128205
+       }
+      },
+      "generated-1": {
+       "C": 585,
+       "C_F": 25,
+       "C_P": 557,
+       "C_U": 3,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 12,
+         "false_flag": {
+          "den": 243,
+          "num": 12,
+          "rate": 0.04938271604938271
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 13,
+         "false_flag": {
+          "den": 342,
+          "num": 13,
+          "rate": 0.038011695906432746
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 25,
+        "rate": 0.042735042735042736
+       }
+      },
+      "union": {
+       "C": 585,
+       "C_F": 134,
+       "C_P": 449,
+       "C_U": 2,
+       "by_agent": {
+        "Qwen/Qwen3.8-27B": {
+         "C": 243,
+         "C_F": 57,
+         "false_flag": {
+          "den": 243,
+          "num": 57,
+          "rate": 0.2345679012345679
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 342,
+         "C_F": 77,
+         "false_flag": {
+          "den": 342,
+          "num": 77,
+          "rate": 0.22514619883040934
+         }
+        }
+       },
+       "false_flag": {
+        "den": 585,
+        "num": 134,
+        "rate": 0.22905982905982905
+       }
+      }
+     }
+    }
+   },
+   "P4": {
+    "all": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.011570247933884337,
+        "union_minus_recall": 0.0050000000000000044
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.011570247933884337,
+        "union_minus_recall": 0.0050000000000000044
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 525,
+         "false_flag": {
+          "den": 1210,
+          "num": 46,
+          "rate": 0.03801652892561983
+         },
+         "is_member": true,
+         "recall": {
+          "den": 200,
+          "num": 25,
+          "rate": 0.125
+         },
+         "union_minus_false_flag": 0.43388429752066116,
+         "union_minus_recall": 0.15000000000000002,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 30
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 14,
+         "false_flag": {
+          "den": 1210,
+          "num": 557,
+          "rate": 0.46033057851239667
+         },
+         "is_member": true,
+         "recall": {
+          "den": 200,
+          "num": 54,
+          "rate": 0.27
+         },
+         "union_minus_false_flag": 0.011570247933884337,
+         "union_minus_recall": 0.0050000000000000044,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 1
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 1,
+         "correct_flagged_by_union_not_by_source": 514,
+         "false_flag": {
+          "den": 1210,
+          "num": 58,
+          "rate": 0.047933884297520664
+         },
+         "is_member": false,
+         "recall": {
+          "den": 200,
+          "num": 28,
+          "rate": 0.14
+         },
+         "union_minus_false_flag": 0.42396694214876035,
+         "union_minus_recall": 0.135,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 27
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 1210,
+        "C_F": 571,
+        "W": 200,
+        "W_F": 55,
+        "false_flag": {
+         "den": 1210,
+         "num": 571,
+         "rate": 0.471900826446281
+        },
+        "recall": {
+         "den": 200,
+         "num": 55,
+         "rate": 0.275
+        }
+       }
+      }
+     }
+    },
+    "rhea-142": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.01440000000000008,
+        "union_minus_recall": 0.012820512820512803
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.01440000000000008,
+        "union_minus_recall": 0.012820512820512803
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 420,
+         "false_flag": {
+          "den": 625,
+          "num": 17,
+          "rate": 0.0272
+         },
+         "is_member": true,
+         "recall": {
+          "den": 78,
+          "num": 1,
+          "rate": 0.01282051282051282
+         },
+         "union_minus_false_flag": 0.672,
+         "union_minus_recall": 0.1923076923076923,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 15
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 9,
+         "false_flag": {
+          "den": 625,
+          "num": 428,
+          "rate": 0.6848
+         },
+         "is_member": true,
+         "recall": {
+          "den": 78,
+          "num": 15,
+          "rate": 0.19230769230769232
+         },
+         "union_minus_false_flag": 0.01440000000000008,
+         "union_minus_recall": 0.012820512820512803,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 1
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 1,
+         "correct_flagged_by_union_not_by_source": 405,
+         "false_flag": {
+          "den": 625,
+          "num": 33,
+          "rate": 0.0528
+         },
+         "is_member": false,
+         "recall": {
+          "den": 78,
+          "num": 1,
+          "rate": 0.01282051282051282
+         },
+         "union_minus_false_flag": 0.6464000000000001,
+         "union_minus_recall": 0.1923076923076923,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 15
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 625,
+        "C_F": 437,
+        "W": 78,
+        "W_F": 16,
+        "false_flag": {
+         "den": 625,
+         "num": 437,
+         "rate": 0.6992
+        },
+        "recall": {
+         "den": 78,
+         "num": 16,
+         "rate": 0.20512820512820512
+        }
+       }
+      }
+     }
+    },
+    "uniprot-sp-2026_03": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed",
+      "generated-dc-1": "not replayed",
+      "generated-dc-2": "not replayed",
+      "generated-dc-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.008547008547008544,
+        "union_minus_recall": 0.0
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.008547008547008544,
+        "union_minus_recall": 0.0
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 105,
+         "false_flag": {
+          "den": 585,
+          "num": 29,
+          "rate": 0.04957264957264957
+         },
+         "is_member": true,
+         "recall": {
+          "den": 122,
+          "num": 24,
+          "rate": 0.19672131147540983
+         },
+         "union_minus_false_flag": 0.1794871794871795,
+         "union_minus_recall": 0.12295081967213117,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 15
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 5,
+         "false_flag": {
+          "den": 585,
+          "num": 129,
+          "rate": 0.2205128205128205
+         },
+         "is_member": true,
+         "recall": {
+          "den": 122,
+          "num": 39,
+          "rate": 0.319672131147541
+         },
+         "union_minus_false_flag": 0.008547008547008544,
+         "union_minus_recall": 0.0,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 0
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 109,
+         "false_flag": {
+          "den": 585,
+          "num": 25,
+          "rate": 0.042735042735042736
+         },
+         "is_member": false,
+         "recall": {
+          "den": 122,
+          "num": 27,
+          "rate": 0.22131147540983606
+         },
+         "union_minus_false_flag": 0.18632478632478633,
+         "union_minus_recall": 0.09836065573770494,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 12
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 585,
+        "C_F": 134,
+        "W": 122,
+        "W_F": 39,
+        "false_flag": {
+         "den": 585,
+         "num": 134,
+         "rate": 0.22905982905982905
+        },
+        "recall": {
+         "den": 122,
+         "num": 39,
+         "rate": 0.319672131147541
+        }
+       }
+      }
+     }
+    }
+   },
+   "P5": {
+    "Qwen/Qwen3.8-27B": {
+     "all": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 137,
+        "recall": null,
+        "reject": 0,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 137,
+        "of": 137,
+        "recall": {
+         "den": 137,
+         "num": 69,
+         "rate": 0.5036496350364964
+        },
+        "reject": 69,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 137,
+          "num": 10,
+          "rate": 0.072992700729927
+         },
+         "curated": {
+          "den": 137,
+          "num": 37,
+          "rate": 0.27007299270072993
+         },
+         "generated-1": {
+          "den": 137,
+          "num": 13,
+          "rate": 0.0948905109489051
+         },
+         "union": {
+          "den": 137,
+          "num": 38,
+          "rate": 0.2773722627737226
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 137,
+        "of": 137,
+        "recall": {
+         "den": 137,
+         "num": 69,
+         "rate": 0.5036496350364964
+        },
+        "reject": 69,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 137,
+          "num": 10,
+          "rate": 0.072992700729927
+         },
+         "curated": {
+          "den": 137,
+          "num": 37,
+          "rate": 0.27007299270072993
+         },
+         "generated-1": {
+          "den": 137,
+          "num": 13,
+          "rate": 0.0948905109489051
+         },
+         "union": {
+          "den": 137,
+          "num": 38,
+          "rate": 0.2773722627737226
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 137,
+        "num": 10,
+        "rate": 0.072992700729927
+       },
+       "curated": {
+        "den": 137,
+        "num": 37,
+        "rate": 0.27007299270072993
+       },
+       "generated-1": {
+        "den": 137,
+        "num": 13,
+        "rate": 0.0948905109489051
+       },
+       "union": {
+        "den": 137,
+        "num": 38,
+        "rate": 0.2773722627737226
+       }
+      },
+      "wrong_outputs": 137,
+      "wrong_questions": 61
+     },
+     "rhea-142": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 48,
+        "recall": null,
+        "reject": 0,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 48,
+        "of": 48,
+        "recall": {
+         "den": 48,
+         "num": 28,
+         "rate": 0.5833333333333334
+        },
+        "reject": 28,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 48,
+          "num": 1,
+          "rate": 0.020833333333333332
+         },
+         "curated": {
+          "den": 48,
+          "num": 14,
+          "rate": 0.2916666666666667
+         },
+         "generated-1": {
+          "den": 48,
+          "num": 1,
+          "rate": 0.020833333333333332
+         },
+         "union": {
+          "den": 48,
+          "num": 15,
+          "rate": 0.3125
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 48,
+        "of": 48,
+        "recall": {
+         "den": 48,
+         "num": 22,
+         "rate": 0.4583333333333333
+        },
+        "reject": 22,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 48,
+          "num": 1,
+          "rate": 0.020833333333333332
+         },
+         "curated": {
+          "den": 48,
+          "num": 14,
+          "rate": 0.2916666666666667
+         },
+         "generated-1": {
+          "den": 48,
+          "num": 1,
+          "rate": 0.020833333333333332
+         },
+         "union": {
+          "den": 48,
+          "num": 15,
+          "rate": 0.3125
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 48,
+        "num": 1,
+        "rate": 0.020833333333333332
+       },
+       "curated": {
+        "den": 48,
+        "num": 14,
+        "rate": 0.2916666666666667
+       },
+       "generated-1": {
+        "den": 48,
+        "num": 1,
+        "rate": 0.020833333333333332
+       },
+       "union": {
+        "den": 48,
+        "num": 15,
+        "rate": 0.3125
+       }
+      },
+      "wrong_outputs": 48,
+      "wrong_questions": 26
+     },
+     "uniprot-sp-2026_03": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 89,
+        "recall": null,
+        "reject": 0,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 89,
+        "of": 89,
+        "recall": {
+         "den": 89,
+         "num": 41,
+         "rate": 0.4606741573033708
+        },
+        "reject": 41,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 89,
+          "num": 9,
+          "rate": 0.10112359550561797
+         },
+         "curated": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         },
+         "generated-1": {
+          "den": 89,
+          "num": 12,
+          "rate": 0.1348314606741573
+         },
+         "union": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 89,
+        "of": 89,
+        "recall": {
+         "den": 89,
+         "num": 47,
+         "rate": 0.5280898876404494
+        },
+        "reject": 47,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 89,
+          "num": 9,
+          "rate": 0.10112359550561797
+         },
+         "curated": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         },
+         "generated-1": {
+          "den": 89,
+          "num": 12,
+          "rate": 0.1348314606741573
+         },
+         "union": {
+          "den": 89,
+          "num": 23,
+          "rate": 0.25842696629213485
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 89,
+        "num": 9,
+        "rate": 0.10112359550561797
+       },
+       "curated": {
+        "den": 89,
+        "num": 23,
+        "rate": 0.25842696629213485
+       },
+       "generated-1": {
+        "den": 89,
+        "num": 12,
+        "rate": 0.1348314606741573
+       },
+       "union": {
+        "den": 89,
+        "num": 23,
+        "rate": 0.25842696629213485
+       }
+      },
+      "wrong_outputs": 89,
+      "wrong_questions": 35
+     }
+    },
+    "claude-sonnet-5-5": {
+     "all": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 63,
+        "recall": null,
+        "reject": 0,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 63,
+        "of": 63,
+        "recall": {
+         "den": 63,
+         "num": 6,
+         "rate": 0.09523809523809523
+        },
+        "reject": 6,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "curated": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         },
+         "generated-1": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "union": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 63,
+        "of": 63,
+        "recall": {
+         "den": 63,
+         "num": 7,
+         "rate": 0.1111111111111111
+        },
+        "reject": 7,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "curated": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         },
+         "generated-1": {
+          "den": 63,
+          "num": 15,
+          "rate": 0.23809523809523808
+         },
+         "union": {
+          "den": 63,
+          "num": 17,
+          "rate": 0.2698412698412698
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 63,
+        "num": 15,
+        "rate": 0.23809523809523808
+       },
+       "curated": {
+        "den": 63,
+        "num": 17,
+        "rate": 0.2698412698412698
+       },
+       "generated-1": {
+        "den": 63,
+        "num": 15,
+        "rate": 0.23809523809523808
+       },
+       "union": {
+        "den": 63,
+        "num": 17,
+        "rate": 0.2698412698412698
+       }
+      },
+      "wrong_outputs": 63,
+      "wrong_questions": 21
+     },
+     "rhea-142": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 30,
+        "recall": null,
+        "reject": 0,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 30,
+        "of": 30,
+        "recall": {
+         "den": 30,
+         "num": 4,
+         "rate": 0.13333333333333333
+        },
+        "reject": 4,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "curated": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         },
+         "generated-1": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "union": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 30,
+        "of": 30,
+        "recall": {
+         "den": 30,
+         "num": 5,
+         "rate": 0.16666666666666666
+        },
+        "reject": 5,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "curated": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         },
+         "generated-1": {
+          "den": 30,
+          "num": 0,
+          "rate": 0.0
+         },
+         "union": {
+          "den": 30,
+          "num": 1,
+          "rate": 0.03333333333333333
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 30,
+        "num": 0,
+        "rate": 0.0
+       },
+       "curated": {
+        "den": 30,
+        "num": 1,
+        "rate": 0.03333333333333333
+       },
+       "generated-1": {
+        "den": 30,
+        "num": 0,
+        "rate": 0.0
+       },
+       "union": {
+        "den": 30,
+        "num": 1,
+        "rate": 0.03333333333333333
+       }
+      },
+      "wrong_outputs": 30,
+      "wrong_questions": 9
+     },
+     "uniprot-sp-2026_03": {
+      "judges": {
+       "Qwen/Qwen3.8-27B": {
+        "coverage": "not run",
+        "judged": 0,
+        "of": 33,
+        "recall": null,
+        "reject": 0,
+        "role": "cross",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "curated": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "generated-1": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         },
+         "union": {
+          "den": 0,
+          "num": 0,
+          "rate": null
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-haiku-5-5": {
+        "coverage": "complete",
+        "judged": 33,
+        "of": 33,
+        "recall": {
+         "den": 33,
+         "num": 2,
+         "rate": 0.06060606060606061
+        },
+        "reject": 2,
+        "role": "haiku",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "curated": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         },
+         "generated-1": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "union": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         }
+        },
+        "unparsed_or_failed": 0
+       },
+       "claude-sonnet-5-5": {
+        "coverage": "complete",
+        "judged": 33,
+        "of": 33,
+        "recall": {
+         "den": 33,
+         "num": 2,
+         "rate": 0.06060606060606061
+        },
+        "reject": 2,
+        "role": "self",
+        "sources_on_the_judged_outputs": {
+         "census-t5": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "curated": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         },
+         "generated-1": {
+          "den": 33,
+          "num": 15,
+          "rate": 0.45454545454545453
+         },
+         "union": {
+          "den": 33,
+          "num": 16,
+          "rate": 0.48484848484848486
+         }
+        },
+        "unparsed_or_failed": 0
+       }
+      },
+      "not_replayed": {
+       "census-t2": "not replayed",
+       "census-t20": "not replayed",
+       "curated+doc": "not replayed",
+       "generated-2": "not replayed",
+       "generated-3": "not replayed",
+       "generated-dc-1": "not replayed",
+       "generated-dc-2": "not replayed",
+       "generated-dc-3": "not replayed"
+      },
+      "sources_on_all_wrong": {
+       "census-t5": {
+        "den": 33,
+        "num": 15,
+        "rate": 0.45454545454545453
+       },
+       "curated": {
+        "den": 33,
+        "num": 16,
+        "rate": 0.48484848484848486
+       },
+       "generated-1": {
+        "den": 33,
+        "num": 15,
+        "rate": 0.45454545454545453
+       },
+       "union": {
+        "den": 33,
+        "num": 16,
+        "rate": 0.48484848484848486
+       }
+      },
+      "wrong_outputs": 33,
+      "wrong_questions": 12
+     }
+    }
+   },
+   "judge_coverage": {
+    "Qwen/Qwen3.8-27B": {
+     "by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "judged": 0,
+       "outputs": 675
+      },
+      "claude-sonnet-5-5": {
+       "judged": 0,
+       "outputs": 735
+      }
+     },
+     "calls_for_population_outputs": 0,
+     "outputs_in_population": 1410,
+     "outputs_judged": 0,
+     "raw_verdicts": {},
+     "status": "not run"
+    },
+    "claude-haiku-5-5": {
+     "by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "judged": 675,
+       "outputs": 675
+      },
+      "claude-sonnet-5-5": {
+       "judged": 735,
+       "outputs": 735
+      }
+     },
+     "calls_for_population_outputs": 1410,
+     "outputs_in_population": 1410,
+     "outputs_judged": 1410,
+     "raw_verdicts": {
+      "<unparsed>": 1,
+      "accept": 1081,
+      "reject": 328
+     },
+     "status": "complete"
+    },
+    "claude-sonnet-5-5": {
+     "by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "judged": 675,
+       "outputs": 675
+      },
+      "claude-sonnet-5-5": {
+       "judged": 735,
+       "outputs": 735
+      }
+     },
+     "calls_for_population_outputs": 1410,
+     "outputs_in_population": 1410,
+     "outputs_judged": 1410,
+     "raw_verdicts": {
+      "<unparsed>": 3,
+      "accept": 1174,
+      "reject": 233
+     },
+     "status": "complete"
+    }
+   },
+   "population_check": {
+    "against_judge_calibration": {
+     "equal": true,
+     "judge_calls_for_keys_outside_the_population": {
+      "Qwen/Qwen3.8-27B": 0,
+      "claude-haiku-5-5": 0,
+      "claude-sonnet-5-5": 0
+     },
+     "keys_removed_with_the_dropped_records": 35,
+     "matrix_outputs": 1410,
+     "only_in_matrix": 0,
+     "only_in_truth": 0,
+     "selection_keys": 1410,
+     "selection_keys_equal_matrix_outputs": true,
+     "selection_keys_equal_truth_keys": true,
+     "selection_model_disagrees_with_matrix_model": 0,
+     "selection_question_id_disagrees_with_matrix": 0,
+     "truth_keys": 1410,
+     "truth_label_disagrees_with_matrix_correct": 0
+    },
+    "against_registered": {
+     "note": "a sensitivity of the registered population",
+     "outputs": {
+      "difference": -35,
+      "observed": 1410,
+      "registered": 1445
+     },
+     "wrong": {
+      "difference": -1,
+      "observed": 200,
+      "registered": 201
+     }
+    },
+    "attempts": 1476,
+    "by_graph": {
+     "rhea-142": {
+      "attempts": 720,
+      "no_output": 17,
+      "outputs": 703,
+      "wrong": 78
+     },
+     "uniprot-sp-2026_03": {
+      "attempts": 756,
+      "no_output": 49,
+      "outputs": 707,
+      "wrong": 122
+     }
+    },
+    "cohorts": {
+     "none": 1476
+    },
+    "correct": 1210,
+    "dropped": {
+     "graphs": [
+      "rhea-142"
+     ],
+     "no_output": 1,
+     "outputs": 35,
+     "outputs_by_agent": {
+      "Qwen/Qwen3.8-27B": 17,
+      "claude-sonnet-5-5": 18
+     },
+     "records": 36,
+     "wrong": 1,
+     "wrong_by_agent": {
+      "Qwen/Qwen3.8-27B": 1
+     }
+    },
+    "models_left_out_of_the_analysed_set_attempts": {},
+    "no_output": 66,
+    "outputs": 1410,
+    "outputs_by_agent": {
+     "Qwen/Qwen3.8-27B": 675,
+     "claude-sonnet-5-5": 735
+    },
+    "registered_minus_dropped": {
+     "all_equal": true,
+     "outputs": {
+      "dropped": 35,
+      "equal": true,
+      "observed": 1410,
+      "registered": 1445
+     },
+     "wrong": {
+      "dropped": 1,
+      "equal": true,
+      "observed": 200,
+      "registered": 201
+     },
+     "wrong_by_agent": {
+      "Qwen/Qwen3.8-27B": {
+       "dropped": 1,
+       "equal": true,
+       "observed": 137,
+       "registered": 138
+      },
+      "claude-sonnet-5-5": {
+       "dropped": 0,
+       "equal": true,
+       "observed": 63,
+       "registered": 63
+      }
+     }
+    },
+    "union_consistency": {
+     "available": true,
+     "disagreeing": 0,
+     "member_statuses_checked": 2820
+    },
+    "wrong": 200,
+    "wrong_by_agent": {
+     "Qwen/Qwen3.8-27B": 137,
+     "claude-sonnet-5-5": 63
+    }
+   },
+   "registered_population": false,
+   "source_digests": {
+    "rhea-142": {
+     "census-t5": "6d243f5f8302f2c860b6b6c800757b17aee739b2f779a9dda9193563ebc7de7c",
+     "curated": "95c0373b827cf3def642b376cfe311b11ee2a0f831bd83db7115e69b7717f361",
+     "generated-1": "522bb161e78fb01ae13290137efd939091d683a58f04a4b276442e14888ae8d1"
+    },
+    "uniprot-sp-2026_03": {
+     "census-t5": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4",
+     "curated": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d",
+     "generated-1": "99580391c881c6efb3552b7e9ff62fcb057902a3a3ae128786f557b8de6ea189"
+    }
+   },
+   "title": "SENSITIVITY of the registered population (which stays primary): without the 36 Rhea round-1 records the audit's own population file labels frame:id_not_dev_in_frozen_set (question ids later reused for test questions)",
+   "unions": {
+    "rhea-142": {
+     "union": [
+      "curated",
+      "census-t5"
+     ]
+    },
+    "uniprot-sp-2026_03": {
+     "union": [
+      "curated",
+      "census-t5"
+     ]
+    }
+   }
+  },
+  "supplementary_uniprot_dev_natural": {
+   "P1": {
+    "uniprot-sp-2026_03": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed"
+     },
+     "sources": [
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 234,
+         "C_P": 1089,
+         "C_U": 224,
+         "W": 4160,
+         "W_F": 2496,
+         "W_P": 1325,
+         "W_U": 339,
+         "false_flag": {
+          "den": 1547,
+          "num": 234,
+          "rate": 0.15126050420168066
+         },
+         "recall": {
+          "den": 4160,
+          "num": 2496,
+          "rate": 0.6
+         }
+        },
+        "bank_arm": "curated",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 234,
+         "C_P": 1089,
+         "C_U": 224,
+         "W": 872,
+         "W_F": 490,
+         "W_P": 328,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 234,
+          "rate": 0.15126050420168066
+         },
+         "recall": {
+          "den": 872,
+          "num": 490,
+          "rate": 0.5619266055045872
+         }
+        },
+        "source_digest": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.3473677759392045,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 65,
+        "rate": 0.19519519519519518
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 10,
+         "rate": 0.7142857142857143
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 15,
+         "rate": 0.17647058823529413
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 9,
+         "rate": 0.19148936170212766
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 1,
+         "rate": 0.045454545454545456
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 10,
+         "rate": 0.13333333333333333
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 18,
+         "rate": 0.20930232558139536
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "curated"
+      },
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 141,
+         "C_P": 1200,
+         "C_U": 206,
+         "W": 4160,
+         "W_F": 3135,
+         "W_P": 722,
+         "W_U": 303,
+         "false_flag": {
+          "den": 1547,
+          "num": 141,
+          "rate": 0.09114414996767937
+         },
+         "recall": {
+          "den": 4160,
+          "num": 3135,
+          "rate": 0.7536057692307693
+         }
+        },
+        "bank_arm": "census-t5",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 141,
+         "C_P": 1200,
+         "C_U": 206,
+         "W": 872,
+         "W_F": 555,
+         "W_P": 263,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 141,
+          "rate": 0.09114414996767937
+         },
+         "recall": {
+          "den": 872,
+          "num": 555,
+          "rate": 0.6364678899082569
+         }
+        },
+        "source_digest": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.12267402537672809,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 26,
+        "rate": 0.07807807807807808
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 8,
+         "rate": 0.5714285714285714
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 3,
+         "rate": 0.03529411764705882
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 1,
+         "rate": 0.02127659574468085
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 0,
+         "rate": 0.0
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 4,
+         "rate": 0.05333333333333334
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 8,
+         "rate": 0.09302325581395349
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "census-t5"
+      },
+      {
+       "bank": "not replayed (no bank arm with this source digest)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 21,
+        "rate": 0.06306306306306306
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 6,
+         "rate": 0.42857142857142855
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 4,
+         "rate": 0.047058823529411764
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 1,
+         "rate": 0.02127659574468085
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 0,
+         "rate": 0.0
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 1,
+         "rate": 0.013333333333333334
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 7,
+         "rate": 0.08139534883720931
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "generated-1"
+      },
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 16,
+         "C_P": 1307,
+         "C_U": 224,
+         "W": 4160,
+         "W_F": 2284,
+         "W_P": 1548,
+         "W_U": 328,
+         "false_flag": {
+          "den": 1547,
+          "num": 16,
+          "rate": 0.010342598577892695
+         },
+         "recall": {
+          "den": 4160,
+          "num": 2284,
+          "rate": 0.5490384615384616
+         }
+        },
+        "bank_arm": "generated-dc-1",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 16,
+         "C_P": 1307,
+         "C_U": 224,
+         "W": 872,
+         "W_F": 423,
+         "W_P": 395,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 16,
+          "rate": 0.010342598577892695
+         },
+         "recall": {
+          "den": 872,
+          "num": 423,
+          "rate": 0.48509174311926606
+         }
+        },
+        "source_digest": "0c7e3c90e9296a19f75b3248dcf2344301b169fc69352c98952fc8e9799a922c"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.10523999176481447,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 17,
+        "rate": 0.05105105105105105
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 5,
+         "rate": 0.35714285714285715
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 1,
+         "rate": 0.011764705882352941
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 1,
+         "rate": 0.02127659574468085
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 0,
+         "rate": 0.0
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 1,
+         "rate": 0.013333333333333334
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 7,
+         "rate": 0.08139534883720931
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "generated-dc-1"
+      },
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 16,
+         "C_P": 1307,
+         "C_U": 224,
+         "W": 4160,
+         "W_F": 2337,
+         "W_P": 1496,
+         "W_U": 327,
+         "false_flag": {
+          "den": 1547,
+          "num": 16,
+          "rate": 0.010342598577892695
+         },
+         "recall": {
+          "den": 4160,
+          "num": 2337,
+          "rate": 0.5617788461538461
+         }
+        },
+        "bank_arm": "generated-dc-2",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 16,
+         "C_P": 1307,
+         "C_U": 224,
+         "W": 872,
+         "W_F": 434,
+         "W_P": 384,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 16,
+          "rate": 0.010342598577892695
+         },
+         "recall": {
+          "den": 872,
+          "num": 434,
+          "rate": 0.49770642201834864
+         }
+        },
+        "source_digest": "9bcbf79c301eb8e0b941f8973ca8f8aa55fe1343adb9a5da886abfb634cdf789"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.10257261870165096,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 17,
+        "rate": 0.05105105105105105
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 5,
+         "rate": 0.35714285714285715
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 1,
+         "rate": 0.011764705882352941
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 1,
+         "rate": 0.02127659574468085
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 0,
+         "rate": 0.0
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 1,
+         "rate": 0.013333333333333334
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 7,
+         "rate": 0.08139534883720931
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "generated-dc-2"
+      },
+      {
+       "bank": {
+        "all_items": {
+         "C": 1547,
+         "C_F": 16,
+         "C_P": 1307,
+         "C_U": 224,
+         "W": 4160,
+         "W_F": 2284,
+         "W_P": 1548,
+         "W_U": 328,
+         "false_flag": {
+          "den": 1547,
+          "num": 16,
+          "rate": 0.010342598577892695
+         },
+         "recall": {
+          "den": 4160,
+          "num": 2284,
+          "rate": 0.5490384615384616
+         }
+        },
+        "bank_arm": "generated-dc-3",
+        "returns_rows": {
+         "C": 1547,
+         "C_F": 16,
+         "C_P": 1307,
+         "C_U": 224,
+         "W": 872,
+         "W_F": 423,
+         "W_P": 395,
+         "W_U": 54,
+         "false_flag": {
+          "den": 1547,
+          "num": 16,
+          "rate": 0.010342598577892695
+         },
+         "recall": {
+          "den": 872,
+          "num": 423,
+          "rate": 0.48509174311926606
+         }
+        },
+        "source_digest": "1b0acb06e1c19b2422b6a9095c860019bf74010b67dd995e32712bfcaae3a54e"
+       },
+       "ratio_real_all_over_bank_returns_rows": 0.10523999176481447,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 17,
+        "rate": 0.05105105105105105
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 5,
+         "rate": 0.35714285714285715
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 1,
+         "rate": 0.011764705882352941
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 1,
+         "rate": 0.02127659574468085
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 0,
+         "rate": 0.0
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 1,
+         "rate": 0.013333333333333334
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 7,
+         "rate": 0.08139534883720931
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "generated-dc-3"
+      },
+      {
+       "bank": "not replayed (no source digest for this arm)",
+       "ratio_real_all_over_bank_returns_rows": null,
+       "ratio_real_result_rows_over_bank_returns_rows": null,
+       "real_wrong_all": {
+        "den": 333,
+        "num": 70,
+        "rate": 0.21021021021021022
+       },
+       "real_wrong_by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "den": 14,
+         "num": 10,
+         "rate": 0.7142857142857143
+        },
+        "Qwen/Qwen3.8-27B": {
+         "den": 85,
+         "num": 17,
+         "rate": 0.2
+        },
+        "claude-haiku-5-5": {
+         "den": 47,
+         "num": 9,
+         "rate": 0.19148936170212766
+        },
+        "claude-sonnet-5-5": {
+         "den": 22,
+         "num": 1,
+         "rate": 0.045454545454545456
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "den": 75,
+         "num": 11,
+         "rate": 0.14666666666666667
+        },
+        "google/gemma-4-31B": {
+         "den": 4,
+         "num": 2,
+         "rate": 0.5
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "den": 86,
+         "num": 20,
+         "rate": 0.23255813953488372
+        }
+       },
+       "real_wrong_result_rows": "n/a (no checked-query result)",
+       "source": "union"
+      }
+     ],
+     "wrong_by_result": null,
+     "wrong_by_result_by_agent": null,
+     "wrong_outputs": 333,
+     "wrong_questions": 76,
+     "wrong_with_result_rows": null
+    }
+   },
+   "P2": {
+    "uniprot-sp-2026_03": {
+     "focus": {
+      "sources": {
+       "census-t5": {
+        "W": 125,
+        "W_F": 4,
+        "W_P": 118,
+        "W_U": 3,
+        "recall": {
+         "den": 125,
+         "num": 4,
+         "rate": 0.032
+        }
+       },
+       "curated": {
+        "W": 125,
+        "W_F": 15,
+        "W_P": 104,
+        "W_U": 6,
+        "recall": {
+         "den": 125,
+         "num": 15,
+         "rate": 0.12
+        }
+       },
+       "generated-1": {
+        "W": 125,
+        "W_F": 5,
+        "W_P": 114,
+        "W_U": 6,
+        "recall": {
+         "den": 125,
+         "num": 5,
+         "rate": 0.04
+        }
+       },
+       "generated-dc-1": {
+        "W": 125,
+        "W_F": 3,
+        "W_P": 117,
+        "W_U": 5,
+        "recall": {
+         "den": 125,
+         "num": 3,
+         "rate": 0.024
+        }
+       },
+       "generated-dc-2": {
+        "W": 125,
+        "W_F": 3,
+        "W_P": 117,
+        "W_U": 5,
+        "recall": {
+         "den": 125,
+         "num": 3,
+         "rate": 0.024
+        }
+       },
+       "generated-dc-3": {
+        "W": 125,
+        "W_F": 3,
+        "W_P": 117,
+        "W_U": 5,
+        "recall": {
+         "den": 125,
+         "num": 3,
+         "rate": 0.024
+        }
+       },
+       "union": {
+        "W": 125,
+        "W_F": 16,
+        "W_P": 106,
+        "W_U": 3,
+        "recall": {
+         "den": 125,
+         "num": 16,
+         "rate": 0.128
+        }
+       }
+      },
+      "templates": [
+       "aggregation",
+       "numeric_filter"
+      ],
+      "templates_present": [
+       "aggregation",
+       "numeric_filter"
+      ],
+      "wrong_outputs": 125,
+      "wrong_questions": 22
+     },
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed"
+     },
+     "templates": {
+      "absence_negation": {
+       "sources": {
+        "census-t5": {
+         "W": 31,
+         "W_F": 4,
+         "W_P": 26,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 4,
+          "rate": 0.12903225806451613
+         }
+        },
+        "curated": {
+         "W": 31,
+         "W_F": 4,
+         "W_P": 26,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 4,
+          "rate": 0.12903225806451613
+         }
+        },
+        "generated-1": {
+         "W": 31,
+         "W_F": 3,
+         "W_P": 27,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 3,
+          "rate": 0.0967741935483871
+         }
+        },
+        "generated-dc-1": {
+         "W": 31,
+         "W_F": 3,
+         "W_P": 27,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 3,
+          "rate": 0.0967741935483871
+         }
+        },
+        "generated-dc-2": {
+         "W": 31,
+         "W_F": 3,
+         "W_P": 27,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 3,
+          "rate": 0.0967741935483871
+         }
+        },
+        "generated-dc-3": {
+         "W": 31,
+         "W_F": 3,
+         "W_P": 27,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 3,
+          "rate": 0.0967741935483871
+         }
+        },
+        "union": {
+         "W": 31,
+         "W_F": 5,
+         "W_P": 25,
+         "W_U": 1,
+         "recall": {
+          "den": 31,
+          "num": 5,
+          "rate": 0.16129032258064516
+         }
+        }
+       },
+       "wrong_outputs": 31,
+       "wrong_questions": 11
+      },
+      "aggregation": {
+       "sources": {
+        "census-t5": {
+         "W": 63,
+         "W_F": 2,
+         "W_P": 59,
+         "W_U": 2,
+         "recall": {
+          "den": 63,
+          "num": 2,
+          "rate": 0.031746031746031744
+         }
+        },
+        "curated": {
+         "W": 63,
+         "W_F": 8,
+         "W_P": 52,
+         "W_U": 3,
+         "recall": {
+          "den": 63,
+          "num": 8,
+          "rate": 0.12698412698412698
+         }
+        },
+        "generated-1": {
+         "W": 63,
+         "W_F": 2,
+         "W_P": 58,
+         "W_U": 3,
+         "recall": {
+          "den": 63,
+          "num": 2,
+          "rate": 0.031746031746031744
+         }
+        },
+        "generated-dc-1": {
+         "W": 63,
+         "W_F": 1,
+         "W_P": 60,
+         "W_U": 2,
+         "recall": {
+          "den": 63,
+          "num": 1,
+          "rate": 0.015873015873015872
+         }
+        },
+        "generated-dc-2": {
+         "W": 63,
+         "W_F": 1,
+         "W_P": 60,
+         "W_U": 2,
+         "recall": {
+          "den": 63,
+          "num": 1,
+          "rate": 0.015873015873015872
+         }
+        },
+        "generated-dc-3": {
+         "W": 63,
+         "W_F": 1,
+         "W_P": 60,
+         "W_U": 2,
+         "recall": {
+          "den": 63,
+          "num": 1,
+          "rate": 0.015873015873015872
+         }
+        },
+        "union": {
+         "W": 63,
+         "W_F": 8,
+         "W_P": 53,
+         "W_U": 2,
+         "recall": {
+          "den": 63,
+          "num": 8,
+          "rate": 0.12698412698412698
+         }
+        }
+       },
+       "wrong_outputs": 63,
+       "wrong_questions": 11
+      },
+      "cross_graph_join": {
+       "sources": {
+        "census-t5": {
+         "W": 38,
+         "W_F": 1,
+         "W_P": 36,
+         "W_U": 1,
+         "recall": {
+          "den": 38,
+          "num": 1,
+          "rate": 0.02631578947368421
+         }
+        },
+        "curated": {
+         "W": 38,
+         "W_F": 10,
+         "W_P": 28,
+         "W_U": 0,
+         "recall": {
+          "den": 38,
+          "num": 10,
+          "rate": 0.2631578947368421
+         }
+        },
+        "generated-1": {
+         "W": 38,
+         "W_F": 1,
+         "W_P": 36,
+         "W_U": 1,
+         "recall": {
+          "den": 38,
+          "num": 1,
+          "rate": 0.02631578947368421
+         }
+        },
+        "generated-dc-1": {
+         "W": 38,
+         "W_F": 1,
+         "W_P": 36,
+         "W_U": 1,
+         "recall": {
+          "den": 38,
+          "num": 1,
+          "rate": 0.02631578947368421
+         }
+        },
+        "generated-dc-2": {
+         "W": 38,
+         "W_F": 1,
+         "W_P": 36,
+         "W_U": 1,
+         "recall": {
+          "den": 38,
+          "num": 1,
+          "rate": 0.02631578947368421
+         }
+        },
+        "generated-dc-3": {
+         "W": 38,
+         "W_F": 1,
+         "W_P": 36,
+         "W_U": 1,
+         "recall": {
+          "den": 38,
+          "num": 1,
+          "rate": 0.02631578947368421
+         }
+        },
+        "union": {
+         "W": 38,
+         "W_F": 10,
+         "W_P": 28,
+         "W_U": 0,
+         "recall": {
+          "den": 38,
+          "num": 10,
+          "rate": 0.2631578947368421
+         }
+        }
+       },
+       "wrong_outputs": 38,
+       "wrong_questions": 11
+      },
+      "multi_hop_path": {
+       "sources": {
+        "census-t5": {
+         "W": 50,
+         "W_F": 6,
+         "W_P": 44,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 6,
+          "rate": 0.12
+         }
+        },
+        "curated": {
+         "W": 50,
+         "W_F": 19,
+         "W_P": 31,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 19,
+          "rate": 0.38
+         }
+        },
+        "generated-1": {
+         "W": 50,
+         "W_F": 5,
+         "W_P": 45,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 5,
+          "rate": 0.1
+         }
+        },
+        "generated-dc-1": {
+         "W": 50,
+         "W_F": 5,
+         "W_P": 45,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 5,
+          "rate": 0.1
+         }
+        },
+        "generated-dc-2": {
+         "W": 50,
+         "W_F": 5,
+         "W_P": 45,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 5,
+          "rate": 0.1
+         }
+        },
+        "generated-dc-3": {
+         "W": 50,
+         "W_F": 5,
+         "W_P": 45,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 5,
+          "rate": 0.1
+         }
+        },
+        "union": {
+         "W": 50,
+         "W_F": 20,
+         "W_P": 30,
+         "W_U": 0,
+         "recall": {
+          "den": 50,
+          "num": 20,
+          "rate": 0.4
+         }
+        }
+       },
+       "wrong_outputs": 50,
+       "wrong_questions": 11
+      },
+      "numeric_filter": {
+       "sources": {
+        "census-t5": {
+         "W": 62,
+         "W_F": 2,
+         "W_P": 59,
+         "W_U": 1,
+         "recall": {
+          "den": 62,
+          "num": 2,
+          "rate": 0.03225806451612903
+         }
+        },
+        "curated": {
+         "W": 62,
+         "W_F": 7,
+         "W_P": 52,
+         "W_U": 3,
+         "recall": {
+          "den": 62,
+          "num": 7,
+          "rate": 0.11290322580645161
+         }
+        },
+        "generated-1": {
+         "W": 62,
+         "W_F": 3,
+         "W_P": 56,
+         "W_U": 3,
+         "recall": {
+          "den": 62,
+          "num": 3,
+          "rate": 0.04838709677419355
+         }
+        },
+        "generated-dc-1": {
+         "W": 62,
+         "W_F": 2,
+         "W_P": 57,
+         "W_U": 3,
+         "recall": {
+          "den": 62,
+          "num": 2,
+          "rate": 0.03225806451612903
+         }
+        },
+        "generated-dc-2": {
+         "W": 62,
+         "W_F": 2,
+         "W_P": 57,
+         "W_U": 3,
+         "recall": {
+          "den": 62,
+          "num": 2,
+          "rate": 0.03225806451612903
+         }
+        },
+        "generated-dc-3": {
+         "W": 62,
+         "W_F": 2,
+         "W_P": 57,
+         "W_U": 3,
+         "recall": {
+          "den": 62,
+          "num": 2,
+          "rate": 0.03225806451612903
+         }
+        },
+        "union": {
+         "W": 62,
+         "W_F": 8,
+         "W_P": 53,
+         "W_U": 1,
+         "recall": {
+          "den": 62,
+          "num": 8,
+          "rate": 0.12903225806451613
+         }
+        }
+       },
+       "wrong_outputs": 62,
+       "wrong_questions": 11
+      },
+      "one_hop_attribute": {
+       "sources": {
+        "census-t5": {
+         "W": 74,
+         "W_F": 5,
+         "W_P": 68,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 5,
+          "rate": 0.06756756756756757
+         }
+        },
+        "curated": {
+         "W": 74,
+         "W_F": 8,
+         "W_P": 65,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 8,
+          "rate": 0.10810810810810811
+         }
+        },
+        "generated-1": {
+         "W": 74,
+         "W_F": 4,
+         "W_P": 69,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 4,
+          "rate": 0.05405405405405406
+         }
+        },
+        "generated-dc-1": {
+         "W": 74,
+         "W_F": 2,
+         "W_P": 71,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 2,
+          "rate": 0.02702702702702703
+         }
+        },
+        "generated-dc-2": {
+         "W": 74,
+         "W_F": 2,
+         "W_P": 71,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 2,
+          "rate": 0.02702702702702703
+         }
+        },
+        "generated-dc-3": {
+         "W": 74,
+         "W_F": 2,
+         "W_P": 71,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 2,
+          "rate": 0.02702702702702703
+         }
+        },
+        "union": {
+         "W": 74,
+         "W_F": 9,
+         "W_P": 64,
+         "W_U": 1,
+         "recall": {
+          "den": 74,
+          "num": 9,
+          "rate": 0.12162162162162163
+         }
+        }
+       },
+       "wrong_outputs": 74,
+       "wrong_questions": 12
+      },
+      "type_members": {
+       "sources": {
+        "census-t5": {
+         "W": 15,
+         "W_F": 6,
+         "W_P": 9,
+         "W_U": 0,
+         "recall": {
+          "den": 15,
+          "num": 6,
+          "rate": 0.4
+         }
+        },
+        "curated": {
+         "W": 15,
+         "W_F": 9,
+         "W_P": 5,
+         "W_U": 1,
+         "recall": {
+          "den": 15,
+          "num": 9,
+          "rate": 0.6
+         }
+        },
+        "generated-1": {
+         "W": 15,
+         "W_F": 3,
+         "W_P": 12,
+         "W_U": 0,
+         "recall": {
+          "den": 15,
+          "num": 3,
+          "rate": 0.2
+         }
+        },
+        "generated-dc-1": {
+         "W": 15,
+         "W_F": 3,
+         "W_P": 12,
+         "W_U": 0,
+         "recall": {
+          "den": 15,
+          "num": 3,
+          "rate": 0.2
+         }
+        },
+        "generated-dc-2": {
+         "W": 15,
+         "W_F": 3,
+         "W_P": 12,
+         "W_U": 0,
+         "recall": {
+          "den": 15,
+          "num": 3,
+          "rate": 0.2
+         }
+        },
+        "generated-dc-3": {
+         "W": 15,
+         "W_F": 3,
+         "W_P": 12,
+         "W_U": 0,
+         "recall": {
+          "den": 15,
+          "num": 3,
+          "rate": 0.2
+         }
+        },
+        "union": {
+         "W": 15,
+         "W_F": 10,
+         "W_P": 5,
+         "W_U": 0,
+         "recall": {
+          "den": 15,
+          "num": 10,
+          "rate": 0.6666666666666666
+         }
+        }
+       },
+       "wrong_outputs": 15,
+       "wrong_questions": 9
+      }
+     }
+    }
+   },
+   "P3": {
+    "uniprot-sp-2026_03": {
+     "correct_outputs": 1029,
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed"
+     },
+     "sources": {
+      "census-t5": {
+       "C": 1029,
+       "C_F": 44,
+       "C_P": 972,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 0,
+         "false_flag": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 12,
+         "false_flag": {
+          "den": 187,
+          "num": 12,
+          "rate": 0.06417112299465241
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 12,
+         "false_flag": {
+          "den": 226,
+          "num": 12,
+          "rate": 0.05309734513274336
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 10,
+         "false_flag": {
+          "den": 251,
+          "num": 10,
+          "rate": 0.0398406374501992
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 3,
+         "false_flag": {
+          "den": 198,
+          "num": 3,
+          "rate": 0.015151515151515152
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 7,
+         "false_flag": {
+          "den": 159,
+          "num": 7,
+          "rate": 0.0440251572327044
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 44,
+        "rate": 0.042759961127308066
+       }
+      },
+      "curated": {
+       "C": 1029,
+       "C_F": 196,
+       "C_P": 822,
+       "C_U": 11,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 3,
+         "false_flag": {
+          "den": 5,
+          "num": 3,
+          "rate": 0.6
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 39,
+         "false_flag": {
+          "den": 187,
+          "num": 39,
+          "rate": 0.20855614973262032
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 45,
+         "false_flag": {
+          "den": 226,
+          "num": 45,
+          "rate": 0.19911504424778761
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 48,
+         "false_flag": {
+          "den": 251,
+          "num": 48,
+          "rate": 0.19123505976095617
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 34,
+         "false_flag": {
+          "den": 198,
+          "num": 34,
+          "rate": 0.1717171717171717
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 27,
+         "false_flag": {
+          "den": 159,
+          "num": 27,
+          "rate": 0.16981132075471697
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 196,
+        "rate": 0.19047619047619047
+       }
+      },
+      "generated-1": {
+       "C": 1029,
+       "C_F": 28,
+       "C_P": 988,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 0,
+         "false_flag": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 7,
+         "false_flag": {
+          "den": 187,
+          "num": 7,
+          "rate": 0.0374331550802139
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 9,
+         "false_flag": {
+          "den": 226,
+          "num": 9,
+          "rate": 0.03982300884955752
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 5,
+         "false_flag": {
+          "den": 251,
+          "num": 5,
+          "rate": 0.0199203187250996
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 1,
+         "false_flag": {
+          "den": 198,
+          "num": 1,
+          "rate": 0.005050505050505051
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 6,
+         "false_flag": {
+          "den": 159,
+          "num": 6,
+          "rate": 0.03773584905660377
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 28,
+        "rate": 0.027210884353741496
+       }
+      },
+      "generated-dc-1": {
+       "C": 1029,
+       "C_F": 25,
+       "C_P": 991,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 0,
+         "false_flag": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 7,
+         "false_flag": {
+          "den": 187,
+          "num": 7,
+          "rate": 0.0374331550802139
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 6,
+         "false_flag": {
+          "den": 226,
+          "num": 6,
+          "rate": 0.02654867256637168
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 5,
+         "false_flag": {
+          "den": 251,
+          "num": 5,
+          "rate": 0.0199203187250996
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 1,
+         "false_flag": {
+          "den": 198,
+          "num": 1,
+          "rate": 0.005050505050505051
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 6,
+         "false_flag": {
+          "den": 159,
+          "num": 6,
+          "rate": 0.03773584905660377
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 25,
+        "rate": 0.024295432458697766
+       }
+      },
+      "generated-dc-2": {
+       "C": 1029,
+       "C_F": 25,
+       "C_P": 991,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 0,
+         "false_flag": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 7,
+         "false_flag": {
+          "den": 187,
+          "num": 7,
+          "rate": 0.0374331550802139
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 6,
+         "false_flag": {
+          "den": 226,
+          "num": 6,
+          "rate": 0.02654867256637168
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 5,
+         "false_flag": {
+          "den": 251,
+          "num": 5,
+          "rate": 0.0199203187250996
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 1,
+         "false_flag": {
+          "den": 198,
+          "num": 1,
+          "rate": 0.005050505050505051
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 6,
+         "false_flag": {
+          "den": 159,
+          "num": 6,
+          "rate": 0.03773584905660377
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 25,
+        "rate": 0.024295432458697766
+       }
+      },
+      "generated-dc-3": {
+       "C": 1029,
+       "C_F": 25,
+       "C_P": 991,
+       "C_U": 13,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 0,
+         "false_flag": {
+          "den": 5,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 7,
+         "false_flag": {
+          "den": 187,
+          "num": 7,
+          "rate": 0.0374331550802139
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 6,
+         "false_flag": {
+          "den": 226,
+          "num": 6,
+          "rate": 0.02654867256637168
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 5,
+         "false_flag": {
+          "den": 251,
+          "num": 5,
+          "rate": 0.0199203187250996
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 1,
+         "false_flag": {
+          "den": 198,
+          "num": 1,
+          "rate": 0.005050505050505051
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 6,
+         "false_flag": {
+          "den": 159,
+          "num": 6,
+          "rate": 0.03773584905660377
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 25,
+        "rate": 0.024295432458697766
+       }
+      },
+      "union": {
+       "C": 1029,
+       "C_F": 212,
+       "C_P": 806,
+       "C_U": 11,
+       "by_agent": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+         "C": 5,
+         "C_F": 3,
+         "false_flag": {
+          "den": 5,
+          "num": 3,
+          "rate": 0.6
+         }
+        },
+        "Qwen/Qwen3.8-27B": {
+         "C": 187,
+         "C_F": 41,
+         "false_flag": {
+          "den": 187,
+          "num": 41,
+          "rate": 0.2192513368983957
+         }
+        },
+        "claude-haiku-5-5": {
+         "C": 226,
+         "C_F": 52,
+         "false_flag": {
+          "den": 226,
+          "num": 52,
+          "rate": 0.23008849557522124
+         }
+        },
+        "claude-sonnet-5-5": {
+         "C": 251,
+         "C_F": 51,
+         "false_flag": {
+          "den": 251,
+          "num": 51,
+          "rate": 0.20318725099601595
+         }
+        },
+        "deepseek-ai/DeepSeek-V4-Flash-0731": {
+         "C": 198,
+         "C_F": 35,
+         "false_flag": {
+          "den": 198,
+          "num": 35,
+          "rate": 0.17676767676767677
+         }
+        },
+        "google/gemma-4-31B": {
+         "C": 3,
+         "C_F": 0,
+         "false_flag": {
+          "den": 3,
+          "num": 0,
+          "rate": 0.0
+         }
+        },
+        "zai-org/GLM-5.3-Flash": {
+         "C": 159,
+         "C_F": 30,
+         "false_flag": {
+          "den": 159,
+          "num": 30,
+          "rate": 0.18867924528301888
+         }
+        }
+       },
+       "false_flag": {
+        "den": 1029,
+        "num": 212,
+        "rate": 0.20602526724975703
+       }
+      }
+     }
+    }
+   },
+   "P4": {
+    "uniprot-sp-2026_03": {
+     "not_replayed": {
+      "census-t2": "not replayed",
+      "census-t20": "not replayed",
+      "curated+doc": "not replayed",
+      "generated-2": "not replayed",
+      "generated-3": "not replayed"
+     },
+     "unions": {
+      "union": {
+       "best_member": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.015549076773566567,
+        "union_minus_recall": 0.015015015015015037
+       },
+       "best_single_replayed": {
+        "source": "curated",
+        "tied_on_recall": [
+         "curated"
+        ],
+        "union_minus_false_flag": 0.015549076773566567,
+        "union_minus_recall": 0.015015015015015037
+       },
+       "members": [
+        "curated",
+        "census-t5"
+       ],
+       "singles": {
+        "census-t5": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 168,
+         "false_flag": {
+          "den": 1029,
+          "num": 44,
+          "rate": 0.042759961127308066
+         },
+         "is_member": true,
+         "recall": {
+          "den": 333,
+          "num": 26,
+          "rate": 0.07807807807807808
+         },
+         "union_minus_false_flag": 0.16326530612244897,
+         "union_minus_recall": 0.13213213213213215,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 44
+        },
+        "curated": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 16,
+         "false_flag": {
+          "den": 1029,
+          "num": 196,
+          "rate": 0.19047619047619047
+         },
+         "is_member": true,
+         "recall": {
+          "den": 333,
+          "num": 65,
+          "rate": 0.19519519519519518
+         },
+         "union_minus_false_flag": 0.015549076773566567,
+         "union_minus_recall": 0.015015015015015037,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 5
+        },
+        "generated-1": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 184,
+         "false_flag": {
+          "den": 1029,
+          "num": 28,
+          "rate": 0.027210884353741496
+         },
+         "is_member": false,
+         "recall": {
+          "den": 333,
+          "num": 21,
+          "rate": 0.06306306306306306
+         },
+         "union_minus_false_flag": 0.17881438289601553,
+         "union_minus_recall": 0.14714714714714716,
+         "wrong_flagged_by_source_not_by_union": 2,
+         "wrong_flagged_by_union_not_by_source": 51
+        },
+        "generated-dc-1": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 187,
+         "false_flag": {
+          "den": 1029,
+          "num": 25,
+          "rate": 0.024295432458697766
+         },
+         "is_member": false,
+         "recall": {
+          "den": 333,
+          "num": 17,
+          "rate": 0.05105105105105105
+         },
+         "union_minus_false_flag": 0.18172983479105925,
+         "union_minus_recall": 0.15915915915915918,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 53
+        },
+        "generated-dc-2": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 187,
+         "false_flag": {
+          "den": 1029,
+          "num": 25,
+          "rate": 0.024295432458697766
+         },
+         "is_member": false,
+         "recall": {
+          "den": 333,
+          "num": 17,
+          "rate": 0.05105105105105105
+         },
+         "union_minus_false_flag": 0.18172983479105925,
+         "union_minus_recall": 0.15915915915915918,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 53
+        },
+        "generated-dc-3": {
+         "correct_flagged_by_source_not_by_union": 0,
+         "correct_flagged_by_union_not_by_source": 187,
+         "false_flag": {
+          "den": 1029,
+          "num": 25,
+          "rate": 0.024295432458697766
+         },
+         "is_member": false,
+         "recall": {
+          "den": 333,
+          "num": 17,
+          "rate": 0.05105105105105105
+         },
+         "union_minus_false_flag": 0.18172983479105925,
+         "union_minus_recall": 0.15915915915915918,
+         "wrong_flagged_by_source_not_by_union": 0,
+         "wrong_flagged_by_union_not_by_source": 53
+        }
+       },
+       "tie_rule": "highest recall; ties: lower false-flag rate, then source name",
+       "union": {
+        "C": 1029,
+        "C_F": 212,
+        "W": 333,
+        "W_F": 70,
+        "false_flag": {
+         "den": 1029,
+         "num": 212,
+         "rate": 0.20602526724975703
+        },
+        "recall": {
+         "den": 333,
+         "num": 70,
+         "rate": 0.21021021021021022
+        }
+       }
+      }
+     }
+    }
+   },
+   "P5": {
+    "status": "no judge data for this population"
+   },
+   "judge_coverage": {},
+   "population_check": {
+    "against_registered": {
+     "note": "not the registered population",
+     "outputs": {
+      "difference": -83,
+      "observed": 1362,
+      "registered": 1445
+     },
+     "wrong": {
+      "difference": 132,
+      "observed": 333,
+      "registered": 201
+     }
+    },
+    "attempts": 1911,
+    "by_graph": {
+     "uniprot-sp-2026_03": {
+      "attempts": 1911,
+      "no_output": 549,
+      "outputs": 1362,
+      "wrong": 333
+     }
+    },
+    "cohorts": {
+     "none": 1911
+    },
+    "correct": 1029,
+    "models_left_out_of_the_analysed_set_attempts": {
+     "Qwen/Qwen3.6-35B-A3B": 195,
+     "meta-llama/Llama-3.3-70B-Instruct": 273
+    },
+    "no_output": 549,
+    "outputs": 1362,
+    "outputs_by_agent": {
+     "Qwen/Qwen3-Coder-30B-A3B-Instruct": 19,
+     "Qwen/Qwen3.8-27B": 272,
+     "claude-haiku-5-5": 273,
+     "claude-sonnet-5-5": 273,
+     "deepseek-ai/DeepSeek-V4-Flash-0731": 273,
+     "google/gemma-4-31B": 7,
+     "zai-org/GLM-5.3-Flash": 245
+    },
+    "union_consistency": {
+     "available": true,
+     "disagreeing": 0,
+     "member_statuses_checked": 2724
+    },
+    "wrong": 333,
+    "wrong_by_agent": {
+     "Qwen/Qwen3-Coder-30B-A3B-Instruct": 14,
+     "Qwen/Qwen3.8-27B": 85,
+     "claude-haiku-5-5": 47,
+     "claude-sonnet-5-5": 22,
+     "deepseek-ai/DeepSeek-V4-Flash-0731": 75,
+     "google/gemma-4-31B": 4,
+     "zai-org/GLM-5.3-Flash": 86
+    }
+   },
+   "registered_population": false,
+   "source_digests": {
+    "uniprot-sp-2026_03": {
+     "census-t5": "c707e7690e963644ef8ef64b5f35de639dfd4beb6eaf61df4d003970d90f89f4",
+     "curated": "cf6a56a60767d9e5c8da63d98566df17fb70220bf05e4672abf00a3090a0656d",
+     "generated-1": "99580391c881c6efb3552b7e9ff62fcb057902a3a3ae128786f557b8de6ea189",
+     "generated-dc-1": "0c7e3c90e9296a19f75b3248dcf2344301b169fc69352c98952fc8e9799a922c",
+     "generated-dc-2": "9bcbf79c301eb8e0b941f8973ca8f8aa55fe1343adb9a5da886abfb634cdf789",
+     "generated-dc-3": "1b0acb06e1c19b2422b6a9095c860019bf74010b67dd995e32712bfcaae3a54e"
+    }
+   },
+   "title": "SUPPLEMENTARY, not the registered population: UniProt dev natural-phase replay of 20 Oct, panel P (7 models, condition none; sources curated, census-t5, generated-1, generated-dc-1..3 + union); archive-dev-20261022/natreplay-20261020/final",
+   "unions": {
+    "uniprot-sp-2026_03": {
+     "union": [
+      "curated",
+      "census-t5"
+     ]
+    }
+   }
+  }
+ },
+ "reconciliation": {
+  "dev bank: counts against the bank run's bank_rates": {
+   "compared": 15,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "registered_dev_calibration: P1 bank columns and ratios against bank_rates": {
+   "compared": 8,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "registered_dev_calibration: judge counts against tables.json": {
+   "compared": 12,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "registered_dev_calibration: non-empty denominators against tables.json table 2": {
+   "against": "tables.json table_2_by_result (judge Sonnet)",
+   "compared": 22,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "registered_dev_calibration: printed P1-P5 blocks against accounting.json": {
+   "against": "accounting.json",
+   "compared": 206,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "registered_dev_calibration: six cells against accounting.json": {
+   "compared": 16,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "sensitivity_without_36_rhea_round1: P1 bank columns and ratios against bank_rates": {
+   "compared": 8,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "sensitivity_without_36_rhea_round1: judge counts against tables.json": {
+   "compared": 12,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "sensitivity_without_36_rhea_round1: non-empty denominators against tables.json table 2": {
+   "against": "tables.json table_2_by_result (judge Sonnet)",
+   "compared": 22,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "sensitivity_without_36_rhea_round1: printed P1-P5 blocks against accounting.json less the dropped records": {
+   "against": "accounting.json less the dropped records",
+   "compared": 206,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "sensitivity_without_36_rhea_round1: six cells against accounting.json": {
+   "compared": 16,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "source files against the frozen tree": [
+   {
+    "equal": true,
+    "frozen_files": {
+     "census-t5.json": "07539be9e69c0ffbf8332b2187db9e58c46ed480cfd7122cc3b981b6462cbed3"
+    },
+    "graph": "rhea-142",
+    "replay_file_sha256": "07539be9e69c0ffbf8332b2187db9e58c46ed480cfd7122cc3b981b6462cbed3",
+    "source": "census-t5"
+   },
+   {
+    "equal": true,
+    "frozen_files": {
+     "curated.json.gz": "91debb622c5153328e856dfca17bed4e6c5b60e69e5a8e503c0b383082764800"
+    },
+    "graph": "rhea-142",
+    "replay_file_sha256": "91debb622c5153328e856dfca17bed4e6c5b60e69e5a8e503c0b383082764800",
+    "source": "curated"
+   },
+   {
+    "equal": true,
+    "frozen_files": {
+     "generated-1.json": "17d6c5ec74c39c366e83813b79332136712044046ff0a11c5052c387caf3f00a"
+    },
+    "graph": "rhea-142",
+    "replay_file_sha256": "17d6c5ec74c39c366e83813b79332136712044046ff0a11c5052c387caf3f00a",
+    "source": "generated-1"
+   },
+   {
+    "equal": true,
+    "frozen_files": {
+     "census-t5.json": "7f804abeebf70ecfc799e93005a33256ab39ed5ce23a9d02d7832434c4afba9e"
+    },
+    "graph": "uniprot-sp-2026_03",
+    "replay_file_sha256": "7f804abeebf70ecfc799e93005a33256ab39ed5ce23a9d02d7832434c4afba9e",
+    "source": "census-t5"
+   },
+   {
+    "equal": true,
+    "frozen_files": {
+     "curated.json.gz": "4027df500a8a247b01de69953d9ee1a3760df0b379dfa39dae8c74e4f590316c"
+    },
+    "graph": "uniprot-sp-2026_03",
+    "replay_file_sha256": "4027df500a8a247b01de69953d9ee1a3760df0b379dfa39dae8c74e4f590316c",
+    "source": "curated"
+   },
+   {
+    "equal": true,
+    "frozen_files": {
+     "generated-1.json": "207838d58399023565efef3d923bed9b449981629547bab1f489ba5b8a0e64f4"
+    },
+    "graph": "uniprot-sp-2026_03",
+    "replay_file_sha256": "207838d58399023565efef3d923bed9b449981629547bab1f489ba5b8a0e64f4",
+    "source": "generated-1"
+   }
+  ],
+  "supplementary_uniprot_dev_natural: P1 bank columns and ratios against bank_rates": {
+   "compared": 15,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "supplementary_uniprot_dev_natural: pooled counts against design_log_summary.json": {
+   "compared": 50,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  },
+  "supplementary_uniprot_dev_natural: printed P1-P5 blocks against design_log_summary.json": {
+   "against": "design_log_summary.json",
+   "compared": 187,
+   "detail": [],
+   "match": true,
+   "mismatches": 0
+  }
+ },
+ "result": "OK",
+ "tool": {
+  "name": "p1p5.py",
+  "version": "p1p5/1"
+ }
+}

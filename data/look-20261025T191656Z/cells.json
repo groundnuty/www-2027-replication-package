@@ -1,0 +1,11 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T191656Z",
+ "cells": [
+  {
+   "model": "qwen3-coder-30b-a3b",
+   "graph": "opaque-rhea-142",
+   "phases": "natural+prompted+branch"
+  }
+ ]
+}

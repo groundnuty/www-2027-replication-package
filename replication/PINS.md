@@ -2,8 +2,8 @@
 
 The analysis refuses to run unless the code and configuration it loads match pinned digests. Anonymization changed
 the bytes of some pinned files, so each affected pin was recomputed on the anonymized files with the code's own
-digest functions. The logic of the code did not change (see the README), except for the tests adapted to the synthetic store-copy tables. Digests recorded inside the run data
-(step 2) refer to the original values below.
+digest functions. The logic of the code did not change (see the README), except for the tests adapted to the synthetic store-copy tables. Digests recorded inside the released results
+files refer to the original values below.
 
 | Pin | Original | Package |
 |---|---|---|

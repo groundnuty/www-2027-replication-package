@@ -1,0 +1,634 @@
+{
+ "summary": {
+  "corporate": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0033613546428672477,
+     "mean_f1_ci95": [
+      0.0007703081232492998,
+      0.006764837248030525
+     ],
+     "answered_rate": 0.3126984126984127,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 628,
+      "unparseable": 2
+     },
+     "declined_rate": 0.6841269841269841,
+     "declined_by_rule": {
+      "empty_rows": 431
+     },
+     "unparseable_rate": 0.0031746031746031746
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.9571428571428572,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0031746031746031746,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 603,
+      "failed:other": 2,
+      "query_error:parse_error": 25
+     },
+     "parse_rate": 0.03968253968253968,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.03968253968253968,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 628
+     }
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.001851336494193637,
+     "mean_f1_ci95": [
+      0.00021164021164021165,
+      0.004227994227994227
+     ],
+     "answered_rate": 0.2650793650793651,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 630
+     },
+     "declined_rate": 0.734920634920635,
+     "declined_by_rule": {
+      "empty_rows": 463
+     },
+     "unparseable_rate": 0.0
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.46349206349206346,
+     "exact_ci95": [
+      0.40158730158730155,
+      0.5222222222222223
+     ],
+     "mean_f1": 0.48089110121810774,
+     "mean_f1_ci95": [
+      0.4204498129736225,
+      0.5391843825915286
+     ],
+     "answered_rate": 0.946031746031746,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 596,
+      "query_error:parse_error": 29,
+      "query_error:store_error": 1,
+      "query_error:timeout": 4
+     },
+     "parse_rate": 0.046031746031746035,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0015873015873015873,
+     "timeout_rate": 0.006349206349206349,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.046031746031746035,
+      "refused": 0.0,
+      "store_error": 0.0015873015873015873,
+      "timeout": 0.006349206349206349
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   }
+  },
+  "opaque-rhea-142": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.014285714285714285,
+     "exact_ci95": [
+      0.0031746031746031746,
+      0.030158730158730156
+     ],
+     "mean_f1": 0.014285714285714285,
+     "mean_f1_ci95": [
+      0.0031746031746031746,
+      0.030158730158730156
+     ],
+     "answered_rate": 0.28888888888888886,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 628,
+      "unparseable": 2
+     },
+     "declined_rate": 0.707936507936508,
+     "declined_by_rule": {
+      "empty_rows": 446
+     },
+     "unparseable_rate": 0.0031746031746031746
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.012698412698412698,
+     "exact_ci95": [
+      0.0,
+      0.02857142857142857
+     ],
+     "mean_f1": 0.026964725235111658,
+     "mean_f1_ci95": [
+      0.011761227506556777,
+      0.04550954983649114
+     ],
+     "answered_rate": 0.8841269841269841,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 557,
+      "query_error:parse_error": 73
+     },
+     "parse_rate": 0.11587301587301588,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.11587301587301588,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.015873015873015872,
+     "exact_ci95": [
+      0.0031746031746031746,
+      0.031746031746031744
+     ],
+     "mean_f1": 0.015873015873015872,
+     "mean_f1_ci95": [
+      0.0031746031746031746,
+      0.031746031746031744
+     ],
+     "answered_rate": 0.24603174603174602,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 630
+     },
+     "declined_rate": 0.753968253968254,
+     "declined_by_rule": {
+      "empty_rows": 475
+     },
+     "unparseable_rate": 0.0
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.01111111111111111,
+     "exact_ci95": [
+      0.0,
+      0.025396825396825397
+     ],
+     "mean_f1": 0.05318871482861097,
+     "mean_f1_ci95": [
+      0.0313816498519602,
+      0.07788835080372747
+     ],
+     "answered_rate": 0.9285714285714286,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 585,
+      "query_error:not_a_query": 1,
+      "query_error:parse_error": 18,
+      "query_error:timeout": 26
+     },
+     "parse_rate": 0.03015873015873016,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.04126984126984127,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0015873015873015873,
+      "parse_error": 0.02857142857142857,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.04126984126984127
+     },
+     "query_source": {
+      "reply": 1,
+      "sparql_fence": 629
+     }
+    }
+   }
+  },
+  "rhea-142": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.047619047619047616,
+     "exact_ci95": [
+      0.023809523809523808,
+      0.0761904761904762
+     ],
+     "mean_f1": 0.06599631308922162,
+     "mean_f1_ci95": [
+      0.0399146348026892,
+      0.0959060380463025
+     ],
+     "answered_rate": 0.7126984126984127,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 601,
+      "unparseable": 29
+     },
+     "declined_rate": 0.24126984126984127,
+     "declined_by_rule": {
+      "empty_rows": 152
+     },
+     "unparseable_rate": 0.046031746031746035
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.24761904761904763,
+     "exact_ci95": [
+      0.2,
+      0.3
+     ],
+     "mean_f1": 0.27016172170053526,
+     "mean_f1_ci95": [
+      0.22221248184473077,
+      0.3216918619299572
+     ],
+     "answered_rate": 0.873015873015873,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 550,
+      "query_error:parse_error": 80
+     },
+     "parse_rate": 0.12698412698412698,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.12698412698412698,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.09841269841269842,
+     "exact_ci95": [
+      0.06190476190476191,
+      0.1380952380952381
+     ],
+     "mean_f1": 0.15841203516363553,
+     "mean_f1_ci95": [
+      0.11865708659359453,
+      0.20091831157876705
+     ],
+     "answered_rate": 0.8253968253968254,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 630
+     },
+     "declined_rate": 0.1746031746031746,
+     "declined_by_rule": {
+      "empty_rows": 110
+     },
+     "unparseable_rate": 0.0
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.46031746031746035,
+     "exact_ci95": [
+      0.40476190476190477,
+      0.5158730158730158
+     ],
+     "mean_f1": 0.4960477893967099,
+     "mean_f1_ci95": [
+      0.44276800742097133,
+      0.5493344112582764
+     ],
+     "answered_rate": 0.9698412698412698,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 611,
+      "query_error:parse_error": 18,
+      "query_error:timeout": 1
+     },
+     "parse_rate": 0.02857142857142857,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0015873015873015873,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.02857142857142857,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0015873015873015873
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "claude-haiku-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.014285714285714285,
+     "exact_ci95": [
+      0.0031746031746031746,
+      0.02857142857142857
+     ],
+     "mean_f1": 0.055463599960593725,
+     "mean_f1_ci95": [
+      0.03586968820387405,
+      0.07749339687026295
+     ],
+     "answered_rate": 0.7873015873015873,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 614,
+      "unparseable": 16
+     },
+     "declined_rate": 0.1873015873015873,
+     "declined_by_rule": {
+      "empty_rows": 118
+     },
+     "unparseable_rate": 0.025396825396825397
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.3904761904761905,
+     "exact_ci95": [
+      0.3380952380952381,
+      0.44285714285714284
+     ],
+     "mean_f1": 0.4211856401758657,
+     "mean_f1_ci95": [
+      0.36927809387825705,
+      0.47373624281366694
+     ],
+     "answered_rate": 0.9349206349206349,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 589,
+      "query_error:parse_error": 18,
+      "query_error:timeout": 23
+     },
+     "parse_rate": 0.02857142857142857,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.03650793650793651,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0,
+      "parse_error": 0.02857142857142857,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.03650793650793651
+     },
+     "query_source": {
+      "sparql_fence": 630
+     }
+    }
+   },
+   "claude-sonnet-5-5": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.04920634920634921,
+     "exact_ci95": [
+      0.022222222222222223,
+      0.07936507936507937
+     ],
+     "mean_f1": 0.13758117034721679,
+     "mean_f1_ci95": [
+      0.10315305465825196,
+      0.17332641393731738
+     ],
+     "answered_rate": 0.7857142857142857,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 628,
+      "unparseable": 2
+     },
+     "declined_rate": 0.2111111111111111,
+     "declined_by_rule": {
+      "empty_rows": 133
+     },
+     "unparseable_rate": 0.0031746031746031746
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.5365079365079365,
+     "exact_ci95": [
+      0.4841269841269841,
+      0.5888888888888889
+     ],
+     "mean_f1": 0.5571635005134251,
+     "mean_f1_ci95": [
+      0.5072245139603226,
+      0.6094044635398018
+     ],
+     "answered_rate": 0.9825396825396825,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 619,
+      "query_error:not_a_query": 1,
+      "query_error:parse_error": 1,
+      "query_error:timeout": 9
+     },
+     "parse_rate": 0.0031746031746031746,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.014285714285714285,
+     "query_error_rates": {
+      "no_query": 0.0,
+      "not_a_query": 0.0015873015873015873,
+      "parse_error": 0.0015873015873015873,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.014285714285714285
+     },
+     "query_source": {
+      "reply": 1,
+      "sparql_fence": 629
+     }
+    }
+   }
+  }
+ },
+ "opaque_pairs": [
+  {
+   "natural": "rhea-142",
+   "opaque": "opaque-rhea-142",
+   "model": "claude-haiku-5-5",
+   "natural_exact": 0.24761904761904763,
+   "opaque_exact": 0.012698412698412698,
+   "natural_minus_opaque": 0.23492063492063492,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "rhea-142",
+   "opaque": "opaque-rhea-142",
+   "model": "claude-sonnet-5-5",
+   "natural_exact": 0.46031746031746035,
+   "opaque_exact": 0.01111111111111111,
+   "natural_minus_opaque": 0.4492063492063492,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "uniprot-sp-2026_03",
+   "opaque": "opaque-uniprot-sp-2026_03",
+   "model": "claude-haiku-5-5",
+   "natural_exact": 0.3904761904761905,
+   "opaque_exact": null,
+   "natural_minus_opaque": null,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "uniprot-sp-2026_03",
+   "opaque": "opaque-uniprot-sp-2026_03",
+   "model": "claude-sonnet-5-5",
+   "natural_exact": 0.5365079365079365,
+   "opaque_exact": null,
+   "natural_minus_opaque": null,
+   "agent_opaque_minus_natural": null
+  }
+ ]
+}

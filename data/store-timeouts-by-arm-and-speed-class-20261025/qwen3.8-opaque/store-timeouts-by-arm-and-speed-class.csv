@@ -1,0 +1,46 @@
+model,arm,branched,graph,speed_class,records,requests,timeouts,attempts_with_timeout,timeout_rate
+Qwen/Qwen3.8-27B,census,False,opaque-rhea-142,fast,336,20492,56,47,0.002733
+Qwen/Qwen3.8-27B,census,False,opaque-rhea-142,slow,100,6583,29,20,0.004405
+Qwen/Qwen3.8-27B,census,False,opaque-rhea-142,"slow (assigned, not measured)",194,10414,36,30,0.003457
+Qwen/Qwen3.8-27B,curated,False,opaque-rhea-142,fast,334,22118,78,61,0.003527
+Qwen/Qwen3.8-27B,curated,False,opaque-rhea-142,slow,98,6596,34,26,0.005155
+Qwen/Qwen3.8-27B,curated,False,opaque-rhea-142,"slow (assigned, not measured)",198,12278,80,53,0.006516
+Qwen/Qwen3.8-27B,dep:curated,True,opaque-rhea-142,fast,151,90,0,0,0.000000
+Qwen/Qwen3.8-27B,dep:curated,True,opaque-rhea-142,slow,47,40,0,0,0.000000
+Qwen/Qwen3.8-27B,dep:curated,True,opaque-rhea-142,"slow (assigned, not measured)",115,43,0,0,0.000000
+Qwen/Qwen3.8-27B,dep:generated-1,True,opaque-rhea-142,fast,151,2,0,0,0.000000
+Qwen/Qwen3.8-27B,dep:generated-1,True,opaque-rhea-142,slow,47,0,0,0,
+Qwen/Qwen3.8-27B,dep:generated-1,True,opaque-rhea-142,"slow (assigned, not measured)",115,0,0,0,
+Qwen/Qwen3.8-27B,dep:generated-2,True,opaque-rhea-142,fast,151,0,0,0,
+Qwen/Qwen3.8-27B,dep:generated-2,True,opaque-rhea-142,slow,47,0,0,0,
+Qwen/Qwen3.8-27B,dep:generated-2,True,opaque-rhea-142,"slow (assigned, not measured)",115,1,0,0,0.000000
+Qwen/Qwen3.8-27B,dep:generated-3,True,opaque-rhea-142,fast,151,6,0,0,0.000000
+Qwen/Qwen3.8-27B,dep:generated-3,True,opaque-rhea-142,slow,47,0,0,0,
+Qwen/Qwen3.8-27B,dep:generated-3,True,opaque-rhea-142,"slow (assigned, not measured)",115,45,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:census-t5,True,opaque-rhea-142,fast,23,0,0,0,
+Qwen/Qwen3.8-27B,fb:census-t5,True,opaque-rhea-142,slow,41,16,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:census-t5,True,opaque-rhea-142,"slow (assigned, not measured)",233,8,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:curated,True,opaque-rhea-142,fast,23,31,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:curated,True,opaque-rhea-142,slow,41,13,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:curated,True,opaque-rhea-142,"slow (assigned, not measured)",233,304,1,1,0.003289
+Qwen/Qwen3.8-27B,fb:generated-1,True,opaque-rhea-142,fast,23,0,0,0,
+Qwen/Qwen3.8-27B,fb:generated-1,True,opaque-rhea-142,slow,41,2,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:generated-1,True,opaque-rhea-142,"slow (assigned, not measured)",233,5,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:generated-2,True,opaque-rhea-142,fast,23,0,0,0,
+Qwen/Qwen3.8-27B,fb:generated-2,True,opaque-rhea-142,slow,41,3,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:generated-2,True,opaque-rhea-142,"slow (assigned, not measured)",233,5,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:generated-3,True,opaque-rhea-142,fast,23,0,0,0,
+Qwen/Qwen3.8-27B,fb:generated-3,True,opaque-rhea-142,slow,41,74,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:generated-3,True,opaque-rhea-142,"slow (assigned, not measured)",233,104,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:union,True,opaque-rhea-142,fast,23,10,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:union,True,opaque-rhea-142,slow,41,18,0,0,0.000000
+Qwen/Qwen3.8-27B,fb:union,True,opaque-rhea-142,"slow (assigned, not measured)",233,234,0,0,0.000000
+Qwen/Qwen3.8-27B,gen:any,True,opaque-rhea-142,fast,23,11,0,0,0.000000
+Qwen/Qwen3.8-27B,gen:any,True,opaque-rhea-142,slow,41,37,0,0,0.000000
+Qwen/Qwen3.8-27B,gen:any,True,opaque-rhea-142,"slow (assigned, not measured)",233,384,1,1,0.002604
+Qwen/Qwen3.8-27B,generated-1,False,opaque-rhea-142,fast,330,8556,51,47,0.005961
+Qwen/Qwen3.8-27B,generated-1,False,opaque-rhea-142,slow,97,2523,23,19,0.009116
+Qwen/Qwen3.8-27B,generated-1,False,opaque-rhea-142,"slow (assigned, not measured)",203,5996,66,53,0.011007
+Qwen/Qwen3.8-27B,none,False,opaque-rhea-142,fast,54,4535,22,18,0.004851
+Qwen/Qwen3.8-27B,none,False,opaque-rhea-142,slow,96,8438,80,51,0.009481
+Qwen/Qwen3.8-27B,none,False,opaque-rhea-142,"slow (assigned, not measured)",480,37027,404,259,0.010911

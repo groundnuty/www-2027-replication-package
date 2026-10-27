@@ -1,0 +1,83 @@
+{
+ "annotators": [
+  "annotator-1",
+  "annotator-2"
+ ],
+ "builder_sha256": "e763bb6411f0da54c2e4b279074efff2fb95cbaeb485bd70b9f5e50dbabb13ce",
+ "family_words_allowed": {},
+ "files_sha256": {
+  "HANDLING.md": "dab50efc122dc1678cdb4c4fb87355b88cdc3c3f6a12142c4f04985ef135f072",
+  "annotators/annotator-1/README.md": "2212ed21d0c17cedec1558cfcf549845f7f614ffd478504552d0bfdf92a223bd",
+  "annotators/annotator-1/items.jsonl": "587ff8b67ae9c5941f8b505789d0d0c40ee0e0f6101ee6a2e6ccc664981185df",
+  "annotators/annotator-1/items.md": "0fdbaa5c661bec5add29e3ce4a72c48329033449958feb588e6c5f06b79f2354",
+  "annotators/annotator-1/sheet.csv": "0d62a0b27231decdd953588c948cdf6d4ceaf0b5e4c2a3be7698a0809165724d",
+  "annotators/annotator-2/README.md": "eaad0fbc8f1af6c1b38c55538bf9bded3c888dcfbd826207cb0841cc8ab50e9b",
+  "annotators/annotator-2/items.jsonl": "a77c2e97422eeacf12d6981168272e0ee8041e95cd2c3c0fc9a8e02e5f455074",
+  "annotators/annotator-2/items.md": "2a44f9392c67ba1283c946057c370a507d08baa5c54ef978d7919738d9779386",
+  "annotators/annotator-2/sheet.csv": "672f10a508b80cad0d5a969620bc9d81e1d8d26c64dc9821134f02260f7a05fe"
+ },
+ "handling": "annotators get annotators/<name>/ only; the sample and the key stay away from them until their sheets are locked (the sample names each item's question and model)",
+ "inputs": {},
+ "items": 24,
+ "items_by_form": {
+  "A": 10,
+  "B": 8,
+  "C": 6
+ },
+ "key_sha256": "c4ea8c81a8fc7f13be24f644fe5026a84a1074151e9ad39e19199466c329229a",
+ "not_shown": [
+  "model",
+  "model_group",
+  "cohort",
+  "arm",
+  "graph",
+  "run_id",
+  "question_id",
+  "base_question_id",
+  "cell",
+  "status",
+  "fired_checks",
+  "reason",
+  "per_source",
+  "record_sha256",
+  "prompt_id",
+  "prompt_sha256"
+ ],
+ "practice": false,
+ "practice_only": null,
+ "private": false,
+ "protocol": "anonymous/science-repo paper/audit-protocol.md at b9777bc",
+ "schema": "h4-audit-package/1",
+ "shown": {
+  "A": [
+   "question",
+   "gold_query",
+   "gold_answer",
+   "agent_query",
+   "agent_answer"
+  ],
+  "B": [
+   "question",
+   "gold_query",
+   "gold_answer",
+   "agent_query",
+   "agent_answer",
+   "flag_message"
+  ],
+  "C": [
+   "question",
+   "gold_query",
+   "gold_answer",
+   "agent_query",
+   "agent_answer",
+   "ontology_text"
+  ]
+ },
+ "shuffle_seed_sha256": "2679b0b7de8f46e51ca74dd60025514322db3c47dc6c8c12716cc49bcb449ccc",
+ "split": "test",
+ "strict_items_by_form": {
+  "A": 10,
+  "B": 8,
+  "C": 6
+ }
+}

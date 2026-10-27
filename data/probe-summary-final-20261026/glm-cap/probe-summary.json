@@ -1,0 +1,163 @@
+{
+ "summary": {
+  "opaque-rhea-142": {
+   "zai-org/GLM-5.3-Flash": {
+    "closed-book-query-v1": {
+     "n_attempts": 23,
+     "n_base_questions": 23,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.4782608695652174,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.34782608695652173,
+     "labels": {
+      "answered": 11,
+      "query_error:no_query": 8,
+      "query_error:parse_error": 1,
+      "query_error:timeout": 3
+     },
+     "parse_rate": 0.391304347826087,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.13043478260869565,
+     "query_error_rates": {
+      "no_query": 0.34782608695652173,
+      "not_a_query": 0.0,
+      "parse_error": 0.043478260869565216,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.13043478260869565
+     },
+     "query_source": {
+      "none": 8,
+      "reply": 1,
+      "sparql_fence": 14
+     }
+    }
+   }
+  },
+  "rhea-142": {
+   "zai-org/GLM-5.3-Flash": {
+    "closed-book-query-v1": {
+     "n_attempts": 22,
+     "n_base_questions": 18,
+     "exact": 0.1388888888888889,
+     "exact_ci95": [
+      0.0,
+      0.3055555555555556
+     ],
+     "mean_f1": 0.1388888888888889,
+     "mean_f1_ci95": [
+      0.0,
+      0.3055555555555556
+     ],
+     "answered_rate": 0.7727272727272727,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.22727272727272727,
+     "labels": {
+      "answered": 17,
+      "query_error:no_query": 5
+     },
+     "parse_rate": 0.22727272727272727,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.22727272727272727,
+      "not_a_query": 0.0,
+      "parse_error": 0.0,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "none": 5,
+      "reply": 2,
+      "sparql_fence": 15
+     }
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "zai-org/GLM-5.3-Flash": {
+    "closed-book-query-v1": {
+     "n_attempts": 2,
+     "n_base_questions": 2,
+     "exact": 0.5,
+     "exact_ci95": [
+      0.0,
+      1.0
+     ],
+     "mean_f1": 0.5,
+     "mean_f1_ci95": [
+      0.0,
+      1.0
+     ],
+     "answered_rate": 0.5,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.5,
+     "labels": {
+      "answered": 1,
+      "query_error:no_query": 1
+     },
+     "parse_rate": 0.5,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0,
+     "timeout_rate": 0.0,
+     "query_error_rates": {
+      "no_query": 0.5,
+      "not_a_query": 0.0,
+      "parse_error": 0.0,
+      "refused": 0.0,
+      "store_error": 0.0,
+      "timeout": 0.0
+     },
+     "query_source": {
+      "none": 1,
+      "sparql_fence": 1
+     }
+    }
+   }
+  }
+ },
+ "opaque_pairs": [
+  {
+   "natural": "rhea-142",
+   "opaque": "opaque-rhea-142",
+   "model": "zai-org/GLM-5.3-Flash",
+   "natural_exact": 0.1388888888888889,
+   "opaque_exact": 0.0,
+   "natural_minus_opaque": 0.1388888888888889,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "uniprot-sp-2026_03",
+   "opaque": "opaque-uniprot-sp-2026_03",
+   "model": "zai-org/GLM-5.3-Flash",
+   "natural_exact": 0.5,
+   "opaque_exact": null,
+   "natural_minus_opaque": null,
+   "agent_opaque_minus_natural": null
+  }
+ ]
+}

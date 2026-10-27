@@ -1,0 +1,10 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261026T070234Z",
+ "cells": [
+  {
+   "graph": "uniprot-sp-2026_03",
+   "phases": "branch"
+  }
+ ]
+}

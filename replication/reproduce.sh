@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# How the paper's numbers are produced from the recorded runs. The run data and the analysis
-# inputs follow in step 2 of the package; until then this script prints the steps and exits.
+# How the paper's numbers are produced from the recorded runs. The run records these steps
+# read are withheld (see README-data.md), so this script prints the steps and exits.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 cat <<'STEPS'
@@ -24,7 +24,7 @@ Steps (run from the repository root, after `uv sync --frozen`):
        [--partition-record RECORD.json] [--ledger LEDGER.jsonl ...] [--store-proof CHECK.json ...]
    See the docstring of exploratory.py for every option.
 
-Inputs that come with the data (step 2): the run directories (OUT), the question files, the
+Inputs (withheld, except what README-data.md lists as released): the run directories (OUT), the question files, the
 voided-run records, the partition records, the checker ledgers, the fault-bank manifest, the
 frozen analysis inputs that data/analysis/prereg-config.json pins (calibration, cluster map,
 multiplicity tables). The store-copy tables the exploratory analysis reads from its own

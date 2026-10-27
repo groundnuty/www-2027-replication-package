@@ -1,0 +1,271 @@
+RETRY COST per retried answer (live retry turns only; medians and p90; n = retried answers)
+tokens: io = input + output as recorded (cache excluded); all = io + cache read + cache write. latency_s = wall_s - checker.retry.started_s.
+
+BY CELL (fb = feedback on natural parents; gen = generic; dep = own-source prompted parents)
+cell                  model                                         n    io med    io p90    all med    all p90  lat med  lat p90
+dep curated           all                                         697   59322.0  492184.4   152939.0   492184.4    14.10    235.8
+dep curated           claude-haiku-5-5                            188     805.5    1582.8   140086.5   197579.0     5.35    10.26
+dep curated           claude-sonnet-5-5                           157     807.0    1853.8   152243.0   240620.4    10.01    20.57
+dep curated           deepseek-ai-deepseek-v4-flash-0731          137  232431.0  913181.8   232431.0   913181.8    58.58    280.2
+dep curated           qwen-qwen3-8-27b                            196  189055.0  755811.5   189055.0   755811.5    92.71    469.6
+dep curated           qwen-qwen3-coder-30b-a3b-instruct            19  141619.0  280101.6   141619.0   280101.6    17.19    39.03
+dep draft 1           all                                          67  137099.0  347825.6   157824.0   347825.6    19.04    100.8
+dep draft 1           claude-haiku-5-5                              8    2109.0    2868.8   157923.5   248300.5     8.40    14.20
+dep draft 1           claude-sonnet-5-5                             4    2116.5    2366.2   171460.0   225061.2    18.19    20.46
+dep draft 1           deepseek-ai-deepseek-v4-flash-0731           11  179497.0  390715.0   179497.0   390715.0    67.60    93.21
+dep draft 1           qwen-qwen3-8-27b                             28  150909.5  434241.7   150909.5   434241.7    29.41    260.3
+dep draft 1           qwen-qwen3-coder-30b-a3b-instruct            16  143149.5  212918.0   143149.5   212918.0    17.18    36.41
+dep draft 2           all                                         185   81106.0  408041.8   171922.0   441262.6    19.98    205.7
+dep draft 2           claude-haiku-5-5                             28    1020.0    2477.0   131568.0   276164.2     5.56    11.21
+dep draft 2           claude-sonnet-5-5                            41    1406.0    2126.0   171922.0   316258.0    13.06    31.77
+dep draft 2           deepseek-ai-deepseek-v4-flash-0731           43  208344.0  558248.2   208344.0   558248.2    89.48    244.2
+dep draft 2           qwen-qwen3-8-27b                             53  210784.0  501785.2   210784.0   501785.2    77.96    288.4
+dep draft 2           qwen-qwen3-coder-30b-a3b-instruct            20  131110.5  210908.4   131110.5   210908.4    13.99    32.75
+dep draft 3           all                                        1034    2581.5  359402.2   147271.5   371163.9    12.07    148.7
+dep draft 3           claude-haiku-5-5                            244     776.0    1321.0    94257.5   181192.4     4.51     9.43
+dep draft 3           claude-sonnet-5-5                           280     603.0    1462.1   148882.0   232539.7     7.26    15.86
+dep draft 3           deepseek-ai-deepseek-v4-flash-0731          226  174990.5  595205.5   174990.5   595205.5    36.97    205.5
+dep draft 3           qwen-qwen3-8-27b                            254  187254.0  485064.7   187254.0   485064.7    73.75    330.8
+dep draft 3           qwen-qwen3-coder-30b-a3b-instruct            30  139852.5  293265.3   139852.5   293265.3    14.18    39.35
+fb census t5          all                                         144   23269.5  202405.4    28075.5   202405.4    17.22    112.3
+fb census t5          claude-haiku-5-5                             30     608.0    1267.0    16107.0    32066.2     5.88     8.56
+fb census t5          claude-sonnet-5-5                            10     255.5     695.3     9449.5    26029.2     3.58     8.58
+fb census t5          deepseek-ai-deepseek-v4-flash-0731           12   33523.0  321904.7    33523.0   321904.7    10.17    180.5
+fb census t5          google-gemma-4-31b                           29  106873.0  735995.6   106873.0   735995.6    57.81    276.9
+fb census t5          qwen-qwen3-8-27b                             19   61093.0  138068.4    61093.0   138068.4    33.69    65.79
+fb census t5          qwen-qwen3-coder-30b-a3b-instruct            13   17901.0   46618.0    17901.0    46618.0    12.74    47.92
+fb census t5          zai-org-glm-5-3-flash                        31   31775.0   68985.0    31775.0    68985.0    39.75    114.9
+fb curated            all                                         579   40784.0  435065.6    65976.0   435065.6    46.04    420.0
+fb curated            claude-haiku-5-5                            100    1006.5    2077.6    37481.5   102325.4     7.23    14.41
+fb curated            claude-sonnet-5-5                           107     954.0    3025.2    18832.0   115455.6    10.64    86.58
+fb curated            deepseek-ai-deepseek-v4-flash-0731          100  121454.5  546243.7   121454.5   546243.7    63.34    384.2
+fb curated            google-gemma-4-31b                           48   63508.0  333991.9    63508.0   333991.9    52.20    296.5
+fb curated            qwen-qwen3-8-27b                            101  150901.0  708479.0   150901.0   708479.0    128.5    465.4
+fb curated            qwen-qwen3-coder-30b-a3b-instruct            14   19876.0   52215.0    19876.0    52215.0    16.76    30.23
+fb curated            zai-org-glm-5-3-flash                       109   72829.0  599198.4    72829.0   599198.4    203.3   1407.6
+fb draft 1            all                                         126   28385.0  176122.5    42027.0   181818.0    22.43    170.5
+fb draft 1            claude-haiku-5-5                             23     970.0    2745.8    28672.0   146883.4     7.52    13.79
+fb draft 1            claude-sonnet-5-5                            12     679.0    2351.2    18146.5    42382.8     7.12    19.38
+fb draft 1            deepseek-ai-deepseek-v4-flash-0731           13  142561.0  346399.8   142561.0   346399.8    64.86    125.1
+fb draft 1            google-gemma-4-31b                           24   57116.5  206889.2    57116.5   206889.2    39.46    195.8
+fb draft 1            qwen-qwen3-8-27b                             17   92461.0  238947.6    92461.0   238947.6    24.82    314.0
+fb draft 1            qwen-qwen3-coder-30b-a3b-instruct             5   12460.0   35337.4    12460.0    35337.4    15.47    47.68
+fb draft 1            zai-org-glm-5-3-flash                        32   38603.0  117904.4    38603.0   117904.4    56.20    182.0
+fb draft 2            all                                         234   36613.0  455835.8    58718.5   455835.8    29.52    456.1
+fb draft 2            claude-haiku-5-5                             39    1024.0    2889.4    39439.0   126451.2     7.41    14.79
+fb draft 2            claude-sonnet-5-5                            42    1389.0    2113.7    40271.0   103760.4    18.71    87.77
+fb draft 2            deepseek-ai-deepseek-v4-flash-0731           30  148850.0  612155.9   148850.0   612155.9    74.58    332.0
+fb draft 2            google-gemma-4-31b                           24   50801.5  224564.6    50801.5   224564.6    47.65    131.3
+fb draft 2            qwen-qwen3-8-27b                             36  167868.0  655326.5   167868.0   655326.5    88.29    550.2
+fb draft 2            qwen-qwen3-coder-30b-a3b-instruct             6    8580.5   22068.5     8580.5    22068.5    13.95    46.79
+fb draft 2            zai-org-glm-5-3-flash                        57   85069.0 1007786.2    85069.0  1007786.2    68.65    778.9
+fb draft 3            all                                         922   46669.0  368837.9    65030.0   369424.4    25.68    342.7
+fb draft 3            claude-haiku-5-5                            119    1084.0    2118.4    47717.0   113029.0     6.73    12.95
+fb draft 3            claude-sonnet-5-5                           202     830.5    2163.8    30497.5    86656.4    10.77    28.26
+fb draft 3            deepseek-ai-deepseek-v4-flash-0731          175  102173.0  821391.8   102173.0   821391.8    34.03    462.3
+fb draft 3            google-gemma-4-31b                           42   81213.5  319502.3    81213.5   319502.3    34.33    175.3
+fb draft 3            qwen-qwen3-8-27b                            157   98545.0  368874.8    98545.0   368874.8    51.04    333.9
+fb draft 3            qwen-qwen3-coder-30b-a3b-instruct            11   25973.0   55133.0    25973.0    55133.0    15.34    36.94
+fb draft 3            zai-org-glm-5-3-flash                       216   87781.0  688186.0    87781.0   688186.0    92.32    642.8
+fb union              all                                         610   39838.0  429170.7    63818.5   429170.7    28.71    337.5
+fb union              claude-haiku-5-5                            114     915.5    1929.2    35311.0    89729.4     6.18    11.58
+fb union              claude-sonnet-5-5                           108     880.0    3321.5    17366.0   117110.2    11.42    96.27
+fb union              deepseek-ai-deepseek-v4-flash-0731          101  124236.0  438712.0   124236.0   438712.0    51.77    233.7
+fb union              google-gemma-4-31b                           49   78605.0  510360.8    78605.0   510360.8    56.49    287.9
+fb union              qwen-qwen3-8-27b                            103  169015.0  772044.4   169015.0   772044.4    138.0    505.7
+fb union              qwen-qwen3-coder-30b-a3b-instruct            16   18822.5   47287.0    18822.5    47287.0    12.25    40.02
+fb union              zai-org-glm-5-3-flash                       119   84945.0  573983.4    84945.0   573983.4    124.5    683.6
+gen generic           all                                         579   45864.0  308426.0    60927.0   308426.0    49.24    309.7
+gen generic           claude-haiku-5-5                            100    1346.0    2126.5    48331.5   132726.9     9.58    18.31
+gen generic           claude-sonnet-5-5                           107     754.0    1217.4    16129.0    35140.0     8.38    14.32
+gen generic           deepseek-ai-deepseek-v4-flash-0731          100  118522.5  455294.6   118522.5   455294.6    72.03    308.4
+gen generic           google-gemma-4-31b                           48   52721.5  635122.1    52721.5   635122.1    40.35    230.8
+gen generic           qwen-qwen3-8-27b                            101  138914.0  438725.0   138914.0   438725.0    96.24    270.5
+gen generic           qwen-qwen3-coder-30b-a3b-instruct            14   11477.5   39771.1    11477.5    39771.1    10.33    39.76
+gen generic           zai-org-glm-5-3-flash                       109   75535.0  286203.2    75535.0   286203.2    228.5    620.5
+
+BY SOURCE (fb and dep merged)
+cell                  model                                         n    io med    io p90    all med    all p90  lat med  lat p90
+census t5             all                                         144   23269.5  202405.4    28075.5   202405.4    17.22    112.3
+census t5             claude-haiku-5-5                             30     608.0    1267.0    16107.0    32066.2     5.88     8.56
+census t5             claude-sonnet-5-5                            10     255.5     695.3     9449.5    26029.2     3.58     8.58
+census t5             deepseek-ai-deepseek-v4-flash-0731           12   33523.0  321904.7    33523.0   321904.7    10.17    180.5
+census t5             google-gemma-4-31b                           29  106873.0  735995.6   106873.0   735995.6    57.81    276.9
+census t5             qwen-qwen3-8-27b                             19   61093.0  138068.4    61093.0   138068.4    33.69    65.79
+census t5             qwen-qwen3-coder-30b-a3b-instruct            13   17901.0   46618.0    17901.0    46618.0    12.74    47.92
+census t5             zai-org-glm-5-3-flash                        31   31775.0   68985.0    31775.0    68985.0    39.75    114.9
+curated               all                                        1276   44063.5  472875.5   123320.5   472875.5    23.08    300.0
+curated               claude-haiku-5-5                            288     833.5    1754.3    93543.5   181335.2     5.84    11.45
+curated               claude-sonnet-5-5                           264     862.0    2204.8    95992.5   233156.1    10.24    30.26
+curated               deepseek-ai-deepseek-v4-flash-0731          237  152614.0  745030.8   152614.0   745030.8    61.45    321.0
+curated               google-gemma-4-31b                           48   63508.0  333991.9    63508.0   333991.9    52.20    296.5
+curated               qwen-qwen3-8-27b                            297  176677.0  754373.8   176677.0   754373.8    100.8    469.2
+curated               qwen-qwen3-coder-30b-a3b-instruct            33   92358.0  225856.6    92358.0   225856.6    17.19    36.36
+curated               zai-org-glm-5-3-flash                       109   72829.0  599198.4    72829.0   599198.4    203.3   1407.6
+draft 1               all                                         193   58655.0  239179.2    75535.0   247483.4    19.79    159.7
+draft 1               claude-haiku-5-5                             31    1200.0    2785.0    55062.0   182214.0     7.79    14.06
+draft 1               claude-sonnet-5-5                            16    1918.5    2419.5    25919.5   171460.0    13.54    20.23
+draft 1               deepseek-ai-deepseek-v4-flash-0731           24  149585.0  386445.7   149585.0   386445.7    66.23    124.4
+draft 1               google-gemma-4-31b                           24   57116.5  206889.2    57116.5   206889.2    39.46    195.8
+draft 1               qwen-qwen3-8-27b                             45  131829.0  370177.6   131829.0   370177.6    27.54    291.7
+draft 1               qwen-qwen3-coder-30b-a3b-instruct            21  137099.0  201890.0   137099.0   201890.0    16.40    39.34
+draft 1               zai-org-glm-5-3-flash                        32   38603.0  117904.4    38603.0   117904.4    56.20    182.0
+draft 2               all                                         419   58655.0  442702.2   106657.0   446399.6    25.24    257.3
+draft 2               claude-haiku-5-5                             67    1024.0    2571.8    79342.0   184249.6     6.72    13.97
+draft 2               claude-sonnet-5-5                            83    1394.0    2125.0    84157.0   260544.8    15.64    74.18
+draft 2               deepseek-ai-deepseek-v4-flash-0731           73  190267.0  607649.0   190267.0   607649.0    83.27    272.2
+draft 2               google-gemma-4-31b                           24   50801.5  224564.6    50801.5   224564.6    47.65    131.3
+draft 2               qwen-qwen3-8-27b                             89  207550.0  587333.4   207550.0   587333.4    86.87    344.1
+draft 2               qwen-qwen3-coder-30b-a3b-instruct            26   78669.5  204704.5    78669.5   204704.5    13.99    34.35
+draft 2               zai-org-glm-5-3-flash                        57   85069.0 1007786.2    85069.0  1007786.2    68.65    778.9
+draft 3               all                                        1956   44903.5  361943.0    95360.0   370824.5    17.82    223.0
+draft 3               claude-haiku-5-5                            363     851.0    1690.2    83179.0   172942.4     5.27    10.97
+draft 3               claude-sonnet-5-5                           482     657.5    1702.7    75798.0   163714.7     8.10    20.83
+draft 3               deepseek-ai-deepseek-v4-flash-0731          401  132417.0  660382.0   132417.0   660382.0    35.08    305.0
+draft 3               google-gemma-4-31b                           42   81213.5  319502.3    81213.5   319502.3    34.33    175.3
+draft 3               qwen-qwen3-8-27b                            411  149751.0  441036.0   149751.0   441036.0    64.42    332.9
+draft 3               qwen-qwen3-coder-30b-a3b-instruct            41  133313.0  278796.0   133313.0   278796.0    14.53    38.50
+draft 3               zai-org-glm-5-3-flash                       216   87781.0  688186.0    87781.0   688186.0    92.32    642.8
+generic               all                                         579   45864.0  308426.0    60927.0   308426.0    49.24    309.7
+generic               claude-haiku-5-5                            100    1346.0    2126.5    48331.5   132726.9     9.58    18.31
+generic               claude-sonnet-5-5                           107     754.0    1217.4    16129.0    35140.0     8.38    14.32
+generic               deepseek-ai-deepseek-v4-flash-0731          100  118522.5  455294.6   118522.5   455294.6    72.03    308.4
+generic               google-gemma-4-31b                           48   52721.5  635122.1    52721.5   635122.1    40.35    230.8
+generic               qwen-qwen3-8-27b                            101  138914.0  438725.0   138914.0   438725.0    96.24    270.5
+generic               qwen-qwen3-coder-30b-a3b-instruct            14   11477.5   39771.1    11477.5    39771.1    10.33    39.76
+generic               zai-org-glm-5-3-flash                       109   75535.0  286203.2    75535.0   286203.2    228.5    620.5
+union                 all                                         610   39838.0  429170.7    63818.5   429170.7    28.71    337.5
+union                 claude-haiku-5-5                            114     915.5    1929.2    35311.0    89729.4     6.18    11.58
+union                 claude-sonnet-5-5                           108     880.0    3321.5    17366.0   117110.2    11.42    96.27
+union                 deepseek-ai-deepseek-v4-flash-0731          101  124236.0  438712.0   124236.0   438712.0    51.77    233.7
+union                 google-gemma-4-31b                           49   78605.0  510360.8    78605.0   510360.8    56.49    287.9
+union                 qwen-qwen3-8-27b                            103  169015.0  772044.4   169015.0   772044.4    138.0    505.7
+union                 qwen-qwen3-coder-30b-a3b-instruct            16   18822.5   47287.0    18822.5    47287.0    12.25    40.02
+union                 zai-org-glm-5-3-flash                       119   84945.0  573983.4    84945.0   573983.4    124.5    683.6
+
+EVIDENCE TRIPLES per checked answer (ledger rows; n, median, p90)
+  rows of use = replay
+    census-t2                 all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=5.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    census-t20                all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=5.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    census-t5                 all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=5.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    curated                   all                                       n=3383    median=25.00  p90=277.0
+                              claude-haiku-5-5                          n=630     median=28.50  p90=293.0
+                              claude-sonnet-5-5                         n=630     median=46.50  p90=385.2
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=21.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=17.00  p90=230.2
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=26.50  p90=8042.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.50  p90=239.0
+    generated-1               all                                       n=3383    median=24.00  p90=267.0
+                              claude-haiku-5-5                          n=630     median=27.50  p90=293.0
+                              claude-sonnet-5-5                         n=630     median=44.50  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=21.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=3.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=25.50  p90=239.0
+    generated-2               all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    generated-3               all                                       n=3383    median=24.00  p90=267.0
+                              claude-haiku-5-5                          n=630     median=26.50  p90=293.0
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=21.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=2.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=16.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=25.00  p90=239.0
+    generated-dc-1            all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    generated-dc-2            all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    generated-dc-3            all                                       n=3383    median=25.00  p90=269.0
+                              claude-haiku-5-5                          n=630     median=28.00  p90=293.1
+                              claude-sonnet-5-5                         n=630     median=45.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=22.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=18.00  p90=223.9
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=22.50  p90=7838.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.00  p90=239.0
+    union                     all                                       n=3383    median=50.00  p90=552.0
+                              claude-haiku-5-5                          n=630     median=56.00  p90=586.2
+                              claude-sonnet-5-5                         n=630     median=91.00  p90=770.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=42.00  p90=401.2
+                              google-gemma-4-31b                        n=195     median=8.00  p90=443.6
+                              qwen-qwen3-8-27b                          n=630     median=36.00  p90=447.8
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=49.00  p90=15881.2
+                              zai-org-glm-5-3-flash                     n=624     median=53.00  p90=478.0
+  rows of use = checker/both (online, separate from replay)
+    curated                   all                                       n=3383    median=25.00  p90=277.0
+                              claude-haiku-5-5                          n=630     median=28.50  p90=293.0
+                              claude-sonnet-5-5                         n=630     median=46.50  p90=385.2
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=21.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=17.00  p90=230.2
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=26.50  p90=8042.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.50  p90=239.0
+    generic_retry/any         all                                       n=3383    median=25.00  p90=276.0
+                              claude-haiku-5-5                          n=630     median=28.50  p90=293.0
+                              claude-sonnet-5-5                         n=630     median=46.00  p90=385.0
+                              deepseek-ai-deepseek-v4-flash-0731        n=630     median=21.00  p90=200.6
+                              google-gemma-4-31b                        n=195     median=4.00  p90=221.8
+                              qwen-qwen3-8-27b                          n=630     median=17.00  p90=230.2
+                              qwen-qwen3-coder-30b-a3b-instruct         n=44      median=26.50  p90=8042.6
+                              zai-org-glm-5-3-flash                     n=624     median=26.50  p90=239.0
+
+check time per checked answer: not recorded   (ledger rows with check_s not null: 0)
+census build time: not recorded
+
+SETUP: generation usage of each draft (draw records)
+  generated: total cost_usd 1.2855 (with earlier attempts 1.2855)
+    draw 1 (attempt 1, ok=True): input 4, output 40879, cache read 194287, cache write 0, USD 0.4282
+    draw 2 (attempt 1, ok=True): input 4, output 45151, cache read 194287, cache write 0, USD 0.4709
+    draw 3 (attempt 1, ok=True): input 4, output 36701, cache read 194287, cache write 0, USD 0.3864
+    batch group first draws [1]: submit to end 544.0 s
+    batch group rest draws [2, 3]: submit to end 544.0 s
+    superseded draw records: 0
+  generated-dc: total cost_usd 2.0268 (with earlier attempts 2.0268)
+    draw 1 (attempt 1, ok=True): input 4, output 41147, cache read 0, cache write 142026, USD 0.9796
+    draw 2 (attempt 1, ok=True): input 4, output 55087, cache read 142026, cache write 0, USD 0.5651
+    draw 3 (attempt 1, ok=True): input 4, output 46791, cache read 142026, cache write 0, USD 0.4821
+    batch group first draws [1]: submit to end 423.0 s
+    batch group rest draws [2, 3]: submit to end 1027.0 s
+    superseded draw records: 0

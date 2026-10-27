@@ -1,0 +1,350 @@
+{
+ "summary": {
+  "corporate": {
+   "Qwen/Qwen3.8-27B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0025325600325600325,
+     "mean_f1_ci95": [
+      0.00041005291005291014,
+      0.005436507936507937
+     ],
+     "answered_rate": 0.7825396825396825,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0,
+     "labels": {
+      "answered": 623,
+      "unparseable": 7
+     },
+     "declined_rate": 0.21428571428571427,
+     "declined_by_rule": {
+      "empty_reply": 5,
+      "empty_rows": 130
+     },
+     "unparseable_rate": 0.0031746031746031746
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.26666666666666666,
+     "exact_ci95": [
+      0.22698412698412698,
+      0.3063492063492063
+     ],
+     "mean_f1": 0.28120160812856376,
+     "mean_f1_ci95": [
+      0.24162187747937836,
+      0.32129377804632714
+     ],
+     "answered_rate": 0.6777777777777778,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0031746031746031746,
+     "labels": {
+      "answered": 427,
+      "query_error:no_query": 16,
+      "query_error:not_a_query": 11,
+      "query_error:parse_error": 163,
+      "query_error:store_error": 2,
+      "query_error:timeout": 11
+     },
+     "parse_rate": 0.30158730158730157,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.0031746031746031746,
+     "timeout_rate": 0.01746031746031746,
+     "query_error_rates": {
+      "no_query": 0.025396825396825397,
+      "not_a_query": 0.01746031746031746,
+      "parse_error": 0.25873015873015875,
+      "refused": 0.0,
+      "store_error": 0.0031746031746031746,
+      "timeout": 0.01746031746031746
+     },
+     "query_source": {
+      "none": 16,
+      "reply": 486,
+      "sparql_fence": 128
+     }
+    }
+   }
+  },
+  "opaque-rhea-142": {
+   "Qwen/Qwen3.8-27B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.01111111111111111,
+     "exact_ci95": [
+      0.0015873015873015873,
+      0.025396825396825397
+     ],
+     "mean_f1": 0.01111111111111111,
+     "mean_f1_ci95": [
+      0.0015873015873015873,
+      0.025396825396825397
+     ],
+     "answered_rate": 0.6507936507936508,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.011111111111111112,
+     "labels": {
+      "answered": 586,
+      "unparseable": 44
+     },
+     "declined_rate": 0.33174603174603173,
+     "declined_by_rule": {
+      "empty_reply": 33,
+      "empty_rows": 176
+     },
+     "unparseable_rate": 0.01746031746031746
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.022528640308752353,
+     "mean_f1_ci95": [
+      0.011851147089242328,
+      0.034756532242526644
+     ],
+     "answered_rate": 0.21904761904761905,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.01746031746031746,
+     "labels": {
+      "answered": 138,
+      "query_error:no_query": 17,
+      "query_error:not_a_query": 38,
+      "query_error:parse_error": 244,
+      "query_error:store_error": 6,
+      "query_error:timeout": 187
+     },
+     "parse_rate": 0.4746031746031746,
+     "refused_rate": 0.0,
+     "store_error_rate": 0.009523809523809525,
+     "timeout_rate": 0.2968253968253968,
+     "query_error_rates": {
+      "no_query": 0.026984126984126985,
+      "not_a_query": 0.06031746031746032,
+      "parse_error": 0.3873015873015873,
+      "refused": 0.0,
+      "store_error": 0.009523809523809525,
+      "timeout": 0.2968253968253968
+     },
+     "query_source": {
+      "none": 17,
+      "reply": 343,
+      "sparql_fence": 270
+     }
+    }
+   }
+  },
+  "rhea-142": {
+   "Qwen/Qwen3.8-27B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.04603174603174603,
+     "exact_ci95": [
+      0.022222222222222223,
+      0.07301587301587302
+     ],
+     "mean_f1": 0.04641371700195229,
+     "mean_f1_ci95": [
+      0.022604193192428488,
+      0.07377981495628555
+     ],
+     "answered_rate": 0.9111111111111111,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.025396825396825397,
+     "labels": {
+      "answered": 598,
+      "unparseable": 32
+     },
+     "declined_rate": 0.06190476190476191,
+     "declined_by_rule": {
+      "empty_reply": 15,
+      "empty_rows": 24
+     },
+     "unparseable_rate": 0.026984126984126985
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0492063492063492,
+     "exact_ci95": [
+      0.031746031746031744,
+      0.06984126984126984
+     ],
+     "mean_f1": 0.08675000258852765,
+     "mean_f1_ci95": [
+      0.0643594620371883,
+      0.1117474292631252
+     ],
+     "answered_rate": 0.4015873015873016,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.012698412698412698,
+     "labels": {
+      "answered": 253,
+      "query_error:no_query": 6,
+      "query_error:not_a_query": 16,
+      "query_error:parse_error": 216,
+      "query_error:refused": 3,
+      "query_error:store_error": 9,
+      "query_error:timeout": 127
+     },
+     "parse_rate": 0.37777777777777777,
+     "refused_rate": 0.004761904761904762,
+     "store_error_rate": 0.014285714285714285,
+     "timeout_rate": 0.2015873015873016,
+     "query_error_rates": {
+      "no_query": 0.009523809523809525,
+      "not_a_query": 0.025396825396825397,
+      "parse_error": 0.34285714285714286,
+      "refused": 0.004761904761904762,
+      "store_error": 0.014285714285714285,
+      "timeout": 0.2015873015873016
+     },
+     "query_source": {
+      "none": 6,
+      "reply": 389,
+      "sparql_fence": 235
+     }
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "Qwen/Qwen3.8-27B": {
+    "closed-book-answer-v2": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.007936507936507936,
+     "exact_ci95": [
+      0.0015873015873015873,
+      0.01746031746031746
+     ],
+     "mean_f1": 0.0082010582010582,
+     "mean_f1_ci95": [
+      0.0015873015873015873,
+      0.017724867724867723
+     ],
+     "answered_rate": 0.8507936507936508,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.0015873015873015873,
+     "labels": {
+      "answered": 602,
+      "unparseable": 28
+     },
+     "declined_rate": 0.14761904761904762,
+     "declined_by_rule": {
+      "empty_reply": 27,
+      "empty_rows": 66
+     },
+     "unparseable_rate": 0.0015873015873015873
+    },
+    "closed-book-query-v1": {
+     "n_attempts": 630,
+     "n_base_questions": 210,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0
+     ],
+     "mean_f1": 0.0,
+     "mean_f1_ci95": [
+      0.0,
+      0.0
+     ],
+     "answered_rate": 0.26666666666666666,
+     "infra_failures": 0,
+     "harness_failures": 0,
+     "provider_failure_rate": 0.0,
+     "provider_refusal_rate": 0.0,
+     "capped_context_rate": 0.0,
+     "truncated_rate": 0.007936507936507936,
+     "labels": {
+      "answered": 168,
+      "query_error:no_query": 11,
+      "query_error:not_a_query": 16,
+      "query_error:parse_error": 230,
+      "query_error:refused": 2,
+      "query_error:store_error": 8,
+      "query_error:timeout": 195
+     },
+     "parse_rate": 0.40793650793650793,
+     "refused_rate": 0.0031746031746031746,
+     "store_error_rate": 0.012698412698412698,
+     "timeout_rate": 0.30952380952380953,
+     "query_error_rates": {
+      "no_query": 0.01746031746031746,
+      "not_a_query": 0.025396825396825397,
+      "parse_error": 0.36507936507936506,
+      "refused": 0.0031746031746031746,
+      "store_error": 0.012698412698412698,
+      "timeout": 0.30952380952380953
+     },
+     "query_source": {
+      "none": 11,
+      "reply": 406,
+      "sparql_fence": 213
+     }
+    }
+   }
+  }
+ },
+ "opaque_pairs": [
+  {
+   "natural": "rhea-142",
+   "opaque": "opaque-rhea-142",
+   "model": "Qwen/Qwen3.8-27B",
+   "natural_exact": 0.0492063492063492,
+   "opaque_exact": 0.0,
+   "natural_minus_opaque": 0.0492063492063492,
+   "agent_opaque_minus_natural": null
+  },
+  {
+   "natural": "uniprot-sp-2026_03",
+   "opaque": "opaque-uniprot-sp-2026_03",
+   "model": "Qwen/Qwen3.8-27B",
+   "natural_exact": 0.0,
+   "opaque_exact": null,
+   "natural_minus_opaque": null,
+   "agent_opaque_minus_natural": null
+  }
+ ]
+}

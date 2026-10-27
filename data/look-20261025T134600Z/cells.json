@@ -1,0 +1,16 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T134600Z",
+ "cells": [
+  {
+   "model": "claude-sonnet-5-5",
+   "graph": "uniprot-sp-2026_03",
+   "phases": "branch"
+  },
+  {
+   "model": "qwen3.8-27b",
+   "graph": "uniprot-sp-2026_03",
+   "phases": "branch"
+  }
+ ]
+}

@@ -34,7 +34,7 @@ results/e189-exploratory-20261022/tests/test_partition_binding.py::test_the_pool
 results/e189-exploratory-20261022/tests/test_partition_binding.py::test_the_real_binding_and_plans_are_accepted_for_the_real_record
 results/e189-exploratory-20261022/tests/test_partition_binding.py::test_the_tracked_coder_record_is_the_pinned_file_and_is_accepted
 
-# Need the data of step 2 (question files, cluster maps)
+# Need withheld data (question files, cluster maps)
 results/e189-exploratory-20261022/tests/test_exploratory.py::test_a_call_without_the_option_gives_the_base_commits_results_byte_for_byte
 results/e189-exploratory-20261022/tests/test_exploratory.py::test_the_builder_refuses_an_existing_temporary_file_or_symlink
 results/e189-exploratory-20261022/tests/test_exploratory.py::test_the_corporate_map_rebuilds_byte_for_byte_from_the_generators_anchors

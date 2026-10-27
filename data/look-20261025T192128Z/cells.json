@@ -1,0 +1,11 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T192128Z",
+ "cells": [
+  {
+   "model": "deepseek-v4-flash-0731",
+   "graph": "opaque-rhea-142",
+   "phases": "natural+prompted+branch"
+  }
+ ]
+}

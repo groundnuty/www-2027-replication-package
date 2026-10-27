@@ -1,0 +1,1757 @@
+{
+ "checked_against_registered_results": {
+  "equal": true,
+  "numbers_compared": 130
+ },
+ "declared_models": [
+  "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+  "Qwen/Qwen3.8-27B",
+  "claude-haiku-5-5",
+  "claude-sonnet-5-5",
+  "deepseek-ai/DeepSeek-V4-Flash-0731",
+  "google/gemma-4-31B"
+ ],
+ "definitions": {
+  "basis": {
+   "composed": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+   "registered_and_verified": "registered and verified: equal to the registered results.json, to the bit",
+   "rule": "every by_model number is registered and verified; the all-models pooled fixes, corruptions, catches and false_flags are registered and verified; everything else pooled, and every equal-weight number, is composed: cite it as composed, never as registered"
+  },
+  "by_model": "the registered per-arm numbers of the model's arm, to the bit (asserted before this file is written)",
+  "equal_weight_per_model": "the 1/M mean over the M declared models of the per-model estimates; its interval is the percentile interval (stats.interval, 95%, inverted-CDF quantiles) over the defined resamples of the 1/M mean of the per-model draws (stats.ratio_draws) on the one resample matrix; no studentisation; a model with an empty denominator makes the mean not estimable (never dropped) and a resample undefined; exploratory",
+  "excluded_metrics": {
+   "number_traceability_flag_rate": "not a baseline quantity (the ontology checks' substantive layer or number traceability)",
+   "substantive_coverage": "not a baseline quantity (the ontology checks' substantive layer or number traceability)",
+   "substantive_pass_share": "not a baseline quantity (the ontology checks' substantive layer or number traceability)"
+  },
+  "labels": {
+   "accuracy": "accuracy of the initial output over N_att: the natural parent's",
+   "accuracy_final": "accuracy over all attempts (N_att) after the retry; a failed, abstained or missing retry counts wrong",
+   "corruption_rate": "per flagged output: P(wrong after the retry | right, flagged, retried)",
+   "corruptions": "corrupted (right -> wrong after the retry) per attempt, over N_att",
+   "fix_rate": "per flagged output: P(right after the retry | wrong, flagged, retried)",
+   "fixes": "fixed (wrong -> right after the retry) per attempt, over N_att",
+   "flag_precision": "per flagged output: wrong / flagged",
+   "flag_rate": "retried share of outputs: F / N_out (a flag always retries); counts retried, N_out and N_att beside it",
+   "net_change": "net change against the natural parent: (fixed - corrupted) / N_att"
+  },
+  "pooled_over_attempts": "the models' units pooled, then the registered weighting (prereg section 3): for fixes, corruptions, catches and false_flags of the all-models variant it is pipeline.real_output_ledger's row; every other pooled quantity, and every pooled quantity of the without_waived_models variant, is composed here the same way",
+  "reported_with": "the baseline rows are reported beside C5's rows only (appendix material, prereg line 308); nothing in this file is compared with C5's rows"
+ },
+ "descriptive": true,
+ "label": "exploratory, equal weight per model",
+ "resampling": {
+  "level": 0.95,
+  "n_boot": 10000,
+  "n_questions": 210,
+  "scheme": "the per-arm stratified matrix of pipeline.analyse (stats.resample_matrix), as analyse.py uses it for every arm and real_output_ledger row",
+  "seed": 20261026,
+  "shape": [
+   10000,
+   210
+  ]
+ },
+ "rows": [
+  {
+   "by_model": {
+    "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+     "counts": {
+      "C_F": 1,
+      "C_P": 9,
+      "C_U": 0,
+      "N_att": 630,
+      "N_out": 44,
+      "W_F": 19,
+      "W_P": 12,
+      "W_U": 3,
+      "corrupted": 0,
+      "fixed": 0,
+      "retried": 20,
+      "retry_missing": 0
+     },
+     "metrics": {
+      "accuracy": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.006349206349206349,
+        0.026984126984126982
+       ],
+       "estimate": 0.015873015873015872,
+       "undefined_share": 0.0
+      },
+      "accuracy_final": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.006349206349206349,
+        0.026984126984126982
+       ],
+       "estimate": 0.015873015873015872,
+       "undefined_share": 0.0
+      },
+      "catches": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.01746031746031746,
+        0.04444444444444444
+       ],
+       "estimate": 0.030158730158730156,
+       "undefined_share": 0.0
+      },
+      "corruption_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.3503
+      },
+      "corruptions": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "error_certified": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.3333333333333333,
+        0.7857142857142857
+       ],
+       "estimate": 0.5714285714285714,
+       "undefined_share": 0.0
+      },
+      "error_not_intervened": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.38461538461538464,
+        0.8235294117647058
+       ],
+       "estimate": 0.625,
+       "undefined_share": 0.0
+      },
+      "false_flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.3333333333333333
+       ],
+       "estimate": 0.1,
+       "undefined_share": 0.0
+      },
+      "false_flags": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.004761904761904762
+       ],
+       "estimate": 0.0015873015873015873,
+       "undefined_share": 0.0
+      },
+      "fix_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "fixes": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.8333333333333334,
+        1.0
+       ],
+       "estimate": 0.95,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.30303030303030304,
+        0.62
+       ],
+       "estimate": 0.45454545454545453,
+       "undefined_share": 0.0
+      },
+      "mean_f1": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.008253968253968253,
+        0.02761904761904762
+       ],
+       "estimate": 0.017152477152477152,
+       "undefined_share": 0.0
+      },
+      "missing_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "net_change": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "output_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.04920634920634921,
+        0.09206349206349206
+       ],
+       "estimate": 0.06984126984126984,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.38235294117647056,
+        0.75
+       ],
+       "estimate": 0.5588235294117647,
+       "undefined_share": 0.0
+      },
+      "repair_yield": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "silent_failure": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.03492063492063492,
+        0.0746031746031746
+       ],
+       "estimate": 0.053968253968253964,
+       "undefined_share": 0.0
+      },
+      "unknown_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.14
+       ],
+       "estimate": 0.06818181818181818,
+       "undefined_share": 0.0
+      }
+     }
+    },
+    "Qwen/Qwen3.8-27B": {
+     "counts": {
+      "C_F": 155,
+      "C_P": 351,
+      "C_U": 3,
+      "N_att": 630,
+      "N_out": 630,
+      "W_F": 55,
+      "W_P": 65,
+      "W_U": 1,
+      "corrupted": 36,
+      "fixed": 9,
+      "retried": 210,
+      "retry_missing": 0
+     },
+     "metrics": {
+      "accuracy": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.7714285714285715,
+        0.8444444444444443
+       ],
+       "estimate": 0.8079365079365078,
+       "undefined_share": 0.0
+      },
+      "accuracy_final": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.7253968253968255,
+        0.8047619047619048
+       ],
+       "estimate": 0.7650793650793651,
+       "undefined_share": 0.0
+      },
+      "catches": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.06507936507936507,
+        0.1111111111111111
+       ],
+       "estimate": 0.0873015873015873,
+       "undefined_share": 0.0
+      },
+      "corruption_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.16666666666666666,
+        0.3037974683544304
+       ],
+       "estimate": 0.23225806451612904,
+       "undefined_share": 0.0
+      },
+      "corruptions": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.03968253968253968,
+        0.0761904761904762
+       ],
+       "estimate": 0.05714285714285714,
+       "undefined_share": 0.0
+      },
+      "error_certified": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.11707317073170732,
+        0.1976470588235294
+       ],
+       "estimate": 0.15625,
+       "undefined_share": 0.0
+      },
+      "error_not_intervened": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.11805555555555555,
+        0.19815668202764977
+       ],
+       "estimate": 0.15714285714285714,
+       "undefined_share": 0.0
+      },
+      "false_flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.26294820717131473,
+        0.3473282442748092
+       ],
+       "estimate": 0.3045186640471513,
+       "undefined_share": 0.0
+      },
+      "false_flags": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.2111111111111111,
+        0.280952380952381
+       ],
+       "estimate": 0.24603174603174602,
+       "undefined_share": 0.0
+      },
+      "fix_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.06557377049180328,
+        0.2786885245901639
+       ],
+       "estimate": 0.16363636363636364,
+       "undefined_share": 0.0
+      },
+      "fixes": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.004761904761904762,
+        0.025396825396825397
+       ],
+       "estimate": 0.014285714285714285,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.20212765957446807,
+        0.3230088495575221
+       ],
+       "estimate": 0.2619047619047619,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.29365079365079366,
+        0.373015873015873
+       ],
+       "estimate": 0.3333333333333333,
+       "undefined_share": 0.0
+      },
+      "mean_f1": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.7898952950217566,
+        0.858736310705935
+       ],
+       "estimate": 0.8247087043574051,
+       "undefined_share": 0.0
+      },
+      "missing_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "net_change": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.06507936507936507,
+        -0.02222222222222222
+       ],
+       "estimate": -0.04285714285714286,
+       "undefined_share": 0.0
+      },
+      "output_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.3644859813084112,
+        0.5486725663716814
+       ],
+       "estimate": 0.45454545454545453,
+       "undefined_share": 0.0
+      },
+      "repair_yield": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.06507936507936508,
+        -0.022222222222222223
+       ],
+       "estimate": -0.04285714285714286,
+       "undefined_share": 0.0
+      },
+      "silent_failure": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.15555555555555559,
+        0.22857142857142856
+       ],
+       "estimate": 0.19206349206349205,
+       "undefined_share": 0.0
+      },
+      "unknown_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0015873015873015873,
+        0.012698412698412698
+       ],
+       "estimate": 0.006349206349206349,
+       "undefined_share": 0.0
+      }
+     }
+    },
+    "claude-haiku-5-5": {
+     "counts": {
+      "C_F": 104,
+      "C_P": 499,
+      "C_U": 0,
+      "N_att": 630,
+      "N_out": 630,
+      "W_F": 9,
+      "W_P": 18,
+      "W_U": 0,
+      "corrupted": 10,
+      "fixed": 5,
+      "retried": 113,
+      "retry_missing": 0
+     },
+     "metrics": {
+      "accuracy": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.9396825396825396,
+        0.9730158730158731
+       ],
+       "estimate": 0.9571428571428572,
+       "undefined_share": 0.0
+      },
+      "accuracy_final": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.9285714285714286,
+        0.9682539682539683
+       ],
+       "estimate": 0.9492063492063492,
+       "undefined_share": 0.0
+      },
+      "catches": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.006349206349206349,
+        0.023809523809523808
+       ],
+       "estimate": 0.014285714285714285,
+       "undefined_share": 0.0
+      },
+      "corruption_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.02857142857142857,
+        0.1743119266055046
+       ],
+       "estimate": 0.09615384615384616,
+       "undefined_share": 0.0
+      },
+      "corruptions": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.004761904761904762,
+        0.030158730158730156
+       ],
+       "estimate": 0.015873015873015872,
+       "undefined_share": 0.0
+      },
+      "error_certified": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.018108651911468814,
+        0.05252918287937743
+       ],
+       "estimate": 0.03481624758220503,
+       "undefined_share": 0.0
+      },
+      "error_not_intervened": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.018108651911468814,
+        0.05252918287937743
+       ],
+       "estimate": 0.03481624758220503,
+       "undefined_share": 0.0
+      },
+      "false_flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.13689482470784642,
+        0.21008403361344538
+       ],
+       "estimate": 0.1724709784411277,
+       "undefined_share": 0.0
+      },
+      "false_flags": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.13015873015873017,
+        0.20158730158730157
+       ],
+       "estimate": 0.16507936507936508,
+       "undefined_share": 0.0
+      },
+      "fix_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.2222222222222222,
+        0.875
+       ],
+       "estimate": 0.5555555555555556,
+       "undefined_share": 0.0001
+      },
+      "fixes": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0015873015873015873,
+        0.014285714285714285
+       ],
+       "estimate": 0.007936507936507936,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.03508771929824561,
+        0.1326530612244898
+       ],
+       "estimate": 0.07964601769911504,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.14444444444444443,
+        0.21587301587301588
+       ],
+       "estimate": 0.17936507936507937,
+       "undefined_share": 0.0
+      },
+      "mean_f1": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.9597257754776551,
+        0.9852452559971356
+       ],
+       "estimate": 0.9731039363269328,
+       "undefined_share": 0.0
+      },
+      "missing_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "net_change": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.023809523809523805,
+        0.0063492063492063475
+       ],
+       "estimate": -0.007936507936507936,
+       "undefined_share": 0.0
+      },
+      "output_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.16666666666666666,
+        0.5238095238095238
+       ],
+       "estimate": 0.3333333333333333,
+       "undefined_share": 0.0
+      },
+      "repair_yield": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.023809523809523808,
+        0.006349206349206349
+       ],
+       "estimate": -0.007936507936507936,
+       "undefined_share": 0.0
+      },
+      "silent_failure": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.026984126984126982,
+        0.06031746031746031
+       ],
+       "estimate": 0.04285714285714285,
+       "undefined_share": 0.0
+      },
+      "unknown_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      }
+     }
+    },
+    "claude-sonnet-5-5": {
+     "counts": {
+      "C_F": 7,
+      "C_P": 588,
+      "C_U": 7,
+      "N_att": 630,
+      "N_out": 630,
+      "W_F": 1,
+      "W_P": 27,
+      "W_U": 0,
+      "corrupted": 1,
+      "fixed": 1,
+      "retried": 8,
+      "retry_missing": 0
+     },
+     "metrics": {
+      "accuracy": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.9349206349206349,
+        0.9746031746031746
+       ],
+       "estimate": 0.9555555555555555,
+       "undefined_share": 0.0
+      },
+      "accuracy_final": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.9349206349206348,
+        0.9746031746031747
+       ],
+       "estimate": 0.9555555555555555,
+       "undefined_share": 0.0
+      },
+      "catches": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.004761904761904762
+       ],
+       "estimate": 0.0015873015873015873,
+       "undefined_share": 0.0
+      },
+      "corruption_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.5
+       ],
+       "estimate": 0.14285714285714285,
+       "undefined_share": 0.0017
+      },
+      "corruptions": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.004761904761904762
+       ],
+       "estimate": 0.0015873015873015873,
+       "undefined_share": 0.0
+      },
+      "error_certified": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.024469820554649267,
+        0.06462035541195477
+       ],
+       "estimate": 0.04390243902439024,
+       "undefined_share": 0.0
+      },
+      "error_not_intervened": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.024193548387096774,
+        0.064
+       ],
+       "estimate": 0.04340836012861737,
+       "undefined_share": 0.0
+      },
+      "false_flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0033222591362126247,
+        0.021666666666666667
+       ],
+       "estimate": 0.011627906976744186,
+       "undefined_share": 0.0
+      },
+      "false_flags": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0031746031746031746,
+        0.020634920634920634
+       ],
+       "estimate": 0.01111111111111111,
+       "undefined_share": 0.0
+      },
+      "fix_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.3553
+      },
+      "fixes": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.004761904761904762
+       ],
+       "estimate": 0.0015873015873015873,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.42857142857142855
+       ],
+       "estimate": 0.125,
+       "undefined_share": 0.0006
+      },
+      "flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.004761904761904762,
+        0.022222222222222223
+       ],
+       "estimate": 0.012698412698412698,
+       "undefined_share": 0.0
+      },
+      "mean_f1": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.9555866940077468,
+        0.983857370699476
+       ],
+       "estimate": 0.9706660590871117,
+       "undefined_share": 0.0
+      },
+      "missing_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "net_change": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.004761904761904762,
+        0.004761904761904762
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "output_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.125
+       ],
+       "estimate": 0.03571428571428571,
+       "undefined_share": 0.0
+      },
+      "repair_yield": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.004761904761904762,
+        0.004761904761904762
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "silent_failure": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0253968253968254,
+        0.06507936507936507
+       ],
+       "estimate": 0.044444444444444446,
+       "undefined_share": 0.0
+      },
+      "unknown_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.004761904761904762,
+        0.01904761904761905
+       ],
+       "estimate": 0.011111111111111112,
+       "undefined_share": 0.0
+      }
+     }
+    },
+    "deepseek-ai/DeepSeek-V4-Flash-0731": {
+     "counts": {
+      "C_F": 161,
+      "C_P": 357,
+      "C_U": 0,
+      "N_att": 630,
+      "N_out": 630,
+      "W_F": 54,
+      "W_P": 58,
+      "W_U": 0,
+      "corrupted": 24,
+      "fixed": 6,
+      "retried": 215,
+      "retry_missing": 0
+     },
+     "metrics": {
+      "accuracy": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.7857142857142857,
+        0.8587301587301588
+       ],
+       "estimate": 0.8222222222222222,
+       "undefined_share": 0.0
+      },
+      "accuracy_final": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.7555555555555556,
+        0.8317460317460318
+       ],
+       "estimate": 0.7936507936507936,
+       "undefined_share": 0.0
+      },
+      "catches": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.06190476190476189,
+        0.11269841269841269
+       ],
+       "estimate": 0.08571428571428572,
+       "undefined_share": 0.0
+      },
+      "corruption_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.09433962264150944,
+        0.2077922077922078
+       ],
+       "estimate": 0.14906832298136646,
+       "undefined_share": 0.0
+      },
+      "corruptions": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.023809523809523808,
+        0.053968253968253964
+       ],
+       "estimate": 0.0380952380952381,
+       "undefined_share": 0.0
+      },
+      "error_certified": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.10321100917431193,
+        0.1778846153846154
+       ],
+       "estimate": 0.13975903614457832,
+       "undefined_share": 0.0
+      },
+      "error_not_intervened": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.10321100917431193,
+        0.1778846153846154
+       ],
+       "estimate": 0.13975903614457832,
+       "undefined_share": 0.0
+      },
+      "false_flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.269811320754717,
+        0.3527054108216433
+       ],
+       "estimate": 0.3108108108108108,
+       "undefined_share": 0.0
+      },
+      "false_flags": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.22063492063492066,
+        0.2904761904761905
+       ],
+       "estimate": 0.2555555555555556,
+       "undefined_share": 0.0
+      },
+      "fix_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.03773584905660377,
+        0.19607843137254902
+       ],
+       "estimate": 0.1111111111111111,
+       "undefined_share": 0.0
+      },
+      "fixes": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0031746031746031746,
+        0.01746031746031746
+       ],
+       "estimate": 0.009523809523809525,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.18777292576419213,
+        0.3155080213903743
+       ],
+       "estimate": 0.25116279069767444,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.3,
+        0.38095238095238093
+       ],
+       "estimate": 0.3412698412698413,
+       "undefined_share": 0.0
+      },
+      "mean_f1": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.8014333515575751,
+        0.872374810544147
+       ],
+       "estimate": 0.8368670114649194,
+       "undefined_share": 0.0
+      },
+      "missing_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "net_change": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.04603174603174603,
+        -0.012698412698412698
+       ],
+       "estimate": -0.02857142857142857,
+       "undefined_share": 0.0
+      },
+      "output_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.3865546218487395,
+        0.5757575757575758
+       ],
+       "estimate": 0.48214285714285715,
+       "undefined_share": 0.0
+      },
+      "repair_yield": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.046031746031746035,
+        -0.012698412698412698
+       ],
+       "estimate": -0.02857142857142857,
+       "undefined_share": 0.0
+      },
+      "silent_failure": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.14126984126984127,
+        0.21428571428571427
+       ],
+       "estimate": 0.17777777777777776,
+       "undefined_share": 0.0
+      },
+      "unknown_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      }
+     }
+    },
+    "google/gemma-4-31B": {
+     "counts": {
+      "C_F": 16,
+      "C_P": 83,
+      "C_U": 0,
+      "N_att": 630,
+      "N_out": 195,
+      "W_F": 51,
+      "W_P": 44,
+      "W_U": 1,
+      "corrupted": 2,
+      "fixed": 6,
+      "retried": 67,
+      "retry_missing": 0
+     },
+     "metrics": {
+      "accuracy": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.1253968253968254,
+        0.19047619047619044
+       ],
+       "estimate": 0.15714285714285714,
+       "undefined_share": 0.0
+      },
+      "accuracy_final": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.13174603174603172,
+        0.1968253968253968
+       ],
+       "estimate": 0.16349206349206347,
+       "undefined_share": 0.0
+      },
+      "catches": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.06190476190476189,
+        0.10158730158730159
+       ],
+       "estimate": 0.08095238095238096,
+       "undefined_share": 0.0
+      },
+      "corruption_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.3125
+       ],
+       "estimate": 0.125,
+       "undefined_share": 0.0
+      },
+      "corruptions": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.007936507936507936
+       ],
+       "estimate": 0.0031746031746031746,
+       "undefined_share": 0.0
+      },
+      "error_certified": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.2571428571428571,
+        0.44
+       ],
+       "estimate": 0.3464566929133858,
+       "undefined_share": 0.0
+      },
+      "error_not_intervened": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.2624113475177305,
+        0.4444444444444444
+       ],
+       "estimate": 0.3515625,
+       "undefined_share": 0.0
+      },
+      "false_flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.09322033898305085,
+        0.23711340206185566
+       ],
+       "estimate": 0.16161616161616163,
+       "undefined_share": 0.0
+      },
+      "false_flags": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.014285714285714285,
+        0.0380952380952381
+       ],
+       "estimate": 0.025396825396825397,
+       "undefined_share": 0.0
+      },
+      "fix_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.038461538461538464,
+        0.2127659574468085
+       ],
+       "estimate": 0.11764705882352941,
+       "undefined_share": 0.0
+      },
+      "fixes": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0031746031746031746,
+        0.01746031746031746
+       ],
+       "estimate": 0.009523809523809523,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.66,
+        0.859375
+       ],
+       "estimate": 0.7611940298507462,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.2765957446808511,
+        0.41237113402061853
+       ],
+       "estimate": 0.3435897435897436,
+       "undefined_share": 0.0
+      },
+      "mean_f1": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.13813723020072224,
+        0.20473048099839242
+       ],
+       "estimate": 0.17055652053854878,
+       "undefined_share": 0.0
+      },
+      "missing_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "net_change": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.0015873015873015875,
+        0.014285714285714285
+       ],
+       "estimate": 0.006349206349206349,
+       "undefined_share": 0.0
+      },
+      "output_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.27301587301587305,
+        0.34603174603174597
+       ],
+       "estimate": 0.30952380952380953,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.43023255813953487,
+        0.6333333333333333
+       ],
+       "estimate": 0.53125,
+       "undefined_share": 0.0
+      },
+      "repair_yield": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        -0.005434782608695652,
+        0.04854368932038835
+       ],
+       "estimate": 0.020512820512820513,
+       "undefined_share": 0.0
+      },
+      "silent_failure": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.12698412698412698,
+        0.1777777777777778
+       ],
+       "estimate": 0.15238095238095237,
+       "undefined_share": 0.0
+      },
+      "unknown_rate": {
+       "basis": "registered and verified: equal to the registered results.json, to the bit",
+       "ci": [
+        0.0,
+        0.016129032258064516
+       ],
+       "estimate": 0.005128205128205128,
+       "undefined_share": 0.0
+      }
+     }
+    }
+   },
+   "cohort": "none",
+   "declared_models": [
+    "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "Qwen/Qwen3.8-27B",
+    "claude-haiku-5-5",
+    "claude-sonnet-5-5",
+    "deepseek-ai/DeepSeek-V4-Flash-0731",
+    "google/gemma-4-31B"
+   ],
+   "graph": "uniprot-sp-2026_03",
+   "source": "baseline-judge",
+   "use": "checker",
+   "variants": {
+    "all_models": {
+     "equal_weight_per_model": {
+      "label": "exploratory, equal weight per model",
+      "metrics": {
+       "accuracy": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.6037037037037037,
+         0.6349206349206349
+        ],
+        "estimate": 0.6193121693121693,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "accuracy_final": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.5907407407407407,
+         0.6235449735449735
+        ],
+        "estimate": 0.6071428571428571,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "catches": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.04153439153439153,
+         0.05873015873015872
+        ],
+        "estimate": 0.049999999999999996,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "corruption_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.07742914979757085,
+         0.1927055816787602
+        ],
+        "estimate": 0.12422289608474742,
+        "not_estimable_for": [],
+        "undefined_share": 0.3514
+       },
+       "corruptions": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.014550264550264551,
+         0.024338624338624337
+        ],
+        "estimate": 0.019312169312169312,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "error_certified": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.1690457944866445,
+         0.26046273358786376
+        ],
+        "estimate": 0.21543549784885516,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "error_not_intervened": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.1779408569434794,
+         0.26742850975813365
+        ],
+        "estimate": 0.2252815001663763,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "false_flag_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.14653330567998454,
+         0.22223129028505192
+        ],
+        "estimate": 0.17684075364866592,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "false_flags": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.10634920634920636,
+         0.1291005291005291
+        ],
+        "estimate": 0.11746031746031747,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "fix_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.2626984126984127,
+         0.38991347905282336
+        ],
+        "estimate": 0.32465834818775996,
+        "not_estimable_for": [],
+        "undefined_share": 0.3553
+       },
+       "fixes": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.004497354497354497,
+         0.010052910052910051
+        ],
+        "estimate": 0.007142857142857143,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.3591291531190221,
+         0.4606886027829626
+        ],
+        "estimate": 0.4048179333587163,
+        "not_estimable_for": [],
+        "undefined_share": 0.0006
+       },
+       "flag_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.24497354497354495,
+         0.3124016563146998
+        ],
+        "estimate": 0.27746697746697746,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.6171598383208586,
+         0.6470300422027541
+        ],
+        "estimate": 0.6321757848212325,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "net_change": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         -0.017724867724867723,
+         -0.006878306878306879
+        ],
+        "estimate": -0.01216931216931217,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.723015873015873,
+         0.7367724867724866
+        ],
+        "estimate": 0.7298941798941799,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.35114487377647857,
+         0.45249082769843607
+        ],
+        "estimate": 0.3993015766912826,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "repair_yield": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         -0.016819070623418447,
+         -0.0029466396487673094
+        ],
+        "estimate": -0.009808709808709808,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.09497354497354497,
+         0.1259259259259259
+        ],
+        "estimate": 0.11058201058201057,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       },
+       "unknown_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.0038516724957402926,
+         0.027520005505815518
+        ],
+        "estimate": 0.015128390128390129,
+        "not_estimable_for": [],
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "models": [
+      "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "Qwen/Qwen3.8-27B",
+      "claude-haiku-5-5",
+      "claude-sonnet-5-5",
+      "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "google/gemma-4-31B"
+     ],
+     "n_models": 6,
+     "pooled_over_attempts": {
+      "counts": {
+       "C_F": 444,
+       "C_P": 1887,
+       "C_U": 10,
+       "N_att": 3780,
+       "N_out": 2759,
+       "W_F": 189,
+       "W_P": 224,
+       "W_U": 5,
+       "corrupted": 73,
+       "fixed": 27,
+       "retried": 633,
+       "retry_missing": 0
+      },
+      "metrics": {
+       "accuracy": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.6037037037037036,
+         0.6349206349206349
+        ],
+        "estimate": 0.6193121693121693,
+        "undefined_share": 0.0
+       },
+       "accuracy_final": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.5907407407407407,
+         0.6235449735449735
+        ],
+        "estimate": 0.6071428571428571,
+        "undefined_share": 0.0
+       },
+       "catches": {
+        "basis": "registered and verified: equal to the registered results.json, to the bit",
+        "ci": [
+         0.04153439153439153,
+         0.05873015873015872
+        ],
+        "estimate": 0.05,
+        "undefined_share": 0.0
+       },
+       "corruption_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.1282051282051282,
+         0.2017353579175705
+        ],
+        "estimate": 0.16441441441441443,
+        "undefined_share": 0.0
+       },
+       "corruptions": {
+        "basis": "registered and verified: equal to the registered results.json, to the bit",
+        "ci": [
+         0.014550264550264553,
+         0.024338624338624337
+        ],
+        "estimate": 0.019312169312169312,
+        "undefined_share": 0.0
+       },
+       "error_certified": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.08749405611031859,
+         0.1252371916508539
+        ],
+        "estimate": 0.10611084793936523,
+        "undefined_share": 0.0
+       },
+       "error_not_intervened": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.08902496467263307,
+         0.12704343764595982
+        ],
+        "estimate": 0.1077140169332079,
+        "undefined_share": 0.0
+       },
+       "false_flag_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.1711252653927813,
+         0.20945945945945946
+        ],
+        "estimate": 0.18966253737718924,
+        "undefined_share": 0.0
+       },
+       "false_flags": {
+        "basis": "registered and verified: equal to the registered results.json, to the bit",
+        "ci": [
+         0.10634920634920635,
+         0.12910052910052908
+        ],
+        "estimate": 0.11746031746031746,
+        "undefined_share": 0.0
+       },
+       "fix_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.09289617486338798,
+         0.19786096256684493
+        ],
+        "estimate": 0.14285714285714285,
+        "undefined_share": 0.0
+       },
+       "fixes": {
+        "basis": "registered and verified: equal to the registered results.json, to the bit",
+        "ci": [
+         0.004497354497354497,
+         0.010052910052910053
+        ],
+        "estimate": 0.007142857142857143,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.2583732057416268,
+         0.33713355048859933
+        ],
+        "estimate": 0.2985781990521327,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.20942028985507247,
+         0.25054466230936817
+        ],
+        "estimate": 0.22943095324392895,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.6171598383208585,
+         0.6470300422027541
+        ],
+        "estimate": 0.6321757848212325,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "net_change": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         -0.017724867724867723,
+         -0.006878306878306879
+        ],
+        "estimate": -0.01216931216931217,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.7230158730158729,
+         0.7367724867724869
+        ],
+        "estimate": 0.7298941798941798,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.40414507772020725,
+         0.5022935779816514
+        ],
+        "estimate": 0.45215311004784686,
+        "undefined_share": 0.0
+       },
+       "repair_yield": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         -0.024144144144144144,
+         -0.009509875640087784
+        ],
+        "estimate": -0.016672707502718376,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.09497354497354496,
+         0.1259259259259259
+        ],
+        "estimate": 0.11058201058201057,
+        "undefined_share": 0.0
+       },
+       "unknown_rate": {
+        "basis": "composed here from registered pieces (the registered weighting on pooled units, or the 1/M mean); analyse.py does not report it",
+        "ci": [
+         0.0029133284777858705,
+         0.008023340627279359
+        ],
+        "estimate": 0.005436752446538601,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    }
+   },
+   "waived_models": []
+  }
+ ],
+ "schema": "baseline-cell-equal-weight/1",
+ "sources": [
+  "baseline-empty",
+  "baseline-judge",
+  "baseline-sparqlllm"
+ ],
+ "waived_models": []
+}

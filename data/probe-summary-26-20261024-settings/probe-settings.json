@@ -1,0 +1,100 @@
+{
+ "outs": {
+  "claude-1": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "claude-2": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "claude-3": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "claude-4": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3-coder-30b-a3b-1": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3-coder-30b-a3b-2": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3-coder-30b-a3b-3": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3-coder-30b-a3b-4": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "deepseek-v4-flash-0731-1": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "deepseek-v4-flash-0731-2": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "deepseek-v4-flash-0731-3": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "deepseek-v4-flash-0731-4": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "gemma-4-31b-1": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "gemma-4-31b-2": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "gemma-4-31b-3": {
+   "max_tokens": 16000,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3.8-27b-1": {
+   "max_tokens": 32768,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3.8-27b-2": {
+   "max_tokens": 32768,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3.8-27b-3": {
+   "max_tokens": 32768,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  },
+  "qwen3.8-27b-4": {
+   "max_tokens": 32768,
+   "sparql_client_timeout_s": 60.0,
+   "store_server_query_timeout": "300s"
+  }
+ },
+ "schema": "probe-settings/1"
+}

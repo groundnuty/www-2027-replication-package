@@ -1,0 +1,11 @@
+opaque-deepseek-v4-flash-0731-cap81920-p5of6: re-run initial attempts 8 (cap 81920; attempts left out of the copy: 12 records to re-run in all phases)
+  endings of the re-run initial attempts per arm (a parent that ends other than 'submitted' leaves its branches inherited):
+    census: {'other end': 1, 'submitted': 1}
+    curated: {'submitted': 3}
+    none: {'submitted': 3}
+  re-run records at another cap than 81920: 0
+  context_overflow endings (any re-run record): 0
+  re-run initial attempts with a turn still at the new cap: 0 of 8 (0.0%); re-run branch records with an own turn at the new cap: 0
+  request cuts at the 3600 s time-out (retry entries of class timeout, no status): 0
+  session hours of the re-run initial attempts: 1.9 h
+  more than 1% of the re-run records still hit the new cap: no

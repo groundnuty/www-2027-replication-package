@@ -1,0 +1,470 @@
+{
+ "extra_arm": "sparqlllm-parse-as-unknown",
+ "extra_arm_rule": "the published validator's rows, each flag whose only kind is 'parse' read as unknown (status unknown, any_unknown, no retry, no fired check); every other row unchanged; the published arm is not remapped (design ruling (i), the design log)",
+ "label": "comparable to the registered sources' treatment",
+ "models": {
+  "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+   "adapted": {
+    "flags": 9,
+    "outputs": 44,
+    "parse_only_flags": 3,
+    "parse_only_share_of_flags": 0.3333333333333333,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 3,
+     "census-t20": 3,
+     "census-t5": 3,
+     "curated": 3,
+     "generated-1": 3,
+     "generated-2": 3,
+     "generated-3": 3,
+     "generated-dc-1": 3,
+     "generated-dc-2": 3,
+     "generated-dc-3": 3,
+     "union": 3
+    }
+   },
+   "published": {
+    "flags": 11,
+    "outputs": 44,
+    "parse_only_flags": 3,
+    "parse_only_share_of_flags": 0.2727272727272727,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 3,
+     "census-t20": 3,
+     "census-t5": 3,
+     "curated": 3,
+     "generated-1": 3,
+     "generated-2": 3,
+     "generated-3": 3,
+     "generated-dc-1": 3,
+     "generated-dc-2": 3,
+     "generated-dc-3": 3,
+     "union": 3
+    }
+   }
+  },
+  "Qwen/Qwen3.8-27B": {
+   "adapted": {
+    "flags": 45,
+    "outputs": 630,
+    "parse_only_flags": 5,
+    "parse_only_share_of_flags": 0.1111111111111111,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 5,
+     "census-t20": 5,
+     "census-t5": 5,
+     "curated": 5,
+     "generated-1": 5,
+     "generated-2": 5,
+     "generated-3": 5,
+     "generated-dc-1": 5,
+     "generated-dc-2": 5,
+     "generated-dc-3": 5,
+     "union": 5
+    }
+   },
+   "published": {
+    "flags": 30,
+    "outputs": 630,
+    "parse_only_flags": 5,
+    "parse_only_share_of_flags": 0.16666666666666666,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 5,
+     "census-t20": 5,
+     "census-t5": 5,
+     "curated": 5,
+     "generated-1": 5,
+     "generated-2": 5,
+     "generated-3": 5,
+     "generated-dc-1": 5,
+     "generated-dc-2": 5,
+     "generated-dc-3": 5,
+     "union": 5
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "adapted": {
+    "flags": 54,
+    "outputs": 630,
+    "parse_only_flags": 0,
+    "parse_only_share_of_flags": 0.0,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    }
+   },
+   "published": {
+    "flags": 50,
+    "outputs": 630,
+    "parse_only_flags": 0,
+    "parse_only_share_of_flags": 0.0,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    }
+   }
+  },
+  "claude-sonnet-5-5": {
+   "adapted": {
+    "flags": 43,
+    "outputs": 630,
+    "parse_only_flags": 0,
+    "parse_only_share_of_flags": 0.0,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    }
+   },
+   "published": {
+    "flags": 49,
+    "outputs": 630,
+    "parse_only_flags": 0,
+    "parse_only_share_of_flags": 0.0,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    }
+   }
+  },
+  "deepseek-ai/DeepSeek-V4-Flash-0731": {
+   "adapted": {
+    "flags": 36,
+    "outputs": 630,
+    "parse_only_flags": 2,
+    "parse_only_share_of_flags": 0.05555555555555555,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    }
+   },
+   "published": {
+    "flags": 21,
+    "outputs": 630,
+    "parse_only_flags": 2,
+    "parse_only_share_of_flags": 0.09523809523809523,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 2,
+     "census-t20": 2,
+     "census-t5": 2,
+     "curated": 2,
+     "generated-1": 2,
+     "generated-2": 2,
+     "generated-3": 2,
+     "generated-dc-1": 2,
+     "generated-dc-2": 2,
+     "generated-dc-3": 2,
+     "union": 2
+    }
+   }
+  },
+  "google/gemma-4-31B": {
+   "adapted": {
+    "flags": 19,
+    "outputs": 195,
+    "parse_only_flags": 1,
+    "parse_only_share_of_flags": 0.05263157894736842,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 1,
+     "census-t20": 1,
+     "census-t5": 1,
+     "curated": 1,
+     "generated-1": 1,
+     "generated-2": 1,
+     "generated-3": 1,
+     "generated-dc-1": 1,
+     "generated-dc-2": 1,
+     "generated-dc-3": 1,
+     "union": 1
+    }
+   },
+   "published": {
+    "flags": 8,
+    "outputs": 195,
+    "parse_only_flags": 1,
+    "parse_only_share_of_flags": 0.125,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 1,
+     "census-t20": 1,
+     "census-t5": 1,
+     "curated": 1,
+     "generated-1": 1,
+     "generated-2": 1,
+     "generated-3": 1,
+     "generated-dc-1": 1,
+     "generated-dc-2": 1,
+     "generated-dc-3": 1,
+     "union": 1
+    }
+   }
+  },
+  "zai-org/GLM-5.3-Flash": {
+   "adapted": {
+    "flags": 67,
+    "outputs": 624,
+    "parse_only_flags": 0,
+    "parse_only_share_of_flags": 0.0,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    }
+   },
+   "published": {
+    "flags": 46,
+    "outputs": 624,
+    "parse_only_flags": 0,
+    "parse_only_share_of_flags": 0.0,
+    "registered_sources_parser_mismatch_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    },
+    "registered_sources_unknown_among_parse_only": {
+     "census-t2": 0,
+     "census-t20": 0,
+     "census-t5": 0,
+     "curated": 0,
+     "generated-1": 0,
+     "generated-2": 0,
+     "generated-3": 0,
+     "generated-dc-1": 0,
+     "generated-dc-2": 0,
+     "generated-dc-3": 0,
+     "union": 0
+    }
+   }
+  }
+ },
+ "schema": "sparqlllm-parse-comparability/1"
+}

@@ -1,0 +1,8 @@
+{
+ "cohort": "none",
+ "matrix_rows": 8820,
+ "records_of_cohort": 4410,
+ "records_read": 14490,
+ "schema": "sparqlllm-replay/1",
+ "split": "test"
+}

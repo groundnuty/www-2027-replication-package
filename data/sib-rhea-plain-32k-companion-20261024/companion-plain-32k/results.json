@@ -1,0 +1,741 @@
+{
+ "arms": {
+  "rhea-142|claude-sonnet-5-5|none|prompt|-": {
+   "costs": {
+    "agent_usd": {
+     "mean": 0.1779506204620462,
+     "median": 0.082518,
+     "n": 303,
+     "total": 53.919038
+    },
+    "input_tokens": {
+     "mean": 79911.06270627063,
+     "median": 53587.0,
+     "n": 303,
+     "total": 24213052.0
+    },
+    "output_tokens": {
+     "mean": 7673.056105610561,
+     "median": 1888.0,
+     "n": 303,
+     "total": 2324936.0
+    },
+    "tool_calls": {
+     "mean": 7.547854785478548,
+     "median": 7.0,
+     "n": 303,
+     "total": 2287.0
+    },
+    "wall_s": {
+     "mean": 47.27816416819276,
+     "median": 21.194933880120516,
+     "n": 303,
+     "total": 14325.283742962405
+    }
+   },
+   "counts": {
+    "C_F": 0,
+    "C_P": 0,
+    "C_U": 0,
+    "N_att": 303,
+    "N_out": 225,
+    "P_substantive": 0,
+    "P_vacuous": 0,
+    "W_F": 0,
+    "W_P": 0,
+    "W_U": 0,
+    "abstained": 53,
+    "branch_local_flags": 0,
+    "capped": 0,
+    "corrupted": 0,
+    "data_fault_flags": 0,
+    "failed": 25,
+    "failed_harness": 0,
+    "fixed": 0,
+    "infra_tries": 0,
+    "missing": 0,
+    "n_questions": 101,
+    "number_traceability_flags": 0,
+    "refused": 0,
+    "retried": 0,
+    "retry_missing": 0
+   },
+   "key": {
+    "cohort": "none",
+    "graph": "rhea-142",
+    "model": "claude-sonnet-5-5",
+    "source": "-",
+    "use": "prompt"
+   },
+   "metrics": {
+    "accuracy": {
+     "ci": [
+      0.0627062706270627,
+      0.1848184818481848
+     ],
+     "estimate": 0.1188118811881188,
+     "undefined_share": 0.0
+    },
+    "mean_f1": {
+     "ci": [
+      0.06359210062382673,
+      0.18513571827559508
+     ],
+     "estimate": 0.11978852929256043,
+     "undefined_share": 0.0
+    },
+    "missing_rate": {
+     "ci": [
+      0.0,
+      0.0
+     ],
+     "estimate": 0.0,
+     "undefined_share": 0.0
+    },
+    "output_rate": {
+     "ci": [
+      0.6666666666666666,
+      0.8151815181518152
+     ],
+     "estimate": 0.7425742574257426,
+     "undefined_share": 0.0
+    },
+    "silent_failure": {
+     "ci": [
+      0.537953795379538,
+      0.7062706270627064
+     ],
+     "estimate": 0.6237623762376238,
+     "undefined_share": 0.0
+    }
+   },
+   "strata": {
+    "checked_query": {
+     "aligned": {
+      "counts": {
+       "N_att": 192,
+       "N_out": 192,
+       "n_questions": 76
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.06926406926406926,
+         0.22077922077922077
+        ],
+        "estimate": 0.14035087719298245,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.07037597785659915,
+         0.2218942826007993
+        ],
+        "estimate": 0.1414676658955782,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.7792207792207793,
+         0.9307359307359306
+        ],
+        "estimate": 0.8596491228070177,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "fallback": {
+      "counts": {
+       "N_att": 33,
+       "N_out": 33,
+       "n_questions": 20
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0,
+         0.25
+        ],
+        "estimate": 0.1,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.001923679631691001,
+         0.25675311208297924
+        ],
+        "estimate": 0.10568699493672488,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.75,
+         1.0
+        ],
+        "estimate": 0.9,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "none": {
+      "counts": {
+       "N_att": 78,
+       "N_out": 0,
+       "n_questions": 37
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    },
+    "gold_empty": {
+     "no": {
+      "counts": {
+       "N_att": 225,
+       "N_out": 225,
+       "n_questions": 85
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.07723577235772357,
+         0.2222222222222222
+        ],
+        "estimate": 0.14509803921568626,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.07952431359730855,
+         0.22484413312894974
+        ],
+        "estimate": 0.14743469615841304,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.7777777777777778,
+         0.9227642276422765
+        ],
+        "estimate": 0.8549019607843136,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "unrecorded": {
+      "counts": {
+       "N_att": 78,
+       "N_out": 0,
+       "n_questions": 37
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    },
+    "nested_graph": {
+     "no": {
+      "counts": {
+       "N_att": 303,
+       "N_out": 225,
+       "n_questions": 101
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0627062706270627,
+         0.1848184818481848
+        ],
+        "estimate": 0.1188118811881188,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.06359210062382673,
+         0.18513571827559508
+        ],
+        "estimate": 0.11978852929256043,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         0.6666666666666666,
+         0.8151815181518152
+        ],
+        "estimate": 0.7425742574257426,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.537953795379538,
+         0.7062706270627064
+        ],
+        "estimate": 0.6237623762376238,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    },
+    "sib": {
+     "primary": {
+      "counts": {
+       "N_att": 303,
+       "N_out": 225,
+       "n_questions": 101
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0627062706270627,
+         0.1848184818481848
+        ],
+        "estimate": 0.1188118811881188,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.06359210062382673,
+         0.18513571827559508
+        ],
+        "estimate": 0.11978852929256043,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         0.6666666666666666,
+         0.8151815181518152
+        ],
+        "estimate": 0.7425742574257426,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.537953795379538,
+         0.7062706270627064
+        ],
+        "estimate": 0.6237623762376238,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    },
+    "split": {
+     "test": {
+      "counts": {
+       "N_att": 303,
+       "N_out": 225,
+       "n_questions": 101
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0627062706270627,
+         0.1848184818481848
+        ],
+        "estimate": 0.1188118811881188,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.06359210062382673,
+         0.18513571827559508
+        ],
+        "estimate": 0.11978852929256043,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         0.6666666666666666,
+         0.8151815181518152
+        ],
+        "estimate": 0.7425742574257426,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.537953795379538,
+         0.7062706270627064
+        ],
+        "estimate": 0.6237623762376238,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    },
+    "template": {
+     "sib-rhea": {
+      "counts": {
+       "N_att": 303,
+       "N_out": 225,
+       "n_questions": 101
+      },
+      "metrics": {
+       "accuracy": {
+        "ci": [
+         0.0627062706270627,
+         0.1848184818481848
+        ],
+        "estimate": 0.1188118811881188,
+        "undefined_share": 0.0
+       },
+       "mean_f1": {
+        "ci": [
+         0.06359210062382673,
+         0.18513571827559508
+        ],
+        "estimate": 0.11978852929256043,
+        "undefined_share": 0.0
+       },
+       "missing_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "output_rate": {
+        "ci": [
+         0.6666666666666666,
+         0.8151815181518152
+        ],
+        "estimate": 0.7425742574257426,
+        "undefined_share": 0.0
+       },
+       "silent_failure": {
+        "ci": [
+         0.537953795379538,
+         0.7062706270627064
+        ],
+        "estimate": 0.6237623762376238,
+        "undefined_share": 0.0
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "confirmatory": null,
+ "deployments": {
+  "pairs_compared": 0,
+  "restricted": {},
+  "shares": {
+   "rhea-142|claude-sonnet-5-5|none|prompt|-": {
+    "attempts": 303,
+    "without record": 0,
+    "rows": {
+     "Claude": {
+      "n": 303,
+      "of": 303,
+      "share": 1.0
+     }
+    }
+   }
+  }
+ },
+ "exploratory": {
+  "clusters": {
+   "clusters": 101,
+   "largest": 1,
+   "questions": 101,
+   "sizes": {
+    "1": 101
+   }
+  },
+  "graph": "sib-rhea-142",
+  "partition_union": null
+ },
+ "model_settings": {
+  "arms": {
+   "rhea-142|claude-sonnet-5-5|none": {
+    "assistant_turns": 0,
+    "calls_lost": 0,
+    "calls_not_reproduced": 0,
+    "calls_refused": 0,
+    "calls_reread": 0,
+    "calls_rescued": 0,
+    "calls_rule_fault": 0,
+    "calls_unchanged": 0,
+    "caps": {
+     "context": 0,
+     "turns": 0,
+     "wall": 0
+    },
+    "reasoning_call_rule": {
+     "none": 303
+    },
+    "records": 303,
+    "records_final_report": 0,
+    "records_final_report_rescued": 0,
+    "records_with_recovered_call": 0,
+    "report_key_rule": {
+     "none": 303
+    },
+    "submit_calls": 0,
+    "turns_recovered_not_taken": 0,
+    "turns_recovered_taken": 0
+   }
+  },
+  "descriptive": true,
+  "status": "descriptive (the design log, item 4): how often each per-model harness setting fired in each arm, to show the settings do not differ by arm; it is never confirmatory and changes no arm's numbers",
+  "totals": {
+   "assistant_turns": 0,
+   "calls_lost": 0,
+   "calls_not_reproduced": 0,
+   "calls_refused": 0,
+   "calls_reread": 0,
+   "calls_rescued": 0,
+   "calls_rule_fault": 0,
+   "calls_unchanged": 0,
+   "caps": {
+    "context": 0,
+    "turns": 0,
+    "wall": 0
+   },
+   "reasoning_call_rule": {
+    "none": 303
+   },
+   "records": 303,
+   "records_final_report": 0,
+   "records_final_report_rescued": 0,
+   "records_with_recovered_call": 0,
+   "report_key_rule": {
+    "none": 303
+   },
+   "submit_calls": 0,
+   "turns_recovered_not_taken": 0,
+   "turns_recovered_taken": 0
+  }
+ },
+ "output_cap_hits": {
+  "arms": {
+   "rhea-142|claude-sonnet-5-5|none": 25
+  },
+  "label": "capped:output"
+ },
+ "real_output_ledger": {
+  "by_model": [],
+  "definitions": {
+   "bank": "the same source's bank arm: recall W_F / W, false-flag rate C_F / C, unknown rate U / N_out, pooled counts",
+   "non_empty": "outputs (items) whose checked query returned rows (result_rows > 0, feat/baselines' 'returns_rows' stratum): catches and false flags on them over N_att; on the bank, recall and false-flag rate over the non-empty items; not estimable when no row count is recorded",
+   "not_flagged": "only status F is a flag: an unknown (U) and a vacuous pass count as not flagged",
+   "per_attempt": "catches W_F, false flags C_F, fixes (wrong, flagged, right after the retry) and corruptions (right, flagged, wrong after it), each over N_att: a question's mean over its attempts, then over questions",
+   "reference": "retry on empty ('empty-retry'): it flags exactly the outputs whose result had no rows",
+   "rows": "one per graph x cohort x use x source, its arms' units pooled over models, then prereg §3's weighting; 'by_model' gives the same row per model (the appendix table, no predictions)",
+   "status": "descriptive (prereg §7, the design log): it frames the bank claims and is never confirmatory",
+   "unknown_rate": "U / N_out, pooled counts"
+  },
+  "descriptive": true,
+  "reference_present": false,
+  "rows": []
+ },
+ "refusals": {
+  "descriptive": true,
+  "final_messages_read": true,
+  "per_arm": {},
+  "refused": 0,
+  "signals": {}
+ },
+ "schema": "analysis-results/6",
+ "scorer_changes": {
+  "arms": {
+   "rhea-142|claude-sonnet-5-5|none": {
+    "exact_frozen": 0,
+    "exact_v4": 0,
+    "gained": 0,
+    "lost": 0,
+    "not_reproduced": 0,
+    "scored": 0,
+    "stored_versions": {
+     "scorer-rules-v6": 303
+    },
+    "unscored": 303
+   }
+  },
+  "descriptive": true,
+  "frozen_version": "scorer-rules-v6",
+  "status": "descriptive (the design log): the verdicts the frozen scorer changes against scorer-rules-v4; it is never confirmatory and changes no arm's numbers",
+  "totals": {
+   "exact_frozen": 0,
+   "exact_v4": 0,
+   "gained": 0,
+   "lost": 0,
+   "not_reproduced": 0,
+   "scored": 0,
+   "unscored": 303
+  }
+ },
+ "settings": {
+  "bank": null,
+  "exact_bounds": "Clopper-Pearson for binary question-level events only (prereg §3)",
+  "gated": true,
+  "interval": "percentile over defined resamples, inverted-CDF quantiles (prereg §4)",
+  "level": 0.95,
+  "n_boot": 10000,
+  "n_questions": 101,
+  "n_reps": 3,
+  "refusal_settings": {
+   "refused": 303
+  },
+  "resampling": "§4.1's unstratified cluster bootstrap (the design log item 7): B = 10,000 draws with replacement of the clusters of the question index (the design log's cluster map, ClusterMap.resampling, seed 20261026), each question weighted by its cluster's draw count; one matrix for every arm; over a partition union, one index and one matrix over the union (the design log item 5)",
+  "seed": 20261026,
+  "split": "test",
+  "status": "exploratory (prereg §6; the design log item 7): point estimates are the frozen per-question means, every bootstrap interval the unstratified cluster bootstrap (the frozen per-arm path's stratified intervals are not reported); the Clopper-Pearson bounds on question-level events stay as §3 registered them (science, design log, 23 Oct 00:57Z)",
+  "strata": {
+   "sib-rhea|unrecorded": 101
+  },
+  "weighting": "proportions over N_att averaged per question then over questions; ratios as pooled counts (prereg §3)"
+ },
+ "stores": {}
+}

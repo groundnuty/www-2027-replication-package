@@ -1,0 +1,203 @@
+{
+ "adapted_row": "SPARQL-LLM validator, our adaptation",
+ "adapted_row_is": "upstream's disabled rule enabled (a predicate no class has, on an untyped subject) and inference accepting any listed object class",
+ "models": {
+  "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+   "adapted_row_dropped_flags": 4,
+   "adapted_row_extra_flags": 2,
+   "adapted_row_flags": 9,
+   "flagged_only_artefact_kinds": 6,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 3,
+    "predicate": 1,
+    "predicate_inferred": 6,
+    "predicate_path": 0,
+    "predicate_variable_class": 0,
+    "recursion": 0,
+    "type_missing": 1
+   },
+   "outputs": 44,
+   "outputs_with_unchecked_scopes": 3,
+   "published_flags": 11,
+   "status_counts": {
+    "flagged": 11,
+    "no_query": 0,
+    "substantive_pass": 21,
+    "unknown": 0,
+    "vacuous_pass": 12
+   },
+   "vacuous_share": 0.2727272727272727,
+   "validations_cut_at_budget": 0
+  },
+  "Qwen/Qwen3.8-27B": {
+   "adapted_row_dropped_flags": 10,
+   "adapted_row_extra_flags": 25,
+   "adapted_row_flags": 45,
+   "flagged_only_artefact_kinds": 17,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 5,
+    "predicate": 7,
+    "predicate_inferred": 16,
+    "predicate_path": 0,
+    "predicate_variable_class": 5,
+    "recursion": 0,
+    "type_missing": 1
+   },
+   "outputs": 630,
+   "outputs_with_unchecked_scopes": 37,
+   "published_flags": 30,
+   "status_counts": {
+    "flagged": 30,
+    "no_query": 0,
+    "substantive_pass": 155,
+    "unknown": 0,
+    "vacuous_pass": 445
+   },
+   "vacuous_share": 0.7063492063492064,
+   "validations_cut_at_budget": 0
+  },
+  "claude-haiku-5-5": {
+   "adapted_row_dropped_flags": 15,
+   "adapted_row_extra_flags": 19,
+   "adapted_row_flags": 54,
+   "flagged_only_artefact_kinds": 42,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 0,
+    "predicate": 8,
+    "predicate_inferred": 31,
+    "predicate_path": 0,
+    "predicate_variable_class": 13,
+    "recursion": 0,
+    "type_missing": 0
+   },
+   "outputs": 630,
+   "outputs_with_unchecked_scopes": 39,
+   "published_flags": 50,
+   "status_counts": {
+    "flagged": 50,
+    "no_query": 0,
+    "substantive_pass": 241,
+    "unknown": 0,
+    "vacuous_pass": 339
+   },
+   "vacuous_share": 0.5380952380952381,
+   "validations_cut_at_budget": 0
+  },
+  "claude-sonnet-5-5": {
+   "adapted_row_dropped_flags": 33,
+   "adapted_row_extra_flags": 27,
+   "adapted_row_flags": 43,
+   "flagged_only_artefact_kinds": 48,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 0,
+    "predicate": 1,
+    "predicate_inferred": 46,
+    "predicate_path": 1,
+    "predicate_variable_class": 3,
+    "recursion": 0,
+    "type_missing": 0
+   },
+   "outputs": 630,
+   "outputs_with_unchecked_scopes": 61,
+   "published_flags": 49,
+   "status_counts": {
+    "flagged": 49,
+    "no_query": 0,
+    "substantive_pass": 294,
+    "unknown": 0,
+    "vacuous_pass": 287
+   },
+   "vacuous_share": 0.45555555555555555,
+   "validations_cut_at_budget": 0
+  },
+  "deepseek-ai/DeepSeek-V4-Flash-0731": {
+   "adapted_row_dropped_flags": 9,
+   "adapted_row_extra_flags": 24,
+   "adapted_row_flags": 36,
+   "flagged_only_artefact_kinds": 15,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 2,
+    "predicate": 4,
+    "predicate_inferred": 14,
+    "predicate_path": 0,
+    "predicate_variable_class": 3,
+    "recursion": 0,
+    "type_missing": 0
+   },
+   "outputs": 630,
+   "outputs_with_unchecked_scopes": 35,
+   "published_flags": 21,
+   "status_counts": {
+    "flagged": 21,
+    "no_query": 0,
+    "substantive_pass": 170,
+    "unknown": 0,
+    "vacuous_pass": 439
+   },
+   "vacuous_share": 0.6968253968253968,
+   "validations_cut_at_budget": 0
+  },
+  "google/gemma-4-31B": {
+   "adapted_row_dropped_flags": 1,
+   "adapted_row_extra_flags": 12,
+   "adapted_row_flags": 19,
+   "flagged_only_artefact_kinds": 4,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 1,
+    "predicate": 3,
+    "predicate_inferred": 5,
+    "predicate_path": 0,
+    "predicate_variable_class": 0,
+    "recursion": 0,
+    "type_missing": 0
+   },
+   "outputs": 195,
+   "outputs_with_unchecked_scopes": 18,
+   "published_flags": 8,
+   "status_counts": {
+    "flagged": 8,
+    "no_query": 0,
+    "substantive_pass": 15,
+    "unknown": 0,
+    "vacuous_pass": 172
+   },
+   "vacuous_share": 0.882051282051282,
+   "validations_cut_at_budget": 0
+  },
+  "zai-org/GLM-5.3-Flash": {
+   "adapted_row_dropped_flags": 15,
+   "adapted_row_extra_flags": 36,
+   "adapted_row_flags": 67,
+   "flagged_only_artefact_kinds": 37,
+   "flagged_outputs_by_kind": {
+    "other": 0,
+    "parse": 0,
+    "predicate": 9,
+    "predicate_inferred": 23,
+    "predicate_path": 1,
+    "predicate_variable_class": 14,
+    "recursion": 0,
+    "type_missing": 0
+   },
+   "outputs": 624,
+   "outputs_with_unchecked_scopes": 50,
+   "published_flags": 46,
+   "status_counts": {
+    "flagged": 46,
+    "no_query": 0,
+    "substantive_pass": 231,
+    "unknown": 0,
+    "vacuous_pass": 347
+   },
+   "vacuous_share": 0.5560897435897436,
+   "validations_cut_at_budget": 0
+  }
+ },
+ "schema": "sparqlllm-reach/2"
+}

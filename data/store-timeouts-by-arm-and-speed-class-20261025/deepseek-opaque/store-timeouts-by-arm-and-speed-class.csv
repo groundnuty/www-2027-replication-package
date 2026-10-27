@@ -1,0 +1,11 @@
+model,arm,branched,graph,speed_class,records,requests,timeouts,attempts_with_timeout,timeout_rate
+deepseek-ai/DeepSeek-V4-Flash-0731,census,False,opaque-rhea-142,medium,303,13898,39,35,0.002806
+deepseek-ai/DeepSeek-V4-Flash-0731,census,False,opaque-rhea-142,slow,327,17499,69,49,0.003943
+deepseek-ai/DeepSeek-V4-Flash-0731,curated,False,opaque-rhea-142,medium,303,14970,86,68,0.005745
+deepseek-ai/DeepSeek-V4-Flash-0731,curated,False,opaque-rhea-142,slow,327,17275,107,79,0.006194
+deepseek-ai/DeepSeek-V4-Flash-0731,fb:curated,True,opaque-rhea-142,medium,274,678,3,2,0.004425
+deepseek-ai/DeepSeek-V4-Flash-0731,fb:curated,True,opaque-rhea-142,slow,286,587,1,1,0.001704
+deepseek-ai/DeepSeek-V4-Flash-0731,gen:any,True,opaque-rhea-142,medium,274,639,2,2,0.003130
+deepseek-ai/DeepSeek-V4-Flash-0731,gen:any,True,opaque-rhea-142,slow,286,779,1,1,0.001284
+deepseek-ai/DeepSeek-V4-Flash-0731,none,False,opaque-rhea-142,medium,303,18442,141,96,0.007646
+deepseek-ai/DeepSeek-V4-Flash-0731,none,False,opaque-rhea-142,slow,327,22040,229,147,0.010390

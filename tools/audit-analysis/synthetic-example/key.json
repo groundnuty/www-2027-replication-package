@@ -1,0 +1,473 @@
+{
+ "files_sha256": {
+  "HANDLING.md": "dab50efc122dc1678cdb4c4fb87355b88cdc3c3f6a12142c4f04985ef135f072",
+  "annotators/annotator-1/README.md": "2212ed21d0c17cedec1558cfcf549845f7f614ffd478504552d0bfdf92a223bd",
+  "annotators/annotator-1/items.jsonl": "587ff8b67ae9c5941f8b505789d0d0c40ee0e0f6101ee6a2e6ccc664981185df",
+  "annotators/annotator-1/items.md": "0fdbaa5c661bec5add29e3ce4a72c48329033449958feb588e6c5f06b79f2354",
+  "annotators/annotator-1/sheet.csv": "0d62a0b27231decdd953588c948cdf6d4ceaf0b5e4c2a3be7698a0809165724d",
+  "annotators/annotator-2/README.md": "eaad0fbc8f1af6c1b38c55538bf9bded3c888dcfbd826207cb0841cc8ab50e9b",
+  "annotators/annotator-2/items.jsonl": "a77c2e97422eeacf12d6981168272e0ee8041e95cd2c3c0fc9a8e02e5f455074",
+  "annotators/annotator-2/items.md": "2a44f9392c67ba1283c946057c370a507d08baa5c54ef978d7919738d9779386",
+  "annotators/annotator-2/sheet.csv": "672f10a508b80cad0d5a969620bc9d81e1d8d26c64dc9821134f02260f7a05fe"
+ },
+ "id_rule": "items numbered in the order of sha256('<seed>|id|<run id>')",
+ "items": {
+  "T001": {
+   "record_sha256": "d883e442f4fd633a4a99432fde880bbdbdada79854c1ec94b30dda8a5af38996",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-5",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "A",
+    "model": "org/SENTINELSHORTMODEL-5",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-5",
+    "run_id": "SENTINEL-RUN-5"
+   }
+  },
+  "T002": {
+   "record_sha256": "7a9969416e335d4be3b563fce4e324d12cd8832afa907be2130e681b5c089a8c",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-16",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "B",
+    "model": "SENTINEL-MODEL-16",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-16",
+    "run_id": "SENTINEL-RUN-16"
+   }
+  },
+  "T003": {
+   "record_sha256": "f37fbe4d71b9a1c82cc5536e338ed582ce46fe584497a2d433fcda89a5a7153c",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-6",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "A",
+    "model": "SENTINEL-MODEL-6",
+    "model_group": "open-weight",
+    "question_id": "SENTINEL-QID-6",
+    "run_id": "SENTINEL-RUN-6"
+   }
+  },
+  "T004": {
+   "record_sha256": "67df70910bcd625a6eff384a780052f78c09957cf32fd77a35b15ec474936630",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-12",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "B",
+    "model": "SENTINEL-MODEL-12",
+    "model_group": "open-weight",
+    "question_id": "SENTINEL-QID-12",
+    "run_id": "SENTINEL-RUN-12"
+   }
+  },
+  "T005": {
+   "record_sha256": "4a800b61542737add4a7b0bcfbaba0fd838ba5a624332774681bf59fc56493b4",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-17",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "B",
+    "model": "org/SENTINELSHORTMODEL-17",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-17",
+    "run_id": "SENTINEL-RUN-17"
+   }
+  },
+  "T006": {
+   "record_sha256": "9e56e6b9c598f1d36a7577d9a270e2a4603f2bb8c3b2e122ef8050b59f1e0bc8",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-22",
+    "cell": "SENTINEL-CELL-C",
+    "cohort": "curated",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "C",
+    "model": "SENTINEL-MODEL-22",
+    "model_group": "claude",
+    "ontology_block_sha256": "c910563a56f77c7221da4212fa6e680f7b88922012cb075b16a0c67dc14d4236",
+    "prompt_condition": "curated",
+    "prompt_id": "SENTINEL-PROMPTID",
+    "prompt_sha256": "SENTINEL-PROMPTSHA",
+    "question_id": "SENTINEL-QID-22",
+    "record_sha256": "9e56e6b9c598f1d36a7577d9a270e2a4603f2bb8c3b2e122ef8050b59f1e0bc8",
+    "response": {
+     "follows_from_ontology": null,
+     "statement_wrong_or_misleading": null,
+     "witness": null
+    },
+    "run_id": "SENTINEL-RUN-22"
+   }
+  },
+  "T007": {
+   "record_sha256": "22f3427154b31671c3bdd0086e84c0988b8fd15376d838d9c738683c2ff828e6",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-2",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "A",
+    "model": "SENTINEL-MODEL-2",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-2",
+    "run_id": "SENTINEL-RUN-2"
+   }
+  },
+  "T008": {
+   "record_sha256": "a7707bd6e5731a1a71985e082897545fc7ba645afe4181505a6b142c4d4b07d3",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-14",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "B",
+    "model": "SENTINEL-MODEL-14",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-14",
+    "run_id": "SENTINEL-RUN-14"
+   }
+  },
+  "T009": {
+   "record_sha256": "69cccda467f97aa06a939af0fc0e3af681a8b24e4755617919648761794092ba",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-1",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "A",
+    "model": "org/SENTINELSHORTMODEL-1",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-1",
+    "run_id": "SENTINEL-RUN-1"
+   }
+  },
+  "T010": {
+   "record_sha256": "609cc2df1fc408066012b3f129231aa85d59ba26a9b878f045e581943fb7846f",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-19",
+    "cell": "SENTINEL-CELL-C",
+    "cohort": "curated",
+    "graph": "rhea-142",
+    "kind": "C",
+    "model": "org/SENTINELSHORTMODEL-19",
+    "model_group": "claude",
+    "ontology_block_sha256": "c910563a56f77c7221da4212fa6e680f7b88922012cb075b16a0c67dc14d4236",
+    "prompt_condition": "curated",
+    "prompt_id": "SENTINEL-PROMPTID",
+    "prompt_sha256": "SENTINEL-PROMPTSHA",
+    "question_id": "SENTINEL-QID-19",
+    "record_sha256": "609cc2df1fc408066012b3f129231aa85d59ba26a9b878f045e581943fb7846f",
+    "response": {
+     "follows_from_ontology": null,
+     "statement_wrong_or_misleading": null,
+     "witness": null
+    },
+    "run_id": "SENTINEL-RUN-19"
+   }
+  },
+  "T011": {
+   "record_sha256": "1e6f4bc8ac42f8f613f69c8d9164bd6602aa47bff4e3b567322d722f6f88cf92",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-11",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "B",
+    "model": "org/SENTINELSHORTMODEL-11",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-11",
+    "run_id": "SENTINEL-RUN-11"
+   }
+  },
+  "T012": {
+   "record_sha256": "0343128f7a35d663e680508eba5a497e4470969d0c415de6eb86f3e6c536dca6",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-13",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "B",
+    "model": "org/SENTINELSHORTMODEL-13",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-13",
+    "run_id": "SENTINEL-RUN-13"
+   }
+  },
+  "T013": {
+   "record_sha256": "8a6fea821767768a58cf070ed32dfd7d3b4a661e7b1a93d3d7daf002d5dd236e",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-7",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "A",
+    "model": "org/SENTINELSHORTMODEL-7",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-7",
+    "run_id": "SENTINEL-RUN-7"
+   }
+  },
+  "T014": {
+   "record_sha256": "b20846dfa3e815912fb8f3005637fd9cecfc45bfa0adeaa6e867478b2e023538",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-4",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "A",
+    "model": "SENTINEL-MODEL-4",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-4",
+    "run_id": "SENTINEL-RUN-4"
+   }
+  },
+  "T015": {
+   "record_sha256": "5665afb08c34abb5b926b5edc43eac19af186e4149147b679b4cf680bc6d3bee",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-23",
+    "cell": "SENTINEL-CELL-C",
+    "cohort": "curated",
+    "graph": "rhea-142",
+    "kind": "C",
+    "model": "org/SENTINELSHORTMODEL-23",
+    "model_group": "claude",
+    "ontology_block_sha256": "c910563a56f77c7221da4212fa6e680f7b88922012cb075b16a0c67dc14d4236",
+    "prompt_condition": "curated",
+    "prompt_id": "SENTINEL-PROMPTID",
+    "prompt_sha256": "SENTINEL-PROMPTSHA",
+    "question_id": "SENTINEL-QID-23",
+    "record_sha256": "5665afb08c34abb5b926b5edc43eac19af186e4149147b679b4cf680bc6d3bee",
+    "response": {
+     "follows_from_ontology": null,
+     "statement_wrong_or_misleading": null,
+     "witness": null
+    },
+    "run_id": "SENTINEL-RUN-23"
+   }
+  },
+  "T016": {
+   "record_sha256": "8eed97b2799148534d51ccb70855bc1066c111808ca63c8194bc6ef9ad8c03e6",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-10",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "B",
+    "model": "SENTINEL-MODEL-10",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-10",
+    "run_id": "SENTINEL-RUN-10"
+   }
+  },
+  "T017": {
+   "record_sha256": "4dc4dc2471a3480e8ff9ae8ef9c1ba2895f78a3f0cecc900a643624f5f6ecd5d",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-18",
+    "cell": "SENTINEL-CELL-C",
+    "cohort": "curated",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "C",
+    "model": "SENTINEL-MODEL-18",
+    "model_group": "open-weight",
+    "ontology_block_sha256": "c910563a56f77c7221da4212fa6e680f7b88922012cb075b16a0c67dc14d4236",
+    "prompt_condition": "curated",
+    "prompt_id": "SENTINEL-PROMPTID",
+    "prompt_sha256": "SENTINEL-PROMPTSHA",
+    "question_id": "SENTINEL-QID-18",
+    "record_sha256": "4dc4dc2471a3480e8ff9ae8ef9c1ba2895f78a3f0cecc900a643624f5f6ecd5d",
+    "response": {
+     "follows_from_ontology": null,
+     "statement_wrong_or_misleading": null,
+     "witness": null
+    },
+    "run_id": "SENTINEL-RUN-18"
+   }
+  },
+  "T018": {
+   "record_sha256": "1c9fbf274d31e62649aca6896338fd331c47b8c07aa5edc555b6c30a5e05ef79",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-21",
+    "cell": "SENTINEL-CELL-C",
+    "cohort": "curated",
+    "graph": "rhea-142",
+    "kind": "C",
+    "model": "org/SENTINELSHORTMODEL-21",
+    "model_group": "open-weight",
+    "ontology_block_sha256": "c910563a56f77c7221da4212fa6e680f7b88922012cb075b16a0c67dc14d4236",
+    "prompt_condition": "curated",
+    "prompt_id": "SENTINEL-PROMPTID",
+    "prompt_sha256": "SENTINEL-PROMPTSHA",
+    "question_id": "SENTINEL-QID-21",
+    "record_sha256": "1c9fbf274d31e62649aca6896338fd331c47b8c07aa5edc555b6c30a5e05ef79",
+    "response": {
+     "follows_from_ontology": null,
+     "statement_wrong_or_misleading": null,
+     "witness": null
+    },
+    "run_id": "SENTINEL-RUN-21"
+   }
+  },
+  "T019": {
+   "record_sha256": "49c7a6a6066a4fc3bfff2d9191218d612316c567f054f0b1fefbc58d327fb35a",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-20",
+    "cell": "SENTINEL-CELL-C",
+    "cohort": "curated",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "C",
+    "model": "SENTINEL-MODEL-20",
+    "model_group": "claude",
+    "ontology_block_sha256": "c910563a56f77c7221da4212fa6e680f7b88922012cb075b16a0c67dc14d4236",
+    "prompt_condition": "curated",
+    "prompt_id": "SENTINEL-PROMPTID",
+    "prompt_sha256": "SENTINEL-PROMPTSHA",
+    "question_id": "SENTINEL-QID-20",
+    "record_sha256": "49c7a6a6066a4fc3bfff2d9191218d612316c567f054f0b1fefbc58d327fb35a",
+    "response": {
+     "follows_from_ontology": null,
+     "statement_wrong_or_misleading": null,
+     "witness": null
+    },
+    "run_id": "SENTINEL-RUN-20"
+   }
+  },
+  "T020": {
+   "record_sha256": "c5c392a89599068d3e3a99bb09d393c4692338be66d39e3364793f285c29fc2d",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-8",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "A",
+    "model": "SENTINEL-MODEL-8",
+    "model_group": "claude",
+    "question_id": "SENTINEL-QID-8",
+    "run_id": "SENTINEL-RUN-8"
+   }
+  },
+  "T021": {
+   "record_sha256": "ed1f3a71296f98a4eb111537fb4ba052eda3ed9397be3095dd8607b6003aa6ec",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-9",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "A",
+    "model": "org/SENTINELSHORTMODEL-9",
+    "model_group": "open-weight",
+    "question_id": "SENTINEL-QID-9",
+    "run_id": "SENTINEL-RUN-9"
+   }
+  },
+  "T022": {
+   "record_sha256": "6528b4ede3c8fd4ca7a4bbee4be769d8d51bc6a788de2423f29b577e00951e33",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-15",
+    "cell": "SENTINEL-CELL-B",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "B",
+    "model": "org/SENTINELSHORTMODEL-15",
+    "model_group": "open-weight",
+    "question_id": "SENTINEL-QID-15",
+    "run_id": "SENTINEL-RUN-15"
+   }
+  },
+  "T023": {
+   "record_sha256": "d850e86686b2ec1f9926752a328ee0f7a1b290bf60f59a88d4054dc29cc877bb",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-0",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "uniprot-sp-2026_03",
+    "kind": "A",
+    "model": "SENTINEL-MODEL-0",
+    "model_group": "open-weight",
+    "question_id": "SENTINEL-QID-0",
+    "run_id": "SENTINEL-RUN-0"
+   }
+  },
+  "T024": {
+   "record_sha256": "8abf77a61e2abde08b28dc0cedc9ef16bf65db1c5ed8e5d6c24f72210043e437",
+   "sample_item": {
+    "base_question_id": "SENTINEL-BASE-3",
+    "cell": "SENTINEL-CELL-A",
+    "cohort": "SENTINEL-COHORT",
+    "graph": "rhea-142",
+    "kind": "A",
+    "model": "org/SENTINELSHORTMODEL-3",
+    "model_group": "open-weight",
+    "question_id": "SENTINEL-QID-3",
+    "run_id": "SENTINEL-RUN-3"
+   }
+  }
+ },
+ "order_rule": "per annotator, ids by sha256('<seed>|order|<annotator>|<item id>')",
+ "orders": {
+  "annotator-1": [
+   "T010",
+   "T023",
+   "T009",
+   "T012",
+   "T014",
+   "T001",
+   "T020",
+   "T005",
+   "T007",
+   "T017",
+   "T004",
+   "T021",
+   "T016",
+   "T002",
+   "T003",
+   "T024",
+   "T018",
+   "T015",
+   "T022",
+   "T019",
+   "T006",
+   "T013",
+   "T008",
+   "T011"
+  ],
+  "annotator-2": [
+   "T007",
+   "T004",
+   "T001",
+   "T015",
+   "T009",
+   "T017",
+   "T003",
+   "T010",
+   "T005",
+   "T021",
+   "T014",
+   "T011",
+   "T022",
+   "T024",
+   "T013",
+   "T018",
+   "T002",
+   "T006",
+   "T012",
+   "T020",
+   "T019",
+   "T023",
+   "T008",
+   "T016"
+  ]
+ },
+ "practice": false,
+ "private": false,
+ "protocol": "anonymous/science-repo paper/audit-protocol.md at b9777bc",
+ "schema": "h4-audit-key/1",
+ "shuffle_seed": "00ff00ff00ff00ff00ff00ff00ff00ff",
+ "split": "test"
+}

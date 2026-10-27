@@ -1,0 +1,82 @@
+Audit analysis (h4-audit-analysis/1; public package)
+items: 24 (A 10, B 8, C 6); tool sha256 2e3b45d52b68be70
+shares are over the sampled items, unweighted by cell (equal quotas per stratum); ci95 is the exact Clopper-Pearson interval over items
+
+Cohen's kappa (annotator 1 against 2; * = the form's primary code; per-label kappas in the JSON)
+  A error_type *                      n=10   p_o=0.8  p_e=0.16  kappa=0.762
+  A structurally_detectable           n=10   p_o=0.8  p_e=0.44  kappa=0.643
+  B cause *                           n=8    p_o=0.75  p_e=0.21875  kappa=0.680
+  B answer_really_correct             n=8    p_o=0.875  p_e=0.671875  kappa=0.619
+  C follows_from_ontology *           n=6    p_o=0.666667  p_e=0.416667  kappa=0.429
+  C statement_wrong_or_misleading     n=3    p_o=0.666667  p_e=0.666667  kappa=0.000
+
+Adjudication: 0 override(s) of a code both annotators agreed on
+
+H4 residue (form A), adjudicated codes
+  error type, all items (n = 10)
+    aggregation                  3  30.0% [7-65]
+    constant                     1  10.0% [0-45]
+    filter_scope                 1  10.0% [0-45]
+    path                         1  10.0% [0-45]
+    shape                        1  10.0% [0-45]
+    gold_or_question             1  10.0% [0-45]
+    scorer                       1  10.0% [0-45]
+    other                        1  10.0% [0-45]
+  error type, misses only (not gold_or_question/scorer) (n = 8)
+    aggregation                  3  37.5% [9-76]
+    constant                     1  12.5% [0-53]
+    filter_scope                 1  12.5% [0-53]
+    path                         1  12.5% [0-53]
+    shape                        1  12.5% [0-53]
+    other                        1  12.5% [0-53]
+  structurally detectable, all items (n = 10)
+    yes                          3  30.0% [7-65]
+    no                           6  60.0% [26-88]
+    unsure                       1  10.0% [0-45]
+
+False alarms (form B), adjudicated causes
+  curated: cause, all items (n = 8)
+    undeclared_term              3  37.5% [9-76]
+    closed_world                 2  25.0% [3-65]
+    data_clash                   1  12.5% [0-53]
+    schema_too_narrow            0  0.0% [0-37]
+    checker_defect               1  12.5% [0-53]
+    other                        1  12.5% [0-53]
+  curated: cause, answer really correct (n = 6)
+    undeclared_term              3  50.0% [12-88]
+    closed_world                 2  33.3% [4-78]
+    data_clash                   1  16.7% [0-64]
+    schema_too_narrow            0  0.0% [0-46]
+    checker_defect               0  0.0% [0-46]
+    other                        0  0.0% [0-46]
+  curated, rule rule-disj: cause, all items (n = 2)
+    undeclared_term              0  0.0% [0-84]
+    closed_world                 0  0.0% [0-84]
+    data_clash                   0  0.0% [0-84]
+    schema_too_narrow            0  0.0% [0-84]
+    checker_defect               1  50.0% [1-99]
+    other                        1  50.0% [1-99]
+  curated, rule rule-range: cause, all items (n = 2)
+    undeclared_term              0  0.0% [0-84]
+    closed_world                 2  100.0% [16-100]
+    data_clash                   0  0.0% [0-84]
+    schema_too_narrow            0  0.0% [0-84]
+    checker_defect               0  0.0% [0-84]
+    other                        0  0.0% [0-84]
+  curated, rule rule-vocab: cause, all items (n = 4)
+    undeclared_term              3  75.0% [19-99]
+    closed_world                 0  0.0% [0-60]
+    data_clash                   1  25.0% [1-81]
+    schema_too_narrow            0  0.0% [0-60]
+    checker_defect               0  0.0% [0-60]
+    other                        0  0.0% [0-60]
+
+H6 shared premise (form C)
+  follows from the ontology (n = 6)
+    yes                          3  50.0% [12-88]
+    no                           2  33.3% [4-78]
+    unsure                       1  16.7% [0-64]
+  statement wrong or misleading, after a yes (n = 3)
+    yes                          2  66.7% [9-99]
+    no                           1  33.3% [1-91]
+    unsure                       0  0.0% [0-71]

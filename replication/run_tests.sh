@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Runs the exploratory-analysis tests that need no data (step 1 of the package).
-# The tests listed in replication/deselected-tests.txt need the data of step 2, git history
+# Runs the exploratory-analysis tests that need no data.
+# The tests listed in replication/deselected-tests.txt need withheld data, git history
 # or the computing sites' job scripts, and are skipped here.
 set -euo pipefail
 cd "$(dirname "$0")/.."

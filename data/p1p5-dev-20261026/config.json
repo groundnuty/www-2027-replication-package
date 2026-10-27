@@ -1,0 +1,99 @@
+{
+ "version": "p1p5-config/1",
+ "expected_split": "dev",
+ "registered": {
+  "outputs": 1445,
+  "wrong": 201,
+  "wrong_by_agent": {
+   "claude-sonnet-5-5": 63,
+   "Qwen/Qwen3.8-27B": 138
+  }
+ },
+ "populations": [
+  {
+   "name": "registered_dev_calibration",
+   "title": "19 Oct checker-audit replay on the dev calibration outputs (UniProt + Rhea, rounds 1-2, Sonnet + Qwen3.8, condition none); sources curated, census-t5, generated-1 + union",
+   "registered": true,
+   "matrices": [
+    {
+     "matrix": "inputs/audit-uniprot/matrix.jsonl.gz",
+     "accounting": "inputs/audit-uniprot/accounting.json"
+    },
+    {
+     "matrix": "inputs/audit-rhea/matrix.jsonl.gz",
+     "accounting": "inputs/audit-rhea/accounting.json"
+    }
+   ],
+   "judge": {
+    "truth": "inputs/judge/truth.jsonl",
+    "selection": "inputs/judge/selection.json",
+    "calls": "inputs/judge/judge-calls.jsonl.gz",
+    "tables": "inputs/judge/tables.json",
+    "judges": [
+     "claude-sonnet-5-5",
+     "claude-haiku-5-5",
+     "Qwen/Qwen3.8-27B"
+    ]
+   },
+   "kind": "registered"
+  },
+  {
+   "name": "sensitivity_without_36_rhea_round1",
+   "title": "SENSITIVITY of the registered population (which stays primary): without the 36 Rhea round-1 records the audit's own population file labels frame:id_not_dev_in_frozen_set (question ids later reused for test questions)",
+   "registered": false,
+   "matrices": [
+    {
+     "matrix": "inputs/audit-uniprot/matrix.jsonl.gz",
+     "accounting": "inputs/audit-uniprot/accounting.json"
+    },
+    {
+     "matrix": "inputs/audit-rhea/matrix.jsonl.gz",
+     "accounting": "inputs/audit-rhea/accounting.json"
+    }
+   ],
+   "judge": {
+    "truth": "inputs/judge/truth.jsonl",
+    "selection": "inputs/judge/selection.json",
+    "calls": "inputs/judge/judge-calls.jsonl.gz",
+    "tables": "inputs/judge/tables.json",
+    "judges": [
+     "claude-sonnet-5-5",
+     "claude-haiku-5-5",
+     "Qwen/Qwen3.8-27B"
+    ]
+   },
+   "kind": "sensitivity",
+   "drop_runs": {
+    "file": "inputs/audit-population.jsonl.gz",
+    "frame": "id_not_dev_in_frozen_set",
+    "graph": "rhea-142",
+    "expect_records": 36
+   }
+  },
+  {
+   "name": "supplementary_uniprot_dev_natural",
+   "title": "SUPPLEMENTARY, not the registered population: UniProt dev natural-phase replay of 20 Oct, panel P (7 models, condition none; sources curated, census-t5, generated-1, generated-dc-1..3 + union); archive-dev-20261022/natreplay-20261020/final",
+   "registered": false,
+   "matrices": [
+    {
+     "matrix": "inputs/natreplay-dev/matrix.jsonl.gz",
+     "accounting": "inputs/natreplay-dev/accounting-offline-out-0.json",
+     "reconcile_accounting": false
+    }
+   ],
+   "design_log_summary": "inputs/natreplay-dev/design_log-summary.json",
+   "model_group": "P",
+   "kind": "supplementary"
+  }
+ ],
+ "bank": {
+  "graph": "uniprot-sp-2026_03",
+  "matrix": "inputs/bank-dev/matrix.jsonl.gz",
+  "plan": "inputs/bank-dev/plan.json.gz",
+  "run": "inputs/bank-dev/run.json.gz"
+ },
+ "frozen_sources": {
+  "inputs": "inputs/audit-inputs.json",
+  "dir": "sources"
+ }
+}

@@ -1,14 +1,15 @@
-# WWW 2027 replication package (code)
+# WWW 2027 replication package
 
-This repository holds the code behind the paper's experiments and reported numbers. It is anonymized for
+This repository holds the code and the results data behind the paper's experiments and reported numbers. It is anonymized for
 double-blind review: names of people, institutions, computing sites, hosts and services are replaced by neutral
 labels (see [Anonymization](#anonymization)).
 
-The package is released in two steps:
+The package holds:
 
-1. **Code (this version):** the experiment framework at the frozen versions that produced the runs, and the analysis
+1. **Code:** the experiment framework at the frozen versions that produced the runs, and the analysis
    code that turns the recorded run outputs into the paper's numbers.
-2. **Data (to follow):** the recorded run outputs and the analysis inputs (see [Data](#data)).
+2. **Data:** the analysis outputs of the reported runs and the tools that recompute from them (see [Data](#data)
+   and `README-data.md`). The run records and the held-out test data are withheld.
 
 ## Layout
 
@@ -27,11 +28,15 @@ The files keep the relative paths of the development repository, because the cod
 | `replication/versions/analysis/e150-route-and-setaside.patch` | The analysis changes of the parallel analysis line (see [Versions](#versions)). |
 | `replication/versions/analysis/sib-u-union.patch` | The analysis changes of the pooled SIB UniProt analysis line (see [Versions](#versions)). |
 | `replication/run_tests.sh`, `replication/deselected-tests.txt` | Runs the analysis tests that need no data. |
-| `replication/reproduce.sh` | How the analysis is run once the data of step 2 is in place. |
+| `replication/reproduce.sh` | The commands of the analyses and the inputs they read (the run records they read are withheld). |
 | `replication/PINS.md` | Integrity pins that anonymization changed: original and package values. |
 | `replication/KNOWN-ISSUES.md` | Known issues: the checker's non-deterministic offline replay and how the analyses handled it. |
 | `replication/DEVIATIONS.md` | Deviations from the pre-registration: what was not run, what changed after the freeze, and what is provisional. |
 | `replication/MODELS.md` | The model configurations per graph and run group, and the harness settings per model. |
+| `README-data.md` | The results data: what each data directory holds, what can be recomputed, and what is withheld and why. |
+| `data/<package>/`, `data/attempts/` | The results data: the analysis outputs of each released analysis package, and the per-attempt tables (see `README-data.md`). `data/analysis/` and `data/freeze/` are the frozen analysis configuration. |
+| `tools/` | Tools that recompute from the released results files, and the table generators (see `README-data.md`). |
+| `replication/data-SHA256SUMS`, `replication/data-files.tsv` | Size and sha256 of every released data file (`SHA256SUMS` and `STAGE-FILES.tsv` in `README-data.md`). The paths inside are relative to the repository root; their entry `STAGE-FILES.tsv` is `replication/data-files.tsv`. |
 
 ## Versions
 
@@ -65,7 +70,7 @@ Each `replication/versions/run-tags/<tag>.patch` turns the shipped framework int
 | `cap81920-glm-coder-20261024-12c0b79d` | `12c0b79d` | Raised per-call output cap, new runs only (cap tag C). |
 | `claudemax-20261024-8bc0b35a` | `8bc0b35a` | Raised Claude output cap and request time-out, new runs only (cap tag A2). |
 
-Each run records the code version it ran on in its manifest; that manifest is part of the data of step 2.
+Each run records the code version it ran on in its manifest; the run manifests are withheld with the run records.
 
 ## Environment
 
@@ -81,8 +86,8 @@ Tests that need no data:
 
     replication/run_tests.sh
 
-The analysis needs the data of step 2. `replication/reproduce.sh` lists the commands and their inputs; until the data
-is released it prints them and exits.
+The confirmatory and exploratory analyses read the run records, which are withheld. `replication/reproduce.sh` lists the
+commands and their inputs; `README-data.md` lists what can be recomputed from the released files.
 
 ## Anonymization
 
@@ -98,7 +103,7 @@ is released it prints them and exits.
   Note that copy speed classes were measured, or for some copies assigned by a rule over the authors' hosts; the shipped rule table is an example.
 - The analysis pins the digests of the code and configuration it runs on. Anonymization changes file contents, so the
   affected pins were recomputed on the anonymized files; `replication/PINS.md` lists the original and the package
-  value of each. The digests recorded inside the data of step 2 refer to the code before anonymization.
+  value of each. The digests recorded inside the released results files refer to the code before anonymization.
 - The store-copy tables of the exploratory analysis (`copy-classes.json`, `class-overrides.json`, `extra-copies.json`,
   `copy-hosts.json`, `endpoint-copies.json`, `store-proofs.json`) and `admitted-fingerprints.json` are synthetic
   examples: invented copy names, hosts, graphs, classes, endpoint hashes and citations with the same schemas as the
@@ -116,6 +121,7 @@ is released it prints them and exits.
   generated over it, and every output derived from it are not released. The generic code that handles it is
   included; the graph-specific vocabulary and templates live outside the code by design.
 - **SIB gold.** Restricted; not released.
+- **Run records.** Transcripts, queries, answers and run manifests are withheld (see `README-data.md`).
 - **Operational material.** Operator notes, run logs, job scripts for the computing sites, and probe outputs.
 - The store-copy and admitted-fingerprint tables are synthetic examples; the analysis's store and attribution checks need the authors' tables and the withheld run records.
 - **Some tests.** The framework's own test suite is not in this version (its fixtures are being reviewed for
@@ -124,12 +130,12 @@ is released it prints them and exits.
 
 ## Data
 
-The recorded run outputs and the analysis inputs follow in step 2, licensed under
+The results data are in `data/` (see `README-data.md`), licensed
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## License
 
-Code: MIT (see `LICENSE`). Data (step 2): CC BY 4.0.
+Code: MIT (see `LICENSE`). Data: CC BY 4.0.
 
 ## Citation
 

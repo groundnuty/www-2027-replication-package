@@ -1,0 +1,36 @@
+{
+ "schema": "design_log-look-cells/1",
+ "look": "look-20261025T185600Z",
+ "cells": [
+  {
+   "model": "claude-haiku-5-5",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "gemma-4-31b",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "qwen3.8-27b",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "glm-5.3-flash",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "qwen3-coder-30b-a3b",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  },
+  {
+   "model": "deepseek-v4-flash-0731",
+   "graph": "text2sparql-ck26",
+   "phases": "natural+prompted+branch"
+  }
+ ]
+}

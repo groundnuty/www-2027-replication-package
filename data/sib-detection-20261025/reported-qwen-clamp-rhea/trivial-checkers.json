@@ -1,0 +1,3822 @@
+{
+ "excluded_sources": [],
+ "inputs": {
+  "split": "test"
+ },
+ "net_gain": "Net gain: never-flag's is 0 by definition; always-flag's and the random flagger's are not estimable, since no cell retries unflagged outputs (the design log).",
+ "resampling": {
+  "rhea-142|agent": {
+   "clusters": 89,
+   "n_boot": 10000,
+   "questions": 89,
+   "seed": 20261026
+  }
+ },
+ "rows": [
+  {
+   "always_flag": {
+    "counts": {
+     "C": 28,
+     "C_F": 28,
+     "F": 235,
+     "N_out": 235,
+     "W": 207,
+     "W_F": 207
+    },
+    "metrics": {
+     "false_flag_rate": {
+      "ci": [
+       1.0,
+       1.0
+      ],
+      "estimate": 1.0,
+      "undefined_share": 0.0
+     },
+     "flag_precision": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "flag_rate": {
+      "ci": [
+       1.0,
+       1.0
+      ],
+      "estimate": 1.0,
+      "undefined_share": 0.0
+     },
+     "recall": {
+      "ci": [
+       1.0,
+       1.0
+      ],
+      "estimate": 1.0,
+      "undefined_share": 0.0
+     }
+    }
+   },
+   "bank": false,
+   "base_wrong_rate": {
+    "ci": [
+     0.811965811965812,
+     0.9417040358744395
+    ],
+    "estimate": 0.8808510638297873,
+    "undefined_share": 0.0
+   },
+   "cohort": "none",
+   "counts": {
+    "C": 28,
+    "N_out": 235,
+    "W": 207
+   },
+   "graph": "rhea-142",
+   "items": "all",
+   "model": "Qwen/Qwen3.8-27B",
+   "models": [
+    "Qwen/Qwen3.8-27B"
+   ],
+   "net_gain": {
+    "always_flag": {
+     "estimable": false,
+     "estimate": null,
+     "reason": "no cell retries unflagged outputs (the design log)"
+    },
+    "never_flag": {
+     "estimable": true,
+     "estimate": 0.0,
+     "reason": "by definition: nothing is flagged, so nothing is retried and no answer changes"
+    },
+    "random": {
+     "estimable": false,
+     "estimate": null,
+     "reason": "no cell retries unflagged outputs (the design log)"
+    }
+   },
+   "never_flag": {
+    "counts": {
+     "C": 28,
+     "C_F": 0,
+     "F": 0,
+     "N_out": 235,
+     "W": 207,
+     "W_F": 0
+    },
+    "metrics": {
+     "false_flag_rate": {
+      "ci": [
+       0.0,
+       0.0
+      ],
+      "estimate": 0.0,
+      "undefined_share": 0.0
+     },
+     "flag_precision": {
+      "ci": null,
+      "estimate": null,
+      "undefined_share": null
+     },
+     "flag_rate": {
+      "ci": [
+       0.0,
+       0.0
+      ],
+      "estimate": 0.0,
+      "undefined_share": 0.0
+     },
+     "recall": {
+      "ci": [
+       0.0,
+       0.0
+      ],
+      "estimate": 0.0,
+      "undefined_share": 0.0
+     }
+    }
+   },
+   "questions": 89,
+   "scope": "by_model",
+   "sources": [
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 2,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 2
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 1,
+       "F": 2,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 1
+      },
+      "expected": {
+       "false_flag_rate": 0.00851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.00851063829787234,
+       "recall": 0.00851063829787234
+      },
+      "flags": 2,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.125
+        ],
+        "estimate": 0.03571428571428571,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.0,
+         1.0
+        ],
+        "estimate": 0.5,
+        "undefined_share": 0.1325
+       },
+       "flag_rate": {
+        "ci": [
+         0.0,
+         0.02145922746781116
+        ],
+        "estimate": 0.00851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.01507537688442211
+        ],
+        "estimate": 0.004830917874396135,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.05777777777777782,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.1324
+      },
+      "ratio": {
+       "ci": [
+        1.0613207547169812,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.1324
+      }
+     },
+     "source": "census-t2",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.1324
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.021551724137931036
+       ],
+       "estimate": 0.00851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.024630541871921183
+       ],
+       "estimate": 0.00966183574879227,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 2,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 2
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 2,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 2
+      },
+      "expected": {
+       "false_flag_rate": 0.00851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.00851063829787234,
+       "recall": 0.00851063829787234
+      },
+      "flags": 2,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.1298
+       },
+       "flag_rate": {
+        "ci": [
+         0.0,
+         0.021367521367521368
+        ],
+        "estimate": 0.00851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.024271844660194174
+        ],
+        "estimate": 0.00966183574879227,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.05777777777777782,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.1324
+      },
+      "ratio": {
+       "ci": [
+        1.0613207547169812,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.1324
+      }
+     },
+     "source": "census-t20",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.1324
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.021551724137931036
+       ],
+       "estimate": 0.00851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.024630541871921183
+       ],
+       "estimate": 0.00966183574879227,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 2,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 2
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 2,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 2
+      },
+      "expected": {
+       "false_flag_rate": 0.00851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.00851063829787234,
+       "recall": 0.00851063829787234
+      },
+      "flags": 2,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.1314
+       },
+       "flag_rate": {
+        "ci": [
+         0.0,
+         0.021645021645021644
+        ],
+        "estimate": 0.00851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.024752475247524754
+        ],
+        "estimate": 0.00966183574879227,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.05777777777777782,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.1324
+      },
+      "ratio": {
+       "ci": [
+        1.0613207547169812,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.1324
+      }
+     },
+     "source": "census-t5",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.1324
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.021551724137931036
+       ],
+       "estimate": 0.00851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.024630541871921183
+       ],
+       "estimate": 0.00966183574879227,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 13,
+      "F": 86,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 73
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 9,
+       "F": 86,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 77
+      },
+      "expected": {
+       "false_flag_rate": 0.3659574468085106,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.3659574468085106,
+       "recall": 0.3659574468085106
+      },
+      "flags": 86,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.14285714285714285,
+         0.5161290322580645
+        ],
+        "estimate": 0.32142857142857145,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8125,
+         0.9651162790697675
+        ],
+        "estimate": 0.8953488372093024,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.3037974683544304,
+         0.43037974683544306
+        ],
+        "estimate": 0.3659574468085106,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.3065326633165829,
+         0.43902439024390244
+        ],
+        "estimate": 0.3719806763285024,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.12497115695232819,
+        0.05568910256410253
+       ],
+       "estimate": -0.03201385452746175,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8536109303838646,
+        1.0632237871674493
+       ],
+       "estimate": 0.9636557690147174,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "curated",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.15384615384615385,
+        0.7692307692307693
+       ],
+       "estimate": 0.4642857142857143,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.7207207207207207,
+        0.9625
+       ],
+       "estimate": 0.8488372093023255,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.2692307692307692,
+        0.4678111587982833
+       ],
+       "estimate": 0.3659574468085106,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.2513089005235602,
+        0.4564102564102564
+       ],
+       "estimate": 0.3526570048309179,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 4,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 4
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 1,
+       "F": 4,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 3
+      },
+      "expected": {
+       "false_flag_rate": 0.01702127659574468,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.01702127659574468,
+       "recall": 0.01702127659574468
+      },
+      "flags": 4,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.1282051282051282
+        ],
+        "estimate": 0.03571428571428571,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.0,
+         1.0
+        ],
+        "estimate": 0.75,
+        "undefined_share": 0.0173
+       },
+       "flag_rate": {
+        "ci": [
+         0.004132231404958678,
+         0.034782608695652174
+        ],
+        "estimate": 0.01702127659574468,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.03271028037383177
+        ],
+        "estimate": 0.014492753623188406,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.0185
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.0185
+      }
+     },
+     "source": "empty-retry",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0185
+      },
+      "flag_rate": {
+       "ci": [
+        0.004098360655737705,
+        0.034782608695652174
+       ],
+       "estimate": 0.01702127659574468,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0045662100456621,
+        0.04
+       ],
+       "estimate": 0.01932367149758454,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 2,
+      "F": 19,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 17
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 3,
+       "F": 19,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 16
+      },
+      "expected": {
+       "false_flag_rate": 0.08085106382978724,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.08085106382978724,
+       "recall": 0.08085106382978724
+      },
+      "flags": 19,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.20689655172413793
+        ],
+        "estimate": 0.10714285714285714,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.6521739130434783,
+         1.0
+        ],
+        "estimate": 0.8421052631578947,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.05063291139240506,
+         0.11403508771929824
+        ],
+        "estimate": 0.08085106382978724,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.045,
+         0.11320754716981132
+        ],
+        "estimate": 0.07729468599033816,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.16297262059973916,
+        0.12345679012345678
+       ],
+       "estimate": 0.01388577827547588,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8108108108108107,
+        1.1428571428571428
+       ],
+       "estimate": 1.015764047800661,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "generated-1",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.16666666666666666
+       ],
+       "estimate": 0.07142857142857142,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.6923076923076923,
+        1.0
+       ],
+       "estimate": 0.8947368421052632,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.038135593220338986,
+        0.1308016877637131
+       ],
+       "estimate": 0.08085106382978724,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.03535353535353535,
+        0.13725490196078433
+       ],
+       "estimate": 0.0821256038647343,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 2,
+      "F": 12,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 10
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 4,
+       "F": 12,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 8
+      },
+      "expected": {
+       "false_flag_rate": 0.05106382978723404,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.05106382978723404,
+       "recall": 0.05106382978723404
+      },
+      "flags": 12,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.03571428571428571,
+         0.2571428571428571
+        ],
+        "estimate": 0.14285714285714285,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.375,
+         0.9230769230769231
+        ],
+        "estimate": 0.6666666666666666,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.02564102564102564,
+         0.07894736842105263
+        ],
+        "estimate": 0.05106382978723404,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.014563106796116505,
+         0.0660377358490566
+        ],
+        "estimate": 0.03864734299516908,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.32396891811117756,
+        0.12083333333333335
+       ],
+       "estimate": -0.047517730496453914,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.6276709401709403,
+        1.1374407582938388
+       ],
+       "estimate": 0.9460547504025765,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "generated-2",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.16666666666666666
+       ],
+       "estimate": 0.07142857142857142,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.5454545454545454,
+        1.0
+       ],
+       "estimate": 0.8333333333333334,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.0211864406779661,
+        0.08860759493670886
+       ],
+       "estimate": 0.05106382978723404,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.015463917525773196,
+        0.08837209302325581
+       ],
+       "estimate": 0.04830917874396135,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 2,
+      "F": 20,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 18
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 1,
+       "F": 20,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 19
+      },
+      "expected": {
+       "false_flag_rate": 0.0851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.0851063829787234,
+       "recall": 0.0851063829787234
+      },
+      "flags": 20,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.1111111111111111
+        ],
+        "estimate": 0.03571428571428571,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8333333333333334,
+         1.0
+        ],
+        "estimate": 0.95,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.05063291139240506,
+         0.12244897959183673
+        ],
+        "estimate": 0.0851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.054187192118226604,
+         0.1330049261083744
+        ],
+        "estimate": 0.09178743961352658,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.143619602134886,
+        0.12393162393162394
+       ],
+       "estimate": 0.019148936170212738,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8333333333333333,
+        1.1435643564356435
+       ],
+       "estimate": 1.0217391304347825,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "generated-3",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.16666666666666666
+       ],
+       "estimate": 0.07142857142857142,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.7142857142857143,
+        1.0
+       ],
+       "estimate": 0.9,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.04201680672268908,
+        0.13636363636363635
+       ],
+       "estimate": 0.0851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.03902439024390244,
+        0.14218009478672985
+       ],
+       "estimate": 0.08695652173913043,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 17,
+      "F": 164,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 147
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 18,
+       "F": 164,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 146
+      },
+      "expected": {
+       "false_flag_rate": 0.6978723404255319,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.6978723404255319,
+       "recall": 0.6978723404255319
+      },
+      "flags": 164,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.4827586206896552,
+         0.8
+        ],
+        "estimate": 0.6428571428571429,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8194444444444444,
+         0.949685534591195
+        ],
+        "estimate": 0.8902439024390244,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.6318181818181818,
+         0.7615062761506276
+        ],
+        "estimate": 0.6978723404255319,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.6318407960199005,
+         0.7745098039215687
+        ],
+        "estimate": 0.7053140096618358,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.027077497665732975,
+        0.06611382769572005
+       ],
+       "estimate": 0.015490399584846881,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.9691670501610676,
+        1.077216005624231
+       ],
+       "estimate": 1.0175857193354543,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "obqc",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.3,
+        0.9
+       ],
+       "estimate": 0.6071428571428571,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.8181818181818182,
+        0.9620253164556962
+       ],
+       "estimate": 0.8963414634146342,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.6049382716049383,
+        0.7875
+       ],
+       "estimate": 0.6978723404255319,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.6142131979695431,
+        0.8
+       ],
+       "estimate": 0.7101449275362319,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 13,
+      "F": 96,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 83
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 11,
+       "F": 96,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 85
+      },
+      "expected": {
+       "false_flag_rate": 0.4085106382978723,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.4085106382978723,
+       "recall": 0.4085106382978723
+      },
+      "flags": 96,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.24,
+         0.5384615384615384
+        ],
+        "estimate": 0.39285714285714285,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8043478260869565,
+         0.9532710280373832
+        ],
+        "estimate": 0.8854166666666666,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.34841628959276016,
+         0.4675324675324675
+        ],
+        "estimate": 0.4085106382978723,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.34408602150537637,
+         0.47393364928909953
+        ],
+        "estimate": 0.4106280193236715,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.09816628264208915,
+        0.06320346320346326
+       ],
+       "estimate": -0.016267730496453914,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8860660761045183,
+        1.07168458781362
+       ],
+       "estimate": 0.9815318035426731,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "obqc-where",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.15384615384615385,
+        0.7692307692307693
+       ],
+       "estimate": 0.4642857142857143,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.7474747474747475,
+        0.9666666666666667
+       ],
+       "estimate": 0.8645833333333334,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.3094170403587444,
+        0.5106382978723404
+       ],
+       "estimate": 0.4085106382978723,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.2986425339366516,
+        0.5049019607843137
+       ],
+       "estimate": 0.40096618357487923,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 7,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 7
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 2,
+       "F": 7,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 5
+      },
+      "expected": {
+       "false_flag_rate": 0.029787234042553193,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.029787234042553193,
+       "recall": 0.029787234042553193
+      },
+      "flags": 7,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.16666666666666666
+        ],
+        "estimate": 0.07142857142857142,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.3333333333333333,
+         1.0
+        ],
+        "estimate": 0.7142857142857143,
+        "undefined_share": 0.0003
+       },
+       "flag_rate": {
+        "ci": [
+         0.008928571428571428,
+         0.05263157894736842
+        ],
+        "estimate": 0.029787234042553193,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.004878048780487805,
+         0.04639175257731959
+        ],
+        "estimate": 0.024154589371980676,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.0021
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.0021
+      }
+     },
+     "source": "sparqlllm",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0021
+      },
+      "flag_rate": {
+       "ci": [
+        0.008403361344537815,
+        0.05701754385964912
+       ],
+       "estimate": 0.029787234042553193,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.009615384615384616,
+        0.06422018348623854
+       ],
+       "estimate": 0.033816425120772944,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 8,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 8
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 1,
+       "F": 8,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 7
+      },
+      "expected": {
+       "false_flag_rate": 0.03404255319148936,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.03404255319148936,
+       "recall": 0.03404255319148936
+      },
+      "flags": 8,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.11538461538461539
+        ],
+        "estimate": 0.03571428571428571,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.5714285714285714,
+         1.0
+        ],
+        "estimate": 0.875,
+        "undefined_share": 0.0001
+       },
+       "flag_rate": {
+        "ci": [
+         0.01293103448275862,
+         0.05785123966942149
+        ],
+        "estimate": 0.03404255319148936,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.013215859030837005,
+         0.059113300492610835
+        ],
+        "estimate": 0.033816425120772944,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.0008
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.0008
+      }
+     },
+     "source": "sparqlllm-adapted",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0008
+      },
+      "flag_rate": {
+       "ci": [
+        0.0125,
+        0.06224066390041494
+       ],
+       "estimate": 0.03404255319148936,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.014018691588785047,
+        0.07009345794392523
+       ],
+       "estimate": 0.03864734299516908,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 4,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 4
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 4,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 4
+      },
+      "expected": {
+       "false_flag_rate": 0.01702127659574468,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.01702127659574468,
+       "recall": 0.01702127659574468
+      },
+      "flags": 4,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0159
+       },
+       "flag_rate": {
+        "ci": [
+         0.004132231404958678,
+         0.034782608695652174
+        ],
+        "estimate": 0.01702127659574468,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.004629629629629629,
+         0.039647577092511016
+        ],
+        "estimate": 0.01932367149758454,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18723404255319154
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.047
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.2303664921465969
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.047
+      }
+     },
+     "source": "sparqlllm-parse-as-unknown",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.047
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.039473684210526314
+       ],
+       "estimate": 0.01702127659574468,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.04522613065326633
+       ],
+       "estimate": 0.01932367149758454,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 13,
+      "F": 87,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 74
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 9,
+       "F": 87,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 78
+      },
+      "expected": {
+       "false_flag_rate": 0.3702127659574468,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.3702127659574468,
+       "recall": 0.3702127659574468
+      },
+      "flags": 87,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.11538461538461539,
+         0.5526315789473685
+        ],
+        "estimate": 0.32142857142857145,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8,
+         0.9736842105263158
+        ],
+        "estimate": 0.896551724137931,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.3008474576271186,
+         0.44
+        ],
+        "estimate": 0.3702127659574468,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.3033175355450237,
+         0.4494949494949495
+        ],
+        "estimate": 0.37681159420289856,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.12202898550724639,
+        0.056190476190476124
+       ],
+       "estimate": -0.030276351186109163,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.857516339869281,
+        1.0643015521064303
+       ],
+       "estimate": 0.9656282969626298,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "union",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.15384615384615385,
+        0.7692307692307693
+       ],
+       "estimate": 0.4642857142857143,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.723404255319149,
+        0.9625
+       ],
+       "estimate": 0.8505747126436781,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.27385892116182575,
+        0.47186147186147187
+       ],
+       "estimate": 0.3702127659574468,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.25728155339805825,
+        0.45982142857142855
+       ],
+       "estimate": 0.357487922705314,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    }
+   ]
+  },
+  {
+   "always_flag": {
+    "counts": {
+     "C": 28,
+     "C_F": 28,
+     "F": 235,
+     "N_out": 235,
+     "W": 207,
+     "W_F": 207
+    },
+    "metrics": {
+     "false_flag_rate": {
+      "ci": [
+       1.0,
+       1.0
+      ],
+      "estimate": 1.0,
+      "undefined_share": 0.0
+     },
+     "flag_precision": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "flag_rate": {
+      "ci": [
+       1.0,
+       1.0
+      ],
+      "estimate": 1.0,
+      "undefined_share": 0.0
+     },
+     "recall": {
+      "ci": [
+       1.0,
+       1.0
+      ],
+      "estimate": 1.0,
+      "undefined_share": 0.0
+     }
+    }
+   },
+   "bank": false,
+   "base_wrong_rate": {
+    "ci": [
+     0.811965811965812,
+     0.9417040358744395
+    ],
+    "estimate": 0.8808510638297873,
+    "undefined_share": 0.0
+   },
+   "cohort": "none",
+   "counts": {
+    "C": 28,
+    "N_out": 235,
+    "W": 207
+   },
+   "graph": "rhea-142",
+   "items": "all",
+   "model": "pooled",
+   "models": [
+    "Qwen/Qwen3.8-27B"
+   ],
+   "net_gain": {
+    "always_flag": {
+     "estimable": false,
+     "estimate": null,
+     "reason": "no cell retries unflagged outputs (the design log)"
+    },
+    "never_flag": {
+     "estimable": true,
+     "estimate": 0.0,
+     "reason": "by definition: nothing is flagged, so nothing is retried and no answer changes"
+    },
+    "random": {
+     "estimable": false,
+     "estimate": null,
+     "reason": "no cell retries unflagged outputs (the design log)"
+    }
+   },
+   "never_flag": {
+    "counts": {
+     "C": 28,
+     "C_F": 0,
+     "F": 0,
+     "N_out": 235,
+     "W": 207,
+     "W_F": 0
+    },
+    "metrics": {
+     "false_flag_rate": {
+      "ci": [
+       0.0,
+       0.0
+      ],
+      "estimate": 0.0,
+      "undefined_share": 0.0
+     },
+     "flag_precision": {
+      "ci": null,
+      "estimate": null,
+      "undefined_share": null
+     },
+     "flag_rate": {
+      "ci": [
+       0.0,
+       0.0
+      ],
+      "estimate": 0.0,
+      "undefined_share": 0.0
+     },
+     "recall": {
+      "ci": [
+       0.0,
+       0.0
+      ],
+      "estimate": 0.0,
+      "undefined_share": 0.0
+     }
+    }
+   },
+   "questions": 89,
+   "scope": "pooled",
+   "sources": [
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 2,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 2
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 2,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 2
+      },
+      "expected": {
+       "false_flag_rate": 0.00851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.00851063829787234,
+       "recall": 0.00851063829787234
+      },
+      "flags": 2,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.1326
+       },
+       "flag_rate": {
+        "ci": [
+         0.0,
+         0.02145922746781116
+        ],
+        "estimate": 0.00851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.024390243902439025
+        ],
+        "estimate": 0.00966183574879227,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.05777777777777782,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.1324
+      },
+      "ratio": {
+       "ci": [
+        1.0613207547169812,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.1324
+      }
+     },
+     "source": "census-t2",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.1324
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.021551724137931036
+       ],
+       "estimate": 0.00851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.024630541871921183
+       ],
+       "estimate": 0.00966183574879227,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 2,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 2
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 2,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 2
+      },
+      "expected": {
+       "false_flag_rate": 0.00851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.00851063829787234,
+       "recall": 0.00851063829787234
+      },
+      "flags": 2,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.1308
+       },
+       "flag_rate": {
+        "ci": [
+         0.0,
+         0.02145922746781116
+        ],
+        "estimate": 0.00851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.024390243902439025
+        ],
+        "estimate": 0.00966183574879227,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.05777777777777782,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.1324
+      },
+      "ratio": {
+       "ci": [
+        1.0613207547169812,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.1324
+      }
+     },
+     "source": "census-t20",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.1324
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.021551724137931036
+       ],
+       "estimate": 0.00851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.024630541871921183
+       ],
+       "estimate": 0.00966183574879227,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 2,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 2
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 2,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 2
+      },
+      "expected": {
+       "false_flag_rate": 0.00851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.00851063829787234,
+       "recall": 0.00851063829787234
+      },
+      "flags": 2,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.1324
+       },
+       "flag_rate": {
+        "ci": [
+         0.0,
+         0.021645021645021644
+        ],
+        "estimate": 0.00851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0,
+         0.024752475247524754
+        ],
+        "estimate": 0.00966183574879227,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.05777777777777782,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.1324
+      },
+      "ratio": {
+       "ci": [
+        1.0613207547169812,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.1324
+      }
+     },
+     "source": "census-t5",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.1324
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.021551724137931036
+       ],
+       "estimate": 0.00851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.024630541871921183
+       ],
+       "estimate": 0.00966183574879227,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 13,
+      "F": 86,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 73
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 10,
+       "F": 86,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 76
+      },
+      "expected": {
+       "false_flag_rate": 0.3659574468085106,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.3659574468085106,
+       "recall": 0.3659574468085106
+      },
+      "flags": 86,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.15,
+         0.5909090909090909
+        ],
+        "estimate": 0.35714285714285715,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.7934782608695652,
+         0.961038961038961
+        ],
+        "estimate": 0.8837209302325582,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.3093220338983051,
+         0.4230769230769231
+        ],
+        "estimate": 0.3659574468085106,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.3090909090909091,
+         0.4271356783919598
+        ],
+        "estimate": 0.3671497584541063,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.12497115695232819,
+        0.05568910256410253
+       ],
+       "estimate": -0.03201385452746175,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8536109303838646,
+        1.0632237871674493
+       ],
+       "estimate": 0.9636557690147174,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "curated",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.15384615384615385,
+        0.7692307692307693
+       ],
+       "estimate": 0.4642857142857143,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.7207207207207207,
+        0.9625
+       ],
+       "estimate": 0.8488372093023255,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.2692307692307692,
+        0.4678111587982833
+       ],
+       "estimate": 0.3659574468085106,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.2513089005235602,
+        0.4564102564102564
+       ],
+       "estimate": 0.3526570048309179,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 4,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 4
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 4,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 4
+      },
+      "expected": {
+       "false_flag_rate": 0.01702127659574468,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.01702127659574468,
+       "recall": 0.01702127659574468
+      },
+      "flags": 4,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0182
+       },
+       "flag_rate": {
+        "ci": [
+         0.00411522633744856,
+         0.03508771929824561
+        ],
+        "estimate": 0.01702127659574468,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.004608294930875576,
+         0.04020100502512563
+        ],
+        "estimate": 0.01932367149758454,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.0185
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.0185
+      }
+     },
+     "source": "empty-retry",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0185
+      },
+      "flag_rate": {
+       "ci": [
+        0.004098360655737705,
+        0.034782608695652174
+       ],
+       "estimate": 0.01702127659574468,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0045662100456621,
+        0.04
+       ],
+       "estimate": 0.01932367149758454,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 2,
+      "F": 19,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 17
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 3,
+       "F": 19,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 16
+      },
+      "expected": {
+       "false_flag_rate": 0.08085106382978724,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.08085106382978724,
+       "recall": 0.08085106382978724
+      },
+      "flags": 19,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.25
+        ],
+        "estimate": 0.10714285714285714,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.6521739130434783,
+         1.0
+        ],
+        "estimate": 0.8421052631578947,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.04979253112033195,
+         0.1148936170212766
+        ],
+        "estimate": 0.08085106382978724,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.044444444444444446,
+         0.11274509803921569
+        ],
+        "estimate": 0.07729468599033816,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.16297262059973916,
+        0.12345679012345678
+       ],
+       "estimate": 0.01388577827547588,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8108108108108107,
+        1.1428571428571428
+       ],
+       "estimate": 1.015764047800661,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "generated-1",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.16666666666666666
+       ],
+       "estimate": 0.07142857142857142,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.6923076923076923,
+        1.0
+       ],
+       "estimate": 0.8947368421052632,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.038135593220338986,
+        0.1308016877637131
+       ],
+       "estimate": 0.08085106382978724,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.03535353535353535,
+        0.13725490196078433
+       ],
+       "estimate": 0.0821256038647343,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 2,
+      "F": 12,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 10
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 12,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 12
+      },
+      "expected": {
+       "false_flag_rate": 0.05106382978723404,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.05106382978723404,
+       "recall": 0.05106382978723404
+      },
+      "flags": 12,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.024691358024691357,
+         0.0823045267489712
+        ],
+        "estimate": 0.05106382978723404,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.027522935779816515,
+         0.09268292682926829
+        ],
+        "estimate": 0.057971014492753624,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.32396891811117756,
+        0.12083333333333335
+       ],
+       "estimate": -0.047517730496453914,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.6276709401709403,
+        1.1374407582938388
+       ],
+       "estimate": 0.9460547504025765,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "generated-2",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.16666666666666666
+       ],
+       "estimate": 0.07142857142857142,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.5454545454545454,
+        1.0
+       ],
+       "estimate": 0.8333333333333334,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.0211864406779661,
+        0.08860759493670886
+       ],
+       "estimate": 0.05106382978723404,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.015463917525773196,
+        0.08837209302325581
+       ],
+       "estimate": 0.04830917874396135,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 2,
+      "F": 20,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 18
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 20,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 20
+      },
+      "expected": {
+       "false_flag_rate": 0.0851063829787234,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.0851063829787234,
+       "recall": 0.0851063829787234
+      },
+      "flags": 20,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.05172413793103448,
+         0.11983471074380166
+        ],
+        "estimate": 0.0851063829787234,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.059907834101382486,
+         0.13551401869158877
+        ],
+        "estimate": 0.0966183574879227,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.143619602134886,
+        0.12393162393162394
+       ],
+       "estimate": 0.019148936170212738,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8333333333333333,
+        1.1435643564356435
+       ],
+       "estimate": 1.0217391304347825,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "generated-3",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.16666666666666666
+       ],
+       "estimate": 0.07142857142857142,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.7142857142857143,
+        1.0
+       ],
+       "estimate": 0.9,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.04201680672268908,
+        0.13636363636363635
+       ],
+       "estimate": 0.0851063829787234,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.03902439024390244,
+        0.14218009478672985
+       ],
+       "estimate": 0.08695652173913043,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 17,
+      "F": 164,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 147
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 19,
+       "F": 164,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 145
+      },
+      "expected": {
+       "false_flag_rate": 0.6978723404255319,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.6978723404255319,
+       "recall": 0.6978723404255319
+      },
+      "flags": 164,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.55,
+         0.8
+        ],
+        "estimate": 0.6785714285714286,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8109756097560976,
+         0.9488636363636364
+        ],
+        "estimate": 0.8841463414634146,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.6428571428571429,
+         0.752
+        ],
+        "estimate": 0.6978723404255319,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.6387434554973822,
+         0.7614213197969543
+        ],
+        "estimate": 0.7004830917874396,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.027077497665732975,
+        0.06611382769572005
+       ],
+       "estimate": 0.015490399584846881,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.9691670501610676,
+        1.077216005624231
+       ],
+       "estimate": 1.0175857193354543,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "obqc",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.3,
+        0.9
+       ],
+       "estimate": 0.6071428571428571,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.8181818181818182,
+        0.9620253164556962
+       ],
+       "estimate": 0.8963414634146342,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.6049382716049383,
+        0.7875
+       ],
+       "estimate": 0.6978723404255319,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.6142131979695431,
+        0.8
+       ],
+       "estimate": 0.7101449275362319,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 13,
+      "F": 96,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 83
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 10,
+       "F": 96,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 86
+      },
+      "expected": {
+       "false_flag_rate": 0.4085106382978723,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.4085106382978723,
+       "recall": 0.4085106382978723
+      },
+      "flags": 96,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.2,
+         0.5
+        ],
+        "estimate": 0.35714285714285715,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8172043010752689,
+         0.9615384615384616
+        ],
+        "estimate": 0.8958333333333334,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.3445378151260504,
+         0.47368421052631576
+        ],
+        "estimate": 0.4085106382978723,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.34517766497461927,
+         0.48756218905472637
+        ],
+        "estimate": 0.41545893719806765,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.09816628264208915,
+        0.06320346320346326
+       ],
+       "estimate": -0.016267730496453914,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.8860660761045183,
+        1.07168458781362
+       ],
+       "estimate": 0.9815318035426731,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "obqc-where",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.15384615384615385,
+        0.7692307692307693
+       ],
+       "estimate": 0.4642857142857143,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.7474747474747475,
+        0.9666666666666667
+       ],
+       "estimate": 0.8645833333333334,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.3094170403587444,
+        0.5106382978723404
+       ],
+       "estimate": 0.4085106382978723,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.2986425339366516,
+        0.5049019607843137
+       ],
+       "estimate": 0.40096618357487923,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 7,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 7
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 7,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 7
+      },
+      "expected": {
+       "false_flag_rate": 0.029787234042553193,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.029787234042553193,
+       "recall": 0.029787234042553193
+      },
+      "flags": 7,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.0008
+       },
+       "flag_rate": {
+        "ci": [
+         0.00909090909090909,
+         0.05217391304347826
+        ],
+        "estimate": 0.029787234042553193,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.0106951871657754,
+         0.059113300492610835
+        ],
+        "estimate": 0.033816425120772944,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.0021
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.0021
+      }
+     },
+     "source": "sparqlllm",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0021
+      },
+      "flag_rate": {
+       "ci": [
+        0.008403361344537815,
+        0.05701754385964912
+       ],
+       "estimate": 0.029787234042553193,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.009615384615384616,
+        0.06422018348623854
+       ],
+       "estimate": 0.033816425120772944,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 8,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 8
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 1,
+       "F": 8,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 7
+      },
+      "expected": {
+       "false_flag_rate": 0.03404255319148936,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.03404255319148936,
+       "recall": 0.03404255319148936
+      },
+      "flags": 8,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.11538461538461539
+        ],
+        "estimate": 0.03571428571428571,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.6,
+         1.0
+        ],
+        "estimate": 0.875,
+        "undefined_share": 0.0003
+       },
+       "flag_rate": {
+        "ci": [
+         0.012875536480686695,
+         0.05761316872427984
+        ],
+        "estimate": 0.03404255319148936,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.013452914798206279,
+         0.058823529411764705
+        ],
+        "estimate": 0.033816425120772944,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18803418803418803
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.0008
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.231578947368421
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.0008
+      }
+     },
+     "source": "sparqlllm-adapted",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.0008
+      },
+      "flag_rate": {
+       "ci": [
+        0.0125,
+        0.06224066390041494
+       ],
+       "estimate": 0.03404255319148936,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.014018691588785047,
+        0.07009345794392523
+       ],
+       "estimate": 0.03864734299516908,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 0,
+      "F": 4,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 4
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 0,
+       "F": 4,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 4
+      },
+      "expected": {
+       "false_flag_rate": 0.01702127659574468,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.01702127659574468,
+       "recall": 0.01702127659574468
+      },
+      "flags": 4,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.0,
+         0.0
+        ],
+        "estimate": 0.0,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         1.0,
+         1.0
+        ],
+        "estimate": 1.0,
+        "undefined_share": 0.016
+       },
+       "flag_rate": {
+        "ci": [
+         0.00411522633744856,
+         0.034934497816593885
+        ],
+        "estimate": 0.01702127659574468,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.004608294930875576,
+         0.04
+        ],
+        "estimate": 0.01932367149758454,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        0.058295964125560484,
+        0.18723404255319154
+       ],
+       "estimate": 0.11914893617021272,
+       "undefined_share": 0.047
+      },
+      "ratio": {
+       "ci": [
+        1.061904761904762,
+        1.2303664921465969
+       ],
+       "estimate": 1.1352657004830917,
+       "undefined_share": 0.047
+      }
+     },
+     "source": "sparqlllm-parse-as-unknown",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.0,
+        0.0
+       ],
+       "estimate": 0.0,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "estimate": 1.0,
+       "undefined_share": 0.047
+      },
+      "flag_rate": {
+       "ci": [
+        0.0,
+        0.039473684210526314
+       ],
+       "estimate": 0.01702127659574468,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.0,
+        0.04522613065326633
+       ],
+       "estimate": 0.01932367149758454,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    },
+    {
+     "base_wrong_rate": {
+      "ci": [
+       0.811965811965812,
+       0.9417040358744395
+      ],
+      "estimate": 0.8808510638297873,
+      "undefined_share": 0.0
+     },
+     "counts": {
+      "C": 28,
+      "C_F": 13,
+      "F": 87,
+      "N_out": 235,
+      "W": 207,
+      "W_F": 74
+     },
+     "models": [
+      "Qwen/Qwen3.8-27B"
+     ],
+     "random": {
+      "counts": {
+       "C": 28,
+       "C_F": 7,
+       "F": 87,
+       "N_out": 235,
+       "W": 207,
+       "W_F": 80
+      },
+      "expected": {
+       "false_flag_rate": 0.3702127659574468,
+       "flag_precision": 0.8808510638297873,
+       "flag_rate": 0.3702127659574468,
+       "recall": 0.3702127659574468
+      },
+      "flags": 87,
+      "metrics": {
+       "false_flag_rate": {
+        "ci": [
+         0.12,
+         0.4
+        ],
+        "estimate": 0.25,
+        "undefined_share": 0.0
+       },
+       "flag_precision": {
+        "ci": [
+         0.8554216867469879,
+         0.9702970297029703
+        ],
+        "estimate": 0.9195402298850575,
+        "undefined_share": 0.0
+       },
+       "flag_rate": {
+        "ci": [
+         0.3070539419087137,
+         0.43209876543209874
+        ],
+        "estimate": 0.3702127659574468,
+        "undefined_share": 0.0
+       },
+       "recall": {
+        "ci": [
+         0.31958762886597936,
+         0.45147679324894513
+        ],
+        "estimate": 0.3864734299516908,
+        "undefined_share": 0.0
+       }
+      }
+     },
+     "selection_benefit": {
+      "difference": {
+       "ci": [
+        -0.12202898550724639,
+        0.056190476190476124
+       ],
+       "estimate": -0.030276351186109163,
+       "undefined_share": 0.0
+      },
+      "ratio": {
+       "ci": [
+        0.857516339869281,
+        1.0643015521064303
+       ],
+       "estimate": 0.9656282969626298,
+       "undefined_share": 0.0
+      }
+     },
+     "source": "union",
+     "source_metrics": {
+      "false_flag_rate": {
+       "ci": [
+        0.15384615384615385,
+        0.7692307692307693
+       ],
+       "estimate": 0.4642857142857143,
+       "undefined_share": 0.0
+      },
+      "flag_precision": {
+       "ci": [
+        0.723404255319149,
+        0.9625
+       ],
+       "estimate": 0.8505747126436781,
+       "undefined_share": 0.0
+      },
+      "flag_rate": {
+       "ci": [
+        0.27385892116182575,
+        0.47186147186147187
+       ],
+       "estimate": 0.3702127659574468,
+       "undefined_share": 0.0
+      },
+      "recall": {
+       "ci": [
+        0.25728155339805825,
+        0.45982142857142855
+       ],
+       "estimate": 0.357487922705314,
+       "undefined_share": 0.0
+      }
+     },
+     "use": "replay"
+    }
+   ]
+  }
+ ],
+ "schema": "trivial-checkers/1",
+ "settings": {
+  "bootstrap": {
+   "interval": "percentile over defined resamples, inverted-CDF quantiles (stats.interval)",
+   "level": 0.95,
+   "n_boot": 10000,
+   "resampling": "unstratified bootstrap of clusters of base questions (prereg §4.1, the design log; prereg.ClusterMap.resampling), one matrix per graph and kind",
+   "seed": 20261026,
+   "weighting": "ratios of pooled counts (prereg §3)"
+  },
+  "config": {
+   "graph": "uniprot-sp-2026_03"
+  },
+  "random_flagger": {
+   "rule": "exactly the source's F of the arm's N outputs, uniformly without replacement; numpy default_rng seeded by the first 8 bytes of sha256('<seed>|<row label>') over the outputs sorted by run id; the row label is scope|graph|model|cohort|use|source, and |with_question_text after it on a row of the bank items with a question text",
+   "seed": 20261026,
+   "seed_registered": false
+  }
+ }
+}

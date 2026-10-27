@@ -1,0 +1,1598 @@
+{
+ "bank_claims": "C2, C3 and C4 are the fault bank's: no bank row is dropped, so their estimates and tests are the registered ones; their weighted-Holm steps, levels and decisions can still differ, since the family is recomputed with C1's and C5's p-values",
+ "claims_with_exclusions": {
+  "c1a_family": "pooled C1a",
+  "clusters": {
+   "agent": {
+    "clusters": 199,
+    "largest": 4,
+    "questions": 210,
+    "sizes": {
+     "1": 192,
+     "2": 5,
+     "4": 2
+    }
+   },
+   "bank": {
+    "clusters": 1249,
+    "largest": 4,
+    "questions": 1260,
+    "sizes": {
+     "1": 1242,
+     "2": 5,
+     "4": 2
+    }
+   },
+   "calibration_simulated": {
+    "agent_questions": 210,
+    "unit": "base question, independent"
+   }
+  },
+  "conclusions": {
+   "C1a": {
+    "claim": true,
+    "compromised": false,
+    "max_missing_share": 0.0,
+    "test": "boot_t"
+   },
+   "C1b": {
+    "claim": false,
+    "compromised": false,
+    "max_missing_share": 0.0,
+    "test": "boot_t"
+   },
+   "C2": {
+    "claim": true,
+    "compromised": false,
+    "max_missing_share": 0.0,
+    "test": "boot_t"
+   },
+   "C3": {
+    "claim": true,
+    "compromised": false,
+    "max_missing_share": 0.0,
+    "test": "boot_t"
+   },
+   "C4": {
+    "claim": false,
+    "compromised": false,
+    "max_missing_share": 0.0,
+    "test": "boot_t"
+   },
+   "C5": {
+    "claim": false,
+    "compromised": false,
+    "max_missing_share": 0.0,
+    "test": "boot_t"
+   }
+  },
+  "config": {
+   "alpha": 0.05,
+   "c1_margin": 0.03,
+   "c1a_eligibility": {
+    "measured_power": {
+     "pooled C1a": 0.948,
+     "two-family": 0.034
+    },
+    "pooled_eligible": true
+   },
+   "c1a_power": {
+    "pooled C1a": 0.948,
+    "two-family": 0.034
+   },
+   "c2_min_effect": 0.05,
+   "c3_sesoi": 0.05,
+   "c4_sesoi": 0.01,
+   "c5_sesoi": 0.1,
+   "graph": "uniprot-sp-2026_03",
+   "holm_weights": {
+    "C1a": 1,
+    "C1a pooled": 1,
+    "C1b": 1,
+    "C2": 4,
+    "C3": 8,
+    "C4": 1,
+    "C5": 1
+   },
+   "missing_limit": 0.02,
+   "models": [
+    "Qwen/Qwen3.8-27B",
+    "claude-sonnet-5-5"
+   ],
+   "n_boot": 10000,
+   "n_reps": 3,
+   "natural_cohort": "none",
+   "panel": [
+    "claude-sonnet-5-5",
+    "Qwen/Qwen3.8-27B",
+    "zai-org/GLM-5.3-Flash",
+    "google/gemma-4-31B",
+    "claude-haiku-5-5",
+    "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "deepseek-ai/DeepSeek-V4-Flash-0731"
+   ],
+   "panel_families": [
+    "claude",
+    "qwen",
+    "zhipu",
+    "google",
+    "claude",
+    "qwen",
+    "deepseek"
+   ],
+   "prevalence": 0.25,
+   "prevalences": [
+    0.1,
+    0.25,
+    0.5
+   ],
+   "refusal_rule": "refusal-v1",
+   "scorer_version": "scorer-rules-v6",
+   "seed": 20261026,
+   "split": "test"
+  },
+  "confirmatory": true,
+  "contrasts": {
+   "C1a": {
+    "components": [
+     {
+      "ci95": {
+       "hi": -0.008924952049280978,
+       "level": 0.95,
+       "lo": -0.03538536672336908,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": -0.00130240366022525,
+       "level": 0.9976015625,
+       "level_nominal": 0.003125,
+       "lo": -0.04425577080312905,
+       "sided": "two",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": -0.008484655218775138,
+        "level": 0.95,
+        "lo": -0.035012011022252,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": -0.001624993793473549,
+        "level": 0.996875,
+        "level_nominal": 0.003125,
+        "lo": -0.04187167244755359,
+        "nominal": true,
+        "sided": "two"
+       }
+      },
+      "estimate": -0.02174833312051357,
+      "label": "pooled over P",
+      "p_down": {
+       "boot_t": 0.000999900009999,
+       "cr2": 0.0007163489542144492
+      },
+      "p_up": {
+       "boot_t": 0.9991000899910009,
+       "cr2": 0.9992836510457855
+      },
+      "se": 0.006725943380730753
+     }
+    ],
+    "cross_check_cr2": {
+     "descriptive": true,
+     "level": 0.0125,
+     "p_test": 0.0014326979084288984,
+     "procedure": "nominal weighted Holm, the same weights on the raw CR2 p's without calibration: a descriptive cross-check, never a claim (the design log, ruling 2)",
+     "rejected_nominal": true,
+     "step": 3,
+     "test": "cr2"
+    },
+    "direction": {
+     "boot_t": "census higher",
+     "cr2": "census higher"
+    },
+    "family": {
+     "alpha_prime": {
+      "1": 0.046775000000000004,
+      "10": 0.0041975,
+      "11": 0.0037977272727272734,
+      "12": 0.003597916666666667,
+      "13": 0.002998076923076923,
+      "14": 0.002798214285714286,
+      "15": 0.0025983333333333336,
+      "16": 0.0023984375000000004,
+      "2": 0.0229875,
+      "3": 0.014991666666666665,
+      "4": 0.011393750000000001,
+      "5": 0.008995,
+      "6": 0.007395833333333334,
+      "7": 0.006196428571428572,
+      "8": 0.005596875000000001,
+      "9": 0.004997222222222222
+     },
+     "claim": true,
+     "level": 0.003125,
+     "p_star": 0.003125,
+     "p_test": 0.001999800019998,
+     "procedure": "weighted Holm on calibrated p's (the design log)",
+     "step": 1,
+     "table": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+     "test": "boot_t",
+     "weight": 1,
+     "weights_total": 16
+    },
+    "id": "C1a",
+    "metric": "accuracy",
+    "models": [
+     "claude-sonnet-5-5",
+     "Qwen/Qwen3.8-27B",
+     "zai-org/GLM-5.3-Flash",
+     "google/gemma-4-31B",
+     "claude-haiku-5-5",
+     "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+     "deepseek-ai/DeepSeek-V4-Flash-0731"
+    ],
+    "p_down": {
+     "boot_t": 0.000999900009999,
+     "cr2": 0.0007163489542144492
+    },
+    "p_test": {
+     "boot_t": 0.001999800019998,
+     "cr2": 0.0014326979084288984
+    },
+    "p_up": {
+     "boot_t": 0.9991000899910009,
+     "cr2": 0.9992836510457855
+    },
+    "pooled": true,
+    "section": "§2 C1a, §4.2",
+    "sided": "two"
+   },
+   "C1b": {
+    "components": [
+     {
+      "ci95": {
+       "hi": 0.01755311717541113,
+       "level": 0.95,
+       "lo": -0.046134790394799126,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": 0.02605584992661905,
+       "level": 0.9875,
+       "level_nominal": 0.003125,
+       "lo": -0.05527167849208462,
+       "sided": "equivalence",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": 0.017653572125228036,
+        "level": 0.95,
+        "lo": -0.04622500069665673,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": 0.030479570574097253,
+        "level": 0.99375,
+        "level_nominal": 0.003125,
+        "lo": -0.059050999145525945,
+        "nominal": true,
+        "sided": "equivalence"
+       }
+      },
+      "estimate": -0.014285714285714346,
+      "label": "Qwen/Qwen3.8-27B",
+      "p_lower": {
+       "boot_t": 0.16848315168483152,
+       "cr2": 0.1665547310665954
+      },
+      "p_upper": {
+       "boot_t": 0.0030996900309969004,
+       "cr2": 0.0034089093713914587
+      },
+      "se": 0.016196249155958888
+     },
+     {
+      "ci95": {
+       "hi": 0.010890696422211587,
+       "level": 0.95,
+       "lo": -0.025567868018500656,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": 0.01549615928612759,
+       "level": 0.9875,
+       "level_nominal": 0.003125,
+       "lo": -0.031654914176100404,
+       "sided": "equivalence",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": 0.011931602501020589,
+        "level": 0.95,
+        "lo": -0.024630015199433242,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": 0.019272706586450493,
+        "level": 0.99375,
+        "level_nominal": 0.003125,
+        "lo": -0.031971119284863146,
+        "nominal": true,
+        "sided": "equivalence"
+       }
+      },
+      "estimate": -0.006349206349206327,
+      "label": "claude-sonnet-5-5",
+      "p_lower": {
+       "boot_t": 0.0103989601039896,
+       "cr2": 0.0057437291788182175
+      },
+      "p_upper": {
+       "boot_t": 9.999000099990002e-05,
+       "cr2": 6.071563104458112e-05
+      },
+      "se": 0.00927010488278462
+     }
+    ],
+    "cross_check_cr2": {
+     "descriptive": true,
+     "level": null,
+     "p_test": 0.1665547310665954,
+     "procedure": "nominal weighted Holm, the same weights on the raw CR2 p's without calibration: a descriptive cross-check, never a claim (the design log, ruling 2)",
+     "rejected_nominal": false,
+     "step": null,
+     "test": "cr2"
+    },
+    "family": {
+     "alpha_prime": {
+      "1": 0.09187500000000001,
+      "10": 0.01,
+      "11": 0.009090909090909092,
+      "12": 0.008333333333333333,
+      "13": 0.007692307692307693,
+      "14": 0.0071428571428571435,
+      "15": 0.006666666666666667,
+      "16": 0.00625,
+      "2": 0.05,
+      "3": 0.03333333333333333,
+      "4": 0.025,
+      "5": 0.02,
+      "6": 0.016666666666666666,
+      "7": 0.014285714285714287,
+      "8": 0.0125,
+      "9": 0.011111111111111112
+     },
+     "claim": false,
+     "level": null,
+     "p_star": 1.0,
+     "p_test": 0.16848315168483152,
+     "procedure": "weighted Holm on calibrated p's (the design log)",
+     "step": null,
+     "table": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+     "test": "boot_t",
+     "weight": 1,
+     "weights_total": 16
+    },
+    "id": "C1b",
+    "margin": 0.03,
+    "metric": "accuracy",
+    "p_test": {
+     "boot_t": 0.16848315168483152,
+     "cr2": 0.1665547310665954
+    },
+    "section": "§2 C1b, §4.2",
+    "sided": "equivalence"
+   },
+   "C2": {
+    "components": [
+     {
+      "ci95": {
+       "hi": -0.06000370802910221,
+       "level": 0.95,
+       "lo": -0.11222677294899384,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": -0.0521098690029087,
+       "level": 0.98940625,
+       "level_nominal": 0.0125,
+       "lo": -0.12069085743264249,
+       "sided": "two",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": -0.05946578074428553,
+        "level": 0.95,
+        "lo": -0.1119627906842859,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": -0.05224808140742563,
+        "level": 0.9875,
+        "level_nominal": 0.0125,
+        "lo": -0.11918049002114581,
+        "nominal": true,
+        "sided": "two"
+       }
+      },
+      "estimate": -0.08571428571428572,
+      "label": "false-flag rate (census - curated)",
+      "p_greater": {
+       "boot_t": 1.0,
+       "cr2": 0.9999999998947215
+      },
+      "p_less": {
+       "boot_t": 9.999000099990002e-05,
+       "cr2": 1.0527844853219584e-10
+      },
+      "se": 0.013379352202294111
+     },
+     {
+      "ci95": {
+       "hi": -0.21033449100778812,
+       "level": 0.95,
+       "lo": -0.2350465847314258,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": -0.20679439850374515,
+       "level": 0.98940625,
+       "level_nominal": 0.0125,
+       "lo": -0.23887412340313258,
+       "sided": "two",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": -0.21017773903223586,
+        "level": 0.95,
+        "lo": -0.2353249064704096,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": -0.20672030985770085,
+        "level": 0.9875,
+        "level_nominal": 0.0125,
+        "lo": -0.2387823356449446,
+        "nominal": true,
+        "sided": "two"
+       }
+      },
+      "estimate": -0.22275132275132273,
+      "label": "type-wrong recall (curated - census)",
+      "p_greater": {
+       "boot_t": 1.0,
+       "cr2": 1.0
+      },
+      "p_less": {
+       "boot_t": 9.999000099990002e-05,
+       "cr2": 5.540403547540215e-186
+      },
+      "se": 0.006408989967808177
+     }
+    ],
+    "cross_check_cr2": {
+     "descriptive": true,
+     "level": 0.025,
+     "p_test": 2.1055689706439167e-10,
+     "procedure": "nominal weighted Holm, the same weights on the raw CR2 p's without calibration: a descriptive cross-check, never a claim (the design log, ruling 2)",
+     "rejected_nominal": true,
+     "step": 2,
+     "test": "cr2"
+    },
+    "direction": {
+     "boot_t": "census better",
+     "cr2": "census better"
+    },
+    "family": {
+     "alpha_prime": {
+      "12": 0.016191666666666667,
+      "13": 0.014392307692307694,
+      "14": 0.012992857142857145,
+      "15": 0.011593333333333334,
+      "16": 0.01059375,
+      "4": 0.070575,
+      "5": 0.053380000000000004,
+      "6": 0.042383333333333335,
+      "7": 0.03438571428571429,
+      "8": 0.0289875
+     },
+     "at_least_min_effect": {
+      "false-flag rate (census - curated)": true,
+      "type-wrong recall (curated - census)": true
+     },
+     "both_at_least_min_effect": true,
+     "claim": true,
+     "level": 0.013333333333333334,
+     "p_star": 0.0125,
+     "p_test": 0.00019998000199980003,
+     "procedure": "weighted Holm on calibrated p's (the design log)",
+     "step": 2,
+     "table": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+     "test": "boot_t",
+     "weight": 4,
+     "weights_total": 16
+    },
+    "id": "C2",
+    "metric": "false-flag rate, type-wrong recall",
+    "min_effect": 0.05,
+    "p_down": {
+     "boot_t": 9.999000099990002e-05,
+     "cr2": 1.0527844853219584e-10
+    },
+    "p_test": {
+     "boot_t": 0.00019998000199980003,
+     "cr2": 2.1055689706439167e-10
+    },
+    "p_up": {
+     "boot_t": 1.0,
+     "cr2": 1.0
+    },
+    "rates": {
+     "census": {
+      "f": 0.07142857142857142,
+      "f_gold": 0.07142857142857142,
+      "f_rewrite": 0.075,
+      "false_flag_rate_neutral": 0.0942622950819672,
+      "precision": 0.7795928298229242,
+      "precision_at": {
+       "0.1": 0.5410779223861005,
+       "0.25": 0.7795928298229242,
+       "0.5": 0.9138760529755482
+      },
+      "questions_without_rewrites": 60,
+      "questions_without_type_wrong": 0,
+      "recall": 0.7579408884766027,
+      "recall_type_wrong": 0.7853306878306878
+     },
+     "curated": {
+      "f": 0.15714285714285714,
+      "f_gold": 0.15714285714285714,
+      "f_rewrite": 0.165,
+      "false_flag_rate_neutral": 0.04849726775956284,
+      "precision": 0.5637430177588869,
+      "precision_at": {
+       "0.1": 0.30106211673287514,
+       "0.25": 0.5637430177588869,
+       "0.5": 0.7949424931783678
+      },
+      "questions_without_rewrites": 60,
+      "questions_without_type_wrong": 0,
+      "recall": 0.6091926922284064,
+      "recall_type_wrong": 0.562579365079365
+     }
+    },
+    "section": "§2 C2, §4.1",
+    "sided": "two"
+   },
+   "C3": {
+    "components": [
+     {
+      "ci95": {
+       "hi": 0.1788358603228954,
+       "level": 0.95,
+       "lo": 0.13740660694888485,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": 0.190491040377202,
+       "level": 0.9972125,
+       "level_nominal": 0.025,
+       "lo": 0.1263307080082599,
+       "sided": "two",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": 0.17756185782617487,
+        "level": 0.95,
+        "lo": 0.1367238564595394,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": 0.180499437231767,
+        "level": 0.975,
+        "level_nominal": 0.025,
+        "lo": 0.13378627705394727,
+        "nominal": true,
+        "sided": "two"
+       }
+      },
+      "estimate": 0.15714285714285714,
+      "label": "curated - mean(masked)",
+      "p_down": {
+       "boot_t": 1.0,
+       "cr2": 1.0
+      },
+      "p_up": {
+       "boot_t": 9.999000099990002e-05,
+       "cr2": 9.811555418544075e-48
+      },
+      "se": 0.010407945217193447
+     }
+    ],
+    "cross_check_cr2": {
+     "descriptive": true,
+     "level": 0.025,
+     "p_test": 1.962311083708815e-47,
+     "procedure": "nominal weighted Holm, the same weights on the raw CR2 p's without calibration: a descriptive cross-check, never a claim (the design log, ruling 2)",
+     "rejected_nominal": true,
+     "step": 1,
+     "test": "cr2"
+    },
+    "direction": {
+     "boot_t": "curated higher",
+     "cr2": "curated higher"
+    },
+    "family": {
+     "alpha_prime": {
+      "10": 0.01038,
+      "11": 0.008181818181818182,
+      "12": 0.006383333333333334,
+      "13": 0.004984615384615385,
+      "14": 0.004185714285714286,
+      "15": 0.0033866666666666667,
+      "16": 0.0027875,
+      "8": 0.016975,
+      "9": 0.012977777777777777
+     },
+     "claim": true,
+     "equivalence": {
+      "equivalent": false,
+      "margin": 0.05,
+      "reading": "not equivalent within 5 points",
+      "rule": "equivalent when the calibrated claim-level interval lies strictly inside +-0.05 (the design log); never from an uncertified interval",
+      "status": "decided"
+     },
+     "level": 0.03636363636363637,
+     "p_star": 0.025,
+     "p_test": 0.00019998000199980003,
+     "procedure": "weighted Holm on calibrated p's (the design log)",
+     "step": 3,
+     "table": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+     "test": "boot_t",
+     "weight": 8,
+     "weights_total": 16
+    },
+    "id": "C3",
+    "metric": "false-flag rate",
+    "p_down": {
+     "boot_t": 1.0,
+     "cr2": 1.0
+    },
+    "p_test": {
+     "boot_t": 0.00019998000199980003,
+     "cr2": 1.962311083708815e-47
+    },
+    "p_up": {
+     "boot_t": 9.999000099990002e-05,
+     "cr2": 9.811555418544075e-48
+    },
+    "rates": {
+     "curated": {
+      "f": 0.15714285714285714,
+      "f_gold": 0.15714285714285714,
+      "f_rewrite": 0.165,
+      "false_flag_rate_neutral": 0.04849726775956284,
+      "precision": 0.5637430177588869,
+      "precision_at": {
+       "0.1": 0.30106211673287514,
+       "0.25": 0.5637430177588869,
+       "0.5": 0.7949424931783678
+      },
+      "questions_without_rewrites": 60,
+      "questions_without_type_wrong": 0,
+      "recall": 0.6091926922284064,
+      "recall_type_wrong": 0.562579365079365
+     },
+     "generated-dc-1": {
+      "f": 0.0,
+      "f_gold": 0.0,
+      "f_rewrite": 0.0,
+      "false_flag_rate_neutral": 0.05327868852459016,
+      "precision": 1.0,
+      "precision_at": {
+       "0.1": 1.0,
+       "0.25": 1.0,
+       "0.5": 1.0
+      },
+      "questions_without_rewrites": 60,
+      "questions_without_type_wrong": 0,
+      "recall": 0.5581713678737488,
+      "recall_type_wrong": 0.4983068783068783
+     },
+     "generated-dc-2": {
+      "f": 0.0,
+      "f_gold": 0.0,
+      "f_rewrite": 0.0,
+      "false_flag_rate_neutral": 0.058287795992714025,
+      "precision": 1.0,
+      "precision_at": {
+       "0.1": 1.0,
+       "0.25": 1.0,
+       "0.5": 1.0
+      },
+      "questions_without_rewrites": 60,
+      "questions_without_type_wrong": 0,
+      "recall": 0.5699170846789895,
+      "recall_type_wrong": 0.516005291005291
+     },
+     "generated-dc-3": {
+      "f": 0.0,
+      "f_gold": 0.0,
+      "f_rewrite": 0.0,
+      "false_flag_rate_neutral": 0.05327868852459016,
+      "precision": 1.0,
+      "precision_at": {
+       "0.1": 1.0,
+       "0.25": 1.0,
+       "0.5": 1.0
+      },
+      "questions_without_rewrites": 60,
+      "questions_without_type_wrong": 0,
+      "recall": 0.5581713678737488,
+      "recall_type_wrong": 0.4983068783068783
+     }
+    },
+    "section": "§2 C3",
+    "sesoi": 0.05,
+    "sided": "two"
+   },
+   "C4": {
+    "components": [
+     {
+      "ci95": {
+       "hi": 0.0041387051535790274,
+       "level": 0.95,
+       "lo": -0.015027612417238708,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": null,
+       "level": 0.9975015625,
+       "level_nominal": 0.003125,
+       "lo": -0.020249165694433212,
+       "sided": "greater",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": 0.004678158615767692,
+        "level": 0.95,
+        "lo": -0.014562217458159863,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": null,
+        "level": 0.996875,
+        "level_nominal": 0.003125,
+        "lo": -0.018373054739437546,
+        "nominal": true,
+        "sided": "greater"
+       }
+      },
+      "estimate": -0.0049420294211960855,
+      "label": "union - curated",
+      "p_greater": {
+       "boot_t": 0.8498150184981502,
+       "cr2": 0.8431364904830356
+      },
+      "se": 0.0049035891433032676
+     },
+     {
+      "ci95": {
+       "hi": -0.09182074678448592,
+       "level": 0.95,
+       "lo": -0.1224878061123364,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": null,
+       "level": 0.9975015625,
+       "level_nominal": 0.003125,
+       "lo": -0.1293713518900299,
+       "sided": "greater",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": -0.091384006963951,
+        "level": 0.95,
+        "lo": -0.12144557857396786,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": null,
+        "level": 0.996875,
+        "level_nominal": 0.003125,
+        "lo": -0.1273997115589509,
+        "nominal": true,
+        "sided": "greater"
+       }
+      },
+      "estimate": -0.10641479276895943,
+      "label": "union - census",
+      "p_greater": {
+       "boot_t": 1.0,
+       "cr2": 1.0
+      },
+      "se": 0.007661471668283325
+     }
+    ],
+    "cross_check_cr2": {
+     "descriptive": true,
+     "level": null,
+     "p_test": 1.0,
+     "procedure": "nominal weighted Holm, the same weights on the raw CR2 p's without calibration: a descriptive cross-check, never a claim (the design log, ruling 2)",
+     "rejected_nominal": false,
+     "step": null,
+     "test": "cr2"
+    },
+    "family": {
+     "alpha_prime": {
+      "1": 0.047775000000000005,
+      "10": 0.0045975,
+      "11": 0.004297727272727273,
+      "12": 0.0037979166666666665,
+      "13": 0.0033980769230769234,
+      "14": 0.003098214285714286,
+      "15": 0.0027983333333333337,
+      "16": 0.0024984375000000002,
+      "2": 0.0241875,
+      "3": 0.016091666666666667,
+      "4": 0.01229375,
+      "5": 0.009595000000000001,
+      "6": 0.0077958333333333334,
+      "7": 0.0068964285714285724,
+      "8": 0.006096875000000001,
+      "9": 0.0053972222222222225
+     },
+     "claim": false,
+     "level": null,
+     "p_star": 1.0,
+     "p_test": 1.0,
+     "procedure": "weighted Holm on calibrated p's (the design log)",
+     "step": null,
+     "table": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+     "test": "boot_t",
+     "weight": 1,
+     "weights_total": 16
+    },
+    "id": "C4",
+    "metric": "net detection benefit of the union",
+    "p_test": {
+     "boot_t": 1.0,
+     "cr2": 1.0
+    },
+    "section": "§2 C4, §4.1",
+    "sesoi": 0.01,
+    "sided": "greater"
+   },
+   "C5": {
+    "components": [
+     {
+      "ci95": {
+       "hi": 0.03467276223297016,
+       "level": 0.95,
+       "lo": -0.030430826314366378,
+       "sided": "two"
+      },
+      "ci_weighted_bonferroni": {
+       "calibrated": true,
+       "coverage": "calibrated",
+       "hi": null,
+       "level": 0.9981015625,
+       "level_nominal": 0.003125,
+       "lo": -0.043360793050535626,
+       "sided": "greater",
+       "test": "boot_t"
+      },
+      "cross_check_cr2": {
+       "ci95": {
+        "hi": 0.03465929410284465,
+        "level": 0.95,
+        "lo": -0.027574394201334115,
+        "sided": "two"
+       },
+       "ci_weighted_bonferroni": {
+        "coverage": "nominal",
+        "hi": null,
+        "level": 0.996875,
+        "level_nominal": 0.003125,
+        "lo": -0.04007012092776687,
+        "nominal": true,
+        "sided": "greater"
+       }
+      },
+      "estimate": 0.003542449950755266,
+      "label": "pooled over P",
+      "p_greater": {
+       "boot_t": 0.42405759424057593,
+       "cr2": 0.4112993640083162
+      },
+      "se": 0.0157791928833363
+     }
+    ],
+    "cross_check_cr2": {
+     "descriptive": true,
+     "level": null,
+     "p_test": 0.4112993640083162,
+     "procedure": "nominal weighted Holm, the same weights on the raw CR2 p's without calibration: a descriptive cross-check, never a claim (the design log, ruling 2)",
+     "rejected_nominal": false,
+     "step": null,
+     "test": "cr2"
+    },
+    "descriptive": {
+     "flag_weighted": {
+      "ci95": {
+       "hi": 0.036848108018340014,
+       "level": 0.95,
+       "lo": -0.010283320900232453,
+       "sided": "two"
+      },
+      "estimate": 0.00984251968503937
+     },
+     "leave_one_family_out": {
+      "claude": {
+       "ci95": {
+        "hi": 0.04055805115398291,
+        "level": 0.95,
+        "lo": -0.0477522539895611,
+        "sided": "two"
+       },
+       "estimate": 0.0007855168875791113,
+       "models": [
+        "Qwen/Qwen3.8-27B",
+        "zai-org/GLM-5.3-Flash",
+        "google/gemma-4-31B",
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+        "deepseek-ai/DeepSeek-V4-Flash-0731"
+       ]
+      },
+      "deepseek": {
+       "ci95": {
+        "hi": 0.03758320521052884,
+        "level": 0.95,
+        "lo": -0.03689531612819402,
+        "sided": "two"
+       },
+       "estimate": 0.0023967471647700312,
+       "models": [
+        "claude-sonnet-5-5",
+        "Qwen/Qwen3.8-27B",
+        "zai-org/GLM-5.3-Flash",
+        "google/gemma-4-31B",
+        "claude-haiku-5-5",
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct"
+       ]
+      },
+      "google": {
+       "ci95": {
+        "hi": 0.016955520800277207,
+        "level": 0.95,
+        "lo": -0.04496878332542427,
+        "sided": "two"
+       },
+       "estimate": -0.006505439596459281,
+       "models": [
+        "claude-sonnet-5-5",
+        "Qwen/Qwen3.8-27B",
+        "zai-org/GLM-5.3-Flash",
+        "claude-haiku-5-5",
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+        "deepseek-ai/DeepSeek-V4-Flash-0731"
+       ]
+      },
+      "qwen": {
+       "ci95": {
+        "hi": 0.06371809774322185,
+        "level": 0.95,
+        "lo": -0.001985049603470259,
+        "sided": "two"
+       },
+       "estimate": 0.021654782770988524,
+       "models": [
+        "claude-sonnet-5-5",
+        "zai-org/GLM-5.3-Flash",
+        "google/gemma-4-31B",
+        "claude-haiku-5-5",
+        "deepseek-ai/DeepSeek-V4-Flash-0731"
+       ]
+      },
+      "zhipu": {
+       "ci95": {
+        "hi": 0.03655039175322371,
+        "level": 0.95,
+        "lo": -0.037258331987832446,
+        "sided": "two"
+       },
+       "estimate": 0.0019398758197407915,
+       "models": [
+        "claude-sonnet-5-5",
+        "Qwen/Qwen3.8-27B",
+        "google/gemma-4-31B",
+        "claude-haiku-5-5",
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+        "deepseek-ai/DeepSeek-V4-Flash-0731"
+       ]
+      }
+     },
+     "per_model": {
+      "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+       "ci95": {
+        "hi": "UNBOUNDED",
+        "level": 0.95,
+        "lo": "UNBOUNDED",
+        "sided": "two"
+       },
+       "estimate": -0.07142857142857142,
+       "flagged": 14,
+       "p_greater": {
+        "boot_t": 0.9239076092390761,
+        "cr2": 0.8490665506127026
+       },
+       "unconditional": -0.002380952380952381,
+       "unconditional_ci95": {
+        "hi": "UNBOUNDED",
+        "level": 0.95,
+        "lo": "UNBOUNDED",
+        "sided": "two"
+       }
+      },
+      "Qwen/Qwen3.8-27B": {
+       "ci95": {
+        "hi": 0.0496645022780825,
+        "level": 0.95,
+        "lo": -0.07900294318656778,
+        "sided": "two"
+       },
+       "estimate": -0.012048192771084338,
+       "flagged": 83,
+       "p_greater": {
+        "boot_t": 0.646035396460354,
+        "cr2": 0.6469504192831146
+       },
+       "unconditional": -0.0015873015873015873,
+       "unconditional_ci95": {
+        "hi": 0.007565262884157086,
+        "level": 0.95,
+        "lo": -0.011659329905813655,
+        "sided": "two"
+       }
+      },
+      "claude-haiku-5-5": {
+       "ci95": {
+        "hi": "UNBOUNDED",
+        "level": 0.95,
+        "lo": "UNBOUNDED",
+        "sided": "two"
+       },
+       "estimate": 0.010869565217391304,
+       "flagged": 92,
+       "p_greater": {
+        "boot_t": 0.45445455454454553,
+        "cr2": 0.1602436192271796
+       },
+       "unconditional": 0.0016260162601626016,
+       "unconditional_ci95": {
+        "hi": "UNBOUNDED",
+        "level": 0.95,
+        "lo": "UNBOUNDED",
+        "sided": "two"
+       }
+      },
+      "claude-sonnet-5-5": {
+       "ci95": {
+        "hi": "UNBOUNDED",
+        "level": 0.95,
+        "lo": "UNBOUNDED",
+        "sided": "two"
+       },
+       "estimate": 0.01,
+       "flagged": 100,
+       "p_greater": {
+        "boot_t": 0.44685531446855314,
+        "cr2": 0.1610503613975261
+       },
+       "unconditional": 0.001594896331738437,
+       "unconditional_ci95": {
+        "hi": "UNBOUNDED",
+        "level": 0.95,
+        "lo": "UNBOUNDED",
+        "sided": "two"
+       }
+      },
+      "deepseek-ai/DeepSeek-V4-Flash-0731": {
+       "ci95": {
+        "hi": 0.06403205691301588,
+        "level": 0.95,
+        "lo": -0.03327347305701025,
+        "sided": "two"
+       },
+       "estimate": 0.010416666666666666,
+       "flagged": 96,
+       "p_greater": {
+        "boot_t": 0.34096590340965904,
+        "cr2": 0.32836180914254653
+       },
+       "unconditional": 0.0015873015873015873,
+       "unconditional_ci95": {
+        "hi": 0.009676629280685679,
+        "level": 0.95,
+        "lo": -0.0048519193521954496,
+        "sided": "two"
+       }
+      },
+      "google/gemma-4-31B": {
+       "ci95": {
+        "hi": 0.27511891110546066,
+        "level": 0.95,
+        "lo": -0.04068631402864539,
+        "sided": "two"
+       },
+       "estimate": 0.06382978723404255,
+       "flagged": 47,
+       "p_greater": {
+        "boot_t": 0.09869013098690131,
+        "cr2": 0.12181449702700514
+       },
+       "unconditional": 0.004761904761904762,
+       "unconditional_ci95": {
+        "hi": 0.021724432653525146,
+        "level": 0.95,
+        "lo": -0.002427963742178153,
+        "sided": "two"
+       }
+      },
+      "zai-org/GLM-5.3-Flash": {
+       "ci95": {
+        "hi": 0.08456775482133523,
+        "level": 0.95,
+        "lo": -0.04266064344805056,
+        "sided": "two"
+       },
+       "estimate": 0.013157894736842105,
+       "flagged": 76,
+       "p_greater": {
+        "boot_t": 0.3417658234176582,
+        "cr2": 0.3291953665199625
+       },
+       "unconditional": 0.007317073170731708,
+       "unconditional_ci95": {
+        "hi": 0.03789399047606054,
+        "level": 0.95,
+        "lo": -0.0047817916920997695,
+        "sided": "two"
+       }
+      }
+     },
+     "survivors": {
+      "estimate": 0.0035424499507552645,
+      "models": [
+       "claude-sonnet-5-5",
+       "Qwen/Qwen3.8-27B",
+       "zai-org/GLM-5.3-Flash",
+       "google/gemma-4-31B",
+       "claude-haiku-5-5",
+       "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+       "deepseek-ai/DeepSeek-V4-Flash-0731"
+      ]
+     },
+     "two_family_iut": {
+      "models": [
+       "Qwen/Qwen3.8-27B",
+       "claude-sonnet-5-5"
+      ],
+      "p": {
+       "boot_t": 0.646035396460354,
+       "cr2": 0.6469504192831146
+      }
+     }
+    },
+    "estimable": true,
+    "family": {
+     "alpha_prime": {
+      "1": 0.047575000000000006,
+      "10": 0.0036975000000000003,
+      "11": 0.003197727272727273,
+      "12": 0.002997916666666667,
+      "13": 0.0022980769230769235,
+      "14": 0.002098214285714286,
+      "15": 0.0019983333333333337,
+      "16": 0.0018984375000000002,
+      "2": 0.021987500000000004,
+      "3": 0.013991666666666666,
+      "4": 0.011193750000000002,
+      "5": 0.008595,
+      "6": 0.006695833333333333,
+      "7": 0.005596428571428572,
+      "8": 0.0046968750000000005,
+      "9": 0.004197222222222223
+     },
+     "claim": false,
+     "level": null,
+     "p_star": 1.0,
+     "p_test": 0.42405759424057593,
+     "procedure": "weighted Holm on calibrated p's (the design log)",
+     "step": null,
+     "table": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+     "test": "boot_t",
+     "weight": 1,
+     "weights_total": 16
+    },
+    "id": "C5",
+    "metric": "retry with feedback - generic retry, pooled over P",
+    "models": [
+     "claude-sonnet-5-5",
+     "Qwen/Qwen3.8-27B",
+     "zai-org/GLM-5.3-Flash",
+     "google/gemma-4-31B",
+     "claude-haiku-5-5",
+     "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+     "deepseek-ai/DeepSeek-V4-Flash-0731"
+    ],
+    "p_test": {
+     "boot_t": 0.42405759424057593,
+     "cr2": 0.4112993640083162
+    },
+    "section": "§2 C5, §4.2",
+    "sesoi": 0.1,
+    "sided": "greater"
+   }
+  },
+  "descriptive": {
+   "C4 retry": {
+    "components": [],
+    "id": "C4 retry (descriptive)",
+    "metric": "net_change",
+    "section": "the design log"
+   }
+  },
+  "missing_shares": {
+   "uniprot-sp-2026_03|Qwen/Qwen3-Coder-30B-A3B-Instruct|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3-Coder-30B-A3B-Instruct|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3-Coder-30B-A3B-Instruct|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3-Coder-30B-A3B-Instruct|none|checker|generic": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3.8-27B|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3.8-27B|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3.8-27B|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|Qwen/Qwen3.8-27B|none|checker|generic": 0.0,
+   "uniprot-sp-2026_03|claude-haiku-5-5|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|claude-haiku-5-5|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|claude-haiku-5-5|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|claude-haiku-5-5|none|checker|generic": 0.0,
+   "uniprot-sp-2026_03|claude-sonnet-5-5|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|claude-sonnet-5-5|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|claude-sonnet-5-5|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|claude-sonnet-5-5|none|checker|generic": 0.0,
+   "uniprot-sp-2026_03|deepseek-ai/DeepSeek-V4-Flash-0731|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|deepseek-ai/DeepSeek-V4-Flash-0731|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|deepseek-ai/DeepSeek-V4-Flash-0731|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|deepseek-ai/DeepSeek-V4-Flash-0731|none|checker|generic": 0.0,
+   "uniprot-sp-2026_03|google/gemma-4-31B|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|google/gemma-4-31B|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|google/gemma-4-31B|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|google/gemma-4-31B|none|checker|generic": 0.0,
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|census|prompt|-": 0.0,
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|curated|prompt|-": 0.0,
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|none|checker|curated": 0.0,
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|none|checker|generic": 0.0
+  },
+  "multiplicity": {
+   "procedure": "weighted Holm on calibrated p's (the design log)",
+   "step2_addendum": {
+    "addendum": "weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d)",
+    "date": "2026-10-20",
+    "recomputed": false,
+    "verified": {
+     "addendum_sha256": "42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d",
+     "outputs": {
+      "chunks": 2350,
+      "sha256": "ca85e66e0c47598aee5804624b0e3e8dffb7388e88b7778616a2d953d7f89749"
+     },
+     "procedure": "0294c59aeac46daf26439664c1a1fbf51936acbd38a61e1a26cd7bfb62348590"
+    }
+   },
+   "tables": "weighted-holm-alpha.json (sha256 867f6005b99de38593fbfda6cebfdcbaceb71a7dfd3e28547ad3b29c0ffb37c9), weighted-holm-step2.json (sha256 42cd54d815614e4851f143796b82137807fafc6c0c63112bd78e13f5ea94350d), pooled C1a; step 3 (the design log)",
+   "weights": {
+    "C1a": 1,
+    "C1a pooled": 1,
+    "C1b": 1,
+    "C2": 4,
+    "C3": 8,
+    "C4": 1,
+    "C5": 1
+   }
+  },
+  "n_bank_questions": 1260,
+  "n_contrasts": 6,
+  "n_questions": 210,
+  "n_strata": 14,
+  "resampling": "unstratified paired cluster bootstrap of complete cluster vectors (§4.2; clusters of base questions, the design log)",
+  "schema": "prereg-analysis/6",
+  "zero_spread": {
+   "counts": {
+    "C1a": {
+     "resamples": 0,
+     "statistics": 3
+    },
+    "C1b": {
+     "resamples": 0,
+     "statistics": 6
+    },
+    "C2": {
+     "resamples": 0,
+     "statistics": 2
+    },
+    "C3": {
+     "resamples": 0,
+     "statistics": 1
+    },
+    "C4": {
+     "resamples": 0,
+     "statistics": 2
+    },
+    "C5": {
+     "resamples": 0,
+     "statistics": 2
+    }
+   },
+   "primary": {
+    "C1a": {
+     "claim": true,
+     "level": 0.003125,
+     "p_star": 0.003125,
+     "p_test": 0.001999800019998,
+     "step": 1,
+     "test": "boot_t"
+    },
+    "C1b": {
+     "claim": false,
+     "level": null,
+     "p_star": 1.0,
+     "p_test": 0.16848315168483152,
+     "step": null,
+     "test": "boot_t"
+    },
+    "C2": {
+     "claim": true,
+     "level": 0.013333333333333334,
+     "p_star": 0.0125,
+     "p_test": 0.00019998000199980003,
+     "step": 2,
+     "test": "boot_t"
+    },
+    "C3": {
+     "claim": true,
+     "level": 0.03636363636363637,
+     "p_star": 0.025,
+     "p_test": 0.00019998000199980003,
+     "step": 3,
+     "test": "boot_t"
+    },
+    "C4": {
+     "claim": false,
+     "level": null,
+     "p_star": 1.0,
+     "p_test": 1.0,
+     "step": null,
+     "test": "boot_t"
+    },
+    "C5": {
+     "claim": false,
+     "level": null,
+     "p_star": 1.0,
+     "p_test": 0.42405759424057593,
+     "step": null,
+     "test": "boot_t"
+    }
+   },
+   "sensitivity": null,
+   "threshold": {
+    "absolute": 1e-09,
+    "relative": 1e-06,
+    "rule": "0 < se* < max(absolute, relative x se)"
+   }
+  }
+ },
+ "classification": {
+  "calibration_controls": "none",
+  "label": ""
+ },
+ "excluded_share_per_model_and_arm": {
+  "models": {
+   "claude-haiku-5-5": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 15,
+      "excluded_share": 0.023809523809523808
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 25,
+      "excluded_share": 0.03968253968253968
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 57,
+      "excluded_share": 0.09047619047619047
+     }
+    }
+   },
+   "claude-sonnet-5-5": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 4,
+      "excluded_share": 0.006349206349206349
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 2,
+      "excluded_share": 0.0031746031746031746
+     },
+     "generated-1": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 2,
+      "excluded_share": 0.0031746031746031746
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 19,
+      "excluded_share": 0.03015873015873016
+     }
+    }
+   },
+   "deepseek-v4-flash-0731": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 15,
+      "excluded_share": 0.023809523809523808
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 11,
+      "excluded_share": 0.01746031746031746
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 33,
+      "excluded_share": 0.05238095238095238
+     }
+    }
+   },
+   "gemma-4-31b": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 24,
+      "excluded_share": 0.0380952380952381
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 30,
+      "excluded_share": 0.047619047619047616
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 8,
+      "excluded_share": 0.012698412698412698
+     }
+    }
+   },
+   "glm-5.3-flash": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 58,
+      "excluded_share": 0.09206349206349207
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 12,
+      "excluded_share": 0.01904761904761905
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 169,
+      "excluded_share": 0.26825396825396824
+     }
+    }
+   },
+   "qwen3-coder-30b-a3b": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 14,
+      "excluded_share": 0.022222222222222223
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 3,
+      "excluded_share": 0.004761904761904762
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 23,
+      "excluded_share": 0.03650793650793651
+     }
+    }
+   },
+   "qwen3.8-27b": {
+    "arms": {
+     "census": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 19,
+      "excluded_share": 0.03015873015873016
+     },
+     "curated": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 37,
+      "excluded_share": 0.05873015873015873
+     },
+     "generated-1": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 20,
+      "excluded_share": 0.031746031746031744
+     },
+     "none": {
+      "attempts_in_design": 630,
+      "excluded_attempts": 91,
+      "excluded_share": 0.14444444444444443
+     }
+    }
+   }
+  }
+ },
+ "label": "attempts touched by a load-induced time-out or a cut call, excluded (classification copies, no calibration controls)",
+ "models": [
+  "claude-sonnet-5-5",
+  "claude-haiku-5-5",
+  "qwen3.8-27b",
+  "deepseek-v4-flash-0731",
+  "gemma-4-31b",
+  "qwen3-coder-30b-a3b",
+  "glm-5.3-flash"
+ ],
+ "not_recomputed": [
+  "the per-arm exploratory numbers (the reproduction's 'arms' are the registered ones)",
+  "the descriptive block 'C1 under scorer-rules-v4 (sensitivity)'",
+  "the descriptive block 'C1 leak exclusion'",
+  "the descriptive block 'C2 source-layer ablations'",
+  "the descriptive block 'C1 verdicts changed by the frozen scorer against v4'"
+ ],
+ "not_run": "the six models' Tier 1 re-runs (claude-sonnet-5-5, claude-haiku-5-5, qwen3.8-27b, deepseek-v4-flash-0731, gemma-4-31b, qwen3-coder-30b-a3b): 'original attempts; re-run incomplete' (the design log); GLM's two rounds stand (the design log; the timeout_sensitivity substituted call)",
+ "schema": "exclusion-exclusion-sensitivity/1",
+ "status": "sensitivity (the design log item 4): each registered claim's estimate with the attempts touched by a load-induced store time-out or a cut model call excluded; reported BESIDE the registered results, never replacing them; not confirmatory (the preflight's own 'confirmatory' flag inside describes the frozen settings it ran under, not this result's status)"
+}

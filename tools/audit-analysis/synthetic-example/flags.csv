@@ -1,0 +1,9 @@
+run_id,source,rule
+SENTINEL-RUN-16,curated,rule-disj
+SENTINEL-RUN-12,curated,rule-range
+SENTINEL-RUN-17,curated,rule-disj
+SENTINEL-RUN-14,curated,rule-vocab
+SENTINEL-RUN-11,curated,rule-range
+SENTINEL-RUN-13,curated,rule-vocab
+SENTINEL-RUN-10,curated,rule-vocab
+SENTINEL-RUN-15,curated,rule-vocab

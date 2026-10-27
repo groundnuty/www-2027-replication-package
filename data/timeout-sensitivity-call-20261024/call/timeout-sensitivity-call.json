@@ -1,0 +1,80 @@
+{
+ "attempts_per_initial_arm": {
+  "census": {
+   "round1": 54,
+   "round2": 4,
+   "tier1": 572
+  },
+  "curated": {
+   "round1": 11,
+   "round2": 1,
+   "tier1": 618
+  },
+  "none": {
+   "round1": 118,
+   "round2": 51,
+   "tier1": 461
+  }
+ },
+ "call_arguments": {
+  "n_boot": null,
+  "n_reps": null,
+  "prereg_config": "prereg-config.json",
+  "seed": null,
+  "split": "test"
+ },
+ "frozen_check_without_the_skip": {},
+ "glm_side_counts": {
+  "arms_that_differ": [
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|census|prompt|-",
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|curated|prompt|-",
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|none|prompt|-"
+  ],
+  "assembled_call (this call's results.json)": {
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|census|prompt|-": {
+    "failed_harness": 0,
+    "infra_tries": 0
+   },
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|curated|prompt|-": {
+    "failed_harness": 0,
+    "infra_tries": 0
+   },
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|none|prompt|-": {
+    "failed_harness": 0,
+    "infra_tries": 0
+   }
+  },
+  "registered_call (the confirmatory results.json)": {
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|census|prompt|-": {
+    "failed_harness": 0,
+    "infra_tries": 10
+   },
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|curated|prompt|-": {
+    "failed_harness": 0,
+    "infra_tries": 1
+   },
+   "uniprot-sp-2026_03|zai-org/GLM-5.3-Flash|none|prompt|-": {
+    "failed_harness": 0,
+    "infra_tries": 1
+   }
+  }
+ },
+ "schema": "timeout_sensitivity-sensitivity-call/1",
+ "units": {
+  "all": {
+   "round1": 183,
+   "round2": 56,
+   "tier1": 1651
+  },
+  "natural": {
+   "round1": 118,
+   "round2": 51,
+   "tier1": 461
+  },
+  "prompted": {
+   "round1": 65,
+   "round2": 5,
+   "tier1": 1190
+  }
+ }
+}

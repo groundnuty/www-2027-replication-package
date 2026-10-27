@@ -1,0 +1,135 @@
+{
+ "groups": {
+  "opaque-rhea-142": {
+   "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+    "closed-book-answer-v2": {
+     "answered": 7,
+     "declined": 1,
+     "declined_by_rule": {
+      "empty_rows": 1
+     },
+     "labels": {
+      "answered": 8
+     },
+     "n_attempts": 8,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.875,
+      "declined": 0.125,
+      "unparseable": 0.0
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.875,
+      "declined": 0.125,
+      "refused": 0.0,
+      "unparseable": 0.0
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 8,
+     "truncated": 0,
+     "unparseable": 0
+    }
+   }
+  },
+  "rhea-142": {
+   "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+    "closed-book-answer-v2": {
+     "answered": 1,
+     "declined": 1,
+     "declined_by_rule": {
+      "empty_rows": 1
+     },
+     "labels": {
+      "answered": 2,
+      "unparseable": 1
+     },
+     "n_attempts": 3,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.3333333333333333,
+      "declined": 0.3333333333333333,
+      "unparseable": 0.3333333333333333
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.3333333333333333,
+      "declined": 0.3333333333333333,
+      "refused": 0.0,
+      "unparseable": 0.3333333333333333
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 3,
+     "truncated": 1,
+     "unparseable": 1
+    }
+   }
+  },
+  "uniprot-sp-2026_03": {
+   "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+    "closed-book-answer-v2": {
+     "answered": 6,
+     "declined": 1,
+     "declined_by_rule": {
+      "empty_rows": 1
+     },
+     "labels": {
+      "answered": 7
+     },
+     "n_attempts": 7,
+     "no_usable_reply": {
+      "capped_context": 0,
+      "provider_failures": 0,
+      "share_of_attempts_capped_context": 0.0,
+      "share_of_attempts_provider_failures": 0.0
+     },
+     "other_not_classified": 0,
+     "rates_over_all_attempts_registered": {
+      "answered": 0.8571428571428571,
+      "declined": 0.14285714285714285,
+      "unparseable": 0.0
+     },
+     "rates_over_attempts_with_a_reply": {
+      "answered": 0.8571428571428571,
+      "declined": 0.14285714285714285,
+      "refused": 0.0,
+      "unparseable": 0.0
+     },
+     "refused": 0,
+     "reply_strata": [
+      "answered",
+      "declined",
+      "unparseable",
+      "refused"
+     ],
+     "reply_total": 7,
+     "truncated": 0,
+     "unparseable": 0
+    }
+   }
+  }
+ },
+ "schema": "probe-a-reply-rates/2"
+}
